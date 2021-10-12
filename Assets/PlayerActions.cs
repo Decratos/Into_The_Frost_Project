@@ -45,11 +45,13 @@ public class PlayerActions : MonoBehaviour
             ScriptGestion.Inventory.AddItem(new ItemClass{itemType = stats.MainType, amount = itemWorld.amount, spriteId = itemWorld.spriteId}, objectInfo, hit.transform.name);
             Destroy(hit.transform.gameObject);
             FMODUnity.RuntimeManager.PlayOneShot("event:/Collecting/TakeItem", hit.point);
-        
+            GetComponent<Animator>().Play("TakeItem");
     }
 
     public void Attack(RaycastHit hit)
     {
         hit.transform.GetComponent<AIstats>().ReduceHealth(10);
+        Instantiate(ItemAssets.ItemAssetsInstance.GetComponent<ParticlesAssets>().particles[1], hit.point, PlayerSingleton.playerInstance.transform.rotation);
+
     }
 }
