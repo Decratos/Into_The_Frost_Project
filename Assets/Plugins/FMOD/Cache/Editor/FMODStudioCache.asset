@@ -1,0 +1,205 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8071846916586045565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Collecting/TakeItem
+  m_EditorClassIdentifier: 
+  Path: event:/Collecting/TakeItem
+  Guid:
+    Data1: 32517859
+    Data2: 1102830450
+    Data3: 749952429
+    Data4: -903357978
+  Banks:
+  - {fileID: 5942111600617134462}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 500
+--- !u!114 &-5256159174085607128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Collecting/GatheringStone
+  m_EditorClassIdentifier: 
+  Path: event:/Collecting/GatheringStone
+  Guid:
+    Data1: 594197874
+    Data2: 1283700563
+    Data3: 585892284
+    Data4: -1305353418
+  Banks:
+  - {fileID: 5942111600617134462}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 3309
+--- !u!114 &-318377281506437160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Inventory/InventoryOpen
+  m_EditorClassIdentifier: 
+  Path: event:/Inventory/InventoryOpen
+  Guid:
+    Data1: 147099776
+    Data2: 1308828343
+    Data3: 1155340160
+    Data4: -378678884
+  Banks:
+  - {fileID: 5942111600617134462}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1088
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  EditorBanks:
+  - {fileID: 5075908363993971647}
+  - {fileID: 5942111600617134462}
+  EditorEvents:
+  - {fileID: 2541879805269755351}
+  - {fileID: -318377281506437160}
+  - {fileID: 7979983743117950582}
+  - {fileID: -5256159174085607128}
+  - {fileID: -8071846916586045565}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: 5942111600617134462}
+  StringsBanks:
+  - {fileID: 5075908363993971647}
+  cacheTime: 637695958947037388
+  cacheVersion: 9
+--- !u!114 &2541879805269755351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Inventory/InventoryClose
+  m_EditorClassIdentifier: 
+  Path: event:/Inventory/InventoryClose
+  Guid:
+    Data1: 1526986250
+    Data2: 1264744096
+    Data3: 67765396
+    Data4: 772878914
+  Banks:
+  - {fileID: 5942111600617134462}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1088
+--- !u!114 &5075908363993971647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/AudioSource_IntoTheFrost/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 637695958947037388
+  FileSizes:
+  - Name: Desktop
+    Value: 962
+  Exists: 1
+--- !u!114 &5942111600617134462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: FMOD/AudioSource_IntoTheFrost/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 637695958946957579
+  FileSizes:
+  - Name: Desktop
+    Value: 589184
+  Exists: 1
+--- !u!114 &7979983743117950582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Collecting/GatheringWood
+  m_EditorClassIdentifier: 
+  Path: event:/Collecting/GatheringWood
+  Guid:
+    Data1: -80205021
+    Data2: 1284645865
+    Data3: -860422752
+    Data4: -373063442
+  Banks:
+  - {fileID: 5942111600617134462}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1359

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{1d2e1b05-0dbf-4b45-ab53-5950bba92a12}">
+		<property name="assetPath">
+			<value>Woodshed - Rock and Wood Large Impacts - 1 Meter. Rock,Wood,Large,Impact,Roll,Various_02.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>12.089104166666667</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{6f779f5e-b760-4f9a-ab0a-1d4500b3211f}</destination>
+		</relationship>
+	</object>
+</objects>

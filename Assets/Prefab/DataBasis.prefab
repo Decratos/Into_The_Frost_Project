@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6577673143113461408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6577673143113461414}
+  - component: {fileID: 6577673143113461415}
+  m_Layer: 0
+  m_Name: DataBasis
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6577673143113461414
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6577673143113461408}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.9278078, y: -1.115953, z: 14.755181}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6577673143113461415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6577673143113461408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97a5201378c95b048823044e08b6ab2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MesPages:
+  - MaPage: {fileID: 4900000, guid: 6ecd3a912db785c4c8aa9ec0195fd75a, type: 3}
+    nombreDeColonne: 5
+    LesInfoPagesExel: 0
+  - MaPage: {fileID: 4900000, guid: f451382e4566f6e4fa981411c93b75b0, type: 3}
+    nombreDeColonne: 2
+    LesInfoPagesExel: 2
+  - MaPage: {fileID: 4900000, guid: 63925f12a48c57344b07751ac865b975, type: 3}
+    nombreDeColonne: 6
+    LesInfoPagesExel: 1
+  - MaPage: {fileID: 4900000, guid: b2f48a2f7870e004f9f310b0635165c6, type: 3}
+    nombreDeColonne: 3
+    LesInfoPagesExel: 3
+  - MaPage: {fileID: 4900000, guid: f2929c44682e4ca44be2d013420b6077, type: 3}
+    nombreDeColonne: 4
+    LesInfoPagesExel: 5
+  - MaPage: {fileID: 4900000, guid: 88c3a77520dc22c45862fdf5fb974964, type: 3}
+    nombreDeColonne: 4
+    LesInfoPagesExel: 6
+  - MaPage: {fileID: 4900000, guid: f07fd9d585ffd744595cdd2388f0c38d, type: 3}
+    nombreDeColonne: 7
+    LesInfoPagesExel: 7
+  MesListe:
+    LesItems: []
+    LesMat: []
+    LaBouffe: []
+    LesSoins: []
+    LesCrafts: []
+    LesFlingues: []
+    LesArmes: []
