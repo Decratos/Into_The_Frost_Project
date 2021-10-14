@@ -7,6 +7,8 @@ public class WeaponsClass : MonoBehaviour
 
     public bool canCutWood;
     public bool canCutStone;
+    public int damage;
+    public float attackSpeed;
     public virtual void Shoot()
     {
         

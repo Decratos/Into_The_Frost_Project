@@ -24,6 +24,9 @@ public class AIBehaviour : MonoBehaviour
     [SerializeField] private AiProfil profile;
 
     private Vector3 chasePositionStart;
+
+    public bool isFromACamp = false;
+    public Vector3 CampPosition;
     
     private void Start() {
         _agent = GetComponent<NavMeshAgent>();
@@ -94,7 +97,15 @@ public class AIBehaviour : MonoBehaviour
             case State.Roaming:
                 if(finishedTravel)
                 {
-                    destination = Random.insideUnitSphere * 25f;
+                    if(!isFromACamp)
+                    {
+                        destination = Random.insideUnitSphere * 25f;
+                    }
+                    else
+                    {
+                        destination = Random.insideUnitSphere * 25f + CampPosition;
+                    }
+                    
                     _agent.SetDestination(destination);
                     finishedTravel = false;
                 }

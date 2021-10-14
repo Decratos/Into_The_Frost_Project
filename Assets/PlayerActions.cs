@@ -50,7 +50,16 @@ public class PlayerActions : MonoBehaviour
 
     public void Attack(RaycastHit hit)
     {
-        hit.transform.GetComponent<AIstats>().ReduceHealth(10);
+        if(GetComponentInChildren<WeaponSystem>().actualMeleeWeapon)
+        {
+            int dmg = GetComponentInChildren<WeaponSystem>().actualMeleeWeapon.damage;
+            hit.transform.GetComponent<AIstats>().ReduceHealth(dmg);
+        }
+        else
+        {
+            hit.transform.GetComponent<AIstats>().ReduceHealth(5);
+        }
+        
         Instantiate(ItemAssets.ItemAssetsInstance.GetComponent<ParticlesAssets>().particles[1], hit.point, PlayerSingleton.playerInstance.transform.rotation);
 
     }
