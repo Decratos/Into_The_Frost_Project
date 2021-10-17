@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.HighDefinition;
 using UnityEngine.VFX;
+using Sirenix.OdinInspector;
 
 [ExecuteAlways]
 public class MeteoManager : MonoBehaviour
@@ -87,17 +88,16 @@ public class MeteoManager : MonoBehaviour
             TimeOfDay += Time.deltaTime*(SpeedDay/100);
             TimeOfDay %= 24;//Clamp between 0-24
             UpdateLighting(TimeOfDay / 24);
-            UpdateWeather();
             UpdateTemperature(TimeOfDay / 24);
         }
         else
         {
             UpdateLighting(TimeOfDay / 24);
-            UpdateWeather();
             UpdateTemperature(TimeOfDay / 24);
         }
     }
 
+    [Button(ButtonSizes.Medium)]
     private void UpdateWeather()
     {
         EnvironmentProfile.TryGet<Fog>(out var fog);
@@ -144,7 +144,8 @@ public class MeteoManager : MonoBehaviour
                     actualWeatherVFXused.GetComponent<VisualEffect>().SetFloat("Intensity", 5);
                 else
                 {
-                    WeatherVFXs[0].GetComponent<ParticleSystem>().emissionRate = 100;
+                    if(WeatherVFXs[0].GetComponent<ParticleSystem>().emissionRate != 100)
+                        WeatherVFXs[0].GetComponent<ParticleSystem>().emissionRate = 100;
                 }
                 break;
             case Intensity.Medium:
@@ -154,7 +155,8 @@ public class MeteoManager : MonoBehaviour
                     actualWeatherVFXused.GetComponent<VisualEffect>().SetFloat("Intensity", 3);
                 else
                 {
-                    WeatherVFXs[0].GetComponent<ParticleSystem>().emissionRate = 100;
+                    if(WeatherVFXs[0].GetComponent<ParticleSystem>().emissionRate != 50)
+                        WeatherVFXs[0].GetComponent<ParticleSystem>().emissionRate = 50;
                 }
                 break;
             case Intensity.Low:
@@ -164,7 +166,8 @@ public class MeteoManager : MonoBehaviour
                     actualWeatherVFXused.GetComponent<VisualEffect>().SetFloat("Intensity", 1);
                 else
                 {
-                    WeatherVFXs[0].GetComponent<ParticleSystem>().emissionRate = 25;
+                    if(WeatherVFXs[0].GetComponent<ParticleSystem>().emissionRate != 25)
+                        WeatherVFXs[0].GetComponent<ParticleSystem>().emissionRate = 25;
                 }
                 break;
         }
