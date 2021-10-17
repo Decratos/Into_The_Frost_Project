@@ -140,17 +140,32 @@ public class MeteoManager : MonoBehaviour
             case Intensity.Big:
                 temperatureWeatherScaleAddition = -8;
                 myFog.meanFreePath.value = 2f;
-                actualWeatherVFXused.GetComponent<VisualEffect>().SetFloat("Intensity", 5);
+                if(actualWeatherVFXused.GetComponent<VisualEffect>())
+                    actualWeatherVFXused.GetComponent<VisualEffect>().SetFloat("Intensity", 5);
+                else
+                {
+                    WeatherVFXs[0].GetComponent<ParticleSystem>().emissionRate = 100;
+                }
                 break;
             case Intensity.Medium:
                 temperatureWeatherScaleAddition = -5;
                 myFog.meanFreePath.value = 6f;
-                actualWeatherVFXused.GetComponent<VisualEffect>().SetFloat("Intensity", 3);
+                if(actualWeatherVFXused.GetComponent<VisualEffect>())
+                    actualWeatherVFXused.GetComponent<VisualEffect>().SetFloat("Intensity", 3);
+                else
+                {
+                    WeatherVFXs[0].GetComponent<ParticleSystem>().emissionRate = 100;
+                }
                 break;
             case Intensity.Low:
                 temperatureWeatherScaleAddition = -3;
                 myFog.meanFreePath.value = 10f;
-                actualWeatherVFXused.GetComponent<VisualEffect>().SetFloat("Intensity", 1);
+                if(actualWeatherVFXused.GetComponent<VisualEffect>())
+                    actualWeatherVFXused.GetComponent<VisualEffect>().SetFloat("Intensity", 1);
+                else
+                {
+                    WeatherVFXs[0].GetComponent<ParticleSystem>().emissionRate = 25;
+                }
                 break;
         }
     }
