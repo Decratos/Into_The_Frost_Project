@@ -67,6 +67,8 @@ public class UIInventory : MonoBehaviour
                         Image image = itemSlotRectTransform.Find("Image").GetComponent<Image>();
                         image.sprite = item.GetSprite();
                         TextMeshProUGUI text = itemSlotRectTransform.Find("AmountText").GetComponent<TextMeshProUGUI>();
+                        TextMeshProUGUI tooltipText = itemSlotRectTransform.Find("Tooltip").GetComponentInChildren<TextMeshProUGUI>();
+                        tooltipText.SetText(item.itemName);
                         itemSlotRectTransform.GetComponentInChildren<ItemInfo>().item = item;
                         if (item.amount == 1)
                         {
