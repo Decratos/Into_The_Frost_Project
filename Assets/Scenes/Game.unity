@@ -3222,6 +3222,14 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1194207848, guid: c4fbb43383af29d4ebcdfc097427e5c6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 30.596
+      objectReference: {fileID: 0}
+    - target: {fileID: 1194207848, guid: c4fbb43383af29d4ebcdfc097427e5c6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -33.891
+      objectReference: {fileID: 0}
     - target: {fileID: 1775264431, guid: c4fbb43383af29d4ebcdfc097427e5c6, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -3234,6 +3242,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3347191698362656794, guid: c4fbb43383af29d4ebcdfc097427e5c6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5619326300769882011, guid: c4fbb43383af29d4ebcdfc097427e5c6,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 91.2217
+      objectReference: {fileID: 0}
+    - target: {fileID: 5619326300769882011, guid: c4fbb43383af29d4ebcdfc097427e5c6,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 92.0632
+      objectReference: {fileID: 0}
+    - target: {fileID: 5619326300769882011, guid: c4fbb43383af29d4ebcdfc097427e5c6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.0000018552
+      objectReference: {fileID: 0}
+    - target: {fileID: 5619326300769882011, guid: c4fbb43383af29d4ebcdfc097427e5c6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.0000039938
       objectReference: {fileID: 0}
     - target: {fileID: 7962365835880347092, guid: c4fbb43383af29d4ebcdfc097427e5c6,
         type: 3}
@@ -7219,6 +7252,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemAssets
       objectReference: {fileID: 0}
+    - target: {fileID: 7548561565666448767, guid: 0a33ab8795960cc4caff79e13a47432b,
+        type: 3}
+      propertyPath: sprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 3bd5fb60fdbe1574ea50dd2083ee9387,
+        type: 3}
+    - target: {fileID: 7548561565666448767, guid: 0a33ab8795960cc4caff79e13a47432b,
+        type: 3}
+      propertyPath: sprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: a7124834e3aaec441a2dd9c2c10b18cc,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a33ab8795960cc4caff79e13a47432b, type: 3}
 --- !u!1001 &2142675586
