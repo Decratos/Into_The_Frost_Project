@@ -22,7 +22,6 @@ public class MesFonctions : MonoBehaviour
         Data = GameObject.Find("DataBasis").GetComponent<liseurExel>();
      
     }
-
     public static void correctionType(string datas , out string correction)// corrige les espace invisibles tiré des exel
     {
 
@@ -56,7 +55,6 @@ public class MesFonctions : MonoBehaviour
 
 
     }
-
     public static string ParseForEnum(string ToCorrecte)
     {
         string corrected;
@@ -76,6 +74,18 @@ public class MesFonctions : MonoBehaviour
 
         return corrected;
     }
+
+    public static int GetChildCountOfObject(Transform LeTransform) 
+    {
+        int toReturn=0;
+        foreach (Transform item in LeTransform)
+        {
+            toReturn++;
+        }
+        return toReturn;
+    }
+
+
 }
 public struct InfoGlobalExel // créer une struct qui me permet de récupérer toutes les infos sur un objet 
 {
@@ -99,8 +109,47 @@ public struct InfoGlobalExel // créer une struct qui me permet de récupérer t
     public InfoExelCraft exelCraft;
     public InfoExelArme exelArme;
     public InfoExelGun exelGun;
-    
 
+    public void GetRightInfo()
+    {
+        liseurExel Datas = liseurExel.LesDatas;
+        if (Datas.IsItInThisPage(PageExel.TypeDePageExel.Craft, ID))
+        {
+            Datas.FindObjectInfo(ID, out exelCraft);
+        }
+
+        for (int i = 0; i < System.Enum.GetValues(typeof(Type)).Length; i++)
+            {
+
+                if (i == (int)TypeGeneral)
+                {
+                    if (i == 0)
+                    {
+                        Datas.FindObjectInfo(ID, out exelNourriturre);
+                    }
+                    else if (i == 1)
+                    {
+
+                    }
+                    else if (i == 2)
+                    {
+                        Datas.FindObjectInfo(ID, out exelSoins);
+                    }
+                    else if (i == 3)
+                    {
+                        Datas.FindObjectInfo(ID, out exelArme);
+                    }
+                    else if (i == 4)
+                    {
+                        Datas.FindObjectInfo(ID, out exelGun);
+                    }
+
+                }
+            }
+        
+        
+
+    }
 
 
 }

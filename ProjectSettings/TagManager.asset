@@ -8,6 +8,8 @@ TagManager:
   - Construction
   - RawRessources
   - NPC
+  - BoxLooting
+  - SpawnLoot
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - Animal
   - PostProcessing
   - 
-  - 
+  - SpawningObjects
   - 
   - 
   - 
