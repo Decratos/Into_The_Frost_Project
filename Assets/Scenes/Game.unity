@@ -7183,15 +7183,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1953331448, guid: 0a33ab8795960cc4caff79e13a47432b, type: 3}
-      propertyPath: particles.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1953331448, guid: 0a33ab8795960cc4caff79e13a47432b, type: 3}
-      propertyPath: particles.Array.data[1]
-      value: 
-      objectReference: {fileID: 4187049911095326294, guid: 92771f8bd90652c4ea7db02f5550434b,
-        type: 3}
     - target: {fileID: 7548561565666448764, guid: 0a33ab8795960cc4caff79e13a47432b,
         type: 3}
       propertyPath: m_RootOrder
@@ -7252,18 +7243,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemAssets
       objectReference: {fileID: 0}
-    - target: {fileID: 7548561565666448767, guid: 0a33ab8795960cc4caff79e13a47432b,
-        type: 3}
-      propertyPath: sprites.Array.data[0]
-      value: 
-      objectReference: {fileID: 21300000, guid: 3bd5fb60fdbe1574ea50dd2083ee9387,
-        type: 3}
-    - target: {fileID: 7548561565666448767, guid: 0a33ab8795960cc4caff79e13a47432b,
-        type: 3}
-      propertyPath: sprites.Array.data[2]
-      value: 
-      objectReference: {fileID: 21300000, guid: a7124834e3aaec441a2dd9c2c10b18cc,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a33ab8795960cc4caff79e13a47432b, type: 3}
 --- !u!1001 &2142675586

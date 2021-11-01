@@ -79,10 +79,10 @@ public class UIInventory : MonoBehaviour
                             text.SetText(item.amount.ToString());
                         }
                         x++;
-                        if (x > 4)
+                        if (x == 3)
                         {
                             x = 0;
-                            y++;
+                            y--;
                         }
                     }
         }
@@ -108,6 +108,7 @@ public class UIInventory : MonoBehaviour
             }
         }
         gameObject.SetActive(inventoryIsOpen);
+        PlayerSingleton.playerInstance.GetComponentInChildren<CameraMouvement>().canLook = !inventoryIsOpen;
         RefreshInventoryItems();
         MouseCursorHiderShower.instance.ManageCursor(inventoryIsOpen);
     }

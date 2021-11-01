@@ -16,6 +16,8 @@ public class CameraMouvement : MesFonctions
     float RotationSurX = 0;
     float RotationSurY = 0;
 
+    public bool canLook = true;
+
    
 
 
@@ -31,23 +33,26 @@ public class CameraMouvement : MesFonctions
 
     public void ReceptionDonnerInput(Vector2 Data) 
     {
-         Data *= 0.4f;
-         Data *= 0.1f;
-         RotationSurX -= Data.y * Sensibilite.x ;
-         RotationSurY += Data.x * Sensibilite.y ;
-         RotationSurX = Mathf.Clamp(RotationSurX, -MaxAngle.x, MaxAngle.x);
+        if(canLook)
+        {
+            Data *= 0.4f;
+            Data *= 0.1f;
+            RotationSurX -= Data.y * Sensibilite.x ;
+            RotationSurY += Data.x * Sensibilite.y ;
+            RotationSurX = Mathf.Clamp(RotationSurX, -MaxAngle.x, MaxAngle.x);
         
-        if (!ScriptGestion.LesMouvements.Jumping)
-        {
-            transform.localRotation = Quaternion.Euler(new Vector3(RotationSurX, 0, 0));
-            transform.parent.rotation = Quaternion.AngleAxis(RotationSurY, transform.parent.up);
+            if (!ScriptGestion.LesMouvements.Jumping)
+            {
+                transform.localRotation = Quaternion.Euler(new Vector3(RotationSurX, 0, 0));
+                transform.parent.rotation = Quaternion.AngleAxis(RotationSurY, transform.parent.up);
+            }
+            else 
+            {
+                transform.localRotation = Quaternion.Euler(new Vector3(RotationSurX, RotationSurY, 0));
+            }
+        // voir si c'est dï¿½xaxï¿½ et corriger 
         }
-        else 
-        {
-            transform.localRotation = Quaternion.Euler(new Vector3(RotationSurX, RotationSurY, 0));
-        }
-        // voir si c'est déxaxé et corriger 
-
+        
     }
 
 
