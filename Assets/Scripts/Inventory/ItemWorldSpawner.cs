@@ -10,6 +10,9 @@ public class ItemWorldSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        liseurExel excelLiseur;
+        MesFonctions.FindDataExelForObject(out excelLiseur);
+        excelLiseur.findObjectIDByName(item.itemName, out item.spriteId);
         var myItem = ItemWorld.SpawnItemWorld(item, transform.position);
         myItem.transform.parent = transform.parent;
         Destroy(this);

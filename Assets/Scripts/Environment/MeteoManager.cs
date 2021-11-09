@@ -29,6 +29,12 @@ public class MeteoManager : MonoBehaviour
     {
         Low, Medium, Big
     }
+
+    [Header("Intensity Curves")]
+    [SerializeField] private ParticleSystem.MinMaxCurve lowCurve;
+    [SerializeField] private ParticleSystem.MinMaxCurve mediumCurve;
+    [SerializeField] private ParticleSystem.MinMaxCurve highCurve;
+    
     
 
     [SerializeField] private weather _weather;
@@ -135,6 +141,7 @@ public class MeteoManager : MonoBehaviour
 
     private void SetWeatherSettings(weather _weather, Fog myFog)
     {
+        ParticleSystem.EmissionModule particle =  WeatherVFXs[0].GetComponent<ParticleSystem>().emission;
         switch (_intensity)
         {
             case Intensity.Big:
@@ -144,8 +151,7 @@ public class MeteoManager : MonoBehaviour
                     actualWeatherVFXused.GetComponent<VisualEffect>().SetFloat("Intensity", 5);
                 else
                 {
-                    if(WeatherVFXs[0].GetComponent<ParticleSystem>().emissionRate != 100)
-                        WeatherVFXs[0].GetComponent<ParticleSystem>().emissionRate = 100;
+                   particle.rateOverTime = highCurve;
                 }
                 break;
             case Intensity.Medium:
@@ -155,8 +161,7 @@ public class MeteoManager : MonoBehaviour
                     actualWeatherVFXused.GetComponent<VisualEffect>().SetFloat("Intensity", 3);
                 else
                 {
-                    if(WeatherVFXs[0].GetComponent<ParticleSystem>().emissionRate != 50)
-                        WeatherVFXs[0].GetComponent<ParticleSystem>().emissionRate = 50;
+                    particle.rateOverTime = mediumCurve;
                 }
                 break;
             case Intensity.Low:
@@ -166,8 +171,7 @@ public class MeteoManager : MonoBehaviour
                     actualWeatherVFXused.GetComponent<VisualEffect>().SetFloat("Intensity", 1);
                 else
                 {
-                    if(WeatherVFXs[0].GetComponent<ParticleSystem>().emissionRate != 25)
-                        WeatherVFXs[0].GetComponent<ParticleSystem>().emissionRate = 25;
+                    particle.rateOverTime = lowCurve;
                 }
                 break;
         }
