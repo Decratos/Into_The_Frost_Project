@@ -6,11 +6,11 @@ public class PlayerActions : MonoBehaviour
 {
     public void Gather(RaycastHit hit, GestionDesScipt ScriptGestion)
     {
-        if(GetComponentInChildren<WeaponSystem>().actualMeleeWeapon)
+        if(GetComponentInChildren<WeaponSystem>().actualWeaponInHands)
         {
             string name = hit.transform.GetComponent<BasicRessourcesSource>().ressourceName;
             int amount = hit.transform.GetComponent<BasicRessourcesSource>().ressourceAmount;
-            if(name == "Planche" && GetComponentInChildren<WeaponSystem>().actualMeleeWeapon.canCutWood || name == "Rocher" && GetComponentInChildren<WeaponSystem>().actualMeleeWeapon.canCutStone)
+            if(name == "Planche" && GetComponentInChildren<WeaponSystem>().actualWeaponInHands.canCutWood || name == "Rocher" && GetComponentInChildren<WeaponSystem>().actualWeaponInHands.canCutStone)
             {
                 switch (name)
                 {
@@ -50,9 +50,9 @@ public class PlayerActions : MonoBehaviour
 
     public void Attack(RaycastHit hit)
     {
-        if(GetComponentInChildren<WeaponSystem>().actualMeleeWeapon)
+        if(GetComponentInChildren<WeaponSystem>().actualWeaponInHands)
         {
-            int dmg = GetComponentInChildren<WeaponSystem>().actualMeleeWeapon.damage;
+            int dmg = GetComponentInChildren<WeaponSystem>().actualWeaponInHands.damage;
             hit.transform.GetComponent<AIstats>().ReduceHealth(dmg);
         }
         else

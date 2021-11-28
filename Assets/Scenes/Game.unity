@@ -3190,6 +3190,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 372737566, guid: c4fbb43383af29d4ebcdfc097427e5c6, type: 3}
+      propertyPath: m_Name
+      value: Weapon2Slot
+      objectReference: {fileID: 0}
     - target: {fileID: 571908677, guid: c4fbb43383af29d4ebcdfc097427e5c6, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -3247,6 +3251,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5483827556311050583, guid: c4fbb43383af29d4ebcdfc097427e5c6,
+        type: 3}
+      propertyPath: m_Name
+      value: Weapon1Slot
       objectReference: {fileID: 0}
     - target: {fileID: 5619326300769882011, guid: c4fbb43383af29d4ebcdfc097427e5c6,
         type: 3}
