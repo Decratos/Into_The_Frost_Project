@@ -16,7 +16,7 @@ public class WeaponsClass : MonoBehaviour
     public float attackDistance;
     public float attackRate;
 
-    [Header("Ranged Weapon Attributes"), Tooltip("N'a d'impact que si l'arme est à distance")]
+    [Header("Ranged Weapon Attributes (N'a d'impact que si l'arme est à distance)")]
     public int ammo;
     public int maxAmmo;
     public int reloadSpeed;
