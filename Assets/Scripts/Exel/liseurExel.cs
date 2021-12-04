@@ -12,7 +12,7 @@ public class InfoGeneral // Liste de tous les items
     public string Type;
     public int Durability;
     public int CraftingLevel;
-
+    public float Rarity;
 }
 [System.Serializable]
 public class InfoMateriaux // Liste de tous les matériaux
@@ -71,6 +71,34 @@ public class InfoGun
 }
 
 [System.Serializable]
+public class InfoVetements 
+{
+    public int ID;
+    public string Name;
+    public string Categorie;
+    public float ChaleurResistance;
+    public float DegatResistance;
+}
+
+[System.Serializable]
+public class InfoSac 
+{
+    public int ID;
+    public string Name;
+    public int NbrEmplacement;
+}
+
+[System.Serializable]
+public class InfoUtilitaire 
+{
+    public int ID;
+    public string Name;
+    public int TheLevelForCraft;
+
+}
+
+
+[System.Serializable]
 public class Info // regroupement  de toutes les infos
 {
 
@@ -81,6 +109,10 @@ public class Info // regroupement  de toutes les infos
     public InfoCraft[] LesCrafts;
     public InfoGun[] LesFlingues;
     public InfoWeapon[] LesArmes;
+    public InfoVetements[] LesVetements;
+    public InfoSac[] LesSacs;
+    public InfoUtilitaire[] LesUtilitaires;
+
 }
 
 
@@ -98,10 +130,14 @@ public class PageExel //info de page exel
     nourriture,
     Materiaux,
     soins,
-    vêtements,
     Craft,
     Weapon,
-    Gun
+    Gun,
+    Utilitaire,
+    SacADos,
+    Vetements
+
+
     }
     public TypeDePageExel LesInfoPagesExel;
 
@@ -157,6 +193,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                 correctionType(data[nombreDeColonne * (i + 1) + 2],out MesListe.LesItems[i].Type);
                 MesListe.LesItems[i].Durability = int.Parse(data[nombreDeColonne * (i + 1)+3]);
                 MesListe.LesItems[i].CraftingLevel = int.Parse(data[nombreDeColonne * (i + 1) + 4]);
+                MesListe.LesItems[i].Rarity = MonParse(data[nombreDeColonne * (i + 1) + 5]);
             }
         }
         else if (mon_type == PageExel.TypeDePageExel.Materiaux)
@@ -259,7 +296,43 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
             
 
         }
-        
+        else if (mon_type == PageExel.TypeDePageExel.SacADos)
+        {
+            MesListe.LesSacs = new InfoSac[size];
+            for (int i = 0; i < size; i++)
+            {
+                MesListe.LesSacs[i] = new InfoSac();
+                MesListe.LesSacs[i].ID = int.Parse(data[nombreDeColonne * (i + 1)]);
+                correctionType(data[nombreDeColonne * (i + 1) + 1], out MesListe.LesSacs[i].Name);
+                MesListe.LesSacs[i].NbrEmplacement = int.Parse(data[nombreDeColonne * (i + 1) + 2]);
+            }
+        }
+        else if (mon_type == PageExel.TypeDePageExel.Utilitaire)
+        {
+            MesListe.LesUtilitaires = new InfoUtilitaire[size];
+            for (int i = 0; i < size; i++)
+            {
+                MesListe.LesUtilitaires[i] = new InfoUtilitaire();
+                MesListe.LesUtilitaires[i].ID = int.Parse(data[nombreDeColonne * (i + 1)]);
+                correctionType(data[nombreDeColonne * (i + 1) + 1], out MesListe.LesUtilitaires[i].Name);
+                MesListe.LesUtilitaires[i].TheLevelForCraft = int.Parse(data[nombreDeColonne * (i + 1)+2]);
+
+            }
+        }
+        else if (mon_type == PageExel.TypeDePageExel.Vetements)
+        {
+            MesListe.LesVetements = new InfoVetements[size];
+            for (int i = 0; i < size; i++)
+            {
+                MesListe.LesVetements[i] = new InfoVetements();
+                MesListe.LesVetements[i].ID = int.Parse(data[nombreDeColonne * (i + 1)]);
+                correctionType(data[nombreDeColonne * (i + 1) + 1], out MesListe.LesVetements[i].Name);
+                correctionType(data[nombreDeColonne * (i + 1) + 2], out MesListe.LesVetements[i].Categorie);
+                MesListe.LesVetements[i].ChaleurResistance = MonParse(data[nombreDeColonne * (i + 1) + 3]);
+                MesListe.LesVetements[i].DegatResistance = MonParse(data[nombreDeColonne * (i + 1) + 4]);
+            }
+
+        }
     }
 
     #endregion
@@ -439,6 +512,34 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                     }
 
                 }
+                else if (correctedType == InfoGlobalExel.Type.Vetement.ToString())
+                {
+                    lesInfos.Exelvetements = new InfoExelvetements();
+                    foreach (InfoVetements SubInfo in MesListe.LesVetements)
+                    {
+                        if (SubInfo.Name == name)
+                        {
+                            lesInfos.Exelvetements.ChaleurResistance = SubInfo.ChaleurResistance;
+                            lesInfos.Exelvetements.DegatResistance = SubInfo.DegatResistance;
+                        }
+                    }
+
+
+                }
+                else if (correctedType == InfoGlobalExel.Type.Sac.ToString())
+                {
+                    lesInfos.ExelSac = new InfoExelSac();
+                    foreach (InfoSac SubInfo in MesListe.LesSacs)
+                    {
+
+                        if (SubInfo.Name == name)
+                        {
+                            lesInfos.ExelSac.NbrEmplacement = SubInfo.NbrEmplacement;
+                        }
+
+                    }
+
+                }
                 else
                 {
                     print("je fais rien");
@@ -574,7 +675,45 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
         }
     
     } // récupère les données des gun
+    public void FindObjectInfo(string name, out InfoExelSac SacInfo)
+    {
+        SacInfo = new InfoExelSac();
+        bool found = false;
+        foreach (InfoSac item in MesListe.LesSacs)
+        {
+            if (item.Name == name)
+            {
+                SacInfo.NbrEmplacement = item.NbrEmplacement;
+                found = true;
+            }
 
+
+        }
+        if (!found)
+        {
+            print("Il n'est pas dans les data");
+        }
+    }
+    public void FindObjectInfo(string name, out InfoExelvetements VetementInfo)
+    {
+        VetementInfo = new InfoExelvetements();
+        bool found = false;
+        foreach (InfoVetements item in MesListe.LesVetements)
+        {
+            if (item.Name == name)
+            {
+                VetementInfo.ChaleurResistance = item.ChaleurResistance;
+                VetementInfo.DegatResistance = item.DegatResistance;
+                found = true;
+            }
+
+        }
+        if (!found)
+        {
+            print("Il n'est pas dans les data");
+        }
+
+    }
     //
     #endregion
 
@@ -678,6 +817,34 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                             lesInfos.exelArme.Speed = SubInfo.Speed;
                         }
                     }
+                }
+                else if (correctedType == InfoGlobalExel.Type.Vetement.ToString())
+                {
+                    lesInfos.Exelvetements = new InfoExelvetements();
+                    foreach (InfoVetements SubInfo in MesListe.LesVetements)
+                    {
+                        if (SubInfo.ID == ID)
+                        {
+                            lesInfos.Exelvetements.ChaleurResistance = SubInfo.ChaleurResistance;
+                            lesInfos.Exelvetements.DegatResistance = SubInfo.DegatResistance;
+                        }
+                    }
+                    
+                    
+                }
+                else if (correctedType == InfoGlobalExel.Type.Sac.ToString())
+                {
+                    lesInfos.ExelSac = new InfoExelSac();
+                    foreach (InfoSac SubInfo in MesListe.LesSacs)
+                    {
+
+                        if (SubInfo.ID == ID)
+                        {
+                            lesInfos.ExelSac.NbrEmplacement = SubInfo.NbrEmplacement;
+                        }
+
+                    }
+
                 }
                 else
                 {
@@ -810,6 +977,45 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
         }
 
     } // récupère les données des gun
+    public void FindObjectInfo(int ID, out InfoExelSac SacInfo)
+    {
+        SacInfo = new InfoExelSac();
+        bool found = false;
+        foreach (InfoSac item in MesListe.LesSacs)
+        {
+            if (item.ID == ID)
+            {
+                SacInfo.NbrEmplacement = item.NbrEmplacement;
+                found = true;
+            }
+
+
+        }
+        if (!found)
+        {
+            print("Il n'est pas dans les data");
+        }
+    }
+    public void FindObjectInfo(int ID, out InfoExelvetements VetementInfo) 
+    {
+        VetementInfo = new InfoExelvetements();
+        bool found = false;
+        foreach (InfoVetements item in MesListe.LesVetements) 
+        {
+            if (item.ID ==ID)
+            {
+                VetementInfo.ChaleurResistance = item.ChaleurResistance;
+                VetementInfo.DegatResistance = item.DegatResistance;
+                found = true;
+            }
+        
+        }
+        if (!found)
+        {
+            print("Il n'est pas dans les data");
+        }
+
+    }
     #endregion
 
     #endregion
@@ -956,13 +1162,41 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                 }
             }
         }
-        else if (mon_type == PageExel.TypeDePageExel.vêtements)
-        {
-            return false;
-        }
         else if (mon_type == PageExel.TypeDePageExel.Craft)
         {
             foreach (InfoCraft item in MesListe.LesCrafts)
+            {
+                if (item.ID == ID)
+                {
+                    tosend = true;
+                }
+            }
+        }
+        else if (mon_type == PageExel.TypeDePageExel.SacADos)
+        {
+            foreach (InfoSac item in MesListe.LesSacs)
+            {
+                if (item.ID == ID)
+                {
+                    tosend = true;
+                }
+            }
+        }
+        else if (mon_type == PageExel.TypeDePageExel.Vetements)
+        {
+            foreach (InfoVetements item in MesListe.LesVetements)
+            {
+                if (item.ID == ID)
+                {
+
+                    tosend = true;
+
+                }
+            }
+        }
+        else if (mon_type == PageExel.TypeDePageExel.Utilitaire)
+        {
+            foreach (InfoUtilitaire item in MesListe.LesUtilitaires)
             {
                 if (item.ID == ID)
                 {
@@ -1022,9 +1256,37 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                 }
             }
         }
-        else if (mon_type == PageExel.TypeDePageExel.vêtements)
+        else if (mon_type == PageExel.TypeDePageExel.SacADos)
         {
-            return false;
+            foreach (InfoSac item in MesListe.LesSacs)
+            {
+                if (item.Name == name)
+                {
+                    tosend = true;
+                }
+            }
+        }
+        else if (mon_type == PageExel.TypeDePageExel.Vetements)
+        {
+            foreach (InfoVetements item in MesListe.LesVetements)
+            {
+                if (item.Name == name)
+                {
+
+                    tosend = true;
+
+                }
+            }
+        }
+        else if (mon_type == PageExel.TypeDePageExel.Utilitaire)
+        {
+            foreach (InfoUtilitaire item in MesListe.LesUtilitaires)
+            {
+                if (item.Name == name)
+                {
+                    tosend = true;
+                }
+            }
         }
         return tosend;
 

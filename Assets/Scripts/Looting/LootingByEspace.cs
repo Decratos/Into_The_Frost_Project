@@ -22,7 +22,7 @@ public class LootingByEspace : MesFonctions
         Tag
     }
     public methodChoisis LaMethod;
-    public Looter script;
+    //public Looter script;
     public string LeTagEnfant;
     public string LeTagSpawner;
 

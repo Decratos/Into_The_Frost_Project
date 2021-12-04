@@ -935,6 +935,7 @@ GameObject:
   m_Component:
   - component: {fileID: 699628905}
   - component: {fileID: 699628904}
+  - component: {fileID: 699628906}
   m_Layer: 10
   m_Name: spawner
   m_TagString: SpawnLoot
@@ -969,6 +970,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &699628906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699628903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cee465cd29120254b9094b1f911adfed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: 
 --- !u!1 &871104528 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 221727929, guid: c4fbb43383af29d4ebcdfc097427e5c6,
@@ -1806,7 +1820,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LaMethod: 0
-  script: {fileID: 0}
   LeTagEnfant: BoxLooting
   LeTagSpawner: SpawnLoot
   HasAlreadyLooted: 0

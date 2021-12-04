@@ -100,7 +100,9 @@ public struct InfoGlobalExel // créer une struct qui me permet de récupérer t
         Materials,
         Soins,
         ArmeAfeu,
-        ArmeMelee
+        ArmeMelee,
+        Sac,
+        Vetement
     }
 
     public Type TypeGeneral;
@@ -109,6 +111,8 @@ public struct InfoGlobalExel // créer une struct qui me permet de récupérer t
     public InfoExelCraft exelCraft;
     public InfoExelArme exelArme;
     public InfoExelGun exelGun;
+    public InfoExelvetements Exelvetements;
+    public InfoExelSac ExelSac;
 
     public void GetRightInfo()
     {
@@ -142,6 +146,14 @@ public struct InfoGlobalExel // créer une struct qui me permet de récupérer t
                     else if (i == 4)
                     {
                         Datas.FindObjectInfo(ID, out exelGun);
+                    }
+                    else if (i == 5) 
+                    {
+                    
+                    }
+                    else if (i == 6) 
+                    {
+                
                     }
 
                 }
@@ -186,7 +198,6 @@ public struct InfoExelGun
     public float Power;
 
 }
-
 public struct InfoExelArme 
 {
 
@@ -194,3 +205,27 @@ public struct InfoExelArme
     public float Speed;
 
 }
+public struct InfoExelSac 
+{
+    public int NbrEmplacement; 
+
+}
+public struct InfoExelvetements 
+{
+    public enum SousCategorie 
+    {
+       Tshirt,
+       pull,
+       Pantalon,
+       Chaussure,
+       SousVetement,
+       Manteau
+
+    
+    }
+    public SousCategorie MaCategorie;
+    public float ChaleurResistance;
+    public float DegatResistance;
+
+}
+
