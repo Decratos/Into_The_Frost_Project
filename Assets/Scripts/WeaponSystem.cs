@@ -13,17 +13,6 @@ public class WeaponSystem : MonoBehaviour
     public WeaponsClass EquippedWeapon1;
     public WeaponsClass EquippedWeapon2;
 
-    public void Attack()
-    {
-        if (!FirstWeapon)
-            EquippedWeapon1.Shoot();
-        
-        else
-        {
-            EquippedWeapon2.Shoot();
-        }
-    }
-
     public void ChangeWeaponMode()
     {
         FirstWeapon = !FirstWeapon;
@@ -50,6 +39,10 @@ public class WeaponSystem : MonoBehaviour
                 EquippedWeapon1.gameObject.SetActive(false);
             EquippedWeapon1 = newWeapon;
             EquippedWeapon1.gameObject.SetActive(true);
+            if(!actualWeaponInHands)
+            {
+                actualWeaponInHands = EquippedWeapon1;
+            }
         }
         else
         {
@@ -57,6 +50,10 @@ public class WeaponSystem : MonoBehaviour
                 EquippedWeapon2.gameObject.SetActive(false);
             EquippedWeapon2 = newWeapon;
             EquippedWeapon2.gameObject.SetActive(true);
+            if(!actualWeaponInHands)
+            {
+                actualWeaponInHands = EquippedWeapon2;
+            }
         }
     }
 

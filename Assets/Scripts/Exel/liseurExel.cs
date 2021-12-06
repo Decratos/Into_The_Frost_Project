@@ -15,7 +15,7 @@ public class InfoGeneral // Liste de tous les items
 
 }
 [System.Serializable]
-public class InfoMateriaux // Liste de tous les matériaux
+public class InfoMateriaux // Liste de tous les matï¿½riaux
 {
     public int ID;
     public string Name;
@@ -98,7 +98,7 @@ public class PageExel //info de page exel
     nourriture,
     Materiaux,
     soins,
-    vêtements,
+    vÃªtements,
     Craft,
     Weapon,
     Gun
@@ -107,7 +107,7 @@ public class PageExel //info de page exel
 
 }
 
-public class liseurExel : MesFonctions // ce script vas chercher toutes les infos dans les excel et les stocker, pour permettre d'aller chercher toute les donnés
+public class liseurExel : MesFonctions // ce script vas chercher toutes les infos dans les excel et les stocker, pour permettre d'aller chercher toute les donnï¿½s
 {
     
     [SerializeField] PageExel[] MesPages; // contient toute les pages exel
@@ -125,7 +125,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
         {
             LesDatas = this;
         }
-        DontDestroyOnLoad(this.gameObject); // Permet de garder les infos entre chaque scéne 
+        DontDestroyOnLoad(this.gameObject); // Permet de garder les infos entre chaque scï¿½ne 
         readEachCSV(); // lance la lecture des exel
     }
 
@@ -133,10 +133,10 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
 
     void readEachCSV() 
     {
-        print("LiseurExel readEachCSV");
+        //print("LiseurExel readEachCSV");
         for (int i = 0; i < MesPages.Length; i++) // pour chaque page exel
         {
-            string[] data = MesPages[i].MaPage.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);// split les données dans un tableau
+            string[] data = MesPages[i].MaPage.text.Split(new string[] { ",", "\n" }, StringSplitOptions.None);// split les donnï¿½es dans un tableau
             int tableSize = data.Length / MesPages[i].nombreDeColonne - 1;// divise par le nombre de colonne dans l'exel
             setInfo(MesPages[i].LesInfoPagesExel, MesPages[i].nombreDeColonne, data, tableSize); // Vas set toutes les informations dans les tableau
 
@@ -145,7 +145,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
     } // lis chaque page
     void setInfo (PageExel.TypeDePageExel mon_type, int nombreDeColonne, string[] data,int size)
     {
-        print("Liseur SetInfo");        
+        //print("Liseur SetInfo");        
         if (mon_type == PageExel.TypeDePageExel.General)
         {
             MesListe.LesItems = new InfoGeneral[size];
@@ -267,7 +267,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
     #region mesFonctionsInterne
     float MonParse (string value) //fonction pour le tableur
     {
-        print("Parse float ");
+        //print("Parse float ");
         char[] array = value.ToCharArray();
         for (int i = 0; i < array.Length-1; i++)
         {
@@ -277,13 +277,13 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
             }
         }
         string Resultat = new string(array);
-        print("la valuer modifié" + Resultat);
+        //print("la valuer modifiï¿½" + Resultat);
 
         return float.Parse(Resultat);
     } 
     bool ParseBool(string value) 
     {
-        print("Parse bool");
+        //print("Parse bool");
         correctionType(value, out value);
         if (value == "FALSE" )
         {
@@ -304,7 +304,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
 
     bool[] ParseArrayBool(string[] value) 
     {
-        print("ParseArrayBool");
+        //print("ParseArrayBool");
         bool[] valueBool = new bool[value.Length];
         for (int i = 0; i < value.Length; i++)
         {
@@ -318,7 +318,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
 
     int[] ParseArray(string[] value) 
     {
-        print("parse ARRAY");
+        //print("parse ARRAY");
         int[] valueInt = new int[value.Length];
         for (int i = 0; i < value.Length; i++)
         {
@@ -328,13 +328,13 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
         return valueInt;
     }// lorsqu'il y'a plusieurs variables dans la case exel
     
-    // bool pour vérifier si dans liste des crafts
+    // bool pour vï¿½rifier si dans liste des crafts
     
    
 
     #endregion
 
-    #region methode Accessible à tous
+    #region methode Accessible ï¿½ tous
         #region findObjectMethod
 
             #region byName
@@ -342,7 +342,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
     public void FindObjectInfo(string name, out InfoGlobalExel InfoGlobal) 
     {
         print("FindObjectInfo name out Infoglobal");
-        InfoGlobalExel lesInfos = new InfoGlobalExel(); // créer une nouvelle struct
+        InfoGlobalExel lesInfos = new InfoGlobalExel(); // crï¿½er une nouvelle struct
         string correctedType; // enregistre le type d'objet
         foreach (InfoGeneral info in MesListe.LesItems) // pour chaque objet dans la liste
         {
@@ -350,23 +350,23 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
             {
                 lesInfos.ID = info.ID;// set l'ID
                 lesInfos.Name = info.Name; // set le nom
-                lesInfos.Durability = info.Durability; // set la durabilité
+                lesInfos.Durability = info.Durability; // set la durabilitï¿½
                 lesInfos.CraftingLevel = info.CraftingLevel;// set le niveau de crafting
                 correctionType(info.Type , out correctedType); // corrige le type
-                string [] EnumType = System.Enum.GetNames(typeof(InfoGlobalExel.Type));// créer un tableau de string des types
+                string [] EnumType = System.Enum.GetNames(typeof(InfoGlobalExel.Type));// crï¿½er un tableau de string des types
                 for (int i = 0; i < EnumType.Length-1; i++) // pour chaque type dans l'enum
                 {
                     correctionType(EnumType[i],out EnumType[i]); // corrige les enums au cas ou
                     
-                    if (EnumType[i] == correctedType) // si l'enum est égale au type
+                    if (EnumType[i] == correctedType) // si l'enum est ï¿½gale au type
                     {
-                        lesInfos.TypeGeneral = (InfoGlobalExel.Type)i; // set le type général
+                        lesInfos.TypeGeneral = (InfoGlobalExel.Type)i; // set le type gï¿½nï¿½ral
                         break; // break le for
                     }
                 }
                 if (correctedType == InfoGlobalExel.Type.Nourriture.ToString()) // si c'est de la bouffe
                 {
-                    lesInfos.exelNourriturre = new InfoExelNourriturre(); // je créer une type bouffe
+                    lesInfos.exelNourriturre = new InfoExelNourriturre(); // je crï¿½er une type bouffe
                     foreach (InfoNourriture SubInfo in MesListe.LaBouffe)// je check toutes les bouffes
                     {
                         if (SubInfo.Name == name)
@@ -452,12 +452,12 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                 }
                
 
-                break; // j'ai trouvé ma cible je peux casser
+                break; // j'ai trouvï¿½ ma cible je peux casser
             }
         }
         if (lesInfos.ID == 0) // si l'objet n'est pas dans la base de donner
         {
-            print("l'item n'est pas dans la base de donnée");
+            print("l'item n'est pas dans la base de donnï¿½e");
             Debug.Break();
 
         }
@@ -484,7 +484,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
         {
             print("Il n'est pas dans les data");
         }
-    }//récupérre les données de la bouffe;
+    }//rï¿½cupï¿½rre les donnï¿½es de la bouffe;
     public void FindObjectInfo(string name, out InfoExelSoins SoinsInfo)
     {
         print("FindObjectInfo name out InfoSoins");
@@ -502,7 +502,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
         {
             print("Il n'est pas dans les data");
         }
-    }//récupérre les données des soins;
+    }//rï¿½cupï¿½rre les donnï¿½es des soins;
     public void FindObjectInfo(string name, out InfoExelCraft CraftInfo)
     {
         print("FindObjectInfo name out craftInfo");
@@ -529,8 +529,8 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
         {
             print("Il n'est pas dans les data");
         }
-    }//récupérre les données des craft;
-    public void FindObjectInfo(string name, out InfoExelArme ArmeInfo) // récupére les données des armes de mélée
+    }//rï¿½cupï¿½rre les donnï¿½es des craft;
+    public void FindObjectInfo(string name, out InfoExelArme ArmeInfo) // rï¿½cupï¿½re les donnï¿½es des armes de mï¿½lï¿½e
     {
         ArmeInfo = new InfoExelArme();
         bool found = false;
@@ -573,7 +573,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
             print("Il n'est pas dans les data");
         }
     
-    } // récupère les données des gun
+    } // rï¿½cupï¿½re les donnï¿½es des gun
 
     //
     #endregion
@@ -582,7 +582,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
     public void FindObjectInfo(int ID, out InfoGlobalExel InfoGlobal)
     {
         print("FindObjectInfo name out Infoglobal");
-        InfoGlobalExel lesInfos = new InfoGlobalExel(); // créer une nouvelle struct
+        InfoGlobalExel lesInfos = new InfoGlobalExel(); // crï¿½er une nouvelle struct
         string correctedType; // enregistre le type d'objet
         foreach (InfoGeneral info in MesListe.LesItems) // pour chaque objet dans la liste
         {
@@ -590,23 +590,23 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
             {
                 lesInfos.ID = info.ID;// set l'ID
                 lesInfos.Name = info.Name; // set le nom
-                lesInfos.Durability = info.Durability; // set la durabilité
+                lesInfos.Durability = info.Durability; // set la durabilitï¿½
                 lesInfos.CraftingLevel = info.CraftingLevel;// set le niveau de crafting
                 correctionType(info.Type, out correctedType); // corrige le type
-                string[] EnumType = System.Enum.GetNames(typeof(InfoGlobalExel.Type));// créer un tableau de string des types
+                string[] EnumType = System.Enum.GetNames(typeof(InfoGlobalExel.Type));// crï¿½er un tableau de string des types
                 for (int i = 0; i < EnumType.Length - 1; i++) // pour chaque type dans l'enum
                 {
                     correctionType(EnumType[i], out EnumType[i]); // corrige les enums au cas ou
 
-                    if (EnumType[i] == correctedType) // si l'enum est égale au type
+                    if (EnumType[i] == correctedType) // si l'enum est ï¿½gale au type
                     {
-                        lesInfos.TypeGeneral = (InfoGlobalExel.Type)i; // set le type général
+                        lesInfos.TypeGeneral = (InfoGlobalExel.Type)i; // set le type gï¿½nï¿½ral
                         break; // break le for
                     }
                 }
                 if (correctedType == InfoGlobalExel.Type.Nourriture.ToString()) // si c'est de la bouffe
                 {
-                    lesInfos.exelNourriturre = new InfoExelNourriturre(); // je créer une type bouffe
+                    lesInfos.exelNourriturre = new InfoExelNourriturre(); // je crï¿½er une type bouffe
                     foreach (InfoNourriture SubInfo in MesListe.LaBouffe)// je check toutes les bouffes
                     {
                         if (SubInfo.ID == ID)
@@ -690,12 +690,12 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                     FindObjectInfo(ID, out lesInfos.exelCraft);
                 }
 
-                break; // j'ai trouvé ma cible je peux casser
+                break; // j'ai trouvï¿½ ma cible je peux casser
             }
         }
         if (lesInfos.ID == 0) // si l'objet n'est pas dans la base de donner
         {
-            print("l'item n'est pas dans la base de donnée");
+            print("l'item n'est pas dans la base de donnï¿½e");
             Debug.Break();
 
         }
@@ -722,7 +722,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
         {
             print("Il n'est pas dans les data");
         }
-    }//récupérre les données de la bouffe;
+    }//rï¿½cupï¿½rre les donnï¿½es de la bouffe;
     public void FindObjectInfo(int ID, out InfoExelSoins SoinsInfo)
     {
         print("FindObjectInfo name out InfoExelSoins");
@@ -740,7 +740,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
         {
             print("Il n'est pas dans les data");
         }
-    }//récupérre les données des soins;
+    }//rï¿½cupï¿½rre les donnï¿½es des soins;
     public void FindObjectInfo(int ID, out InfoExelCraft CraftInfo)
     {
         print("FindObjectInfo name out InfoExelCraft");
@@ -767,8 +767,8 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
         {
             print("Il n'est pas dans les data");
         }
-    }//récupérre les données des craft;
-    public void FindObjectInfo(int ID, out InfoExelArme ArmeInfo) // récupére les données des armes de mélée
+    }//rï¿½cupï¿½rre les donnï¿½es des craft;
+    public void FindObjectInfo(int ID, out InfoExelArme ArmeInfo) // rï¿½cupï¿½re les donnï¿½es des armes de mï¿½lï¿½e
     {
         ArmeInfo = new InfoExelArme();
         bool found = false;
@@ -809,7 +809,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
             print("Il n'est pas dans les data");
         }
 
-    } // récupère les données des gun
+    } // rï¿½cupï¿½re les donnï¿½es des gun
     #endregion
 
     #endregion
@@ -826,7 +826,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
         }
         if (ID == 0)
         {
-            print("l'item n'est pas dans la base de donnée");
+            print("l'item n'est pas dans la base de donnï¿½e");
             Debug.Break();
 
         }
@@ -846,7 +846,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
         }
         if (trueName == "")
         {
-            print("l'item n'est pas dans la base de donnée");
+            print("l'item n'est pas dans la base de donnï¿½e");
             Debug.Break();
 
         }
@@ -870,7 +870,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
         else 
         {
             ID = new int[0];
-            print("je n'ai pas trouvé l'objet du type" + mon_type.ToString());
+            print("je n'ai pas trouvï¿½ l'objet du type" + mon_type.ToString());
             Debug.Break();
         }
         
@@ -908,10 +908,10 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
         }
         else 
         {
-            print("Je n'ai pas de résultats");
+            print("Je n'ai pas de rï¿½sultats");
             LesID = new int[0];
         }
-        // prendre la liste compléte
+        // prendre la liste complï¿½te
          
 
 
@@ -956,7 +956,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                 }
             }
         }
-        else if (mon_type == PageExel.TypeDePageExel.vêtements)
+        else if (mon_type == PageExel.TypeDePageExel.vÃªtements)
         {
             return false;
         }
@@ -976,7 +976,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
     public bool IsItInThisPage(PageExel.TypeDePageExel mon_type, string name)
     {
 
-        print("IsItInPage");
+        //print("IsItInPage");
         bool tosend = false;
         if (mon_type == PageExel.TypeDePageExel.General)
         {
@@ -1022,7 +1022,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                 }
             }
         }
-        else if (mon_type == PageExel.TypeDePageExel.vêtements)
+        else if (mon_type == PageExel.TypeDePageExel.vÃªtements)
         {
             return false;
         }

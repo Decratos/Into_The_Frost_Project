@@ -48,19 +48,19 @@ public class PlayerActions : MonoBehaviour
             GetComponent<Animator>().Play("TakeItem");
     }
 
-    public void Attack(RaycastHit hit)
+    public void Attack()
     {
         if(GetComponentInChildren<WeaponSystem>().actualWeaponInHands)
         {
-            int dmg = GetComponentInChildren<WeaponSystem>().actualWeaponInHands.damage;
-            hit.transform.GetComponent<AIstats>().ReduceHealth(dmg);
+            var wp = GetComponentInChildren<WeaponSystem>().actualWeaponInHands;
+            wp.Shoot(wp);
         }
-        else
+        /*else
         {
-            hit.transform.GetComponent<AIstats>().ReduceHealth(5);
-        }
+            if(hit.transform.GetComponent<AIstats>())
+                hit.transform.GetComponent<AIstats>().ReduceHealth(5);
+        }*/
         
-        Instantiate(ItemAssets.ItemAssetsInstance.GetComponent<ParticlesAssets>().particles[1], hit.point, PlayerSingleton.playerInstance.transform.rotation);
 
     }
 }

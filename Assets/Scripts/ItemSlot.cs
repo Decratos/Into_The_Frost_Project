@@ -34,6 +34,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler
         {
             if(item.itemType == ResumeExelForObject.Type.ArmeAfeu || item.itemType == ResumeExelForObject.Type.ArmeMelee)
             {
+                print("J'équippe");
                 eventData.pointerDrag.GetComponent<RectTransform>().position = 
                 GetComponent<RectTransform>().position;
                 equippedItemStat = item;
