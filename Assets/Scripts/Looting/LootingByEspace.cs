@@ -149,6 +149,7 @@ public class LootingByEspace : MesFonctions
 
         } // additionne toutes les chances
         float random = Random.Range(0, AllChances); // fait un nombre random
+        //A REVOIR COMPLET
         for (int i = 0; i < lesLootPossible.Length; i++) 
         {
             float chanceWinner = 0;
@@ -175,7 +176,6 @@ public class LootingByEspace : MesFonctions
             arrayChanceTrier[i, 0] = lesLootPossible[i].ID;
             arrayChanceTrier[i, 1] = chanceActuel;
         }// trie les chances de la plus grande à la plus petite
-
         for (int i = 0; i < lesLootPossible.Length; i++)
         {
             ChanceMini+= arrayChanceTrier[i, 1];
@@ -186,10 +186,10 @@ public class LootingByEspace : MesFonctions
                 break;
             }
         }//choisis l'objet à spawn
-
+        //
 
         liseurExel.LesDatas.FindObjectInfo(IDObjectChoose, out ToReturn); // tojours égale 0 prblm
         return ToReturn; // prblm
-    }
+    }// à modifier //!\\
     
 }
