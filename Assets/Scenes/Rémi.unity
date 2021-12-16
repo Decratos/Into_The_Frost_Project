@@ -982,7 +982,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cee465cd29120254b9094b1f911adfed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Path: 
+  Path: Prefab/Objects/1
 --- !u!1 &871104528 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 221727929, guid: c4fbb43383af29d4ebcdfc097427e5c6,
@@ -1286,7 +1286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cee465cd29120254b9094b1f911adfed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Path: 
+  Path: Prefab/Objects/1
 --- !u!135 &1020909199
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1886,13 +1886,19 @@ MonoBehaviour:
     Name: 
     LeType: 0
     ChanceDeBase: 0
-    ChanceChoisis: 0
+    ChanceChoisis: 0.5
     rotationSpawn: {x: 0, y: 0, z: 0}
   - ID: 3
     Name: 
     LeType: 0
     ChanceDeBase: 0
-    ChanceChoisis: 0
+    ChanceChoisis: 1
+    rotationSpawn: {x: 0, y: 0, z: 0}
+  - ID: 10
+    Name: 
+    LeType: 0
+    ChanceDeBase: 0
+    ChanceChoisis: 0.2
     rotationSpawn: {x: 0, y: 0, z: 0}
 --- !u!4 &1604757765
 Transform:
