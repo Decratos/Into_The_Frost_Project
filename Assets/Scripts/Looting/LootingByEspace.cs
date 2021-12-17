@@ -129,9 +129,9 @@ public class LootingByEspace : MesFonctions
         InfoGlobalExel ToReturn = new InfoGlobalExel(); // créer la valeur a retourner
         int IDObjectChoose=0; 
         float AllChances=0;
-       
         float[,] arrayChanceTrier = new float[lesLootPossible.Length, 2]; // [Le nombre d'array, Le nombre qu'ils contiennent]
-        
+        int chosenOne;
+
         foreach (loot item in lesLootPossible) 
         {
             
@@ -148,9 +148,8 @@ public class LootingByEspace : MesFonctions
 
         } // additionne toutes les chances
         float random = Random.Range(0, AllChances); // fait un nombre random
-
-        //trier
-        //
+        float cumulOrdonne = 0;
+        
         float LaChanceChoisi = 0;
         
         for (int i = 0; i < lesLootPossible.Length; i++)
@@ -158,10 +157,7 @@ public class LootingByEspace : MesFonctions
             float LaChanceSuperieur = 0;
             for (int j = 0; j < lesLootPossible.Length; j++)
             {
-                if (i>0)
-                {
-                    print("voici la chance supérieur" + LaChanceSuperieur + " Au moment de i =" + i);
-                }
+                
                 if (lesLootPossible[j].ChanceChoisis!=0  )
                 {
                     LaChanceChoisi = lesLootPossible[j].ChanceChoisis;
@@ -171,34 +167,34 @@ public class LootingByEspace : MesFonctions
                     LaChanceChoisi = lesLootPossible[j].ChanceDeBase;
                 }
 
-                if (LaChanceChoisi>LaChanceSuperieur && i==0)
+                if (LaChanceChoisi > LaChanceSuperieur && (i == 0 || LaChanceChoisi < arrayChanceTrier[i - 1, 1]))
+                {
+                    LaChanceSuperieur = LaChanceChoisi;
+                }
+
+                /*if (LaChanceChoisi>LaChanceSuperieur && i==0)
                 {
                     
                     LaChanceSuperieur = LaChanceChoisi;
                 }
                 else if (LaChanceChoisi > LaChanceSuperieur && i != 0 && LaChanceChoisi < arrayChanceTrier[i - 1, 1])
                 {
-                    print("je vais au bon endroit");
+                    
                     LaChanceSuperieur = LaChanceChoisi;
-                } 
+                } */
                 
 
             }
-
-            if (i==0)
-            {
-                print("i = 0");
-            }
-            else {
-                print("i = " + i);
-            }
             
-            
-           
             arrayChanceTrier[i, 1] = LaChanceSuperieur;
-            print(i +"voici la chance" + LaChanceSuperieur ); //doit faire du plus grand au plus petit.
-        }
-        
+            cumulOrdonne += arrayChanceTrier[i, 1];// /!\ à re voir
+            /*if (random<cumulOrdonne)
+            {
+                IDObjectChoose = i;
+                break;
+            }*/
+        } // trie les chances dans l'ordre
+       
 
         liseurExel.LesDatas.FindObjectInfo(IDObjectChoose, out ToReturn); // tojours égale 0 prblm
         return ToReturn; // prblm
