@@ -191,10 +191,5 @@ public class LootingByEspace : MesFonctions
         return ToReturn; // prblm
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.magenta;
-        Gizmos.DrawWireSphere(transform.position + LeBox.center  , 0.2f);
-        
-    }
+    
 }

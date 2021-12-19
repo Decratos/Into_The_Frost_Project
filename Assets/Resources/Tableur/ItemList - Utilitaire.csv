@@ -1,7 +1,9 @@
-ID,Nom
-32,Four en pierre
-33,Forge
-34,Atelier
-35,Atelier L2
-36,Atelier L3
-37,Établie
+ID,Nom,Crafting level
+14,Feu de camp,0
+15,Barril en tôle,0
+32,Four en pierre,1
+33,Forge,2
+34,Atelier,0
+35,Atelier L2,1
+36,Atelier L3,2
+37,Établie,3

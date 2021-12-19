@@ -1,87 +1,80 @@
-ID,Name,Type,Durability,Crafting level,Rarete
-1,Planche,Materials,0,-1,0.5
-2,Rocher,Materials,0,-1,0.6
-3,Lingot de fer,Materials,0,-1,0.7
-4,Minerai de fer,Materials,0,-1,0.8
-5,Pain,Nourriture,365,-1,0.9
-6,eau 25cl,Nourriture,365,-1,0.10
-7,eau 50cl,Nourriture,365,-1,0.11
-8,pomme,Nourriture,365,-1,0.12
-9,Soupe,Nourriture,365,-1,0.13
-10,Soupe chaude,Nourriture,365,-1,0.14
-11,La soupe de mémé,Nourriture,365,-1,0.15
-12,Viande,Nourriture,365,-1,0.16
-13,Viande cuite,Nourriture,365,-1,0.17
-14,pistolet,ArmeAfeu,200,4,0.18
-15,fusil,ArmeAfeu,200,4,0.19
-16,Couteau,ArmeMelee,200,2,0.20
-17,batte,ArmeMelee,200,1,0.21
-18,barre de fer,ArmeMelee,200,1,0.22
-19,Katana,ArmeMelee,200,3,0.23
-20,blocBeton,Materials,0,-1,0.24
-21,bandage,Soins,0,-1,0.25
-22,kit de soin,Soins,0,-1,0.26
-23,kit de secours,Soins,0,-1,0.27
-24,pillule,Soins,0,-1,0.28
-25,crème,Soins,0,-1,0.29
-26,Bois,Materials,0,-1,0.30
-27,Pierre,Materials,0,-1,0.31
-28,Beton,Materials,0,-1,0.32
-29,Shatterton,Materials,0,-1,0.33
-30,Hache,ArmeMelee,200,2,0.34
-31,Hache en pierre,ArmeMelee,185,0,0.35
-32,Four en pierre,Utilitaire,0,1,0.36
-33,Forge,Utilitaire,0,2,0.37
-34,Atelier,Utilitaire,0,0,0.38
-35,Atelier L2,Utilitaire,0,1,0.39
-36,Atelier L3,Utilitaire,0,2,0.40
-37,Établie,Utilitaire,0,3,0.41
-38,Sac à dos,Sac,0,-1,0.42
-39,Sac de rando,Sac,0,-1,0.43
-40,Sac Marin,Sac,0,-1,0.44
-41,Sac Militaire,Sac,0,-1,0.45
-42,Baton ,ArmeMelee,0,-1,0.46
-43,Clou,Materials,0,-1,0.47
-44,Vieu Journal,Materials,0,-1,0.48
-45,Livre,Materials,0,-1,0.49
-46,Carte,Materials,0,-1,0.50
-47,Petit bois,Materials,0,-1,0.51
-48,Tournevis,Materials,0,-1,0.52
-49,scie,Materials,0,-1,0.53
-50,Tshirt,Vetements,455,-1,0.54
-51,Tshirt manche longues,Vetements,455,-1,0.55
-52,Sweat,Vetements,455,-1,0.56
-53,Tshirt thermique,Vetements,455,-1,0.57
-54,Pull en laine,Vetements,455,-1,0.58
-55,Pull polaire,Vetements,455,-1,0.59
-56,Pull cardigan,Vetements,455,-1,0.60
-57,Polo manche longue,Vetements,455,-1,0.61
-58,Pull de jogging,Vetements,455,-1,0.62
-59,Pull anorak,Vetements,455,-1,0.63
-60,Pull en jean,Vetements,455,-1,0.64
-61,Chemise,Vetements,455,-1,0.65
-62,Col roulé,Vetements,455,-1,0.66
-63,Parka,Vetements,455,-1,0.67
-64,Blouson simple,Vetements,455,-1,0.68
-65,Varsity Jacket,Vetements,455,-1,0.69
-66,Veste de ski,Vetements,455,-1,0.70
-67,Veste polaire,Vetements,455,-1,0.71
-68,Veste duffel,Vetements,455,-1,0.72
-69,Blouson d'aviateur,Vetements,455,-1,0.73
-70,Doudoune,Vetements,455,-1,0.74
-71,Jean,Vetements,455,-1,0.75
-72,Jogging,Vetements,455,-1,0.76
-73,Pantalon polaire,Vetements,455,-1,0.77
-74,Pantalon de ski,Vetements,455,-1,0.78
-75,Pantalon de rando,Vetements,455,-1,0.79
-76,Pantalon Thermique,Vetements,455,-1,0.80
-77,Chaussette cours,Vetements,455,-1,0.81
-78,Chaussette,Vetements,455,-1,0.82
-79,Chaussette épaisse,Vetements,455,-1,0.83
-80,Chaussette de ski,Vetements,455,-1,0.84
-81,Slip,Vetements,455,-1,0.85
-82,Slip kangourou,Vetements,455,-1,0.86
-83,caleçon,Vetements,455,-1,0.87
-84,caleçon en laine,Vetements,455,-1,0.88
-85,caleçon rembourrer,Vetements,455,-1,0.89
-86,caleçon polaire,Vetements,455,-1,0.90
+ID,Name,Type,Durability,Crafting level,Rarete,inflammabilité
+1,Planche,Materials,0,-1,0.5,0
+2,Rocher,Materials,0,-1,0.6,0
+3,Ferraille,Materials,0,-1,0.8,0
+4,Pain,Nourriture,0,-1,0.9,0
+5,Farine,Nourriture,0,0,0.1,0
+6,eau 25cl,Nourriture,0,-1,0.10,0
+7,eau 50cl,Nourriture,0,-1,0.11,0
+8,pomme,Nourriture,0,-1,0.12,0
+9,Soupe,Nourriture,0,-1,0.13,0
+10,Soupe chaude,Nourriture,0,-1,0.14,0
+11,La soupe de mémé,Nourriture,0,-1,0.15,0
+12,Conserve,Nourriture,0,-1,0.1,0
+13,Viande,Nourriture,0,-1,0.16,0
+14,Feu de camp,Utilitaire,0,0,0.17,0
+15,Barril en tôle,Utilitaire,0,0,0.18,0
+16,Viande cuite,Nourriture,0,-1,0.17,0
+17,pistolet,ArmeAfeu,200,4,0.18,0
+18,fusil,ArmeAfeu,200,4,0.19,0
+19,Couteau,ArmeMelee,200,2,0.20,0
+20,batte,ArmeMelee,200,1,0.21,0
+21,barre de fer,ArmeMelee,200,1,0.22,0
+22,Katana,ArmeMelee,200,3,0.23,0
+23,bandage,Soins,0,-1,0.25,0
+24,kit de soin,Soins,0,-1,0.26,0
+25,kit de secours,Soins,0,-1,0.27,0
+26,pillule,Soins,0,-1,0.28,0
+27,crème,Soins,0,-1,0.29,0
+28,Bois,Materials,0,-1,0.30,0
+29,Pierre,Materials,0,-1,0.31,0
+30,Beton,Materials,0,-1,0.32,0
+31,Shatterton,Materials,0,-1,0.33,0
+32,Hache,ArmeMelee,200,2,0.34,0
+33,Hache en pierre,ArmeMelee,185,0,0.35,0
+34,Four en pierre,Utilitaire,0,1,0.36,0
+35,Forge,Utilitaire,0,2,0.37,0
+36,Atelier,Utilitaire,0,0,0.38,0
+37,Atelier L2,Utilitaire,0,1,0.39,0
+38,Atelier L3,Utilitaire,0,2,0.40,0
+39,Établie,Utilitaire,0,3,0.41,0
+40,Sac à dos,Sac,0,-1,0.42,0
+41,Sac de rando,Sac,0,-1,0.43,0
+42,Sac Marin,Sac,0,-1,0.44,0
+43,Sac Militaire,Sac,0,-1,0.45,0
+44,Baton ,ArmeMelee,0,-1,0.46,0
+45,Clou,Materials,0,-1,0.47,0
+46,Vieu Journal,Materials,0,-1,0.48,0
+47,Livre,Materials,0,-1,0.49,0
+48,Carte,Materials,0,-1,0.50,0
+49,Petit bois,Materials,0,-1,0.51,0
+50,Tournevis,Materials,0,-1,0.52,0
+51,scie,Materials,0,-1,0.53,0
+52,Tshirt,Vetements,455,-1,0.54,0
+53,Tshirt manche longues,Vetements,455,-1,0.55,0
+54,Sweat,Vetements,455,-1,0.56,0
+55,Tshirt thermique,Vetements,455,-1,0.57,0
+56,Pull en laine,Vetements,455,-1,0.58,0
+57,Pull polaire,Vetements,455,-1,0.59,0
+58,Pull cardigan,Vetements,455,-1,0.60,0
+59,Polo manche longue,Vetements,455,-1,0.61,0
+60,Pull de jogging,Vetements,455,-1,0.62,0
+61,Pull anorak,Vetements,455,-1,0.63,0
+62,Pull en jean,Vetements,455,-1,0.64,0
+63,Chemise,Vetements,455,-1,0.65,0
+64,Col roulé,Vetements,455,-1,0.66,0
+65,Parka,Vetements,455,-1,0.67,0
+66,Blouson simple,Vetements,455,-1,0.68,0
+67,Veste de ski,Vetements,455,-1,0.70,0
+68,Veste polaire,Vetements,455,-1,0.71,0
+69,Blouson d'aviateur,Vetements,455,-1,0.73,0
+70,Doudoune,Vetements,455,-1,0.74,0
+71,Jean,Vetements,455,-1,0.75,0
+72,Jogging,Vetements,455,-1,0.76,0
+73,Pantalon polaire,Vetements,455,-1,0.77,0
+74,Pantalon de ski,Vetements,455,-1,0.78,0
+75,Pantalon de rando,Vetements,455,-1,0.79,0
+76,Pantalon Thermique,Vetements,455,-1,0.80,0
+77,Chaussette et caleçon simple,Vetements,455,-1,0.81,0
+78,Chaussette et caleçon rembourré,Vetements,455,-1,0.82,0
+79,Chaussette et caleçon polaire,Vetements,455,-1,0.83,0

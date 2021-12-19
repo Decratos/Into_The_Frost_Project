@@ -27,15 +27,22 @@ public class StateForSurvival
 public class SurvivalSysteme : MonoBehaviour
 {
     //Public
-
     public List<StateForSurvival> LesDataPourSurvie = new List<StateForSurvival>();
     public bool TestUpdate = true;
     public AnimationCurve PerteChaleur;
+
+    #region value vetements
+    public float ResistanceFroidsTotal;
+    public float ResistanceDegatsTotal;
+    public int NombreDemplacementPourVetement;
+    #endregion
+
     //private
     [SerializeField] float TempsCalculSystem = 1;
     [SerializeField] float TemperatureBeginLoseLife = 28;
     [SerializeField] float MultiplayerBehind37 = 0.2f;
     int IndexDataVie = 0;
+    InfoExelvetements[] LesVetementsQueJePorte;
 
     private void Start()
     {
@@ -128,7 +135,7 @@ public class SurvivalSysteme : MonoBehaviour
             }
             
         }
-    
+        LesVetementsQueJePorte = new InfoExelvetements[NombreDemplacementPourVetement];
     }
     public void ChangementDuneDataDeSurvie(float value, StateForSurvival.PointDeSurvie ToModifiate) 
     {
@@ -195,7 +202,6 @@ public class SurvivalSysteme : MonoBehaviour
 
     
     }
-
     private void UpdateUI()
     {
         Canvas myCanva = CanvasReference._canvasReference.GetCanva();
@@ -211,7 +217,26 @@ public class SurvivalSysteme : MonoBehaviour
         myCanva.transform.Find("TempBar").GetComponent<Slider>().value =
             LesDataPourSurvie[3].ActualValue / LesDataPourSurvie[3].Range.y;
     }
-    
-   
+
+    public void SetVetements(InfoExelvetements Info,int IndexEmplacement)
+    {
+        if (IndexEmplacement > NombreDemplacementPourVetement-1 || IndexEmplacement < 0)
+        {
+            print("L'emplacement Demander n'existe pas");
+        }
+        else 
+        {
+            if (LesVetementsQueJePorte[IndexEmplacement].MaCategorie == Info.MaCategorie || !LesVetementsQueJePorte[IndexEmplacement].IsWeared)
+            {
+
+                ResistanceDegatsTotal-= LesVetementsQueJePorte[IndexEmplacement].DegatResistance;
+                ResistanceFroidsTotal-= LesVetementsQueJePorte[IndexEmplacement].ChaleurResistance;
+                ResistanceDegatsTotal += Info.DegatResistance;
+                ResistanceFroidsTotal += Info.ChaleurResistance;
+                LesVetementsQueJePorte[IndexEmplacement] = Info;
+            }
+        }
+        
+    }
 
 }

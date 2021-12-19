@@ -13,6 +13,7 @@ public class InfoGeneral // Liste de tous les items
     public int Durability;
     public int CraftingLevel;
     public float Rarity;
+    public float Inflamability;
 }
 [System.Serializable]
 public class InfoMateriaux // Liste de tous les matériaux
@@ -194,6 +195,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                 MesListe.LesItems[i].Durability = int.Parse(data[nombreDeColonne * (i + 1)+3]);
                 MesListe.LesItems[i].CraftingLevel = int.Parse(data[nombreDeColonne * (i + 1) + 4]);
                 MesListe.LesItems[i].Rarity = MonParse(data[nombreDeColonne * (i + 1) + 5]);
+                MesListe.LesItems[i].Inflamability = MonParse(data[nombreDeColonne * (i + 1) + 6]);
             }
         }
         else if (mon_type == PageExel.TypeDePageExel.Materiaux)
@@ -313,6 +315,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
             for (int i = 0; i < size; i++)
             {
                 MesListe.LesUtilitaires[i] = new InfoUtilitaire();
+                
                 MesListe.LesUtilitaires[i].ID = int.Parse(data[nombreDeColonne * (i + 1)]);
                 correctionType(data[nombreDeColonne * (i + 1) + 1], out MesListe.LesUtilitaires[i].Name);
                 MesListe.LesUtilitaires[i].TheLevelForCraft = int.Parse(data[nombreDeColonne * (i + 1)+2]);
@@ -425,6 +428,8 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                 lesInfos.Name = info.Name; // set le nom
                 lesInfos.Durability = info.Durability; // set la durabilité
                 lesInfos.CraftingLevel = info.CraftingLevel;// set le niveau de crafting
+                lesInfos.rarity = info.Rarity;
+                lesInfos.inflammability = info.Inflamability;
                 correctionType(info.Type , out correctedType); // corrige le type
                 string [] EnumType = System.Enum.GetNames(typeof(InfoGlobalExel.Type));// créer un tableau de string des types
                 for (int i = 0; i < EnumType.Length-1; i++) // pour chaque type dans l'enum
@@ -731,6 +736,8 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                 lesInfos.Name = info.Name; // set le nom
                 lesInfos.Durability = info.Durability; // set la durabilité
                 lesInfos.CraftingLevel = info.CraftingLevel;// set le niveau de crafting
+                lesInfos.rarity = info.Rarity;
+                lesInfos.inflammability = info.Inflamability; 
                 correctionType(info.Type, out correctedType); // corrige le type
                 string[] EnumType = System.Enum.GetNames(typeof(InfoGlobalExel.Type));// créer un tableau de string des types
                 for (int i = 0; i < EnumType.Length - 1; i++) // pour chaque type dans l'enum
