@@ -17,39 +17,39 @@ public class GestionInput : MesFonctions
     void Awake()
     {
 
-        FindGestionDesScripts(this.gameObject, out ScriptGestion);
+        FindGestionDesScripts(this.gameObject, out ScriptGestion); // trouve le script gestion des scripts
        
     }
    
 
-    public void movement(InputAction.CallbackContext context)
+    public void movement(InputAction.CallbackContext context) //lance le mouvement 
     {
        
         
         
-        movementInput = context.ReadValue<Vector2>();
-        ScriptGestion.LesMouvements.Mouvement(movementInput);
+        movementInput = context.ReadValue<Vector2>(); //récupére la valeur vecteur 2 des touches
+        ScriptGestion.LesMouvements.Mouvement(movementInput); // envois au scipt des mouvements les données necessaire
 
     }
-    public void Saut(InputAction.CallbackContext context)
+    public void Saut(InputAction.CallbackContext context) // lance le saut
     {
         
-        if (context.started)
+        if (context.started) // si le joueur appuie sur l'input
         {
             
-            ScriptGestion.LesMouvements.Saut(); 
+            ScriptGestion.LesMouvements.Saut();  // envois au script l'instruction de sauter
 
         }
         
     }
 
-    public void Action(InputAction.CallbackContext context)
+    public void Action(InputAction.CallbackContext context) // lance l'action
     {
-        if (context.started)
+        if (context.started) // si le joueur appuie sur l'input
         {
-            if(ScriptGestion.PlayerConstruct.constructionMode)
+            if(ScriptGestion.PlayerConstruct.constructionMode)// si le joueur est en mode construction
             {
-                ScriptGestion.PlayerConstruct.Construct();
+                ScriptGestion.PlayerConstruct.Construct(); // envois au script l'instruction de construire
             }
             else
             {
@@ -59,21 +59,24 @@ public class GestionInput : MesFonctions
             
                 if (Physics.Raycast(ray, out hit, Distance)) // si le raycast touche
                 {
-                    if (hit.transform.tag=="Ressources")
+                    if (hit.transform.tag=="Ressources")// si le joueur touche une ressources
                     {
                         GetComponent<PlayerActions>().Collect(hit, ScriptGestion);
                         //ScriptGestion.LaGestionDesRessources.AjouteAInventaire(hit.transform.gameObject);
                     }
-                    else if (hit.transform.tag == "Construction")
+                    else if (hit.transform.tag == "Construction") // si le joueur touche une construction
                     {
+
                     }
-                    else if(hit.transform.tag == "RawRessources")
+                    else if(hit.transform.tag == "RawRessources") // si le joueur touche ce truc
                     {
-                        GetComponent<PlayerActions>().Gather(hit, ScriptGestion);
+                        print("Commentaire à résoudre"); //mettre players action dans la gestion des scripts
+                        Debug.Break();//à retirer une fois le commentaire résolue
+                        GetComponent<PlayerActions>().Gather(hit, ScriptGestion); // récupére le script Player action
                     }
                     else if(hit.transform.tag == "NPC")
                     {
-                        GetComponent<PlayerActions>().Attack(hit);
+                        GetComponent<PlayerActions>().Attack(hit); // récupére le script Player action
                     }
                     
                 }
@@ -85,39 +88,39 @@ public class GestionInput : MesFonctions
 
     }
 
-    public void SourisMouvement(InputAction.CallbackContext context) 
+    public void SourisMouvement(InputAction.CallbackContext context) // Récupére les déplacements de souris
     {
 
       
        
-        MouvementDeSouris = context.ReadValue<Vector2>();
+        MouvementDeSouris = context.ReadValue<Vector2>();//lis la valeur reçue.
         //faire un debug du raycast de la souris
-        if(Time.timeScale != 0)
-            ScriptGestion.MouvementDeCamera.ReceptionDonnerInput(MouvementDeSouris);
+        if(Time.timeScale != 0)//si le jeu n'est pas en pause
+            ScriptGestion.MouvementDeCamera.ReceptionDonnerInput(MouvementDeSouris); // lance le mouvement de caméras
 
     }
     
-    public void Sprint(InputAction.CallbackContext context) 
+    public void Sprint(InputAction.CallbackContext context) // lance le sprint
     {
         
-        if (context.started)
+        if (context.started) // si le joueur appuie sur l'input
         {
-            ScriptGestion.LesMouvements.GoSprint();
+            ScriptGestion.LesMouvements.GoSprint(); // envois l'instruction au script de courir
         }
-        if (context.canceled)
+        if (context.canceled) // si le joueur n'appuie plus sur l'input
         {
-            ScriptGestion.LesMouvements.Walk();
+            ScriptGestion.LesMouvements.Walk(); //envois l'instruction au script de marcher
         }
        
 
     }
 
-    public void BuildMode(InputAction.CallbackContext context)
+    public void BuildMode(InputAction.CallbackContext context) // lance le mode de construction
     {
-        if (context.started)
+        if (context.started) // si le joueur appuie sur l'input
         {
-            ScriptGestion.PlayerConstruct.constructionMode = !ScriptGestion.PlayerConstruct.constructionMode;
-            ScriptGestion.PlayerConstruct.ChangeBuildMode(ScriptGestion.PlayerConstruct.constructionMode);
+            ScriptGestion.PlayerConstruct.constructionMode = !ScriptGestion.PlayerConstruct.constructionMode; // dis au script qu'il doit inverser sa valeur booléene
+            ScriptGestion.PlayerConstruct.ChangeBuildMode(ScriptGestion.PlayerConstruct.constructionMode); // envois au script l'instrcution quand à la construction
         }
     }
 
