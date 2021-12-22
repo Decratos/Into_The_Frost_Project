@@ -124,16 +124,16 @@ public class GestionInput : MesFonctions
         }
     }
 
-    public void InventoryMode(InputAction.CallbackContext context)
+    public void InventoryMode(InputAction.CallbackContext context) // affiche l'inventaire
     {
-        if (context.started)
+        if (context.started) // si le joueur press le bouton
         {
-            ScriptGestion.uiInventory.OpenHideInventory(false);
+            ScriptGestion.uiInventory.OpenHideInventory(false); //a théo
             CraftUI.instance.OpenHideCraftUI();
         }
     }
 
-    public void SwitchStructure(InputAction.CallbackContext context)
+    public void SwitchStructure(InputAction.CallbackContext context) // permet de switch entre les différentes structures
     {
         if (context.started)
         {

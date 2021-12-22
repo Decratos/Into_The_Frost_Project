@@ -46,52 +46,52 @@ public class SurvivalSysteme : MonoBehaviour
 
     private void Start()
     {
-        ToutSetForGood();
-        if (!TestUpdate)
+        ToutSetForGood();// lance le set 
+        if (!TestUpdate)//si je ne suis pas en mode update /!\ à voir le plus couteux /!\
         {
-            BaisseSurvivalData();
+            BaisseSurvivalData();//void temp pour faire via Invoke
         }
         
     }
 
     void Update()
     {
-        if (TestUpdate)
+        if (TestUpdate)// si je suis en test update /!\ à voir le plus couteux /!\
         {
-            baisseLesDatas();
+            baisseLesDatas(); // envois la baisse des stats de survie
         }
 
         //UpdateUI();
     }
 
-    void BaisseSurvivalData() 
+    void BaisseSurvivalData() //
     {
-        baisseLesDatas();
+        baisseLesDatas(); // baisse les stats de survie
 
-        Invoke("BaisseSurvivalData", TempsCalculSystem);
-    }
+        Invoke("BaisseSurvivalData", TempsCalculSystem); // relance ce void dans x second
+    } // void alternatif du update /!\ à voir le plus couteux /!\
 
     void baisseLesDatas() 
     {
        
         for (int i = 0; i < LesDataPourSurvie.Count; i++)
         {
-            if (LesDataPourSurvie[i].applyDecroissement)
+            if (LesDataPourSurvie[i].applyDecroissement)// si j'applique le decroissement
             {
                 
-                if (TestUpdate)
+                if (TestUpdate) // si je suis en mode update /!\ à voir le plus couteux /!\
                 {
-                    LesDataPourSurvie[i].ActualValue -= LesDataPourSurvie[i].VitesseDecroissement * LesDataPourSurvie[i].PourcentageDecroissement* Time.deltaTime;
+                    LesDataPourSurvie[i].ActualValue -= LesDataPourSurvie[i].VitesseDecroissement * LesDataPourSurvie[i].PourcentageDecroissement* Time.deltaTime; // baisse une des valeurs de survie
                 }
                 else 
                 {
-                    LesDataPourSurvie[i].ActualValue -= LesDataPourSurvie[i].VitesseDecroissement * LesDataPourSurvie[i].PourcentageDecroissement;
+                    LesDataPourSurvie[i].ActualValue -= LesDataPourSurvie[i].VitesseDecroissement * LesDataPourSurvie[i].PourcentageDecroissement;// baisse une des valeurs de survie
                 }
-                LesDataPourSurvie[i].ActualValue = checkLaRange(LesDataPourSurvie[i].Index);
-                if (LesDataPourSurvie[i].ActualValue == 0 && (LesDataPourSurvie[i].SurvivalData == StateForSurvival.PointDeSurvie.Hunger || LesDataPourSurvie[i].SurvivalData == StateForSurvival.PointDeSurvie.Soif))
+                LesDataPourSurvie[i].ActualValue = checkLaRange(LesDataPourSurvie[i].Index); // vérifie que la valeur reste bien dans le carcant 
+                if (LesDataPourSurvie[i].ActualValue == 0 && (LesDataPourSurvie[i].SurvivalData == StateForSurvival.PointDeSurvie.Hunger || LesDataPourSurvie[i].SurvivalData == StateForSurvival.PointDeSurvie.Soif)) // si la soif ou la faim est à 0
                 {
                    
-                    if (TestUpdate)
+                    if (TestUpdate) // si je suis en mode update /!\ à voir le plus couteux /!\ // à voir si je peux remplacer par calcul perte life
                     {
                         LesDataPourSurvie[IndexDataVie].ActualValue -= LesDataPourSurvie[i].DecroissementVieUnderMinima * Time.deltaTime;
                     }
@@ -99,18 +99,18 @@ public class SurvivalSysteme : MonoBehaviour
                     {
                         LesDataPourSurvie[IndexDataVie].ActualValue -= LesDataPourSurvie[i].DecroissementVieUnderMinima;
                     }
-                    LesDataPourSurvie[IndexDataVie].ActualValue = checkLaRange(IndexDataVie);
+                    LesDataPourSurvie[IndexDataVie].ActualValue = checkLaRange(IndexDataVie);// vérifie que la valeur reste bien dans le carcant 
                 }
-                if (LesDataPourSurvie[i].SurvivalData == StateForSurvival.PointDeSurvie.Heat && LesDataPourSurvie[i].ActualValue<TemperatureBeginLoseLife)
+                if (LesDataPourSurvie[i].SurvivalData == StateForSurvival.PointDeSurvie.Heat && LesDataPourSurvie[i].ActualValue<TemperatureBeginLoseLife)// si je suis en dessous de la chaleur
                 {
-                    LesDataPourSurvie[IndexDataVie].ActualValue -= calculPerteLife(i);
+                    LesDataPourSurvie[IndexDataVie].ActualValue -= calculPerteLife(i);// je calcul la perte de vie selon la valeur
                     LesDataPourSurvie[i].ActualValue = checkLaRange(LesDataPourSurvie[i].Index);
                     LesDataPourSurvie[IndexDataVie].ActualValue = checkLaRange(IndexDataVie);
                 }
             }
-        }
+        }// selon les datas de survie
 
-    }
+    } // 
 
     
 
