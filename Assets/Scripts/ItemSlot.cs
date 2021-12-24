@@ -15,7 +15,12 @@ public class ItemSlot : MonoBehaviour, IDropHandler
     public enum equipmentType
     {
         Weapon,
-        Armor
+        Armor,
+        ChestClothing,
+        HelmetOrTop,
+        Pants,
+        Shoes,
+
     } 
     public equipmentType slotType;
 

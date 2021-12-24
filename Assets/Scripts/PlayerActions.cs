@@ -10,11 +10,11 @@ public class PlayerActions : MonoBehaviour
         {
             string name = hit.transform.GetComponent<BasicRessourcesSource>().ressourceName;
             int amount = hit.transform.GetComponent<BasicRessourcesSource>().ressourceAmount;
-            if(name == "Planche" && GetComponentInChildren<WeaponSystem>().actualWeaponInHands.canCutWood || name == "Rocher" && GetComponentInChildren<WeaponSystem>().actualWeaponInHands.canCutStone)
+            if(name == "Bois" && GetComponentInChildren<WeaponSystem>().actualWeaponInHands.canCutWood || name == "Rocher" && GetComponentInChildren<WeaponSystem>().actualWeaponInHands.canCutStone)
             {
                 switch (name)
                 {
-                    case "Planche":
+                    case "Bois":
                         FMODUnity.RuntimeManager.PlayOneShot("event:/Collecting/GatheringWood", hit.point);
                     break;
                     case "Rocher":
