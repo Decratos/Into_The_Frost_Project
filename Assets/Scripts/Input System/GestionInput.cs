@@ -71,11 +71,10 @@ public class GestionInput : MesFonctions
                     {
                         GetComponent<PlayerActions>().Gather(hit, ScriptGestion);
                     }
-                    else if(hit.transform.tag == "NPC")
-                    {
-                        GetComponent<PlayerActions>().Attack(hit);
-                    }
-                    
+                }
+                else
+                {
+                    GetComponent<PlayerActions>().Attack();
                 }
             }
 
@@ -135,6 +134,14 @@ public class GestionInput : MesFonctions
         if (context.started)
         {
             PlayerSingleton.playerInstance.GetComponent<PlayerConstruct>().increaseIdStructure();
+        }
+    }
+
+    public void SwitchWeapon(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            PlayerSingleton.playerInstance.GetComponentInChildren<WeaponSystem>().ChangeWeaponMode();
         }
     }
 }

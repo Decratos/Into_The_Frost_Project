@@ -5,74 +5,74 @@ using UnityEngine;
 
 public class WeaponSystem : MonoBehaviour
 {
-    [SerializeField] private bool weaponModeIsRanged = false;
+    [SerializeField] private bool FirstWeapon = false;
     public List<WeaponsClass> Weapons;
-    public WeaponsClass actualMeleeWeapon;
-    public WeaponsClass actualRangedWeapon;
 
-    public void Attack()
-    {
-        if (!weaponModeIsRanged)
-            actualMeleeWeapon.Shoot();
-        
-        else
-        {
-            actualRangedWeapon.Shoot();
-        }
-    }
+    public WeaponsClass actualWeaponInHands;
+
+    public WeaponsClass EquippedWeapon1;
+    public WeaponsClass EquippedWeapon2;
 
     public void ChangeWeaponMode()
     {
-        weaponModeIsRanged = !weaponModeIsRanged;
+        FirstWeapon = !FirstWeapon;
 
-        if (!weaponModeIsRanged)
+        if (!FirstWeapon)
         {
-            print("Combat de melée");
-            actualMeleeWeapon.gameObject.SetActive(true);
-            actualRangedWeapon.gameObject.SetActive(false);
+            EquippedWeapon1.gameObject.SetActive(true);
+            EquippedWeapon2.gameObject.SetActive(false);
+            actualWeaponInHands = EquippedWeapon1;
         }
         else
         {
-            print("Combat à distance");
-            actualMeleeWeapon.gameObject.SetActive(false);
-            actualRangedWeapon.gameObject.SetActive(true);
+            EquippedWeapon1.gameObject.SetActive(false);
+            EquippedWeapon2.gameObject.SetActive(true);
+            actualWeaponInHands = EquippedWeapon2;
         }
     }
 
-    public void ActiveWeapon(WeaponsClass newWeapon, bool ranged)
+    public void ActiveWeapon(WeaponsClass newWeapon, int slot)
     {
-        if (ranged)
+        if (slot == 1)
         {
-            if(actualRangedWeapon)
-                actualRangedWeapon.gameObject.SetActive(false);
-            actualRangedWeapon = newWeapon;
-            actualRangedWeapon.gameObject.SetActive(true);
+            if(EquippedWeapon1)
+                EquippedWeapon1.gameObject.SetActive(false);
+            EquippedWeapon1 = newWeapon;
+            EquippedWeapon1.gameObject.SetActive(true);
+            if(!actualWeaponInHands)
+            {
+                actualWeaponInHands = EquippedWeapon1;
+            }
         }
         else
         {
-            if(actualMeleeWeapon)
-                actualMeleeWeapon.gameObject.SetActive(false);
-            actualMeleeWeapon = newWeapon;
-            actualMeleeWeapon.gameObject.SetActive(true);
+            if(EquippedWeapon2)
+                EquippedWeapon2.gameObject.SetActive(false);
+            EquippedWeapon2 = newWeapon;
+            EquippedWeapon2.gameObject.SetActive(true);
+            if(!actualWeaponInHands)
+            {
+                actualWeaponInHands = EquippedWeapon2;
+            }
         }
     }
 
-    public void DesactiveWeapon(bool ranged) {
-        if (ranged)
+    public void DesactiveWeapon(int slot) {
+        if (slot == 1)
         {
-            if(actualRangedWeapon)
+            if(EquippedWeapon1)
             {
-                actualRangedWeapon.gameObject.SetActive(false);
-                actualRangedWeapon = null;
+                EquippedWeapon1.gameObject.SetActive(false);
+                EquippedWeapon1 = null;
             }
                 
         }
         else
         {
-            if(actualMeleeWeapon)
+            if(EquippedWeapon2)
             {
-                actualMeleeWeapon.gameObject.SetActive(false);
-                actualMeleeWeapon = null;
+                EquippedWeapon2.gameObject.SetActive(false);
+                EquippedWeapon2 = null;
             }
         }
     }

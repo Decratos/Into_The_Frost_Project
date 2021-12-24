@@ -7,11 +7,11 @@ using UnityEngine.UI;
 public class PlayerEquipment : MonoBehaviour
 {
     [SerializeField]
-    private ItemClass rangedWeapon, CaCweapon, helmet;
+    private ItemClass Weapon1Item, Weapon2Item, helmet;
 
-    [SerializeField] private Sprite defaultRanged, defaultMelee, defaultHelmet;
+    [SerializeField] private Sprite defaultWeapon, defaultHelmet;
 
-    public ItemSlot rangedSlot, CaCSlot, helmetSlot;
+    public ItemSlot Weapon1, Weapon2, helmetSlot;
     
     private void Awake() {
         /*var equipmentHolder = GetComponent<CanvasReference>().GetCanva().transform.Find("Equipment");
@@ -22,9 +22,8 @@ public class PlayerEquipment : MonoBehaviour
         
 
 
-    public void OnWeaponEquipped(ItemClass weapon)
+    public void OnWeaponEquipped(ItemClass weapon, int slotNumber)
     {
-        print("J'équipe l'arme");
         InfoGlobalExel objectInfo = new InfoGlobalExel();
         liseurExel.LesDatas.FindObjectInfo(weapon.itemName, out objectInfo);
         WeaponSystem ws = GetComponentInChildren<WeaponSystem>();
@@ -37,47 +36,47 @@ public class PlayerEquipment : MonoBehaviour
             }
         }
 
-        switch (weapon.itemType)
+        switch (slotNumber)
         {
-            case ResumeExelForObject.Type.ArmeAfeu:
-                if(rangedWeapon.itemName != "")
+            case 1:
+                if(Weapon1Item.itemName != "")
                 {
-                    GestionDesScipt.ScriptGestion.Inventory.AddItem(rangedWeapon, objectInfo, objectInfo.Name);
+                    GestionDesScipt.ScriptGestion.Inventory.AddItem(Weapon1Item, objectInfo, objectInfo.Name);
                 }
-                ws.ActiveWeapon(newWeapon, true);
+                ws.ActiveWeapon(newWeapon, 1);
                 GestionDesScipt.ScriptGestion.Inventory.RemoveItem(weapon);
-                rangedSlot.GetComponentInChildren<Image>().sprite = weapon.GetSprite();
-                rangedWeapon = weapon;
+                Weapon1.GetComponentInChildren<Image>().sprite = weapon.GetSprite();
+                Weapon1Item = weapon;
             break;
-            case ResumeExelForObject.Type.ArmeMelee:
-                if(CaCweapon.itemName != "")
+            case 2:
+                if(Weapon2Item.itemName != "")
                 {
-                    GestionDesScipt.ScriptGestion.Inventory.AddItem(CaCweapon, objectInfo, objectInfo.Name);
+                    GestionDesScipt.ScriptGestion.Inventory.AddItem(Weapon2Item, objectInfo, objectInfo.Name);
                 }
-                ws.ActiveWeapon(newWeapon, false);
+                ws.ActiveWeapon(newWeapon, 2);
                 GestionDesScipt.ScriptGestion.Inventory.RemoveItem(weapon);
-                CaCSlot.GetComponentInChildren<Image>().sprite = weapon.GetSprite();
-                CaCweapon = weapon;
+                Weapon2.GetComponentInChildren<Image>().sprite = weapon.GetSprite();
+                Weapon2Item = weapon;
             break;
         }
         
     }
 
-    public void UnEquipWeapon(ItemClass weapon)
+    public void UnEquipWeapon(ItemClass weapon, int slot)
     {
         WeaponSystem ws = GetComponentInChildren<WeaponSystem>();
 
-        switch (weapon.itemType)
+        switch (slot)
         {
-            case ResumeExelForObject.Type.ArmeAfeu:
-                ws.DesactiveWeapon(true);
-                rangedWeapon = new ItemClass{itemName = ""};
-                rangedSlot.GetComponentInChildren<Image>().sprite = defaultRanged;
+            case 1:
+                ws.DesactiveWeapon(1);
+                Weapon1Item = new ItemClass{itemName = ""};
+                Weapon1.GetComponentInChildren<Image>().sprite = defaultWeapon;
             break;
-            case ResumeExelForObject.Type.ArmeMelee:
-                ws.DesactiveWeapon(false);
-                CaCweapon = new ItemClass{itemName = ""};
-                CaCSlot.GetComponentInChildren<Image>().sprite = defaultMelee;
+            case 2:
+                ws.DesactiveWeapon(2);
+                Weapon2Item = new ItemClass{itemName = ""};
+                Weapon2.GetComponentInChildren<Image>().sprite = defaultWeapon;
             break;
         }
     }
