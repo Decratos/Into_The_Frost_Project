@@ -14,7 +14,7 @@ public class MesFonctions : MonoBehaviour
         else 
         {
             ScriptGestion = null;
-            print("Le composant n'est pas sur l'objet envoyer");
+            //print("Le composant n'est pas sur l'objet envoyer");
         }
     }
     public static void FindDataExelForObject(out liseurExel Data) // à relier
@@ -104,7 +104,8 @@ public struct InfoGlobalExel // créer une struct qui me permet de récupérer t
         ArmeAfeu,
         ArmeMelee,
         Sac,
-        Vetement
+        Vetement,
+        Utilitaire
     }
 
     public Type TypeGeneral;

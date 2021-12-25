@@ -222,7 +222,7 @@ public class SurvivalSysteme : MonoBehaviour
     {
         if (IndexEmplacement > NombreDemplacementPourVetement-1 || IndexEmplacement < 0)
         {
-            print("L'emplacement Demander n'existe pas");
+            //print("L'emplacement Demander n'existe pas");
         }
         else 
         {

@@ -66,7 +66,7 @@ public class MouvementPlayer : MonoBehaviour
     {
         if (MyCharacterController.isGrounded)// s'il le perso est au sol
         {
-            print("je change");
+            //print("je change");
             
             directionSaut = DirectionCalculate; // lance la direction du saut
             Jumping = true;// permet de savoir s'il saute
@@ -74,7 +74,7 @@ public class MouvementPlayer : MonoBehaviour
         }
         else
         {
-            print("Je remet la gravité");
+            //print("Je remet la gravité");
             
         }
 
@@ -122,7 +122,7 @@ public class MouvementPlayer : MonoBehaviour
         {
             if ((int)CollisionFlags.Below==collision )// si la collision se situe en bas de la capsule
             {
-                print("Atteri");
+                //print("Atteri");
                 Jumping = false;// n'est plus en saut
             }
         }

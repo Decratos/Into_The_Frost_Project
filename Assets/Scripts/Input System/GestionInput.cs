@@ -71,7 +71,7 @@ public class GestionInput : MesFonctions
                     else if(hit.transform.tag == "RawRessources") // si le joueur touche ce truc
                     {
                         print("Commentaire à résoudre"); //mettre players action dans la gestion des scripts
-                        Debug.Break();//à retirer une fois le commentaire résolue
+                        //Debug.Break();//à retirer une fois le commentaire résolue
                         GetComponent<PlayerActions>().Gather(hit, ScriptGestion); // récupére le script Player action
                     }
                     else if(hit.transform.tag == "NPC")

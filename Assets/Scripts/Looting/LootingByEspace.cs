@@ -99,7 +99,7 @@ public class LootingByEspace : MesFonctions
         {
             if (item.transform.tag == LeTagSpawner) // si le tag est le bon
             {
-                print("j'ajoute des trucs depuis tag");
+                //print("j'ajoute des trucs depuis tag");
                 SpawnPoints.Add(item.transform.gameObject); // ajoute le spawnPoint
             }
         }
@@ -108,7 +108,7 @@ public class LootingByEspace : MesFonctions
     
     void CreateObject(GameObject[] LesObjects) 
     {
-        print("j'aurais du faire des trucs");
+        //print("j'aurais du faire des trucs");
         
         foreach (GameObject item in LesObjects)//Pour chaque spawner
         {
@@ -147,7 +147,7 @@ public class LootingByEspace : MesFonctions
 
         } // additionne toutes les chances
         float random = Random.Range(0, AllChances); // fait un nombre random
-        print("Voici mon random" + random);
+        //print("Voici mon random" + random);
 
         float cumulOrdonne = 0;
         
