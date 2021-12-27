@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-
+#region Les scripts necessaire
 [System.Serializable]
 public class InfoGeneral // Liste de tous les items
 {
@@ -51,7 +51,7 @@ public class InfoCraft // Liste de tous les items de soins
     
 }
 [System.Serializable]
-public class InfoWeapon
+public class InfoWeapon // info de la page arme de mélée
 {
     public int ID;
     public string Name;
@@ -60,7 +60,7 @@ public class InfoWeapon
 }
 
 [System.Serializable]
-public class InfoGun
+public class InfoGun // Info de la page arme à feu
 {
     public int ID;
     public string Name;
@@ -72,7 +72,7 @@ public class InfoGun
 }
 
 [System.Serializable]
-public class InfoVetements 
+public class InfoVetements //Les infos de la page vetements
 {
     public int ID;
     public string Name;
@@ -82,7 +82,7 @@ public class InfoVetements
 }
 
 [System.Serializable]
-public class InfoSac 
+public class InfoSac // Les infos de la page sac
 {
     public int ID;
     public string Name;
@@ -90,7 +90,7 @@ public class InfoSac
 }
 
 [System.Serializable]
-public class InfoUtilitaire 
+public class InfoUtilitaire //Les infos de la page utilitaire
 {
     public int ID;
     public string Name;
@@ -115,8 +115,6 @@ public class Info // regroupement  de toutes les infos
     public InfoUtilitaire[] LesUtilitaires;
 
 }
-
-
 
 
 [System.Serializable]
@@ -144,21 +142,23 @@ public class PageExel //info de page exel
 
 }
 
+#endregion
+
 public class liseurExel : MesFonctions // ce script vas chercher toutes les infos dans les excel et les stocker, pour permettre d'aller chercher toute les donnés
 {
     
     [SerializeField] PageExel[] MesPages; // contient toute les pages exel
 
     
-    [HideInInspector] public static liseurExel LesDatas; 
+    [HideInInspector] public static liseurExel LesDatas; //singelton
 
     //
-    public Info MesListe = new Info();
+    public Info MesListe = new Info(); // crée la valeur contenant toute mes infos
 
 
     void Awake() // charge les infos
     {
-        if (LesDatas!=this || LesDatas== null)
+        if (LesDatas!=this || LesDatas== null)//singeltonisation
         {
             LesDatas = this;
         }
@@ -180,74 +180,79 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
         }
 
     } // lis chaque page
-    void setInfo (PageExel.TypeDePageExel mon_type, int nombreDeColonne, string[] data,int size)
+    void setInfo (PageExel.TypeDePageExel mon_type, int nombreDeColonne, string[] data,int size) //set les données dans info 
     {
-        //print("Liseur SetInfo");        
+       
+        // mon_type est réglée dans l'inspecteur
+        // Nombre de colonne que la page comporte (tjr dans l'inspecteur)
+        // data est la valeur en string qui a été séparré
+        // size est le nombre de data au total
+
         if (mon_type == PageExel.TypeDePageExel.General)
         {
-            MesListe.LesItems = new InfoGeneral[size];
+            MesListe.LesItems = new InfoGeneral[size]; // créer un tableau qui contiendra toute les valeurs
             for (int i = 0; i < size; i++)
             {
-                MesListe.LesItems[i] = new InfoGeneral();
-                MesListe.LesItems[i].ID = int.Parse(data[nombreDeColonne * (i + 1)]);
-                correctionType(data[nombreDeColonne * (i + 1) + 1],out MesListe.LesItems[i].Name);
-                correctionType(data[nombreDeColonne * (i + 1) + 2],out MesListe.LesItems[i].Type);
-                MesListe.LesItems[i].Durability = int.Parse(data[nombreDeColonne * (i + 1)+3]);
-                MesListe.LesItems[i].CraftingLevel = int.Parse(data[nombreDeColonne * (i + 1) + 4]);
-                MesListe.LesItems[i].Rarity = MonParse(data[nombreDeColonne * (i + 1) + 5]);
-                MesListe.LesItems[i].Inflamability = MonParse(data[nombreDeColonne * (i + 1) + 6]);
+                MesListe.LesItems[i] = new InfoGeneral();// set la variable
+                MesListe.LesItems[i].ID = int.Parse(data[nombreDeColonne * (i + 1)]); // récuppére les ID
+                correctionType(data[nombreDeColonne * (i + 1) + 1],out MesListe.LesItems[i].Name); // correction type est une fontion qui enléve tout caractére invisible ici utiliser pour récupérer le nom
+                correctionType(data[nombreDeColonne * (i + 1) + 2],out MesListe.LesItems[i].Type); // correction type est une fontion qui enléve tout caractére invisible ici utiliser pour récupérer le type
+                MesListe.LesItems[i].Durability = int.Parse(data[nombreDeColonne * (i + 1)+3]); // récupére la durability de l'objet
+                MesListe.LesItems[i].CraftingLevel = int.Parse(data[nombreDeColonne * (i + 1) + 4]); // Récupére le crafting level
+                MesListe.LesItems[i].Rarity = MonParse(data[nombreDeColonne * (i + 1) + 5]); // récupére la rareté de base 
+                MesListe.LesItems[i].Inflamability = MonParse(data[nombreDeColonne * (i + 1) + 6]);// récupére l'inflammabitité de de l'objet
             }
-        }
+        }// si la page est de type général
         else if (mon_type == PageExel.TypeDePageExel.Materiaux)
         {
-            MesListe.LesMat = new InfoMateriaux[size];
+            MesListe.LesMat = new InfoMateriaux[size];// créer un tableau qui contiendra toute les valeurs
             for (int i = 0; i < size; i++)
             {
-                MesListe.LesMat[i] = new InfoMateriaux();
-                MesListe.LesMat[i].ID = int.Parse(data[nombreDeColonne * (i + 1)]);
-                correctionType(data[nombreDeColonne * (i + 1) + 1], out MesListe.LesMat[i].Name);
+                MesListe.LesMat[i] = new InfoMateriaux();// set la variable
+                MesListe.LesMat[i].ID = int.Parse(data[nombreDeColonne * (i + 1)]);// récuppére les ID
+                correctionType(data[nombreDeColonne * (i + 1) + 1], out MesListe.LesMat[i].Name); // récupére le nom
                 
             }
-        }
+        }// si la page est de type materiaux
         else if (mon_type == PageExel.TypeDePageExel.nourriture)
         {
-            MesListe.LaBouffe = new InfoNourriture[size];
+            MesListe.LaBouffe = new InfoNourriture[size];// créer un tableau qui contiendra toute les valeurs
             for (int i = 0; i < size; i++)
             {
                
-                    MesListe.LaBouffe[i] = new InfoNourriture();
-                    MesListe.LaBouffe[i].ID = int.Parse(data[nombreDeColonne * (i + 1)]);
-                    correctionType(data[nombreDeColonne * (i + 1) + 1], out MesListe.LaBouffe[i].Name) ;
-                    MesListe.LaBouffe[i].Nutrition = int.Parse(data[nombreDeColonne * (i + 1) + 2]);
-                    MesListe.LaBouffe[i].Eau = int.Parse(data[nombreDeColonne * (i + 1) + 3]);
-                    MesListe.LaBouffe[i].Chaleur = int.Parse(data[nombreDeColonne * (i + 1) + 4]);
-                    MesListe.LaBouffe[i].Vie = int.Parse(data[nombreDeColonne * (i + 1) + 5]);
+                    MesListe.LaBouffe[i] = new InfoNourriture();// set la variable
+                    MesListe.LaBouffe[i].ID = int.Parse(data[nombreDeColonne * (i + 1)]);// récuppére les ID
+                    correctionType(data[nombreDeColonne * (i + 1) + 1], out MesListe.LaBouffe[i].Name) ;// récupére le nom
+                    MesListe.LaBouffe[i].Nutrition = int.Parse(data[nombreDeColonne * (i + 1) + 2]); // récupére la nutrition que cela vas donner
+                    MesListe.LaBouffe[i].Eau = int.Parse(data[nombreDeColonne * (i + 1) + 3]); // récupére la soif que vas donner l'objet
+                    MesListe.LaBouffe[i].Chaleur = int.Parse(data[nombreDeColonne * (i + 1) + 4]); // récupére la chaleur que la nourriture vas donner
+                    MesListe.LaBouffe[i].Vie = int.Parse(data[nombreDeColonne * (i + 1) + 5]); // Récupére la vie que l'objet vas donner
                 
             }
-        }
+        }// si la page est de type nourriture
         else if (mon_type == PageExel.TypeDePageExel.soins)
         {
-            MesListe.LesSoins = new InfoSoins[size];
+            MesListe.LesSoins = new InfoSoins[size];// créer un tableau qui contiendra toute les valeurs
             for (int i = 0; i < size; i++)
             {
-                MesListe.LesSoins[i] = new InfoSoins();
-                MesListe.LesSoins[i].ID = int.Parse(data[nombreDeColonne * (i + 1)]);
-                correctionType(data[nombreDeColonne * (i + 1) + 1], out MesListe.LesSoins[i].Name );
-                MesListe.LesSoins[i].value = int.Parse(data[nombreDeColonne * (i + 1) + 2]);
+                MesListe.LesSoins[i] = new InfoSoins();// set la variable
+                MesListe.LesSoins[i].ID = int.Parse(data[nombreDeColonne * (i + 1)]);// récuppére les ID
+                correctionType(data[nombreDeColonne * (i + 1) + 1], out MesListe.LesSoins[i].Name );// récupére le nom
+                MesListe.LesSoins[i].value = int.Parse(data[nombreDeColonne * (i + 1) + 2]); // récuppére la valeur de soin
             }
         }
         else if (mon_type == PageExel.TypeDePageExel.Craft)
         {
            
-            MesListe.LesCrafts = new InfoCraft[size];
+            MesListe.LesCrafts = new InfoCraft[size];// créer un tableau qui contiendra toute les valeurs
             for (int i = 0; i < size; i++)
             {
-                MesListe.LesCrafts[i] = new InfoCraft();
-                MesListe.LesCrafts[i].ID = int.Parse(data[nombreDeColonne * (i + 1)]);
-                correctionType(data[nombreDeColonne * (i + 1) + 1], out MesListe.LesCrafts[i].Name);
-                MesListe.LesCrafts[i].RessourcesNecessaire = data[nombreDeColonne * (i + 1) + 2].Split(char.Parse("/")); 
-                MesListe.LesCrafts[i].LeNombreNecessaire= ParseArray(data[nombreDeColonne * (i + 1) + 3].Split(char.Parse("/")));
-                MesListe.LesCrafts[i].IDDesressources = new int[MesListe.LesCrafts[i].RessourcesNecessaire.Length];
+                MesListe.LesCrafts[i] = new InfoCraft();// set la variable
+                MesListe.LesCrafts[i].ID = int.Parse(data[nombreDeColonne * (i + 1)]);// récuppére les ID
+                correctionType(data[nombreDeColonne * (i + 1) + 1], out MesListe.LesCrafts[i].Name);// récupére le nom
+                MesListe.LesCrafts[i].RessourcesNecessaire = data[nombreDeColonne * (i + 1) + 2].Split(char.Parse("/")); // split les ressources
+                MesListe.LesCrafts[i].LeNombreNecessaire= ParseArray(data[nombreDeColonne * (i + 1) + 3].Split(char.Parse("/")));// split le nombre necessaire
+                MesListe.LesCrafts[i].IDDesressources = new int[MesListe.LesCrafts[i].RessourcesNecessaire.Length];// recupére les ID des ressources necessaire
                 for (int j  = 0; j < MesListe.LesCrafts[i].RessourcesNecessaire.Length-1; j++)
                 {
                                       
@@ -258,37 +263,37 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
 
 
             }
-        }
+        }// si la page est craft
         else if (mon_type == PageExel.TypeDePageExel.Weapon)
         {
-            MesListe.LesArmes = new InfoWeapon[size];
+            MesListe.LesArmes = new InfoWeapon[size]; // créer un tableau qui contiendra toute les valeurs
             for (int i = 0; i < size; i++)
             {
                 
                 MesListe.LesArmes[i] = new InfoWeapon();
-                MesListe.LesArmes[i].ID = int.Parse(data[nombreDeColonne * (i + 1)]); 
-                correctionType(data[nombreDeColonne * (i + 1) + 1], out MesListe.LesArmes[i].Name); 
-                MesListe.LesArmes[i].degat = MonParse(data[nombreDeColonne * (i + 1) + 2]);
-                MesListe.LesArmes[i].Speed = MonParse(data[nombreDeColonne * (i + 1) + 3]);
+                MesListe.LesArmes[i].ID = int.Parse(data[nombreDeColonne * (i + 1)]); // récuppére les ID
+                correctionType(data[nombreDeColonne * (i + 1) + 1], out MesListe.LesArmes[i].Name); // récupére le nom de l'objet
+                MesListe.LesArmes[i].degat = MonParse(data[nombreDeColonne * (i + 1) + 2]); // récupére les dégats de l'arme
+                MesListe.LesArmes[i].Speed = MonParse(data[nombreDeColonne * (i + 1) + 3]); // récupére la vitesse de l'arme
 
 
             }
 
-        }
+        }// si la page est celle des arme de mélée
         else if (mon_type == PageExel.TypeDePageExel.Gun)
         {
-            MesListe.LesFlingues = new InfoGun[size];
+            MesListe.LesFlingues = new InfoGun[size];// créer un tableau qui contiendra toute les valeurs
             for (int i = 0; i < size; i++)
             {
 
-                MesListe.LesFlingues[i] = new InfoGun();
-                MesListe.LesFlingues[i].ID = int.Parse(data[nombreDeColonne * (i + 1)]); ;
-                correctionType(data[nombreDeColonne * (i + 1) + 1], out MesListe.LesFlingues[i].Name);
-                MesListe.LesFlingues[i].degat= MonParse(data[nombreDeColonne * (i + 1) + 2]);
-                MesListe.LesFlingues[i].Power = MonParse(data[nombreDeColonne * (i + 1) + 3]); 
-                MesListe.LesFlingues[i].Speed = MonParse(data[nombreDeColonne * (i + 1) + 4]); 
-                MesListe.LesFlingues[i].Chargeur = int.Parse(data[nombreDeColonne * (i + 1)] + 5); 
-                MesListe.LesFlingues[i].Rechargement= MonParse(data[nombreDeColonne * (i + 1) + 6]);
+                MesListe.LesFlingues[i] = new InfoGun();// set la variable
+                MesListe.LesFlingues[i].ID = int.Parse(data[nombreDeColonne * (i + 1)]); // récuppére les ID
+                correctionType(data[nombreDeColonne * (i + 1) + 1], out MesListe.LesFlingues[i].Name); // récupére le nom de l'objet
+                MesListe.LesFlingues[i].degat= MonParse(data[nombreDeColonne * (i + 1) + 2]); // récupére les dégats de l'arme
+                MesListe.LesFlingues[i].Power = MonParse(data[nombreDeColonne * (i + 1) + 3]); // récupére la puissance de l'arme
+                MesListe.LesFlingues[i].Speed = MonParse(data[nombreDeColonne * (i + 1) + 4]); // récupére la vitesse de l'arme
+                MesListe.LesFlingues[i].Chargeur = int.Parse(data[nombreDeColonne * (i + 1)] + 5); // récupére la taille du chargeur
+                MesListe.LesFlingues[i].Rechargement= MonParse(data[nombreDeColonne * (i + 1) + 6]); // récupére le temps de rechargement
 
                
 
@@ -297,18 +302,18 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
             }
             
 
-        }
+        }// si la page est celle des armes à feu
         else if (mon_type == PageExel.TypeDePageExel.SacADos)
         {
             MesListe.LesSacs = new InfoSac[size];
             for (int i = 0; i < size; i++)
             {
                 MesListe.LesSacs[i] = new InfoSac();
-                MesListe.LesSacs[i].ID = int.Parse(data[nombreDeColonne * (i + 1)]);
-                correctionType(data[nombreDeColonne * (i + 1) + 1], out MesListe.LesSacs[i].Name);
-                MesListe.LesSacs[i].NbrEmplacement = int.Parse(data[nombreDeColonne * (i + 1) + 2]);
+                MesListe.LesSacs[i].ID = int.Parse(data[nombreDeColonne * (i + 1)]);// récuppére les ID
+                correctionType(data[nombreDeColonne * (i + 1) + 1], out MesListe.LesSacs[i].Name);// récupére le nom du sac
+                MesListe.LesSacs[i].NbrEmplacement = int.Parse(data[nombreDeColonne * (i + 1) + 2]); // récupére la capacité du sac
             }
-        }
+        } // si la page est celle du sac à dos
         else if (mon_type == PageExel.TypeDePageExel.Utilitaire)
         {
             MesListe.LesUtilitaires = new InfoUtilitaire[size];
@@ -316,9 +321,9 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
             {
                 MesListe.LesUtilitaires[i] = new InfoUtilitaire();
                 
-                MesListe.LesUtilitaires[i].ID = int.Parse(data[nombreDeColonne * (i + 1)]);
-                correctionType(data[nombreDeColonne * (i + 1) + 1], out MesListe.LesUtilitaires[i].Name);
-                MesListe.LesUtilitaires[i].TheLevelForCraft = int.Parse(data[nombreDeColonne * (i + 1)+2]);
+                MesListe.LesUtilitaires[i].ID = int.Parse(data[nombreDeColonne * (i + 1)]);// récuppére les ID
+                correctionType(data[nombreDeColonne * (i + 1) + 1], out MesListe.LesUtilitaires[i].Name);// récupére le nom de l'objet 
+                MesListe.LesUtilitaires[i].TheLevelForCraft = int.Parse(data[nombreDeColonne * (i + 1)+2]); // récupére le niveau de craft qu'il donne
 
             }
         }
@@ -335,7 +340,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                 MesListe.LesVetements[i].DegatResistance = MonParse(data[nombreDeColonne * (i + 1) + 4]);
             }
 
-        }
+        }// si la page est de type vetements 
     }
 
     #endregion
@@ -411,9 +416,10 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
     #endregion
 
     #region methode Accessible à tous
-        #region findObjectMethod
+        
+    #region findObjectMethod
 
-            #region byName
+    #region byName
 
     public void FindObjectInfo(string name, out InfoGlobalExel InfoGlobal) 
     {
@@ -698,7 +704,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
         {
             //print("Il n'est pas dans les data");
         }
-    }
+    } // récupére les données du sac
     public void FindObjectInfo(string name, out InfoExelvetements VetementInfo)
     {
         VetementInfo = new InfoExelvetements();
@@ -718,7 +724,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
             //print("Il n'est pas dans les data");
         }
 
-    }
+    } // récupére les données des vêtements
     //
     #endregion
 
@@ -1002,7 +1008,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
         {
             //print("Il n'est pas dans les data");
         }
-    }
+    } // récupére les données du sac
     public void FindObjectInfo(int ID, out InfoExelvetements VetementInfo) 
     {
         VetementInfo = new InfoExelvetements();
@@ -1022,7 +1028,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
             //print("Il n'est pas dans les data");
         }
 
-    }
+    } // récupére les données des vêtements
     #endregion
 
     #endregion
@@ -1045,7 +1051,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
         }
 
 
-    }
+    } // cherche le nom selon l'ID
     public void findObjectNameByID(int ID, out string trueName)
     {
         //print("findObjectNameByID ");
@@ -1064,7 +1070,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
 
         }
 
-    }
+    } // cherche l'iD selon le nom
     public void findObjectsByType(PageExel.TypeDePageExel mon_type , out int[]ID)
     {
         //print("findObjectsByType");
@@ -1089,7 +1095,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
         
 
 
-    }
+    } // trouve les objets du même type
     public void findObjectByChar(char[] Meslettres, out int[] LesID) 
     {
         //print("findObjectByChar");
@@ -1128,7 +1134,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
          
 
 
-    }
+    } // trouve un objet par character
 
 
     public bool IsItInThisPage(PageExel.TypeDePageExel mon_type, int ID) 
@@ -1213,7 +1219,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
         }
         return tosend;
     
-    }
+    }// est ce que l'objet est dans cette page
     public bool IsItInThisPage(PageExel.TypeDePageExel mon_type, string name)
     {
 
@@ -1298,7 +1304,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
         return tosend;
 
 
-    }
+    } // est ce que l'objet est dans cette page
 
     #endregion
 
