@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Inventory_Debug : MonoBehaviour
 {
-
+    
     [SerializeField] private List<ItemClass> inventoryList;
     public Inventory inv;
 

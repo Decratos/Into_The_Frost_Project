@@ -7,11 +7,11 @@ using UnityEngine.UI;
 public class PlayerEquipment : MonoBehaviour
 {
     [SerializeField]
-    private ItemClass Weapon1Item, Weapon2Item, helmet;
+    private ItemClass Weapon1Item, Weapon2Item, helmet, ChestCloth, ChestArmor, Pants, Shoes;
 
     [SerializeField] private Sprite defaultWeapon, defaultHelmet;
 
-    public ItemSlot Weapon1, Weapon2, helmetSlot;
+    public ItemSlot Weapon1, Weapon2, helmetSlot, ChestClothSlot, ChestArmorSlot, PantsSlot, ShoesSlot;
     
     private void Awake() {
         /*var equipmentHolder = GetComponent<CanvasReference>().GetCanva().transform.Find("Equipment");
