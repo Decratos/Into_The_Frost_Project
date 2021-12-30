@@ -59,18 +59,14 @@ public class GestionInput : MesFonctions
             
                 if (Physics.Raycast(ray, out hit, Distance)) // si le raycast touche
                 {
-                    if (hit.transform.tag=="Ressources")
-                    {
-                        GetComponent<PlayerActions>().Collect(hit, ScriptGestion);
-                        //ScriptGestion.LaGestionDesRessources.AjouteAInventaire(hit.transform.gameObject);
-                    }
-                    else if (hit.transform.tag == "Construction")
+                    if (hit.transform.tag == "Construction")
                     {
                     }
                     else if(hit.transform.tag == "RawRessources")
                     {
                         GetComponent<PlayerActions>().Gather(hit, ScriptGestion);
                     }
+                    
                 }
                 else
                 {
@@ -82,6 +78,33 @@ public class GestionInput : MesFonctions
 
 
 
+    }
+
+    public void Use(InputAction.CallbackContext context)
+    {
+        if(context.started)
+        {
+            RaycastHit hit; // créer une valeur raycast
+                Vector2 centerCamera = new Vector2(Camera.main.pixelWidth / 2, Camera.main.pixelHeight / 2); // centre la souris
+                Ray ray = Camera.main.ScreenPointToRay(centerCamera); // créer le ray 
+            
+                if (Physics.Raycast(ray, out hit, Distance)) // si le raycast touche
+                {
+                    if (hit.transform.tag=="Ressources")
+                    {
+                        GetComponent<PlayerActions>().Collect(hit, ScriptGestion);
+                        //ScriptGestion.LaGestionDesRessources.AjouteAInventaire(hit.transform.gameObject);
+                    }
+                    else if(hit.transform.tag == "Container")
+                    {
+                        hit.transform.GetComponent<Container>().OpenHideContainer();
+                    }
+                    else if(hit.transform.tag == "CraftTable")
+                    {
+                        hit.transform.GetComponent<CraftingTable>().OpenHideTableWindow();
+                    }
+                }
+        }
     }
 
     public void SourisMouvement(InputAction.CallbackContext context) 
@@ -124,8 +147,8 @@ public class GestionInput : MesFonctions
     {
         if (context.started)
         {
-            ScriptGestion.uiInventory.OpenHideInventory(false);
-            CraftUI.instance.OpenHideCraftUI();
+            ScriptGestion.uiInventory.OpenHideInventory(true);
+            CraftUI.instance.OpenHideCraftUI(0);
         }
     }
 

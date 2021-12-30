@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class InitiateInventory : MonoBehaviour
 {
+    public Transform ContainerWindow;
+    public Transform PlayerInventoryContainerWindow;
     public void Initiate()
     {
         GestionDesScipt gestion;
@@ -11,10 +13,6 @@ public class InitiateInventory : MonoBehaviour
         GetComponent<Inventory_Debug>().SetInventory(inventory);
         MesFonctions.FindGestionDesScripts(this.gameObject,out gestion);
         gestion.uiInventory.SetInventory(GetComponent<GestionDesScipt>().Inventory);
-    }
-
-    public void Start()
-    {
     }
 
 }

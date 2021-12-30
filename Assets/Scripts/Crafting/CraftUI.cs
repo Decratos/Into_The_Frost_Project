@@ -11,41 +11,60 @@ public class CraftUI : MonoBehaviour
     private bool isOpen = false;
     [SerializeField] private GameObject craftTemplate;
     [SerializeField] private Transform craftContainer;
+    private List<RectTransform> craftList;
 
     public liseurExel ExcelList;
+    public RectTransform tooltipWindow;
+    InfoGlobalExel globalInfo;
 
     private void Awake()
     {
         instance = this;
+        MesFonctions.FindDataExelForObject(out ExcelList);
     }
     void Start()
     {
         craftInterface = new Crafting();
         gameObject.SetActive(isOpen);
-        MesFonctions.FindDataExelForObject(out ExcelList);
+
+        craftList = new List<RectTransform>();
     }
 
-    public void OpenHideCraftUI()
+    public void OpenHideCraftUI(int maxLevel)
     {
         isOpen = !isOpen;
         gameObject.SetActive(isOpen);
-        RefreshUI();
+        RefreshUI(maxLevel);
     }
 
-    private void RefreshUI()
+    private void RefreshUI(int maxLevel)
     {
-        int craftListLenght = ExcelList.MesListe.LesCrafts.Length;
+        if(craftList.Count > 0)
+        {
+            foreach (var item in craftList)
+            {
+                Destroy(item.gameObject);
+            }
+            craftList.Clear();
+        }
+        
+        int craftListLenght = ExcelList.MesListe.LesItems.Length;
         int y = 0;
         float craftSlotSize = 100f;
         for(int i = 0; i<craftListLenght; i++)
         {
-            RectTransform craftRectTransform = Instantiate(craftTemplate, craftContainer).GetComponent<RectTransform>();
-            craftRectTransform.gameObject.SetActive(true);
-            Text text = craftRectTransform.GetComponentInChildren<Text>();
-            text.text = ExcelList.MesListe.LesCrafts[i].Name;
-
-            craftRectTransform.anchoredPosition = new Vector2(0, y * craftSlotSize);
-            y++;
+            if(ExcelList.MesListe.LesItems[i].CraftingLevel <= maxLevel && ExcelList.MesListe.LesItems[i].CraftingLevel != -1)
+            {
+                RectTransform craftRectTransform = Instantiate(craftTemplate, craftContainer).GetComponent<RectTransform>();
+                craftRectTransform.gameObject.SetActive(true);
+                Text text = craftRectTransform.GetComponentInChildren<Text>();
+                text.text = ExcelList.MesListe.LesItems[i].Name;
+        
+                craftRectTransform.anchoredPosition = new Vector2(0, y * craftSlotSize);
+                y++;
+                craftList.Add(craftRectTransform);
+                craftRectTransform.GetComponentInChildren<CraftButtonUI>().DelayedStart();
+            }
         }
     }
 }

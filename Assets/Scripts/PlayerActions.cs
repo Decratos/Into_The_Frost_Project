@@ -21,9 +21,7 @@ public class PlayerActions : MonoBehaviour
                         FMODUnity.RuntimeManager.PlayOneShot("event:/Collecting/GatheringStone", hit.point);
                     break;
                 }
-                InfoGlobalExel objectInfo = new InfoGlobalExel();
-                liseurExel.LesDatas.FindObjectInfo(name, out objectInfo);
-                ScriptGestion.Inventory.AddItem(new ItemClass{itemType = ResumeExelForObject.Type.Materials, amount = amount, spriteId = objectInfo.ID}, objectInfo, name);
+                ScriptGestion.Inventory.AddItem(new ItemClass{itemType = ResumeExelForObject.Type.Materials, amount = amount});
                 hit.transform.GetComponent<BasicRessourcesSource>().ReduceDurability();
                 Instantiate(ItemAssets.ItemAssetsInstance.GetComponent<ParticlesAssets>().particles[0], hit.point, PlayerSingleton.playerInstance.transform.rotation);
             }
@@ -42,7 +40,7 @@ public class PlayerActions : MonoBehaviour
             ResumeExelForObject stats = hit.transform.GetComponent<ResumeExelForObject>();
             liseurExel.LesDatas.FindObjectInfo(stats.ID, out objectInfo);
             ItemClass itemWorld = hit.transform.GetComponent<ItemWorld>().GetItem();
-            ScriptGestion.Inventory.AddItem(new ItemClass{itemType = stats.MainType, amount = itemWorld.amount, spriteId = itemWorld.spriteId}, objectInfo, hit.transform.name);
+            ScriptGestion.Inventory.AddItem(new ItemClass{itemName = itemWorld.itemName, itemType = stats.MainType, amount = itemWorld.amount, spriteId = itemWorld.spriteId});
             Destroy(hit.transform.gameObject);
             FMODUnity.RuntimeManager.PlayOneShot("event:/Collecting/TakeItem", hit.point);
             GetComponent<Animator>().Play("TakeItem");

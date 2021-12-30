@@ -17,9 +17,7 @@ public class DropEquippedWeapon : MonoBehaviour, IPointerDownHandler
         if(parentItemSlot.equippedItemStat.itemName != "")
         {
             PlayerSingleton.playerInstance.GetComponent<PlayerEquipment>().UnEquipWeapon(parentItemSlot.equippedItemStat, 1);
-            InfoGlobalExel infos = new InfoGlobalExel();
-            liseurExel.LesDatas.FindObjectInfo(parentItemSlot.equippedItemStat.itemName, out infos);
-            GestionDesScipt.ScriptGestion.Inventory.AddItem(parentItemSlot.equippedItemStat, infos, infos.Name);
+            GestionDesScipt.ScriptGestion.Inventory.AddItem(parentItemSlot.equippedItemStat);
             parentItemSlot.equippedItemStat = null;
         }
     }
