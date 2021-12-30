@@ -30,7 +30,7 @@ public class UIInventory : MonoBehaviour
             {
                 MesFonctions.FindGestionDesScripts(PlayerSingleton.playerInstance.gameObject, out gestion);
                 gestion.uiInventory = this;
-                PlayerSingleton.playerInstance.GetComponent<InitiateInventory>().Initiate();
+                PlayerSingleton.playerInstance.GetComponent<InventoryManager>().Initiate();
             }
         }
         if(inheritedInventory.Count > 0)

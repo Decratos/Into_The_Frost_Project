@@ -17,7 +17,6 @@ public class Inventory
     public void AddItem(ItemClass item)
     {
         ItemClass newItem = new ItemClass();
-        Debug.Log("J'ajoute l'item'");
         InfoGlobalExel inf = new InfoGlobalExel();
         liseurExel.LesDatas.FindObjectInfo(item.itemName, out inf);
         newItem.amount = item.amount;

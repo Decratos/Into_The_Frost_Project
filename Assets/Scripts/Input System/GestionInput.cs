@@ -84,6 +84,7 @@ public class GestionInput : MesFonctions
     {
         if(context.started)
         {
+            print("Using !");
             RaycastHit hit; // créer une valeur raycast
                 Vector2 centerCamera = new Vector2(Camera.main.pixelWidth / 2, Camera.main.pixelHeight / 2); // centre la souris
                 Ray ray = Camera.main.ScreenPointToRay(centerCamera); // créer le ray 
@@ -95,11 +96,11 @@ public class GestionInput : MesFonctions
                         GetComponent<PlayerActions>().Collect(hit, ScriptGestion);
                         //ScriptGestion.LaGestionDesRessources.AjouteAInventaire(hit.transform.gameObject);
                     }
-                    else if(hit.transform.tag == "Container")
+                    else if(hit.transform.tag == "Container" && !PlayerSingleton.playerInstance.GetComponent<InventoryManager>().mainInventory.inventoryIsOpen)
                     {
                         hit.transform.GetComponent<Container>().OpenHideContainer();
                     }
-                    else if(hit.transform.tag == "CraftTable")
+                    else if(hit.transform.tag == "CraftTable" && !PlayerSingleton.playerInstance.GetComponent<InventoryManager>().mainInventory.inventoryIsOpen)
                     {
                         hit.transform.GetComponent<CraftingTable>().OpenHideTableWindow();
                     }
@@ -145,7 +146,7 @@ public class GestionInput : MesFonctions
 
     public void InventoryMode(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.started && !PlayerSingleton.playerInstance.GetComponent<InventoryManager>().CheckInventoryOpen())
         {
             ScriptGestion.uiInventory.OpenHideInventory(true);
             CraftUI.instance.OpenHideCraftUI(0);

@@ -21,17 +21,19 @@ public class CraftingTable : MonoBehaviour
 
     public void OpenHideTableWindow()
     {
-        var playerWindowUi = PlayerSingleton.playerInstance.GetComponent<InitiateInventory>().PlayerInventoryContainerWindow.GetComponent<UIInventory>();
-        if(!isOpen)
+        var playerWindowUi = PlayerSingleton.playerInstance.GetComponent<InventoryManager>().PlayerInventoryContainerWindow.GetComponent<UIInventory>();
+        if(!isOpen && !PlayerSingleton.playerInstance.GetComponent<InventoryManager>().CheckInventoryOpen())
         {
             CraftUI.instance.OpenHideCraftUI((int)tableLevel);
             playerWindowUi.OpenHideInventory(true);
+            PlayerSingleton.playerInstance.GetComponent<InventoryManager>().SetInventoryOpen(true);
             isOpen = true;
         }
         else
         {
             CraftUI.instance.OpenHideCraftUI((int)tableLevel);
             playerWindowUi.OpenHideInventory(false); 
+            PlayerSingleton.playerInstance.GetComponent<InventoryManager>().SetInventoryOpen(false);
             isOpen = false;
         }
     }

@@ -470,38 +470,57 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LesDataPourSurvie:
   - SurvivalData: 0
+    applyDecroissement: 1
     Index: 0
     Range: {x: 0, y: 100}
     ActualValue: 100
-    VitesseDecroissement: 10
-    PourcentageDecroissement: 1
     DecroissementVieUnderMinima: 5
-    applyDecroissement: 1
+    PerteMaxByFrame: 0
+    PerteByPourcentage:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
   - SurvivalData: 1
-    Index: 0
-    Range: {x: 0, y: 100}
-    ActualValue: 100
-    VitesseDecroissement: 10
-    PourcentageDecroissement: 1
-    DecroissementVieUnderMinima: 7
     applyDecroissement: 1
-  - SurvivalData: 2
     Index: 0
     Range: {x: 0, y: 100}
     ActualValue: 100
-    VitesseDecroissement: 0.03
-    PourcentageDecroissement: 1
-    DecroissementVieUnderMinima: 0
+    DecroissementVieUnderMinima: 7
+    PerteMaxByFrame: 0
+    PerteByPourcentage:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  - SurvivalData: 2
     applyDecroissement: 0
+    Index: 0
+    Range: {x: 0, y: 100}
+    ActualValue: 100
+    DecroissementVieUnderMinima: 0
+    PerteMaxByFrame: 0
+    PerteByPourcentage:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
   - SurvivalData: 3
+    applyDecroissement: 1
     Index: 0
     Range: {x: 23, y: 44}
     ActualValue: 37.5
-    VitesseDecroissement: 0.01
-    PourcentageDecroissement: 1
     DecroissementVieUnderMinima: 5
-    applyDecroissement: 1
-  TestUpdate: 1
+    PerteMaxByFrame: 0
+    PerteByPourcentage:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
   PerteChaleur:
     serializedVersion: 2
     m_Curve:
@@ -526,6 +545,10 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  LesDammages: 0
+  ResistanceFroidsTotal: 0
+  ResistanceDegatsTotal: 0
+  NombreDemplacementPourVetement: 0
   TempsCalculSystem: 1
   TemperatureBeginLoseLife: 28
   MultiplayerBehind37: 0.2

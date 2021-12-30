@@ -13,7 +13,6 @@ public class Inventory_Debug : MonoBehaviour
     public void SetInventory(Inventory inventory)
     {
         inv = inventory;
-        print("je créer l'inventaire");
         CreateStartItem();
     }
     
