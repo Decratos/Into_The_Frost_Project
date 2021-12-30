@@ -80,6 +80,10 @@ public class GestionInput : MesFonctions
                     }
                     
                 }
+                else
+                {
+                    GetComponent<PlayerActions>().Attack();
+                }
             }
 
         }
@@ -138,6 +142,14 @@ public class GestionInput : MesFonctions
         if (context.started)
         {
             PlayerSingleton.playerInstance.GetComponent<PlayerConstruct>().increaseIdStructure();
+        }
+    }
+
+    public void SwitchWeapon(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            PlayerSingleton.playerInstance.GetComponentInChildren<WeaponSystem>().ChangeWeaponMode();
         }
     }
 }

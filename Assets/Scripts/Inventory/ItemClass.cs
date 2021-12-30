@@ -17,7 +17,12 @@ public class ItemClass
    public Sprite GetSprite() // Fonction permettant d'afficher la bonne image
    {
       Debug.Log("Mon id :" +spriteId);
-      return ItemAssets.ItemAssetsInstance.sprites[spriteId-1];
+      if(spriteId != 0)
+         return ItemAssets.ItemAssetsInstance.sprites[spriteId-1];
+      else
+      {
+         return ItemAssets.ItemAssetsInstance.sprites[spriteId];
+      }
    }
 
    public bool isStackable()

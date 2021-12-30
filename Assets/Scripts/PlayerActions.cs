@@ -6,15 +6,15 @@ public class PlayerActions : MonoBehaviour
 {
     public void Gather(RaycastHit hit, GestionDesScipt ScriptGestion)
     {
-        if(GetComponentInChildren<WeaponSystem>().actualMeleeWeapon)
+        if(GetComponentInChildren<WeaponSystem>().actualWeaponInHands)
         {
             string name = hit.transform.GetComponent<BasicRessourcesSource>().ressourceName;
             int amount = hit.transform.GetComponent<BasicRessourcesSource>().ressourceAmount;
-            if(name == "Planche" && GetComponentInChildren<WeaponSystem>().actualMeleeWeapon.canCutWood || name == "Rocher" && GetComponentInChildren<WeaponSystem>().actualMeleeWeapon.canCutStone)
+            if(name == "Bois" && GetComponentInChildren<WeaponSystem>().actualWeaponInHands.canCutWood || name == "Rocher" && GetComponentInChildren<WeaponSystem>().actualWeaponInHands.canCutStone)
             {
                 switch (name)
                 {
-                    case "Planche":
+                    case "Bois":
                         FMODUnity.RuntimeManager.PlayOneShot("event:/Collecting/GatheringWood", hit.point);
                     break;
                     case "Rocher":
@@ -48,19 +48,19 @@ public class PlayerActions : MonoBehaviour
             GetComponent<Animator>().Play("TakeItem");
     }
 
-    public void Attack(RaycastHit hit)
+    public void Attack()
     {
-        if(GetComponentInChildren<WeaponSystem>().actualMeleeWeapon)
+        if(GetComponentInChildren<WeaponSystem>().actualWeaponInHands)
         {
-            int dmg = GetComponentInChildren<WeaponSystem>().actualMeleeWeapon.damage;
-            hit.transform.GetComponent<AIstats>().ReduceHealth(dmg);
+            var wp = GetComponentInChildren<WeaponSystem>().actualWeaponInHands;
+            wp.Shoot(wp);
         }
-        else
+        /*else
         {
-            hit.transform.GetComponent<AIstats>().ReduceHealth(5);
-        }
+            if(hit.transform.GetComponent<AIstats>())
+                hit.transform.GetComponent<AIstats>().ReduceHealth(5);
+        }*/
         
-        Instantiate(ItemAssets.ItemAssetsInstance.GetComponent<ParticlesAssets>().particles[1], hit.point, PlayerSingleton.playerInstance.transform.rotation);
 
     }
 }

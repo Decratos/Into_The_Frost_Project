@@ -12,7 +12,19 @@ public class ItemSlot : MonoBehaviour, IDropHandler
     
     public ItemClass equippedItemStat;
 
-    public ResumeExelForObject.Type slotType;
+    public enum equipmentType
+    {
+        Weapon,
+        Armor,
+        ChestClothing,
+        HelmetOrTop,
+        Pants,
+        Shoes,
+
+    } 
+    public equipmentType slotType;
+
+    public int slotNumber;
 
     public event EventHandler<OnItemDroppedEventArgs> OnItemDropped;
 
@@ -25,13 +37,14 @@ public class ItemSlot : MonoBehaviour, IDropHandler
         OnItemDropped?.Invoke(this, new OnItemDroppedEventArgs {item = item});
         if(eventData.pointerDrag != null)
         {
-            if(item.itemType == slotType)
+            if(item.itemType == ResumeExelForObject.Type.ArmeAfeu || item.itemType == ResumeExelForObject.Type.ArmeMelee)
             {
+                print("J'équippe");
                 eventData.pointerDrag.GetComponent<RectTransform>().position = 
                 GetComponent<RectTransform>().position;
                 equippedItemStat = item;
                 equippedItemStat.amount = 1;
-                PlayerSingleton.playerInstance.GetComponent<PlayerEquipment>().OnWeaponEquipped(item);
+                PlayerSingleton.playerInstance.GetComponent<PlayerEquipment>().OnWeaponEquipped(item, slotNumber);
             }
         }
     }
