@@ -16,7 +16,6 @@ public class ItemClass
 
    public Sprite GetSprite() // Fonction permettant d'afficher la bonne image
    {
-      Debug.Log("Mon id :" +spriteId);
       if(spriteId != 0)
          return ItemAssets.ItemAssetsInstance.sprites[spriteId-1];
       else

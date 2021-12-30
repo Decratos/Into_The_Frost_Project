@@ -11,6 +11,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     
     public PointerEventData data;
     public bool isDropping;
+    public Transform initialWindow;
     private void Awake()
     {
         _canvasGroup = GetComponent<CanvasGroup>();
@@ -26,6 +27,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     {
         _canvasGroup.alpha = .6f;
         _canvasGroup.blocksRaycasts = false;
+        initialWindow = GetComponentInParent<UIInventory>().transform;
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -36,10 +38,17 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         {
             ItemWorld.DropItem(PlayerSingleton.playerInstance.transform.position, eventData.pointerDrag.GetComponentInChildren<ItemInfo>().item);
         }
+        else if(eventData.hovered[0].transform != initialWindow)
+        {
+            print("J'ai déposé l'item sur une autre fenêtre");
+            Inventory newInv = eventData.hovered[0].transform.GetComponentInParent<UIInventory>()._inventory;
+            initialWindow.GetComponent<UIInventory>()._inventory.TransferItem(newInv, eventData.pointerDrag.GetComponentInChildren<ItemInfo>().item);
+            eventData.hovered[0].transform.GetComponentInParent<UIInventory>().RefreshInventoryItems();
+        }
         _canvasGroup.alpha = 1f;
         _canvasGroup.blocksRaycasts = true;
         
-        GestionDesScipt.ScriptGestion.uiInventory.RefreshInventoryItems();
+        transform.GetComponentInParent<UIInventory>().RefreshInventoryItems();
     }
 
     public void OnDrag(PointerEventData eventData)

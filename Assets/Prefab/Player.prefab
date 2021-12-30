@@ -76,6 +76,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canCutWood: 1
   canCutStone: 1
+  damage: 0
+  rangedWeapon: 0
+  attackDistance: 2
+  attackRate: 1
+  actualAttackRate: 0
+  ammo: 0
+  maxAmmo: 0
+  reserve: 0
+  reloadSpeed: 0
 --- !u!1 &1842692928
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,11 +128,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 349c8139ff8ba934ca7efb8183efb01d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponModeIsRanged: 0
+  FirstWeapon: 0
   Weapons:
   - {fileID: 618035217}
-  actualMeleeWeapon: {fileID: 0}
-  actualRangedWeapon: {fileID: 0}
+  actualWeaponInHands: {fileID: 0}
+  EquippedWeapon1: {fileID: 0}
+  EquippedWeapon2: {fileID: 0}
 --- !u!1 &1123951329656893961
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,6 +163,7 @@ GameObject:
   - component: {fileID: 12625607029824253}
   - component: {fileID: 635795274}
   - component: {fileID: 1353224069}
+  - component: {fileID: 635795273}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -349,6 +360,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: a66b8c43-a0d5-4ebe-a84b-5daa21de66cb
     m_ActionName: Controlleur/Inventory[/Keyboard/i]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1123951329656893954}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e5a3b7ed-6df0-49a1-91d0-ab6e7506acef
+    m_ActionName: Controlleur/SwitchWeapon[/Keyboard/c]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1123951329656893954}
+        m_TargetAssemblyTypeName: GestionInput, Assembly-CSharp
+        m_MethodName: Use
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7c361c1a-249d-4e85-9bee-ae6b8e528046
+    m_ActionName: Controlleur/Use[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Clavier Bureau
   m_DefaultActionMap: Controlleur
@@ -606,6 +649,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef68a97c1cc79be42b501af957dd3ed5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ContainerWindow: {fileID: 0}
+  PlayerInventoryContainerWindow: {fileID: 0}
 --- !u!114 &1326747683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -631,6 +676,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryList: []
+  startInventory:
+  - itemName: Bois
+    spriteId: 2
+    itemType: 1
+    amount: 10
+  - itemName: Sword
+    spriteId: 1
+    itemType: 4
+    amount: 1
 --- !u!114 &1326747698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -702,12 +756,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d63296ea69009442ac6c38598d4709d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rangedWeapon:
+  Weapon1Item:
     itemName: 
     spriteId: 0
     itemType: 0
     amount: 0
-  CaCweapon:
+  Weapon2Item:
     itemName: 
     spriteId: 0
     itemType: 0
@@ -717,12 +771,35 @@ MonoBehaviour:
     spriteId: 0
     itemType: 0
     amount: 0
-  defaultRanged: {fileID: 0}
-  defaultMelee: {fileID: 0}
+  ChestCloth:
+    itemName: 
+    spriteId: 0
+    itemType: 0
+    amount: 0
+  ChestArmor:
+    itemName: 
+    spriteId: 0
+    itemType: 0
+    amount: 0
+  Pants:
+    itemName: 
+    spriteId: 0
+    itemType: 0
+    amount: 0
+  Shoes:
+    itemName: 
+    spriteId: 0
+    itemType: 0
+    amount: 0
+  defaultWeapon: {fileID: 0}
   defaultHelmet: {fileID: 0}
-  rangedSlot: {fileID: 0}
-  CaCSlot: {fileID: 0}
+  Weapon1: {fileID: 0}
+  Weapon2: {fileID: 0}
   helmetSlot: {fileID: 0}
+  ChestClothSlot: {fileID: 0}
+  ChestArmorSlot: {fileID: 0}
+  PantsSlot: {fileID: 0}
+  ShoesSlot: {fileID: 0}
 --- !u!114 &1353224069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -735,6 +812,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1558dac1a8efdb0418de8ee8d1f88151, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &635795273
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123951329656893961}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 331d704a4a3d1c144a5c3e181839129a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1123951330631785795
 GameObject:
   m_ObjectHideFlags: 0
@@ -748,7 +844,7 @@ GameObject:
   - component: {fileID: 1123951330631785799}
   - component: {fileID: 1123951330631785798}
   - component: {fileID: -2376970720490811657}
-  - component: {fileID: 635795273}
+  - component: {fileID: 809116537657823254}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -940,8 +1036,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   joueur: {fileID: 1123951329656893961}
-  Sensibilite: {x: 1, y: 1}
+  Sensibilite: {x: 0.2, y: 0.2}
   MaxAngle: {x: 70, y: 0}
+  canLook: 1
 --- !u!114 &-2376970720490811657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -956,7 +1053,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attenuationObject: {fileID: 0}
   ListenerNumber: -1
---- !u!114 &635795273
+--- !u!114 &809116537657823254
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
