@@ -76,7 +76,8 @@ public class GestionInput : MesFonctions
                     }
                     else if(hit.transform.tag == "NPC")
                     {
-                        GetComponent<PlayerActions>().Attack(hit); // récupére le script Player action
+                        print("WTF");
+                        //GetComponent<PlayerActions>().Attack(hit); // récupére le script Player action
                     }
                     
                 }
