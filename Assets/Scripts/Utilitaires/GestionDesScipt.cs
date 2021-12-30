@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GestionDesScipt : MesFonctions
 {
+    // sert à stocker les scripts sur le joueur pour éviter le getComponent
     public GestionInput InputGestion;
     public CameraMouvement MouvementDeCamera;
     public SurvivalSysteme SurvieScript;
@@ -13,6 +14,7 @@ public class GestionDesScipt : MesFonctions
     public UIInventory uiInventory;
     public PlayerConstruct PlayerConstruct;
 
+    // pour faire de se script un singelton
     [HideInInspector] public static GestionDesScipt ScriptGestion;
     void Awake()
     {

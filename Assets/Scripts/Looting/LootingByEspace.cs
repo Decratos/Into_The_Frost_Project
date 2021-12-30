@@ -30,83 +30,92 @@ public class LootingByEspace : MesFonctions
 
     public loot[] lesLootPossible;
 
-    public RaycastHit[] LesObjets;
-
+    [HideInInspector] public RaycastHit[] LesObjets;
+    BoxCollider LeBox = new BoxCollider();
     Vector3 rotationAuSpawn;
-    
+
+    void Start()
+    {
+        LanceLeLooting();
+    }
+
     public void LanceLeLooting() 
     {
         if (!HasAlreadyLooted)
         {
-            BoxCollider LeBox = new BoxCollider();
-            if (GetChildCountOfObject(this.transform) == 1)
+            
+            if (GetChildCountOfObject(this.transform) == 1) 
             {
-                LeBox = transform.GetChild(0).GetComponent<BoxCollider>();
+                LeBox = transform.GetChild(0).GetComponent<BoxCollider>();// permet de récupérer le component box collider
             }
-            else if (GetChildCountOfObject(this.transform) > 1)
+            else if (GetChildCountOfObject(this.transform) > 1) // au cas où l'objet à plus qu'un seul gosse
             {
-                foreach (Transform item in this.transform)
+                foreach (Transform item in this.transform) // pour chaque enfant contenu dans ce transform
                 {
-                    if (LeTagEnfant == item.tag)
+                    if (LeTagEnfant == item.tag) // si l'objet à le bon tag
                     {
-                        LeBox = item.GetComponent<BoxCollider>();
+                        LeBox = item.GetComponent<BoxCollider>(); // permet de récupérer le component box collider
                     }
                 }
             }
-            LesObjets = Physics.BoxCastAll(transform.position + LeBox.center, LeBox.size / 2, Vector3.down, LeBox.transform.rotation, LeBox.size.z);
-
+            LesObjets = Physics.BoxCastAll(transform.position + LeBox.center+transform.up*LeBox.size.y/2, LeBox.size/2, Vector3.down, LeBox.transform.rotation, LeBox.size.z); // fait un box cast all pour trouver toute les spawner
             ChooseMethod();
-        }
+        } // Méthode qui permet de set up le spawn d'objet 
         
     }
 
-    void ChooseMethod()
+    void ChooseMethod() 
     {
-        List<GameObject> SpawnPoints = new List<GameObject>();
-        if (LaMethod==methodChoisis.Script)
+        
+        if (LaMethod==methodChoisis.Script) // si la method est via script
         {
-            recuperationSpawnViaScript();
+            recuperationSpawnViaScript(); // lance la méthode script
+            
         }
-        else if (LaMethod == methodChoisis.Tag)
+        else if (LaMethod == methodChoisis.Tag) // Si la method est via tag
         {
-            recuperationSpawnViaTag();
+            
+            recuperationSpawnViaTag(); //lance la méthode via tag
         }
         
-    }
+    } // Choisis par quel procédé on récupére les spawners
 
     void recuperationSpawnViaScript() 
     {
-        List<GameObject> SpawnPoints = new List<GameObject>();
-        foreach (RaycastHit item in LesObjets)
+        List<GameObject> SpawnPoints = new List<GameObject>();// liste des spawn
+        foreach (RaycastHit item in LesObjets) // pour chaque  raycast hit dans les objets
         {
-            if (item.transform.GetComponent<Looter>())
+            if (item.transform.GetComponent<Looter>()) // si le script est le bon
             {
-                SpawnPoints.Add(item.transform.gameObject);
+                SpawnPoints.Add(item.transform.gameObject); // ajoute le spawnPoint
             }
         }
-        CreateObject(SpawnPoints.ToArray());
+        CreateObject(SpawnPoints.ToArray());// creer les objets dans l'array
     }
     void recuperationSpawnViaTag() 
     {
-        List<GameObject> SpawnPoints = new List<GameObject>();
-        foreach (RaycastHit item in LesObjets)
+        List<GameObject> SpawnPoints = new List<GameObject>(); // liste des spawn
+        foreach (RaycastHit item in LesObjets) // pour chaque  raycast hit dans les objets
         {
-            if (item.transform.tag == LeTagSpawner)
+            if (item.transform.tag == LeTagSpawner) // si le tag est le bon
             {
-                SpawnPoints.Add(item.transform.gameObject);
+                //print("j'ajoute des trucs depuis tag");
+                SpawnPoints.Add(item.transform.gameObject); // ajoute le spawnPoint
             }
         }
-        CreateObject(SpawnPoints.ToArray());
+        CreateObject(SpawnPoints.ToArray());// creer les objets dans l'array
     }
     
     void CreateObject(GameObject[] LesObjects) 
     {
+        //print("j'aurais du faire des trucs");
+        
         foreach (GameObject item in LesObjects)//Pour chaque spawner
         {
-            InfoGlobalExel toSpawn = ChooseItemToSpawn(); // Choisis 
+            InfoGlobalExel toSpawn = ChooseItemToSpawn(); // Choisis l'objet à spawn
             item.GetComponent<Looter>().InstantiateObject(toSpawn,Quaternion.Euler(rotationAuSpawn));
             //appel la fonction 
-            
+
 
         }
     
@@ -119,11 +128,10 @@ public class LootingByEspace : MesFonctions
         InfoGlobalExel ToReturn = new InfoGlobalExel(); // créer la valeur a retourner
         int IDObjectChoose=0; 
         float AllChances=0;
-       
-        float[,] arrayChanceTrier = new float[lesLootPossible.Length, 2]; // [Le nombre d'array, Le nombre qu'ils contiennent]
-        float ChanceMini = 0;
+        float[,] arrayChanceTrier = new float[lesLootPossible.Length, 3]; // [Le nombre d'array, Le nombre qu'ils contiennent]
+        int chosenOne;
 
-        foreach (loot item in lesLootPossible)
+        foreach (loot item in lesLootPossible) 
         {
             
             if (item.ChanceChoisis!=0f)
@@ -137,48 +145,51 @@ public class LootingByEspace : MesFonctions
                 
             }
 
-        }
-        float random = Random.Range(0, AllChances);
+        } // additionne toutes les chances
+        float random = Random.Range(0, AllChances); // fait un nombre random
+        //print("Voici mon random" + random);
+
+        float cumulOrdonne = 0;
+        
+        float LaChanceChoisi = 0;
+        
         for (int i = 0; i < lesLootPossible.Length; i++)
         {
-            float chanceWinner = 0;
-            float chanceActuel = 0;
+            float LaChanceSuperieur = 0;
             for (int j = 0; j < lesLootPossible.Length; j++)
             {
                 
-                if (lesLootPossible[j].ChanceChoisis!=0)
+                if (lesLootPossible[j].ChanceChoisis!=0  )
                 {
-                    chanceActuel = lesLootPossible[j].ChanceDeBase;
+                    LaChanceChoisi = lesLootPossible[j].ChanceChoisis;
                 }
                 else 
                 {
-                    chanceActuel = lesLootPossible[j].ChanceChoisis;
+                    LaChanceChoisi = lesLootPossible[j].ChanceDeBase;
                 }
 
-
-                if (chanceActuel > chanceWinner &&(i==0 || chanceWinner < arrayChanceTrier[i-1, 1] ))
+                if (LaChanceChoisi > LaChanceSuperieur && (i == 0 || LaChanceChoisi < arrayChanceTrier[i - 1, 1]))
                 {
-                    chanceWinner = chanceActuel;
+                    LaChanceSuperieur = LaChanceChoisi;
+                    arrayChanceTrier[i, 2] = lesLootPossible[j].ID;
                 }
             }
-            arrayChanceTrier[i, 0] = lesLootPossible[i].ID;
-            arrayChanceTrier[i, 1] = chanceActuel;
-        }// trie les chances de la plus grande à la plus petite
-
-        for (int i = 0; i < lesLootPossible.Length; i++)
-        {
-            ChanceMini+= arrayChanceTrier[i, 1];
-            if (ChanceMini>random)
+            
+            arrayChanceTrier[i, 1] = LaChanceSuperieur;
+            
+            cumulOrdonne += arrayChanceTrier[i, 1];
+            
+            if (random<cumulOrdonne)
             {
-                liseurExel.LesDatas.FindObjectInfo(lesLootPossible[(int)arrayChanceTrier[i, 0]].ID,out ToReturn);
-                rotationAuSpawn = lesLootPossible[(int)arrayChanceTrier[i, 0]].rotationSpawn;
+                IDObjectChoose = (int)arrayChanceTrier[i, 2];
                 break;
-            }
-        }
+            }// choisis l'objet a spawn
+        } // trie les chances dans l'ordre
+       
 
-
-        liseurExel.LesDatas.FindObjectInfo(IDObjectChoose, out ToReturn);
-        return ToReturn;
+        liseurExel.LesDatas.FindObjectInfo(IDObjectChoose, out ToReturn); 
+        return ToReturn; // prblm
     }
+
     
 }

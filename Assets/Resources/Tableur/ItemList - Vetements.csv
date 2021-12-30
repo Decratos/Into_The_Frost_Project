@@ -1,38 +1,29 @@
 ID,Nom,Catégorie,Chaleur resistance,Resistance degat
-50,Tshirt,Tshirt,1,1.1
-51,Tshirt manche longues,Tshirt,1.45,1.2
-52,Sweat,pull,1.46,2.2
-53,Tshirt thermique,Tshirt,1.47,3.2
-54,Pull en laine,pull,1.48,4.2
-55,Pull polaire,pull,1.49,5.2
-56,Pull cardigan,pull,1.50,6.2
-57,Polo manche longue,pull,1.51,7.2
-58,Pull de jogging,pull,1.52,8.2
-59,Pull anorak,pull,1.53,9.2
-60,Pull en jean,pull,1.54,10.2
-61,Chemise,Tshirt,1.55,11.2
-62,Col roulé,Tshirt,1.56,12.2
-63,Parka,Manteau,1.57,13.2
-64,Blouson simple,Manteau,1.58,14.2
-65,Varsity Jacket,Manteau,1.59,15.2
-66,Veste de ski,Manteau,1.60,16.2
-67,Veste polaire,Manteau,1.61,17.2
-68,Veste duffel,Manteau,1.62,18.2
-69,Blouson d'aviateur,Manteau,1.63,19.2
-70,Doudoune,Manteau,1.64,20.2
-71,Jean,Pantalon,1.65,21.2
-72,Jogging,Pantalon,1.66,22.2
-73,Pantalon polaire,Pantalon,1.67,23.2
-74,Pantalon de ski,Pantalon,1.68,24.2
-75,Pantalon de rando,Pantalon,1.69,25.2
-76,Pantalon Thermique,Pantalon,1.70,26.2
-77,Chaussette cours,Sousvetement,1.71,27.2
-78,Chaussette,Sousvetement,1.72,28.2
-79,Chaussette épaisse,Sousvetement,1.73,1.3
-80,Chaussette de ski,SousVetement,1.74,2.3
-81,Slip,SousVetement,1.75,3.3
-82,Slip kangourou,SousVetement,1.76,4.3
-83,caleçon,SousVetement,1.77,5.3
-84,caleçon en laine,SousVetement,1.78,6.3
-85,caleçon rembourrer,SousVetement,1.79,7.3
-86,caleçon polaire,SousVetement,1.80,8.3
+52,Tshirt,Tshirt,1,1.1
+53,Tshirt manche longues,Tshirt,1.45,1.2
+54,Sweat,pull,1.46,2.2
+55,Tshirt thermique,Tshirt,1.47,3.2
+56,Pull en laine,pull,1.48,4.2
+57,Pull polaire,pull,1.49,5.2
+58,Pull cardigan,pull,1.50,6.2
+59,Polo manche longue,pull,1.51,7.2
+60,Pull de jogging,pull,1.52,8.2
+61,Pull anorak,pull,1.53,9.2
+62,Pull en jean,pull,1.54,10.2
+63,Chemise,Tshirt,1.55,11.2
+64,Col roulé,Tshirt,1.56,12.2
+65,Parka,Manteau,1.57,13.2
+66,Blouson simple,Manteau,1.58,14.2
+67,Veste de ski,Manteau,1.59,15.2
+68,Veste polaire,Manteau,1.60,16.2
+69,Blouson d'aviateur,Manteau,1.61,17.2
+70,Doudoune,Manteau,1.62,18.2
+71,Jean,Pantalon,1.63,19.2
+72,Jogging,Pantalon,1.64,20.2
+73,Pantalon polaire,Pantalon,1.65,21.2
+74,Pantalon de ski,Pantalon,1.66,22.2
+75,Pantalon de rando,Pantalon,1.67,23.2
+76,Pantalon Thermique,Pantalon,1.68,24.2
+77,Chaussette et caleçon simple,SousVetement,1.69,25.2
+78,Chaussette et caleçon rembourré,SousVetement,1.70,26.2
+79,Chaussette et caleçon polaire,Sousvetement,1.71,27.2

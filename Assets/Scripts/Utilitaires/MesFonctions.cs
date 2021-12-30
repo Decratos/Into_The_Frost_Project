@@ -14,7 +14,7 @@ public class MesFonctions : MonoBehaviour
         else 
         {
             ScriptGestion = null;
-            print("Le composant n'est pas sur l'objet envoyer");
+            //print("Le composant n'est pas sur l'objet envoyer");
         }
     }
     public static void FindDataExelForObject(out liseurExel Data) // à relier
@@ -74,7 +74,6 @@ public class MesFonctions : MonoBehaviour
 
         return corrected;
     }
-
     public static int GetChildCountOfObject(Transform LeTransform) 
     {
         int toReturn=0;
@@ -85,6 +84,12 @@ public class MesFonctions : MonoBehaviour
         return toReturn;
     }
 
+    public static Temperature temperatureScript() 
+    {
+        
+
+        return GameObject.Find("MeteoManager").GetComponent<Temperature>();
+    }
 
 }
 public struct InfoGlobalExel // créer une struct qui me permet de récupérer toutes les infos sur un objet 
@@ -94,6 +99,8 @@ public struct InfoGlobalExel // créer une struct qui me permet de récupérer t
     public string Name;
     public int Durability;
     public int CraftingLevel;
+    public float rarity;
+    public float inflammability;
     public enum Type
     {
         Nourriture,
@@ -102,7 +109,8 @@ public struct InfoGlobalExel // créer une struct qui me permet de récupérer t
         ArmeAfeu,
         ArmeMelee,
         Sac,
-        Vetement
+        Vetement,
+        Utilitaire
     }
 
     public Type TypeGeneral;
@@ -185,6 +193,7 @@ public struct InfoExelCraft
     public int[] IDdesRessourcesNecessaire;
     public string[] NomdesRessourcesNecessaire;
     public int[] LeNombreNecessaire;
+    public int CraftingLevel;
     
 
 }
@@ -226,6 +235,6 @@ public struct InfoExelvetements
     public SousCategorie MaCategorie;
     public float ChaleurResistance;
     public float DegatResistance;
-
+    public bool IsWeared;
 }
 

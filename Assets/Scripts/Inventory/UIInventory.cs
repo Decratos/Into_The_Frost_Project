@@ -14,7 +14,7 @@ public class UIInventory : MonoBehaviour
     private void Start()
     {
         GestionDesScipt gestion = null;
-        print(PlayerSingleton.playerInstance.gameObject);
+        //print(PlayerSingleton.playerInstance.gameObject);
         MesFonctions.FindGestionDesScripts(PlayerSingleton.playerInstance.gameObject, out gestion);
         gestion.uiInventory = this;
         itemSlotContainer = transform.Find("itemSlotContainer");

@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MesPages:
   - MaPage: {fileID: 4900000, guid: 6ecd3a912db785c4c8aa9ec0195fd75a, type: 3}
-    nombreDeColonne: 6
+    nombreDeColonne: 7
     LesInfoPagesExel: 0
   - MaPage: {fileID: 4900000, guid: f451382e4566f6e4fa981411c93b75b0, type: 3}
     nombreDeColonne: 2
@@ -57,7 +57,7 @@ MonoBehaviour:
     nombreDeColonne: 3
     LesInfoPagesExel: 3
   - MaPage: {fileID: 4900000, guid: f2929c44682e4ca44be2d013420b6077, type: 3}
-    nombreDeColonne: 4
+    nombreDeColonne: 5
     LesInfoPagesExel: 4
   - MaPage: {fileID: 4900000, guid: 88c3a77520dc22c45862fdf5fb974964, type: 3}
     nombreDeColonne: 4
@@ -72,7 +72,7 @@ MonoBehaviour:
     nombreDeColonne: 5
     LesInfoPagesExel: 9
   - MaPage: {fileID: 4900000, guid: 5989e9769c4bf1b40a7e29480c3829a3, type: 3}
-    nombreDeColonne: 2
+    nombreDeColonne: 3
     LesInfoPagesExel: 7
   MesListe:
     LesItems: []

@@ -1,8 +1,20 @@
-ID,Name,Ressources,nombre
-14,pistolet,fer raffine/Bois,10/5
-15,fusil,fer raffine/Bois,10/20
-16,Couteau,fer raffine/Bois,10/7
-17,batte,Bois,10
-18,barre de fer,fer brute,10
-19,Katana,fer raffine/Bois,50/10
-20,blocBeton,Beton,30
+ID,Name,Ressources,nombre,Crafting Level
+1,Planche,Bois,1,0
+4,Pain,Farine/eau 50cl,3/50,1
+14,Feu de camp,Bois/Petit bois/Vieu Journal,2/5/2,0
+15,Barril en tôle,Ferraille,30,2
+17,pistolet,Ferraille,40,4
+18,fusil,Planche/Ferraille,2/30,4
+19,Couteau,Planche/Ferraille,1/10,2
+20,batte,Planche/Shatterton,2/1,1
+21,barre de fer,Ferraille,20,1
+22,Katana,Ferraille/Planche/Shatterton,35/2/1,3
+32,Hache,Ferraille/Planche/Shatterton,25/1/1,2
+33,Hache en pierre,Pierre/Planche/Shatterton,10/1/1,0
+34,Four en pierre,Pierre,50,1
+35,Forge,Ferraille/Pierre,30/15,2
+36,Atelier,Planche/Ferraille/Clou,10/10/20,0
+37,Atelier L2,Planche/Ferraille/Clou,8/20/15,1
+38,Atelier L3,Planche/Ferraille/Clou,5/30/10,2
+39,Établie,Planche/Ferraille/Clou,5/50/10,3
+49,Petit bois,Planche,1,0
