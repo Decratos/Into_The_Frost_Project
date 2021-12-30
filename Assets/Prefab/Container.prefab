@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 86096015383177470}
   m_Layer: 0
   m_Name: Container
-  m_TagString: Container
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,8 +109,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryList: []
-  startInventory:
-  - itemName: Planche
-    spriteId: 1
-    itemType: 1
-    amount: 10
