@@ -1,7 +1,8 @@
 ID,Name,Dégâts,Vitesse
-16,Couteau,15,0.5
-17,batte,10,1
-18,barre de fer,12,1.2
-19,Katana,25,0.8
-30,Hache,18,1.3
-31,Hache en pierre,11,0.9
+19,Couteau,15,0.5
+20,batte,10,1
+21,barre de fer,12,1.2
+22,Katana,25,0.8
+32,Hache,18,1.3
+33,Hache en pierre,11,0.9
+44,Baton ,5,0.3

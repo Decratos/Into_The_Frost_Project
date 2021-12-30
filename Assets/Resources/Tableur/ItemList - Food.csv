@@ -1,10 +1,12 @@
 ID,Name,Nutrition,eau,Chaleur,Vie
-5,Pain,10,0,0,0
+4,Pain,10,0,0,0
+5,Farine,1,0,0,0
 6,eau 25cl,0,25,0,0
 7,eau 50cl,0,50,0,0
 8,pomme,10,3,0,0
 9,Soupe,50,15,0,0
 10,Soupe chaude,50,15,25,0
 11,La soupe de mémé,50,15,25,15
-12,Viande,30,-10,0,0
-13,Viande cuite,30,2,0,0
+12,Conserve,40,10,0,1
+13,Viande,30,-10,0,0
+16,Viande cuite,30,2,0,0

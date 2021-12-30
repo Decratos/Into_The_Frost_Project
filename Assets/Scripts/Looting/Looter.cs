@@ -10,7 +10,7 @@ public class Looter : MesFonctions
         //GameObject tospawn = GameObject.CreatePrimitive(PrimitiveType.Cube);
         //Path += Info.ID.ToString();
         Path += 1.ToString();
-        print(Path);
+        //print(Path);
         GameObject tospawn = Resources.Load<GameObject>(Path);
         GameObject toInstantiate=Instantiate(tospawn,transform.position,rotationSpawn);
         

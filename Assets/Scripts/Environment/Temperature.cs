@@ -6,4 +6,7 @@ public class Temperature : MonoBehaviour
 {
     [Range(-98f, 10)]
     public float temperature;
+
+    //Modifier par rémi
+    
 }

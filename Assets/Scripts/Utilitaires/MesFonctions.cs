@@ -74,7 +74,6 @@ public class MesFonctions : MonoBehaviour
 
         return corrected;
     }
-
     public static int GetChildCountOfObject(Transform LeTransform) 
     {
         int toReturn=0;
@@ -85,6 +84,12 @@ public class MesFonctions : MonoBehaviour
         return toReturn;
     }
 
+    public static Temperature temperatureScript() 
+    {
+        
+
+        return GameObject.Find("MeteoManager").GetComponent<Temperature>();
+    }
 
 }
 public struct InfoGlobalExel // créer une struct qui me permet de récupérer toutes les infos sur un objet 
@@ -188,6 +193,7 @@ public struct InfoExelCraft
     public int[] IDdesRessourcesNecessaire;
     public string[] NomdesRessourcesNecessaire;
     public int[] LeNombreNecessaire;
+    public int CraftingLevel;
     
 
 }

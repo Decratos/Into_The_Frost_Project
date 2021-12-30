@@ -46,9 +46,10 @@ public class InfoCraft // Liste de tous les items de soins
     public int ID;
     public string Name;
     public string[] RessourcesNecessaire;
-    public int[] IDDesressources;
     public int[] LeNombreNecessaire;
-    
+    public int[] IDDesressources;
+    public int CraftingLevel;
+
 }
 [System.Serializable]
 public class InfoWeapon // info de la page arme de mélée
@@ -252,6 +253,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                 correctionType(data[nombreDeColonne * (i + 1) + 1], out MesListe.LesCrafts[i].Name);// récupére le nom
                 MesListe.LesCrafts[i].RessourcesNecessaire = data[nombreDeColonne * (i + 1) + 2].Split(char.Parse("/")); // split les ressources
                 MesListe.LesCrafts[i].LeNombreNecessaire= ParseArray(data[nombreDeColonne * (i + 1) + 3].Split(char.Parse("/")));// split le nombre necessaire
+                MesListe.LesCrafts[i].CraftingLevel = int.Parse(data[nombreDeColonne * (i + 1) + 4]); // récupére le crafting level necessaire pour créer l'objet
                 MesListe.LesCrafts[i].IDDesressources = new int[MesListe.LesCrafts[i].RessourcesNecessaire.Length];// recupére les ID des ressources necessaire
                 for (int j  = 0; j < MesListe.LesCrafts[i].RessourcesNecessaire.Length-1; j++)
                 {
@@ -259,7 +261,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                     findObjectIDByName(MesListe.LesCrafts[i].RessourcesNecessaire[j], out MesListe.LesCrafts[i].IDDesressources[j]);
                           
                 }
-               
+              
 
 
             }
@@ -275,7 +277,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                 correctionType(data[nombreDeColonne * (i + 1) + 1], out MesListe.LesArmes[i].Name); // récupére le nom de l'objet
                 MesListe.LesArmes[i].degat = MonParse(data[nombreDeColonne * (i + 1) + 2]); // récupére les dégats de l'arme
                 MesListe.LesArmes[i].Speed = MonParse(data[nombreDeColonne * (i + 1) + 3]); // récupére la vitesse de l'arme
-
+                
 
             }
 
@@ -358,7 +360,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
             }
         }
         string Resultat = new string(array);
-        //print("la valuer modifié" + Resultat);
+       //print("la valuer modifié" + Resultat);
 
         return float.Parse(Resultat);
     } 
@@ -634,6 +636,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                 CraftInfo.IDdesRessourcesNecessaire = LesID;
                 CraftInfo.LeNombreNecessaire = MesListe.LesCrafts[i].LeNombreNecessaire;
                 CraftInfo.NomdesRessourcesNecessaire = MesListe.LesCrafts[i].RessourcesNecessaire;
+                CraftInfo.CraftingLevel = MesListe.LesCrafts[i].CraftingLevel;
                 break;
             }
         }
@@ -940,6 +943,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                 CraftInfo.IDdesRessourcesNecessaire = LesID;
                 CraftInfo.LeNombreNecessaire= MesListe.LesCrafts[i].LeNombreNecessaire;
                 CraftInfo.NomdesRessourcesNecessaire = MesListe.LesCrafts[i].RessourcesNecessaire;
+                CraftInfo.CraftingLevel = MesListe.LesCrafts[i].CraftingLevel;
                 break;
             }
         }

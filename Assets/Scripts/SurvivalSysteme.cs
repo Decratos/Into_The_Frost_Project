@@ -15,22 +15,35 @@ public class StateForSurvival
         Heat
     }
     public PointDeSurvie SurvivalData;
+    public bool applyDecroissement; // value de test à supprimerun de ces 4
     [HideInInspector] public int Index;
+    
     public Vector2 Range;
     public float ActualValue;
-    public float VitesseDecroissement;
-    public float PourcentageDecroissement;
-    public float DecroissementVieUnderMinima;
-    public bool applyDecroissement;
     
+   
+    public float DecroissementVieUnderMinima;
+
+    [Tooltip("combien je perd en une frame")]
+    public float PerteMaxByFrame;
+   
+    [Tooltip("Combien je perds selon le pourcentage actual / range Y")]
+    public AnimationCurve PerteByPourcentage;
 }
-public class SurvivalSysteme : MonoBehaviour
+public class SurvivalSysteme : MesFonctions
 {
+    #region var
     //Public
     public List<StateForSurvival> LesDataPourSurvie = new List<StateForSurvival>();
-    public bool TestUpdate = true;
     public AnimationCurve PerteChaleur;
+    [HideInInspector]public enum TypeOfDammage 
+    {
+    Coup,
+    Balle,
+    Chute
 
+    }
+    public TypeOfDammage LesDammages;
     #region value vetements
     public float ResistanceFroidsTotal;
     public float ResistanceDegatsTotal;
@@ -43,99 +56,95 @@ public class SurvivalSysteme : MonoBehaviour
     [SerializeField] float MultiplayerBehind37 = 0.2f;
     int IndexDataVie = 0;
     InfoExelvetements[] LesVetementsQueJePorte;
-
+    private Temperature TemperatureExt;
+    #endregion
     private void Start()
     {
+        TemperatureExt = temperatureScript();
         ToutSetForGood();// lance le set 
-        if (!TestUpdate)//si je ne suis pas en mode update /!\ à voir le plus couteux /!\
-        {
-            BaisseSurvivalData();//void temp pour faire via Invoke
-        }
-        
     }
-
     void Update()
     {
-        if (TestUpdate)// si je suis en test update /!\ à voir le plus couteux /!\
-        {
             baisseLesDatas(); // envois la baisse des stats de survie
-        }
-
-        //UpdateUI();
+    }
+    void baisseLesDatas()// fais baisser les datas
+    {
+        for (int i = 0; i < LesDataPourSurvie.Count; i++)
+        {
+            
+            LosingLifeByData(LesDataPourSurvie[i]);//envois la perte de vie
+            if (i!=IndexDataVie)
+            {
+                if ((LesDataPourSurvie[i].SurvivalData == StateForSurvival.PointDeSurvie.Soif || LesDataPourSurvie[i].SurvivalData == StateForSurvival.PointDeSurvie.Hunger) && LesDataPourSurvie[i].ActualValue > 0)
+                {
+                    LesDataPourSurvie[i].ActualValue = CalculPerteFaimEtSoi(LesDataPourSurvie[i]);
+                }
+                else
+                {
+                    LesDataPourSurvie[i].ActualValue = calculPerteChaleur(LesDataPourSurvie[i]);
+                }
+            }  
+            LesDataPourSurvie[i].ActualValue = checkLaRange(i);
+        }// selon les datas de survie
+    }
+        #region calcul perte des datas
+    float CalculPerteFaimEtSoi(StateForSurvival MonState) 
+    {
+        
+        MonState.ActualValue -= MonState.PerteByPourcentage.Evaluate(MonState.ActualValue/ MonState.Range.y) * MonState.PerteMaxByFrame;
+        return 0;
     }
 
-    void BaisseSurvivalData() //
+    float calculPerteChaleur (StateForSurvival MonState)
     {
-        baisseLesDatas(); // baisse les stats de survie
 
-        Invoke("BaisseSurvivalData", TempsCalculSystem); // relance ce void dans x second
-    } // void alternatif du update /!\ à voir le plus couteux /!\
+        //= (MonState.PerteByPourcentage.Evaluate(%température min / max)*(PerteByFrame- ResistanceFroidsTotal);
+        //MonState.ActualValue = MonState.PerteByPourcentage.Evaluate();// modifier le script temperature
+        // me faut 
 
-    void baisseLesDatas() 
+        return 0;
+    }
+        #endregion
+        #region calcul de perte de vie
+    void LosingLifeByData(StateForSurvival MonState) 
     {
-       
-        for (int i = 0; i < LesDataPourSurvie.Count; i++)
+        if (((MonState.SurvivalData == StateForSurvival.PointDeSurvie.Soif || MonState.SurvivalData == StateForSurvival.PointDeSurvie.Hunger) && MonState.ActualValue <= TemperatureBeginLoseLife)
+                   || (MonState.SurvivalData == StateForSurvival.PointDeSurvie.Heat && MonState.ActualValue <= TemperatureBeginLoseLife))// si les states qui font perdre de la vue ont leur valeur
         {
-            if (LesDataPourSurvie[i].applyDecroissement)// si j'applique le decroissement
+            if (MonState.SurvivalData != StateForSurvival.PointDeSurvie.Heat)
             {
-                
-                if (TestUpdate) // si je suis en mode update /!\ à voir le plus couteux /!\
-                {
-                    LesDataPourSurvie[i].ActualValue -= LesDataPourSurvie[i].VitesseDecroissement * LesDataPourSurvie[i].PourcentageDecroissement* Time.deltaTime; // baisse une des valeurs de survie
-                }
-                else 
-                {
-                    LesDataPourSurvie[i].ActualValue -= LesDataPourSurvie[i].VitesseDecroissement * LesDataPourSurvie[i].PourcentageDecroissement;// baisse une des valeurs de survie
-                }
-                LesDataPourSurvie[i].ActualValue = checkLaRange(LesDataPourSurvie[i].Index); // vérifie que la valeur reste bien dans le carcant 
-                if (LesDataPourSurvie[i].ActualValue == 0 && (LesDataPourSurvie[i].SurvivalData == StateForSurvival.PointDeSurvie.Hunger || LesDataPourSurvie[i].SurvivalData == StateForSurvival.PointDeSurvie.Soif)) // si la soif ou la faim est à 0
-                {
-                   
-                    if (TestUpdate) // si je suis en mode update /!\ à voir le plus couteux /!\ // à voir si je peux remplacer par calcul perte life
-                    {
-                        LesDataPourSurvie[IndexDataVie].ActualValue -= LesDataPourSurvie[i].DecroissementVieUnderMinima * Time.deltaTime;
-                    }
-                    else 
-                    {
-                        LesDataPourSurvie[IndexDataVie].ActualValue -= LesDataPourSurvie[i].DecroissementVieUnderMinima;
-                    }
-                    LesDataPourSurvie[IndexDataVie].ActualValue = checkLaRange(IndexDataVie);// vérifie que la valeur reste bien dans le carcant 
-                }
-                if (LesDataPourSurvie[i].SurvivalData == StateForSurvival.PointDeSurvie.Heat && LesDataPourSurvie[i].ActualValue<TemperatureBeginLoseLife)// si je suis en dessous de la chaleur
-                {
-                    LesDataPourSurvie[IndexDataVie].ActualValue -= calculPerteLife(i);// je calcul la perte de vie selon la valeur
-                    LesDataPourSurvie[i].ActualValue = checkLaRange(LesDataPourSurvie[i].Index);
-                    LesDataPourSurvie[IndexDataVie].ActualValue = checkLaRange(IndexDataVie);
-                }
+                MonState.ActualValue -= MonState.DecroissementVieUnderMinima * Time.deltaTime; // fais baisser la vie selon soif/faim  
             }
-        }// selon les datas de survie
+            else
+            {
+                MonState.ActualValue -= calculPerteLifeHeat(MonState); // fais baisser selon la chaleur
+            }
+            LesDataPourSurvie[IndexDataVie].ActualValue = checkLaRange(IndexDataVie);// vérifie que la valeur est bien dans la range
+        }
 
-    } // 
-
-    
-
-   float calculPerteLife(int index) 
-   {
-        
-        return LesDataPourSurvie[index].DecroissementVieUnderMinima * 
-            PerteChaleur.Evaluate( (TemperatureBeginLoseLife - LesDataPourSurvie[index].ActualValue) / 
-                (TemperatureBeginLoseLife - LesDataPourSurvie[index].Range.x)); 
+    }
+    float calculPerteLifeHeat(StateForSurvival MonState) 
+   {       
+        return MonState.DecroissementVieUnderMinima * 
+            PerteChaleur.Evaluate( (TemperatureBeginLoseLife - MonState.ActualValue) / 
+                (TemperatureBeginLoseLife - MonState.Range.x)); 
    }
+        #endregion
 
-
-    void ToutSetForGood() 
+    void ToutSetForGood() // set les datas
     {
         for (int i = 0; i < LesDataPourSurvie.Count; i++)
         {
             
-            LesDataPourSurvie[i].Index = i;
+            LesDataPourSurvie[i].Index = i;//met l'index
             if (LesDataPourSurvie[i].SurvivalData == StateForSurvival.PointDeSurvie.Vie)
             {
-                IndexDataVie = i;
+                IndexDataVie = i; // enregistre l'index de la vie
             }
             
         }
-        LesVetementsQueJePorte = new InfoExelvetements[NombreDemplacementPourVetement];
+        LesVetementsQueJePorte = new InfoExelvetements[NombreDemplacementPourVetement]; // A voir avec théo
+        print("Commentaire à résoudre");
     }
     public void ChangementDuneDataDeSurvie(float value, StateForSurvival.PointDeSurvie ToModifiate) 
     {
@@ -220,7 +229,7 @@ public class SurvivalSysteme : MonoBehaviour
 
     public void SetVetements(InfoExelvetements Info,int IndexEmplacement)
     {
-        if (IndexEmplacement > NombreDemplacementPourVetement-1 || IndexEmplacement < 0)
+        if (IndexEmplacement > NombreDemplacementPourVetement || IndexEmplacement < 0) // viens de retirer un -1
         {
             //print("L'emplacement Demander n'existe pas");
         }
@@ -238,5 +247,61 @@ public class SurvivalSysteme : MonoBehaviour
         }
         
     }
+   
+    
+    public void TakeDamage(float dammageBrut,TypeOfDammage CeQuiMeFaitMal) 
+    {
 
+        if (TypeOfDammage.Coup == CeQuiMeFaitMal)
+        {
+
+        }
+        else if( TypeOfDammage.Balle == CeQuiMeFaitMal )
+        {
+            LesDataPourSurvie[IndexDataVie].ActualValue -= dammageBrut; 
+        }
+        else 
+        {
+            //degat par metre de chute
+        }
+
+    }
 }
+
+//state survival
+//state surviva
+/*public float VitesseDecroissement;
+
+   public float PourcentageDecroissement;
+  */
+/*
+ if (LesDataPourSurvie[i].applyDecroissement)// si j'applique le decroissement
+                {
+                    //
+                    // le décroissement normal
+                    //    
+                    
+                    LesDataPourSurvie[i].ActualValue -= LesDataPourSurvie[i].VitesseDecroissement * LesDataPourSurvie[i].PourcentageDecroissement* Time.deltaTime; // baisse une des valeurs de survie
+                    
+                    
+                    LesDataPourSurvie[i].ActualValue = checkLaRange(LesDataPourSurvie[i].Index); // vérifie que la valeur reste bien dans le carcant 
+
+                    //
+                    // le décroissement lorsqu'une valeur est dans la zone pour faire perdre de la vie
+                    //  
+                    if (LesDataPourSurvie[i].ActualValue == 0 && (LesDataPourSurvie[i].SurvivalData == StateForSurvival.PointDeSurvie.Hunger || LesDataPourSurvie[i].SurvivalData == StateForSurvival.PointDeSurvie.Soif)) // si la soif ou la faim est à 0
+                    {
+
+                        
+                            LesDataPourSurvie[IndexDataVie].ActualValue -= LesDataPourSurvie[i].DecroissementVieUnderMinima * Time.deltaTime;
+                        
+                       
+                        LesDataPourSurvie[IndexDataVie].ActualValue = checkLaRange(IndexDataVie);// vérifie que la valeur reste bien dans le carcant 
+                    }
+                    if (LesDataPourSurvie[i].SurvivalData == StateForSurvival.PointDeSurvie.Heat && LesDataPourSurvie[i].ActualValue<TemperatureBeginLoseLife)// si je suis en dessous de la chaleur
+                    {
+                        LesDataPourSurvie[IndexDataVie].ActualValue -= calculPerteLife(i);// je calcul la perte de vie selon la valeur
+                        LesDataPourSurvie[i].ActualValue = checkLaRange(LesDataPourSurvie[i].Index);
+                        LesDataPourSurvie[IndexDataVie].ActualValue = checkLaRange(IndexDataVie);
+                    }
+                }*/
