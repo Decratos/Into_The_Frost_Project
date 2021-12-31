@@ -5,20 +5,22 @@ using UnityEngine;
 
 public class Inventory_Debug : MonoBehaviour
 {
-
+    
     [SerializeField] private List<ItemClass> inventoryList;
+    [SerializeField] private List<ItemClass> startInventory;
     public Inventory inv;
 
     public void SetInventory(Inventory inventory)
     {
         inv = inventory;
-        print("je créer l'inventaire");
+        CreateStartItem();
     }
     
-    private void Start() {
-        InfoGlobalExel inf = new InfoGlobalExel();
-        liseurExel.LesDatas.FindObjectInfo("Planche", out inf);
-        inv.AddItem(new ItemClass{itemType = ResumeExelForObject.Type.ArmeMelee, amount = 1, spriteId = 1}, inf, inf.Name);
+    private void CreateStartItem() {
+        foreach(ItemClass item in startInventory)
+        {
+            inv.AddItem(item);
+        }
     }
 
     private void Update()

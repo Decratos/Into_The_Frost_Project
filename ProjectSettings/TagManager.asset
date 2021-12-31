@@ -10,6 +10,8 @@ TagManager:
   - NPC
   - BoxLooting
   - SpawnLoot
+  - Container
+  - CraftTable
   layers:
   - Default
   - TransparentFX

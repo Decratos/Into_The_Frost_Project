@@ -3,31 +3,62 @@ using CodeMonkey.Utils;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using Sirenix.OdinInspector;
 
 public class UIInventory : MonoBehaviour
 {
-    private Inventory _inventory;
+    public Inventory _inventory;
+    public List<UIInventory> inheritedInventory;
     private Transform itemSlotContainer;
     public Transform itemSlotTemplate;
-    private bool inventoryIsOpen = true;
+    public bool inventoryIsOpen = false;
+    public bool isPlayerInventory = false;
+
+    public bool isPrimaryWindow = false;
 
     private void Start()
     {
         GestionDesScipt gestion = null;
-        //print(PlayerSingleton.playerInstance.gameObject);
-        MesFonctions.FindGestionDesScripts(PlayerSingleton.playerInstance.gameObject, out gestion);
-        gestion.uiInventory = this;
         itemSlotContainer = transform.Find("itemSlotContainer");
-        PlayerSingleton.playerInstance.GetComponent<InitiateInventory>().Initiate();
-        OpenHideInventory(true);
+
+        if(isPlayerInventory)
+        {
+            if(isPrimaryWindow)
+            {
+                MesFonctions.FindGestionDesScripts(PlayerSingleton.playerInstance.gameObject, out gestion);
+                gestion.uiInventory = this;
+                PlayerSingleton.playerInstance.GetComponent<InventoryManager>().Initiate();
+            }
+        }
+        if(inheritedInventory.Count > 0)
+        {
+            foreach (var inv in inheritedInventory)
+            {
+                inv._inventory = this._inventory;
+            }
+        }
+        gameObject.SetActive(false);
         //itemSlotTemplate = transform.Find("itemSlotTemplate");
+    }
+
+    [Button("SetPlayerInventaire")]
+    private void SetPlayerInventory()
+    {
+        foreach (var inv in inheritedInventory)
+        {
+            print("Inventaire défini");
+            inv._inventory = PlayerSingleton.playerInstance.GetComponent<Inventory_Debug>().inv;
+        }
     }
     public void SetInventory(Inventory inventory)
     {
         this._inventory = inventory;
         
         inventory.OnItemListChanged += Inventory_OnItemListChanged;
-        RefreshInventoryItems();
+        //RefreshInventoryItems();
     }
 
     private void Inventory_OnItemListChanged(object sender, System.EventArgs e)
@@ -109,6 +140,7 @@ public class UIInventory : MonoBehaviour
         }
         gameObject.SetActive(inventoryIsOpen);
         PlayerSingleton.playerInstance.GetComponentInChildren<CameraMouvement>().canLook = !inventoryIsOpen;
+        PlayerSingleton.playerInstance.GetComponent<CharacterController>().enabled = !inventoryIsOpen;
         RefreshInventoryItems();
         MouseCursorHiderShower.instance.ManageCursor(inventoryIsOpen);
     }

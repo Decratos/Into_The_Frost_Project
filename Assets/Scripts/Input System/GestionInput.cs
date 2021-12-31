@@ -17,39 +17,39 @@ public class GestionInput : MesFonctions
     void Awake()
     {
 
-        FindGestionDesScripts(this.gameObject, out ScriptGestion); // trouve le script gestion des scripts
+        FindGestionDesScripts(this.gameObject, out ScriptGestion);
        
     }
    
 
-    public void movement(InputAction.CallbackContext context) //lance le mouvement 
+    public void movement(InputAction.CallbackContext context)
     {
        
         
         
-        movementInput = context.ReadValue<Vector2>(); //récupére la valeur vecteur 2 des touches
-        ScriptGestion.LesMouvements.Mouvement(movementInput); // envois au scipt des mouvements les données necessaire
+        movementInput = context.ReadValue<Vector2>();
+        ScriptGestion.LesMouvements.Mouvement(movementInput);
 
     }
-    public void Saut(InputAction.CallbackContext context) // lance le saut
+    public void Saut(InputAction.CallbackContext context)
     {
         
-        if (context.started) // si le joueur appuie sur l'input
+        if (context.started)
         {
             
-            ScriptGestion.LesMouvements.Saut();  // envois au script l'instruction de sauter
+            ScriptGestion.LesMouvements.Saut(); 
 
         }
         
     }
 
-    public void Action(InputAction.CallbackContext context) // lance l'action
+    public void Action(InputAction.CallbackContext context)
     {
-        if (context.started) // si le joueur appuie sur l'input
+        if (context.started)
         {
-            if(ScriptGestion.PlayerConstruct.constructionMode)// si le joueur est en mode construction
+            if(ScriptGestion.PlayerConstruct.constructionMode)
             {
-                ScriptGestion.PlayerConstruct.Construct(); // envois au script l'instruction de construire
+                ScriptGestion.PlayerConstruct.Construct();
             }
             else
             {
@@ -59,25 +59,12 @@ public class GestionInput : MesFonctions
             
                 if (Physics.Raycast(ray, out hit, Distance)) // si le raycast touche
                 {
-                    if (hit.transform.tag=="Ressources")// si le joueur touche une ressources
+                    if (hit.transform.tag == "Construction")
                     {
-                        GetComponent<PlayerActions>().Collect(hit, ScriptGestion);
-                        //ScriptGestion.LaGestionDesRessources.AjouteAInventaire(hit.transform.gameObject);
                     }
-                    else if (hit.transform.tag == "Construction") // si le joueur touche une construction
+                    else if(hit.transform.tag == "RawRessources")
                     {
-
-                    }
-                    else if(hit.transform.tag == "RawRessources") // si le joueur touche ce truc
-                    {
-                        print("Commentaire à résoudre"); //mettre players action dans la gestion des scripts
-                        //Debug.Break();//à retirer une fois le commentaire résolue
-                        GetComponent<PlayerActions>().Gather(hit, ScriptGestion); // récupére le script Player action
-                    }
-                    else if(hit.transform.tag == "NPC")
-                    {
-                        print("WTF");
-                        //GetComponent<PlayerActions>().Attack(hit); // récupére le script Player action
+                        GetComponent<PlayerActions>().Gather(hit, ScriptGestion);
                     }
                     
                 }
@@ -93,52 +80,80 @@ public class GestionInput : MesFonctions
 
     }
 
-    public void SourisMouvement(InputAction.CallbackContext context) // Récupére les déplacements de souris
+    public void Use(InputAction.CallbackContext context)
+    {
+        if(context.started)
+        {
+            print("Using !");
+            RaycastHit hit; // créer une valeur raycast
+                Vector2 centerCamera = new Vector2(Camera.main.pixelWidth / 2, Camera.main.pixelHeight / 2); // centre la souris
+                Ray ray = Camera.main.ScreenPointToRay(centerCamera); // créer le ray 
+            
+                if (Physics.Raycast(ray, out hit, Distance)) // si le raycast touche
+                {
+                    if (hit.transform.tag=="Ressources")
+                    {
+                        GetComponent<PlayerActions>().Collect(hit, ScriptGestion);
+                        //ScriptGestion.LaGestionDesRessources.AjouteAInventaire(hit.transform.gameObject);
+                    }
+                    else if(hit.transform.tag == "Container" && !PlayerSingleton.playerInstance.GetComponent<InventoryManager>().mainInventory.inventoryIsOpen)
+                    {
+                        hit.transform.GetComponent<Container>().OpenHideContainer();
+                    }
+                    else if(hit.transform.tag == "CraftTable" && !PlayerSingleton.playerInstance.GetComponent<InventoryManager>().mainInventory.inventoryIsOpen)
+                    {
+                        hit.transform.GetComponent<CraftingTable>().OpenHideTableWindow();
+                    }
+                }
+        }
+    }
+
+    public void SourisMouvement(InputAction.CallbackContext context) 
     {
 
       
        
-        MouvementDeSouris = context.ReadValue<Vector2>();//lis la valeur reçue.
+        MouvementDeSouris = context.ReadValue<Vector2>();
         //faire un debug du raycast de la souris
-        if(Time.timeScale != 0)//si le jeu n'est pas en pause
-            ScriptGestion.MouvementDeCamera.ReceptionDonnerInput(MouvementDeSouris); // lance le mouvement de caméras
+        if(Time.timeScale != 0)
+            ScriptGestion.MouvementDeCamera.ReceptionDonnerInput(MouvementDeSouris);
 
     }
     
-    public void Sprint(InputAction.CallbackContext context) // lance le sprint
+    public void Sprint(InputAction.CallbackContext context) 
     {
         
-        if (context.started) // si le joueur appuie sur l'input
+        if (context.started)
         {
-            ScriptGestion.LesMouvements.GoSprint(); // envois l'instruction au script de courir
+            ScriptGestion.LesMouvements.GoSprint();
         }
-        if (context.canceled) // si le joueur n'appuie plus sur l'input
+        if (context.canceled)
         {
-            ScriptGestion.LesMouvements.Walk(); //envois l'instruction au script de marcher
+            ScriptGestion.LesMouvements.Walk();
         }
        
 
     }
 
-    public void BuildMode(InputAction.CallbackContext context) // lance le mode de construction
+    public void BuildMode(InputAction.CallbackContext context)
     {
-        if (context.started) // si le joueur appuie sur l'input
+        if (context.started)
         {
-            ScriptGestion.PlayerConstruct.constructionMode = !ScriptGestion.PlayerConstruct.constructionMode; // dis au script qu'il doit inverser sa valeur booléene
-            ScriptGestion.PlayerConstruct.ChangeBuildMode(ScriptGestion.PlayerConstruct.constructionMode); // envois au script l'instrcution quand à la construction
+            ScriptGestion.PlayerConstruct.constructionMode = !ScriptGestion.PlayerConstruct.constructionMode;
+            ScriptGestion.PlayerConstruct.ChangeBuildMode(ScriptGestion.PlayerConstruct.constructionMode);
         }
     }
 
-    public void InventoryMode(InputAction.CallbackContext context) // affiche l'inventaire
+    public void InventoryMode(InputAction.CallbackContext context)
     {
-        if (context.started) // si le joueur press le bouton
+        if (context.started && !PlayerSingleton.playerInstance.GetComponent<InventoryManager>().CheckInventoryOpen())
         {
-            ScriptGestion.uiInventory.OpenHideInventory(false); //a théo
-            CraftUI.instance.OpenHideCraftUI();
+            ScriptGestion.uiInventory.OpenHideInventory(true);
+            CraftUI.instance.OpenHideCraftUI(0);
         }
     }
 
-    public void SwitchStructure(InputAction.CallbackContext context) // permet de switch entre les différentes structures
+    public void SwitchStructure(InputAction.CallbackContext context)
     {
         if (context.started)
         {

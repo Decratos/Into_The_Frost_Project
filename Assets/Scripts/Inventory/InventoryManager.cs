@@ -2,8 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InitiateInventory : MonoBehaviour
+public class InventoryManager : MonoBehaviour
 {
+    public Transform ContainerWindow;
+    public Transform PlayerInventoryContainerWindow;
+    private bool hasInventoryOpen = false;
+    public UIInventory mainInventory;
     public void Initiate()
     {
         GestionDesScipt gestion;
@@ -13,8 +17,13 @@ public class InitiateInventory : MonoBehaviour
         gestion.uiInventory.SetInventory(GetComponent<GestionDesScipt>().Inventory);
     }
 
-    public void Start()
+    public bool CheckInventoryOpen()
     {
+        return hasInventoryOpen;
+    }
+    public void SetInventoryOpen(bool newBool)
+    {
+        hasInventoryOpen = newBool;
     }
 
 }
