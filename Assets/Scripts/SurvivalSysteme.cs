@@ -57,6 +57,8 @@ public class SurvivalSysteme : MesFonctions
     int IndexDataVie = 0;
     InfoExelvetements[] LesVetementsQueJePorte;
     private Temperature TemperatureExt;
+    LightingPreset LP;
+    MeteoManager MM;
     #endregion
     private void Start()
     {
@@ -97,10 +99,10 @@ public class SurvivalSysteme : MesFonctions
 
     float calculPerteChaleur (StateForSurvival MonState)
     {
-
-        //= (MonState.PerteByPourcentage.Evaluate(%température min / max)*(PerteByFrame- ResistanceFroidsTotal);
-        //MonState.ActualValue = MonState.PerteByPourcentage.Evaluate();// modifier le script temperature
-        // me faut 
+        //MonState.ActualValue =;
+        LightingPreset LP = MeteoManagerScript().GetMyPreset();
+        MeteoManager MM = MeteoManagerScript();
+        
 
         return 0;
     }
@@ -133,6 +135,8 @@ public class SurvivalSysteme : MesFonctions
 
     void ToutSetForGood() // set les datas
     {
+        MM = MeteoManagerScript();
+        LP = MeteoManagerScript().GetMyPreset(); 
         for (int i = 0; i < LesDataPourSurvie.Count; i++)
         {
             
@@ -145,8 +149,73 @@ public class SurvivalSysteme : MesFonctions
         }
         LesVetementsQueJePorte = new InfoExelvetements[NombreDemplacementPourVetement]; // A voir avec théo
         print("Commentaire à résoudre");
+
+
+
     }
-    public void ChangementDuneDataDeSurvie(float value, StateForSurvival.PointDeSurvie ToModifiate) 
+   
+    void RecupereInfoTemperature() 
+    {
+    
+        // récupérer le point le plus haut de la courbe
+        // récupérer le point le plus bas de la curve
+        // récupérer la valeur la plus basse
+        // récupérer la valeur la plus haute
+
+
+    }
+
+
+    float checkLaRange(int indexToLook) 
+    {
+        if (LesDataPourSurvie[indexToLook].ActualValue< LesDataPourSurvie[indexToLook].Range.x)
+        {
+            return LesDataPourSurvie[indexToLook].Range.x;
+        }
+        else if (LesDataPourSurvie[indexToLook].ActualValue > LesDataPourSurvie[indexToLook].Range.y)
+        {
+            return LesDataPourSurvie[indexToLook].Range.y;
+        }
+        else 
+        {
+            return LesDataPourSurvie[indexToLook].ActualValue;
+        }
+
+    }
+
+   
+    private void UpdateUI()
+    {
+        Canvas myCanva = CanvasReference._canvasReference.GetCanva();
+        myCanva.transform.Find("HungerBar").GetComponent<Slider>().value =
+            LesDataPourSurvie[0].ActualValue / LesDataPourSurvie[0].Range.y ;
+        
+        myCanva.transform.Find("ThirstBar").GetComponent<Slider>().value =
+            LesDataPourSurvie[1].ActualValue / LesDataPourSurvie[1].Range.y ;
+        
+        myCanva.transform.Find("HealthBar").GetComponent<Slider>().value =
+            LesDataPourSurvie[2].ActualValue / LesDataPourSurvie[2].Range.y;
+        
+        myCanva.transform.Find("TempBar").GetComponent<Slider>().value =
+            LesDataPourSurvie[3].ActualValue / LesDataPourSurvie[3].Range.y;
+    }
+
+    public void GetFood(Vector4 value)
+    {
+        for (int i = 0; i < 4; i++)
+        {
+
+            ChangementDuneDataDeSurvie(value[i], i);
+
+
+        }
+
+
+
+    }
+
+    #region method accessible à tous
+    public void ChangementDuneDataDeSurvie(float value, StateForSurvival.PointDeSurvie ToModifiate)
     {
         foreach (StateForSurvival item in LesDataPourSurvie)
         {
@@ -166,106 +235,59 @@ public class SurvivalSysteme : MesFonctions
             {
                 if (ToModifiate == 3)
                 {
-                    if (item.ActualValue>37)
+                    if (item.ActualValue > 37)
                     {
                         item.ActualValue += value * MultiplayerBehind37;
                     }
                 }
-                else 
+                else
                 {
                     item.ActualValue += value;
                 }
-               
+
                 item.ActualValue = checkLaRange(item.Index);
             }
         }
 
     }
-    float checkLaRange(int indexToLook) 
-    {
-        if (LesDataPourSurvie[indexToLook].ActualValue< LesDataPourSurvie[indexToLook].Range.x)
-        {
-            return LesDataPourSurvie[indexToLook].Range.x;
-        }
-        else if (LesDataPourSurvie[indexToLook].ActualValue > LesDataPourSurvie[indexToLook].Range.y)
-        {
-            return LesDataPourSurvie[indexToLook].Range.y;
-        }
-        else 
-        {
-            return LesDataPourSurvie[indexToLook].ActualValue;
-        }
-
-    }
-
-    public void GetFood(Vector4 value) 
-    {
-        for (int i = 0; i < 4; i++)
-        {
-            
-            ChangementDuneDataDeSurvie(value[i], i);
-
-
-        }
-        
-
-    
-    }
-    private void UpdateUI()
-    {
-        Canvas myCanva = CanvasReference._canvasReference.GetCanva();
-        myCanva.transform.Find("HungerBar").GetComponent<Slider>().value =
-            LesDataPourSurvie[0].ActualValue / LesDataPourSurvie[0].Range.y ;
-        
-        myCanva.transform.Find("ThirstBar").GetComponent<Slider>().value =
-            LesDataPourSurvie[1].ActualValue / LesDataPourSurvie[1].Range.y ;
-        
-        myCanva.transform.Find("HealthBar").GetComponent<Slider>().value =
-            LesDataPourSurvie[2].ActualValue / LesDataPourSurvie[2].Range.y;
-        
-        myCanva.transform.Find("TempBar").GetComponent<Slider>().value =
-            LesDataPourSurvie[3].ActualValue / LesDataPourSurvie[3].Range.y;
-    }
-
-    public void SetVetements(InfoExelvetements Info,int IndexEmplacement)
+    public void SetVetements(InfoExelvetements Info, int IndexEmplacement)
     {
         if (IndexEmplacement > NombreDemplacementPourVetement || IndexEmplacement < 0) // viens de retirer un -1
         {
             //print("L'emplacement Demander n'existe pas");
         }
-        else 
+        else
         {
             if (LesVetementsQueJePorte[IndexEmplacement].MaCategorie == Info.MaCategorie || !LesVetementsQueJePorte[IndexEmplacement].IsWeared)
             {
 
-                ResistanceDegatsTotal-= LesVetementsQueJePorte[IndexEmplacement].DegatResistance;
-                ResistanceFroidsTotal-= LesVetementsQueJePorte[IndexEmplacement].ChaleurResistance;
+                ResistanceDegatsTotal -= LesVetementsQueJePorte[IndexEmplacement].DegatResistance;
+                ResistanceFroidsTotal -= LesVetementsQueJePorte[IndexEmplacement].ChaleurResistance;
                 ResistanceDegatsTotal += Info.DegatResistance;
                 ResistanceFroidsTotal += Info.ChaleurResistance;
                 LesVetementsQueJePorte[IndexEmplacement] = Info;
             }
         }
-        
+
     }
-   
-    
-    public void TakeDamage(float dammageBrut,TypeOfDammage CeQuiMeFaitMal) 
+    public void TakeDamage(float dammageBrut, TypeOfDammage CeQuiMeFaitMal)
     {
 
         if (TypeOfDammage.Coup == CeQuiMeFaitMal)
         {
 
         }
-        else if( TypeOfDammage.Balle == CeQuiMeFaitMal )
+        else if (TypeOfDammage.Balle == CeQuiMeFaitMal)
         {
-            LesDataPourSurvie[IndexDataVie].ActualValue -= dammageBrut; 
+            LesDataPourSurvie[IndexDataVie].ActualValue -= dammageBrut;
         }
-        else 
+        else
         {
             //degat par metre de chute
         }
 
     }
+    #endregion
 }
 
 //state survival

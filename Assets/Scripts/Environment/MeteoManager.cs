@@ -190,4 +190,11 @@ public class MeteoManager : MonoBehaviour
             actualWeatherVFXused = null;
         }
     }
+
+    //Ajouter par rémi
+    public LightingPreset GetMyPreset() // permet de récupérer le lightning preset
+    {
+
+        return myPreset;
+    }
 }
