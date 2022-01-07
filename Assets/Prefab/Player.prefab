@@ -470,28 +470,95 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LesDataPourSurvie:
   - SurvivalData: 0
-    applyDecroissement: 1
+    applyDecroissement: 0
     Index: 0
     Range: {x: 0, y: 100}
     ActualValue: 100
     DecroissementVieUnderMinima: 5
-    PerteMaxByFrame: 0
+    PerteMaxByFrame: 0.04
     PerteByPourcentage:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
   - SurvivalData: 1
-    applyDecroissement: 1
+    applyDecroissement: 0
     Index: 0
     Range: {x: 0, y: 100}
     ActualValue: 100
     DecroissementVieUnderMinima: 7
-    PerteMaxByFrame: 0
+    PerteMaxByFrame: 0.06
     PerteByPourcentage:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  - SurvivalData: 3
+    applyDecroissement: 0
+    Index: 0
+    Range: {x: 23, y: 44}
+    ActualValue: 37.5
+    DecroissementVieUnderMinima: 1
+    PerteMaxByFrame: 0.001
+    PerteByPourcentage:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -504,20 +571,25 @@ MonoBehaviour:
     PerteMaxByFrame: 0
     PerteByPourcentage:
       serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-  - SurvivalData: 3
-    applyDecroissement: 1
-    Index: 0
-    Range: {x: 23, y: 44}
-    ActualValue: 37.5
-    DecroissementVieUnderMinima: 5
-    PerteMaxByFrame: 0
-    PerteByPourcentage:
-      serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -549,7 +621,6 @@ MonoBehaviour:
   ResistanceFroidsTotal: 0
   ResistanceDegatsTotal: 0
   NombreDemplacementPourVetement: 0
-  TempsCalculSystem: 1
   TemperatureBeginLoseLife: 28
   MultiplayerBehind37: 0.2
 --- !u!114 &3397247159004486040
@@ -674,6 +745,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ContainerWindow: {fileID: 0}
   PlayerInventoryContainerWindow: {fileID: 0}
+  mainInventory: {fileID: 0}
 --- !u!114 &1326747683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -727,7 +799,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1123951329656893961}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c772141f19730aa48afecc637b68b26e, type: 3}
   m_Name: 

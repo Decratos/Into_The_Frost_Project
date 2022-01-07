@@ -51,17 +51,31 @@ public class SurvivalSysteme : MesFonctions
     #endregion
 
     //private
-    [SerializeField] float TempsCalculSystem = 1;
+   
     [SerializeField] float TemperatureBeginLoseLife = 28;
     [SerializeField] float MultiplayerBehind37 = 0.2f;
     int IndexDataVie = 0;
     InfoExelvetements[] LesVetementsQueJePorte;
     private Temperature TemperatureExt;
+    
     #endregion
     private void Start()
     {
         TemperatureExt = temperatureScript();
         ToutSetForGood();// lance le set 
+    }
+    void ToutSetForGood() // set les datas
+    {
+        for (int i = 0; i < LesDataPourSurvie.Count; i++)
+        {
+            LesDataPourSurvie[i].Index = i;//met l'index
+            if (LesDataPourSurvie[i].SurvivalData == StateForSurvival.PointDeSurvie.Vie)
+            {
+                IndexDataVie = i; // enregistre l'index de la vie
+            }
+        }
+        LesVetementsQueJePorte = new InfoExelvetements[NombreDemplacementPourVetement]; // A voir avec théo
+        print("Commentaire à résoudre");
     }
     void Update()
     {
@@ -69,84 +83,120 @@ public class SurvivalSysteme : MesFonctions
     }
     void baisseLesDatas()// fais baisser les datas
     {
-        for (int i = 0; i < LesDataPourSurvie.Count; i++)
+        for (int i = 0; i < LesDataPourSurvie.Count; i++)// boucle pour chaque datas
         {
             
             LosingLifeByData(LesDataPourSurvie[i]);//envois la perte de vie
-            if (i!=IndexDataVie)
+            if (i!=IndexDataVie)// si je ne suis pas dans la vie
             {
-                if ((LesDataPourSurvie[i].SurvivalData == StateForSurvival.PointDeSurvie.Soif || LesDataPourSurvie[i].SurvivalData == StateForSurvival.PointDeSurvie.Hunger) && LesDataPourSurvie[i].ActualValue > 0)
+                if ((LesDataPourSurvie[i].SurvivalData == StateForSurvival.PointDeSurvie.Soif || LesDataPourSurvie[i].SurvivalData == StateForSurvival.PointDeSurvie.Hunger) && LesDataPourSurvie[i].ActualValue > 0) //si les datas sont supérieur a 0
                 {
-                    LesDataPourSurvie[i].ActualValue = CalculPerteFaimEtSoi(LesDataPourSurvie[i]);
+                    LesDataPourSurvie[i].ActualValue -= CalculPerteFaimEtSoi(LesDataPourSurvie[i])*Time.deltaTime; // baisse la faim et la soif
                 }
-                else
+                else // si i= heat
                 {
-                    LesDataPourSurvie[i].ActualValue = calculPerteChaleur(LesDataPourSurvie[i]);
+                    if (LesDataPourSurvie[i].ActualValue>37)//si j'ai une température supérieur à la normal
+                    {
+                        LesDataPourSurvie[i].ActualValue -= calculPerteChaleur(LesDataPourSurvie[i]) * Time.deltaTime * MultiplayerBehind37; //calcul 
+                    }
+                    else 
+                    {
+                        LesDataPourSurvie[i].ActualValue -= calculPerteChaleur(LesDataPourSurvie[i]) * Time.deltaTime; //calcul
+                    }
+                    
                 }
             }  
-            LesDataPourSurvie[i].ActualValue = checkLaRange(i);
+            LesDataPourSurvie[i].ActualValue = checkLaRange(i);// vérifie qu'il n'y a pas de dépassement de valeur
         }// selon les datas de survie
     }
         #region calcul perte des datas
     float CalculPerteFaimEtSoi(StateForSurvival MonState) 
     {
         
-        MonState.ActualValue -= MonState.PerteByPourcentage.Evaluate(MonState.ActualValue/ MonState.Range.y) * MonState.PerteMaxByFrame;
-        return 0;
+        return MonState.PerteByPourcentage.Evaluate(MonState.ActualValue/ MonState.Range.y) * MonState.PerteMaxByFrame;
+        //return 0; 
     }
-
     float calculPerteChaleur (StateForSurvival MonState)
     {
+       
+        return ((MonState.ActualValue - TemperatureExt.temperature) - ResistanceFroidsTotal) *
+             MonState.PerteByPourcentage.Evaluate((MonState.Range.y - MonState.ActualValue) / (MonState.Range.y - MonState.Range.x)) * MonState.PerteMaxByFrame;
 
-        //= (MonState.PerteByPourcentage.Evaluate(%température min / max)*(PerteByFrame- ResistanceFroidsTotal);
-        //MonState.ActualValue = MonState.PerteByPourcentage.Evaluate();// modifier le script temperature
-        // me faut 
 
-        return 0;
     }
         #endregion
         #region calcul de perte de vie
     void LosingLifeByData(StateForSurvival MonState) 
     {
-        if (((MonState.SurvivalData == StateForSurvival.PointDeSurvie.Soif || MonState.SurvivalData == StateForSurvival.PointDeSurvie.Hunger) && MonState.ActualValue <= TemperatureBeginLoseLife)
+        if (((MonState.SurvivalData == StateForSurvival.PointDeSurvie.Soif || MonState.SurvivalData == StateForSurvival.PointDeSurvie.Hunger) && MonState.ActualValue <= MonState.Range.x)
                    || (MonState.SurvivalData == StateForSurvival.PointDeSurvie.Heat && MonState.ActualValue <= TemperatureBeginLoseLife))// si les states qui font perdre de la vue ont leur valeur
         {
             if (MonState.SurvivalData != StateForSurvival.PointDeSurvie.Heat)
             {
-                MonState.ActualValue -= MonState.DecroissementVieUnderMinima * Time.deltaTime; // fais baisser la vie selon soif/faim  
+                LesDataPourSurvie[IndexDataVie].ActualValue -= MonState.DecroissementVieUnderMinima * Time.deltaTime; // fais baisser la vie selon soif/faim  
             }
             else
             {
-                MonState.ActualValue -= calculPerteLifeHeat(MonState); // fais baisser selon la chaleur
+                LesDataPourSurvie[IndexDataVie].ActualValue -= calculPerteLifeHeat(MonState) * Time.deltaTime; // fais baisser selon la chaleur
             }
             LesDataPourSurvie[IndexDataVie].ActualValue = checkLaRange(IndexDataVie);// vérifie que la valeur est bien dans la range
         }
 
     }
     float calculPerteLifeHeat(StateForSurvival MonState) 
-   {       
+    {       
         return MonState.DecroissementVieUnderMinima * 
             PerteChaleur.Evaluate( (TemperatureBeginLoseLife - MonState.ActualValue) / 
                 (TemperatureBeginLoseLife - MonState.Range.x)); 
-   }
-        #endregion
-
-    void ToutSetForGood() // set les datas
-    {
-        for (int i = 0; i < LesDataPourSurvie.Count; i++)
-        {
-            
-            LesDataPourSurvie[i].Index = i;//met l'index
-            if (LesDataPourSurvie[i].SurvivalData == StateForSurvival.PointDeSurvie.Vie)
-            {
-                IndexDataVie = i; // enregistre l'index de la vie
-            }
-            
-        }
-        LesVetementsQueJePorte = new InfoExelvetements[NombreDemplacementPourVetement]; // A voir avec théo
-        print("Commentaire à résoudre");
     }
-    public void ChangementDuneDataDeSurvie(float value, StateForSurvival.PointDeSurvie ToModifiate) 
+        #endregion
+    float checkLaRange(int indexToLook) 
+    {
+        if (LesDataPourSurvie[indexToLook].ActualValue< LesDataPourSurvie[indexToLook].Range.x)
+        {
+            return LesDataPourSurvie[indexToLook].Range.x;
+        }
+        else if (LesDataPourSurvie[indexToLook].ActualValue > LesDataPourSurvie[indexToLook].Range.y)
+        {
+            return LesDataPourSurvie[indexToLook].Range.y;
+        }
+        else 
+        {
+            return LesDataPourSurvie[indexToLook].ActualValue;
+        }
+
+    }
+    private void UpdateUI()
+    {
+        Canvas myCanva = CanvasReference._canvasReference.GetCanva();
+        myCanva.transform.Find("HungerBar").GetComponent<Slider>().value =
+            LesDataPourSurvie[0].ActualValue / LesDataPourSurvie[0].Range.y ;
+        
+        myCanva.transform.Find("ThirstBar").GetComponent<Slider>().value =
+            LesDataPourSurvie[1].ActualValue / LesDataPourSurvie[1].Range.y ;
+        
+        myCanva.transform.Find("HealthBar").GetComponent<Slider>().value =
+            LesDataPourSurvie[2].ActualValue / LesDataPourSurvie[2].Range.y;
+        
+        myCanva.transform.Find("TempBar").GetComponent<Slider>().value =
+            LesDataPourSurvie[3].ActualValue / LesDataPourSurvie[3].Range.y;
+    }
+    public void GetFood(Vector4 value)
+    {
+        for (int i = 0; i < 4; i++)
+        {
+
+            ChangementDuneDataDeSurvie(value[i], i);
+
+
+        }
+
+
+
+    }
+
+    #region method accessible à tous
+    public void ChangementDuneDataDeSurvie(float value, StateForSurvival.PointDeSurvie ToModifiate)
     {
         foreach (StateForSurvival item in LesDataPourSurvie)
         {
@@ -166,107 +216,81 @@ public class SurvivalSysteme : MesFonctions
             {
                 if (ToModifiate == 3)
                 {
-                    if (item.ActualValue>37)
+                    if (item.ActualValue > 37)
                     {
                         item.ActualValue += value * MultiplayerBehind37;
                     }
                 }
-                else 
+                else
                 {
                     item.ActualValue += value;
                 }
-               
+
                 item.ActualValue = checkLaRange(item.Index);
             }
         }
 
     }
-    float checkLaRange(int indexToLook) 
-    {
-        if (LesDataPourSurvie[indexToLook].ActualValue< LesDataPourSurvie[indexToLook].Range.x)
-        {
-            return LesDataPourSurvie[indexToLook].Range.x;
-        }
-        else if (LesDataPourSurvie[indexToLook].ActualValue > LesDataPourSurvie[indexToLook].Range.y)
-        {
-            return LesDataPourSurvie[indexToLook].Range.y;
-        }
-        else 
-        {
-            return LesDataPourSurvie[indexToLook].ActualValue;
-        }
-
-    }
-
-    public void GetFood(Vector4 value) 
-    {
-        for (int i = 0; i < 4; i++)
-        {
-            
-            ChangementDuneDataDeSurvie(value[i], i);
-
-
-        }
-        
-
-    
-    }
-    private void UpdateUI()
-    {
-        Canvas myCanva = CanvasReference._canvasReference.GetCanva();
-        myCanva.transform.Find("HungerBar").GetComponent<Slider>().value =
-            LesDataPourSurvie[0].ActualValue / LesDataPourSurvie[0].Range.y ;
-        
-        myCanva.transform.Find("ThirstBar").GetComponent<Slider>().value =
-            LesDataPourSurvie[1].ActualValue / LesDataPourSurvie[1].Range.y ;
-        
-        myCanva.transform.Find("HealthBar").GetComponent<Slider>().value =
-            LesDataPourSurvie[2].ActualValue / LesDataPourSurvie[2].Range.y;
-        
-        myCanva.transform.Find("TempBar").GetComponent<Slider>().value =
-            LesDataPourSurvie[3].ActualValue / LesDataPourSurvie[3].Range.y;
-    }
-
-    public void SetVetements(InfoExelvetements Info,int IndexEmplacement)
+    public void SetVetements(InfoExelvetements Info, int IndexEmplacement)
     {
         if (IndexEmplacement > NombreDemplacementPourVetement || IndexEmplacement < 0) // viens de retirer un -1
         {
             //print("L'emplacement Demander n'existe pas");
         }
-        else 
+        else
         {
             if (LesVetementsQueJePorte[IndexEmplacement].MaCategorie == Info.MaCategorie || !LesVetementsQueJePorte[IndexEmplacement].IsWeared)
             {
 
-                ResistanceDegatsTotal-= LesVetementsQueJePorte[IndexEmplacement].DegatResistance;
-                ResistanceFroidsTotal-= LesVetementsQueJePorte[IndexEmplacement].ChaleurResistance;
+                ResistanceDegatsTotal -= LesVetementsQueJePorte[IndexEmplacement].DegatResistance;
+                ResistanceFroidsTotal -= LesVetementsQueJePorte[IndexEmplacement].ChaleurResistance;
                 ResistanceDegatsTotal += Info.DegatResistance;
                 ResistanceFroidsTotal += Info.ChaleurResistance;
                 LesVetementsQueJePorte[IndexEmplacement] = Info;
             }
         }
-        
+
     }
-   
-    
-    public void TakeDamage(float dammageBrut,TypeOfDammage CeQuiMeFaitMal) 
+    public void TakeDamage(float dammageBrut, TypeOfDammage CeQuiMeFaitMal)
     {
 
         if (TypeOfDammage.Coup == CeQuiMeFaitMal)
         {
-
+            print("A remplir");
         }
-        else if( TypeOfDammage.Balle == CeQuiMeFaitMal )
+        else if (TypeOfDammage.Balle == CeQuiMeFaitMal)
         {
-            LesDataPourSurvie[IndexDataVie].ActualValue -= dammageBrut; 
+            LesDataPourSurvie[IndexDataVie].ActualValue -= dammageBrut;
         }
-        else 
+        else
         {
             //degat par metre de chute
+            print("A remplir");
         }
 
     }
+    #endregion
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //state survival
 //state surviva
