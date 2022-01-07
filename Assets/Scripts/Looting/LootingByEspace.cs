@@ -129,7 +129,7 @@ public class LootingByEspace : MesFonctions
         int IDObjectChoose=0; 
         float AllChances=0;
         float[,] arrayChanceTrier = new float[lesLootPossible.Length, 3]; // [Le nombre d'array, Le nombre qu'ils contiennent]
-        int chosenOne;
+        
 
         foreach (loot item in lesLootPossible) 
         {

@@ -5,7 +5,7 @@ public class SourceDeChaleur : MonoBehaviour
     
     public float Decalage;
     public float TempsCalculSysteme;
-    public bool DoByUpdate;
+    
     [SerializeField] Vector2 Values;
     bool playerInZone = false;
     float tailleCollider;
@@ -22,35 +22,15 @@ public class SourceDeChaleur : MonoBehaviour
     {
         if (playerInZone)
         {
-            if (DoByUpdate)
-            {
-                LaGestion.SurvieScript.ChangementDuneDataDeSurvie(calcul() * Time.deltaTime, 3);
-                if (once)
-                {
-                    once = false;
-                }
-            }
-            else if (!once )
-            {
-                once = true;
-                AugmenteChaleur();
-            }  
             
+                LaGestion.SurvieScript.ChangementDuneDataDeSurvie(calcul() * Time.deltaTime,StateForSurvival.PointDeSurvie.Heat);
+                
         }
        
         
     }
 
-    void AugmenteChaleur() 
-    {
-        if (playerInZone)
-        {
-            LaGestion.SurvieScript.ChangementDuneDataDeSurvie(calcul() * Time.deltaTime, 3);
-            Invoke("AugmenteChaleur",TempsCalculSysteme);
-        }
-       
-
-    }
+    
 
     private void OnTriggerEnter(Collider other)
     {
