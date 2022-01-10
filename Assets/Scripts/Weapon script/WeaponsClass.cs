@@ -22,7 +22,7 @@ public class WeaponsClass : MonoBehaviour
 
     public int reserve;
     public int reloadSpeed;
-    public virtual void Shoot(WeaponsClass myWeapon)
+    public virtual void Shoot(WeaponsClass myWeapon)// Lorsque le joueur tir
     {
         if(rangedWeapon && myWeapon.actualAttackRate <= 0)
         {
@@ -50,7 +50,7 @@ public class WeaponsClass : MonoBehaviour
         }
     }
 
-    public virtual void Reload(WeaponsClass myWeapon)
+    public virtual void Reload(WeaponsClass myWeapon)// lorsque le joueur recharge
     {
         if(myWeapon.reserve > myWeapon.maxAmmo - myWeapon.ammo)
         {

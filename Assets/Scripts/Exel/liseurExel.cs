@@ -1139,8 +1139,6 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
 
 
     } // trouve un objet par character
-
-
     public bool IsItInThisPage(PageExel.TypeDePageExel mon_type, int ID) 
     {
         //print("IsItInPage");

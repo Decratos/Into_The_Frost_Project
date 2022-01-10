@@ -14,7 +14,7 @@ public class Inventory
         itemList = new List<ItemClass>();
     }
 
-    public void AddItem(ItemClass item)
+    public void AddItem(ItemClass item) //Ajoute un item à l'inventaire
     {
         ItemClass newItem = new ItemClass();
         InfoGlobalExel inf = new InfoGlobalExel();
@@ -49,7 +49,7 @@ public class Inventory
         OnItemListChanged?.Invoke(this,EventArgs.Empty);
     }
 
-    public void RemoveItem(ItemClass item)
+    public void RemoveItem(ItemClass item)// Supprime un item de l'inventaire
     {
         ItemClass newItem = new ItemClass();
         InfoGlobalExel inf = new InfoGlobalExel();
@@ -83,23 +83,23 @@ public class Inventory
         OnItemListChanged?.Invoke(this,EventArgs.Empty);
     }
 
-    public void TransferItem(Inventory newInventory, ItemClass item)
+    public void TransferItem(Inventory newInventory, ItemClass item)// Transfert un item
     {
         newInventory.AddItem(item);
         this.RemoveItem(item);
     }
 
-    public List<ItemClass> GetItemList()
+    public List<ItemClass> GetItemList() //permet de récuppérer la liste
     {
         return itemList;
     }
 
-    public void UseItem(ItemClass item)
+    public void UseItem(ItemClass item) //
     {
         ItemsActions.itemsActionsInstance.ItemAction(item.itemName, item);
     }
 
-    public int CheckItemOnList(ItemClass item)
+    public int CheckItemOnList(ItemClass item)// vérifie le nombre existant
     {
         int amount = 0;
         foreach (var items in itemList)

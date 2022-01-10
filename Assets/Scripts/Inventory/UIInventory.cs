@@ -45,7 +45,7 @@ public class UIInventory : MonoBehaviour
     }
 
     [Button("SetPlayerInventaire")]
-    private void SetPlayerInventory()
+    private void SetPlayerInventory()// set l'inventaire du joueur
     {
         foreach (var inv in inheritedInventory)
         {
@@ -53,7 +53,7 @@ public class UIInventory : MonoBehaviour
             inv._inventory = PlayerSingleton.playerInstance.GetComponent<Inventory_Debug>().inv;
         }
     }
-    public void SetInventory(Inventory inventory)
+    public void SetInventory(Inventory inventory)// set l'inventaire
     {
         this._inventory = inventory;
         
@@ -66,7 +66,7 @@ public class UIInventory : MonoBehaviour
         RefreshInventoryItems();
     }
 
-    public void RefreshInventoryItems()
+    public void RefreshInventoryItems() //refresh l'inventaire
     {
         if (inventoryIsOpen)
         {
@@ -120,10 +120,10 @@ public class UIInventory : MonoBehaviour
         
     }
     
-    public void RemoveClick()
+    public void RemoveClick()//?
     {}
 
-    public void OpenHideInventory(bool onStart)
+    public void OpenHideInventory(bool onStart)// ouvre ou ferme l'inventaire
     {
         inventoryIsOpen = !inventoryIsOpen;
         if(!onStart)

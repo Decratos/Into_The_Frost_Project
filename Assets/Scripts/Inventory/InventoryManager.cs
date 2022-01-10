@@ -17,11 +17,11 @@ public class InventoryManager : MonoBehaviour
         gestion.uiInventory.SetInventory(GetComponent<GestionDesScipt>().Inventory);
     }
 
-    public bool CheckInventoryOpen()
+    public bool CheckInventoryOpen()// permet de savoir si l'inventaire est ouvert
     {
         return hasInventoryOpen;
     }
-    public void SetInventoryOpen(bool newBool)
+    public void SetInventoryOpen(bool newBool) // set l'inventaire en open/non
     {
         hasInventoryOpen = newBool;
     }

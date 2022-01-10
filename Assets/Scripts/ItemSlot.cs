@@ -31,7 +31,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler
     public class OnItemDroppedEventArgs : EventArgs {
         public ItemClass item;
     }
-    public void OnDrop(PointerEventData eventData)
+    public void OnDrop(PointerEventData eventData) // lache l'item
     {
         ItemClass item = eventData.pointerDrag.GetComponentInChildren<ItemInfo>().item;
         OnItemDropped?.Invoke(this, new OnItemDroppedEventArgs {item = item});

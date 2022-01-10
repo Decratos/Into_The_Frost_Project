@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerActions : MonoBehaviour
 {
-    public void Gather(RaycastHit hit, GestionDesScipt ScriptGestion)
+    public void Gather(RaycastHit hit, GestionDesScipt ScriptGestion) // récolte
     {
         if(GetComponentInChildren<WeaponSystem>().actualWeaponInHands)
         {
@@ -33,7 +33,7 @@ public class PlayerActions : MonoBehaviour
         }
     }
 
-    public void Collect(RaycastHit hit, GestionDesScipt ScriptGestion)
+    public void Collect(RaycastHit hit, GestionDesScipt ScriptGestion)//récupére l'objet
     {
        
             InfoGlobalExel objectInfo = new InfoGlobalExel();
@@ -46,7 +46,7 @@ public class PlayerActions : MonoBehaviour
             GetComponent<Animator>().Play("TakeItem");
     }
 
-    public void Attack()
+    public void Attack()// il me semble qu'il y'a un deuxiéme void attack
     {
         if(GetComponentInChildren<WeaponSystem>().actualWeaponInHands)
         {

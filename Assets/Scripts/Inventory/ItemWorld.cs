@@ -6,7 +6,7 @@ using CodeMonkey.Utils;
 
 public class ItemWorld : MonoBehaviour
 {
-    public static ItemWorld SpawnItemWorld(ItemClass item, Vector3 position)
+    public static ItemWorld SpawnItemWorld(ItemClass item, Vector3 position) //Spawn un item
     {
         Transform itemToInst = Instantiate(ItemAssets.ItemAssetsInstance.itemWorldPrefab, position, Quaternion.identity);
         itemToInst.name = item.itemName;
@@ -23,20 +23,20 @@ public class ItemWorld : MonoBehaviour
     
     public void SetItem(ItemClass item)
     {
-        this.item = item;
+        this.item = item; 
     }
 
-    public ItemClass GetItem()
+    public ItemClass GetItem() //récupére l'item
     {
         return item;
     }
 
-    public void DestroySelf()
+    public void DestroySelf() // se détruit sois même
     {
         Destroy(gameObject);
     }
 
-    public static ItemWorld DropItem(Vector3 DropPosition,ItemClass item)
+    public static ItemWorld DropItem(Vector3 DropPosition,ItemClass item) // met l'item dans le monde 
     {
         Vector3 randomDir = UtilsClass.GetRandomDir();
         ItemWorld ItemWorld = SpawnItemWorld(item, DropPosition + (randomDir + Vector3.up) * 5f );

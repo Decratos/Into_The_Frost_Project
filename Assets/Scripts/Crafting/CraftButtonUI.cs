@@ -8,7 +8,7 @@ public class CraftButtonUI : MonoBehaviour
     InfoGlobalExel globalInfo;
     GestionDesScipt gestion;
     // Start is called before the first frame update
-    public void DelayedStart()
+    public void DelayedStart() //start mais avec du retard 
     {
         excel = CraftUI.instance.ExcelList;
         MesFonctions.FindGestionDesScripts(PlayerSingleton.playerInstance.gameObject, out gestion);
@@ -16,7 +16,7 @@ public class CraftButtonUI : MonoBehaviour
         myCraft = new Craft{infos = globalInfo.exelCraft};
     }
 
-    public void CreateObject()
+    public void CreateObject() // créer un objet
     {
         CraftUI.instance.craftInterface.CraftItem(myCraft, excel, gestion, globalInfo);
     }

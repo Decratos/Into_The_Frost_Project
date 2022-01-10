@@ -8,7 +8,7 @@ public class BasicRessourcesSource : MonoBehaviour
     public int ressourceAmount;
     [SerializeField] private int durability;
 
-    public void ReduceDurability()
+    public void ReduceDurability()// réduits la durabilité
     {
         durability -= ressourceAmount;
         if(durability <= 0)

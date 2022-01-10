@@ -8,7 +8,7 @@ public class FpsShow : MonoBehaviour
 
     public float timer, refresh, avgFramerate;
 
-    public string display = "{0} FPS";
+    public string display = "{0} FPS"; // utiliser avec le string format
 
     public Text m_Text;
     // Start is called before the first frame update
