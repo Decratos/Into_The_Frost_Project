@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Sirenix.OdinInspector;
 
 #region Les scripts necessaire
 [System.Serializable]
@@ -169,6 +170,12 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
 
     #region setDatas
 
+    [Button(ButtonSizes.Medium)]
+    private void testRemplissage() 
+    {
+        readEachCSV();
+    }
+
     void readEachCSV() 
     {
         //print("LiseurExel readEachCSV");
@@ -255,7 +262,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                 MesListe.LesCrafts[i].LeNombreNecessaire= ParseArray(data[nombreDeColonne * (i + 1) + 3].Split(char.Parse("/")));// split le nombre necessaire
                 MesListe.LesCrafts[i].CraftingLevel = int.Parse(data[nombreDeColonne * (i + 1) + 4]); // récupére le crafting level necessaire pour créer l'objet
                 MesListe.LesCrafts[i].IDDesressources = new int[MesListe.LesCrafts[i].RessourcesNecessaire.Length];// recupére les ID des ressources necessaire
-                for (int j  = 0; j < MesListe.LesCrafts[i].RessourcesNecessaire.Length-1; j++)
+                for (int j  = 0; j < MesListe.LesCrafts[i].RessourcesNecessaire.Length; j++)
                 {
                                       
                     findObjectIDByName(MesListe.LesCrafts[i].RessourcesNecessaire[j], out MesListe.LesCrafts[i].IDDesressources[j]);
