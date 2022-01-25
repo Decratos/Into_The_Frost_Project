@@ -92,6 +92,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Crounch",
+                    "type": "Button",
+                    "id": "60241ed5-6fd3-4a65-bb94-21fdbb7245ee",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -290,6 +298,17 @@
                     "processors": "",
                     "groups": "Clavier;Clavier Bureau",
                     "action": "Use",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bf6d3674-49e2-451c-be55-5feca1d5c0bc",
+                    "path": "<Keyboard>/leftCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Clavier",
+                    "action": "Crounch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
