@@ -541,6 +541,18 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                         {
                             lesInfos.Exelvetements.ChaleurResistance = SubInfo.ChaleurResistance;
                             lesInfos.Exelvetements.DegatResistance = SubInfo.DegatResistance;
+                            string[] EnumTypeVetements = System.Enum.GetNames(typeof(InfoExelvetements.SousCategorie)); // récupére une liste des sous type
+                            for (int i = 0; i < EnumTypeVetements.Length; i++)
+                            {
+                                correctionType(EnumTypeVetements[i], out EnumTypeVetements[i]);
+                                if (EnumTypeVetements[i] == SubInfo.Name)
+                                {
+
+                                    lesInfos.Exelvetements.MaCategorie = (InfoExelvetements.SousCategorie)System.Enum.Parse(typeof(InfoExelvetements.SousCategorie), SubInfo.Categorie); ;
+                                    break;
+                                }
+
+                            }
                         }
                     }
 
@@ -725,6 +737,19 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
             {
                 VetementInfo.ChaleurResistance = item.ChaleurResistance;
                 VetementInfo.DegatResistance = item.DegatResistance;
+                string[] EnumTypeVetements = System.Enum.GetNames(typeof(InfoExelvetements.SousCategorie)); // récupére une liste des sous type
+                for (int i = 0; i < EnumTypeVetements.Length; i++)
+                {
+                    correctionType(EnumTypeVetements[i],out EnumTypeVetements[i]);
+                    if (EnumTypeVetements[i] == item.Categorie)
+                    {
+                       
+                        VetementInfo.MaCategorie = (InfoExelvetements.SousCategorie)System.Enum.Parse(typeof(InfoExelvetements.SousCategorie), item.Categorie); ;
+                        break;
+                    }
+
+                }
+                
                 found = true;
             }
 
@@ -756,7 +781,8 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                 lesInfos.inflammability = info.Inflamability; 
                 correctionType(info.Type, out correctedType); // corrige le type
                 string[] EnumType = System.Enum.GetNames(typeof(InfoGlobalExel.Type));// créer un tableau de string des types
-                for (int i = 0; i < EnumType.Length - 1; i++) // pour chaque type dans l'enum
+                print("Commentaire à résoudre");
+                for (int i = 0; i < EnumType.Length; i++) // pour chaque type dans l'enum //Retirer le - 1 vérifier que cela fonctionne\\
                 {
                     correctionType(EnumType[i], out EnumType[i]); // corrige les enums au cas ou
 
@@ -850,6 +876,18 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                         {
                             lesInfos.Exelvetements.ChaleurResistance = SubInfo.ChaleurResistance;
                             lesInfos.Exelvetements.DegatResistance = SubInfo.DegatResistance;
+                            string[] EnumTypeVetements = System.Enum.GetNames(typeof(InfoExelvetements.SousCategorie)); // récupére une liste des sous type
+                            for (int i = 0; i < EnumTypeVetements.Length; i++)
+                            {
+                                correctionType(EnumTypeVetements[i], out EnumTypeVetements[i]);
+                                if (EnumTypeVetements[i] == SubInfo.Name)
+                                {
+
+                                    lesInfos.Exelvetements.MaCategorie = (InfoExelvetements.SousCategorie)System.Enum.Parse(typeof(InfoExelvetements.SousCategorie), SubInfo.Categorie); ;
+                                    break;
+                                }
+
+                            }
                         }
                     }
                     
@@ -1030,6 +1068,19 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
             {
                 VetementInfo.ChaleurResistance = item.ChaleurResistance;
                 VetementInfo.DegatResistance = item.DegatResistance;
+                string[] EnumTypeVetements = System.Enum.GetNames(typeof(InfoExelvetements.SousCategorie)); // récupére une liste des sous type
+                for (int i = 0; i < EnumTypeVetements.Length; i++)
+                {
+                    correctionType(EnumTypeVetements[i], out EnumTypeVetements[i]);
+                    if (EnumTypeVetements[i] == item.Categorie)
+                    {
+
+                        VetementInfo.MaCategorie = (InfoExelvetements.SousCategorie)System.Enum.Parse(typeof(InfoExelvetements.SousCategorie), item.Categorie); ;
+                        break;
+                    }
+
+                }
+
                 found = true;
             }
         
