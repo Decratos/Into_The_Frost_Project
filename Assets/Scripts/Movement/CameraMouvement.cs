@@ -37,24 +37,27 @@ public class CameraMouvement : MesFonctions
 
     public void ReceptionDonnerInput(Vector2 Data)
     {
-
-        Data *= 0.4f;
-        Data *= 0.1f;
-        if (ScriptGestion.LesMouvements.StateDeDeplacement != MouvementPlayer.StateDeplacement.Atteri)
+        if (canLook)
         {
-            RotationSurX -= Data.y * Sensibilite.x;
-            RotationSurY += Data.x * Sensibilite.y;
-            RotationSurX = Mathf.Clamp(RotationSurX, -MaxAngle.x, MaxAngle.x);
-            if (ScriptGestion.LesMouvements.StateDeDeplacement != MouvementPlayer.StateDeplacement.Saute && ScriptGestion.LesMouvements.StateDeDeplacement != MouvementPlayer.StateDeplacement.Fall)
+            Data *= 0.4f;
+            Data *= 0.1f;
+            if (ScriptGestion.LesMouvements.StateDeDeplacement != MouvementPlayer.StateDeplacement.Atteri)
             {
-                transform.parent.rotation = Quaternion.AngleAxis(RotationSurY, transform.parent.up);
-                transform.localRotation = Quaternion.Euler(new Vector3(RotationSurX, 0, 0));
-            }
-            else //lors du saut
-            {
-                transform.localRotation = Quaternion.Euler(new Vector3(RotationSurX, transform.localEulerAngles.y, 0));
+                RotationSurX -= Data.y * Sensibilite.x;
+                RotationSurY += Data.x * Sensibilite.y;
+                RotationSurX = Mathf.Clamp(RotationSurX, -MaxAngle.x, MaxAngle.x);
+                if (ScriptGestion.LesMouvements.StateDeDeplacement != MouvementPlayer.StateDeplacement.Saute && ScriptGestion.LesMouvements.StateDeDeplacement != MouvementPlayer.StateDeplacement.Fall)
+                {
+                    transform.parent.rotation = Quaternion.AngleAxis(RotationSurY, transform.parent.up);
+                    transform.localRotation = Quaternion.Euler(new Vector3(RotationSurX, 0, 0));
+                }
+                else //lors du saut
+                {
+                    transform.localRotation = Quaternion.Euler(new Vector3(RotationSurX, transform.localEulerAngles.y, 0));
+                }
             }
         }
+        
         
 
     }
