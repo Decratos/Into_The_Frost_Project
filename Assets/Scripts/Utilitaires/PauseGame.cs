@@ -9,6 +9,9 @@ public class PauseGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Changer l'update par un simple void qui s'enclenche dans l'input system
+        // je dois revoir les anciens doc
+        print("Commentaire à résoudre");
         if (Input.GetKeyDown(KeyCode.F1))
         {
             paused = !paused;

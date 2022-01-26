@@ -23,14 +23,14 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     {
     }
 
-    public void OnBeginDrag(PointerEventData eventData)
+    public void OnBeginDrag(PointerEventData eventData)//lorsque je drag un item
     {
         _canvasGroup.alpha = .6f;
         _canvasGroup.blocksRaycasts = false;
         initialWindow = GetComponentInParent<UIInventory>().transform;
     }
 
-    public void OnEndDrag(PointerEventData eventData)
+    public void OnEndDrag(PointerEventData eventData)// lorsque je finis de drag un item
     {
         List<GameObject> hoveredObjects = eventData.hovered;
         print(eventData.hovered.Count);
@@ -51,7 +51,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         transform.GetComponentInParent<UIInventory>().RefreshInventoryItems();
     }
 
-    public void OnDrag(PointerEventData eventData)
+    public void OnDrag(PointerEventData eventData) //lors du drag
     {
         _rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }

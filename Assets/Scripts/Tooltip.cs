@@ -19,7 +19,7 @@ public class Tooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         Object.SetActive(false);
     }
     
-    public void OnPointerEnter(PointerEventData eventData)
+    public void OnPointerEnter(PointerEventData eventData)// permet d'afficher le craft
     {
         Object.SetActive(true);
         if(globalTooltipForCraft)
@@ -38,7 +38,7 @@ public class Tooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         }
     }
  
-    public void OnPointerExit(PointerEventData eventData)
+    public void OnPointerExit(PointerEventData eventData)// Lorsque le pointer sors desaffiche l'objet
     {
         Object.SetActive(false);
     }

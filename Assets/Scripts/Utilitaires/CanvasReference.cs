@@ -27,7 +27,7 @@ public class CanvasReference : MonoBehaviour
         }
     }
 
-    public Canvas GetCanva()
+    public Canvas GetCanva()// récupére le canva
     {
         if (playerCanva == null)
         {

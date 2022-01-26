@@ -30,14 +30,14 @@ public class CraftUI : MonoBehaviour
         craftList = new List<RectTransform>();
     }
 
-    public void OpenHideCraftUI(int maxLevel)
+    public void OpenHideCraftUI(int maxLevel) // ouvre ou non le craft
     {
         isOpen = !isOpen;
         gameObject.SetActive(isOpen);
         RefreshUI(maxLevel);
     }
 
-    private void RefreshUI(int maxLevel)
+    private void RefreshUI(int maxLevel) // refresh L'UI du craft
     {
         if(craftList.Count > 0)
         {

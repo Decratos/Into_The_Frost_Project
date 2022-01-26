@@ -12,7 +12,7 @@ public class DropEquippedWeapon : MonoBehaviour, IPointerDownHandler
     private void Awake() {
        parentItemSlot = transform.GetComponentInParent<ItemSlot>();
     }
-    public void OnPointerDown(PointerEventData eventData)
+    public void OnPointerDown(PointerEventData eventData)// lorsque je clique
     {
         if(parentItemSlot.equippedItemStat.itemName != "")
         {

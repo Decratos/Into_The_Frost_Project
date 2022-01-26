@@ -37,7 +37,7 @@ public class GestionInput : MesFonctions
         if (context.started)
         {
             
-            ScriptGestion.LesMouvements.Saut(); 
+            ScriptGestion.LesMouvements.StateChange(MouvementPlayer.StateDeplacement.Saute); 
 
         }
         
@@ -125,16 +125,31 @@ public class GestionInput : MesFonctions
         
         if (context.started)
         {
-            ScriptGestion.LesMouvements.GoSprint();
+            ScriptGestion.LesMouvements.StateChange(MouvementPlayer.StateDeplacement.Cour);
+            
         }
         if (context.canceled)
         {
-            ScriptGestion.LesMouvements.Walk();
+            ScriptGestion.LesMouvements.StateChange(MouvementPlayer.StateDeplacement.Marche);
         }
        
 
     }
 
+    public void crounch(InputAction.CallbackContext context) 
+    {
+
+        if (context.started)
+        {
+            
+            ScriptGestion.LesMouvements.StateChange(MouvementPlayer.StateDeplacement.Accroupie);
+        }
+        if (context.canceled)
+        {
+            ScriptGestion.LesMouvements.StateChange(MouvementPlayer.StateDeplacement.Marche);
+        }
+    }
+    
     public void BuildMode(InputAction.CallbackContext context)
     {
         if (context.started)

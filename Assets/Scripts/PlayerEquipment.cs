@@ -22,7 +22,7 @@ public class PlayerEquipment : MonoBehaviour
         
 
 
-    public void OnWeaponEquipped(ItemClass weapon, int slotNumber)
+    public void OnWeaponEquipped(ItemClass weapon, int slotNumber)// lorsqu'une arme est équippé
     {
         InfoGlobalExel objectInfo = new InfoGlobalExel();
         liseurExel.LesDatas.FindObjectInfo(weapon.itemName, out objectInfo);
@@ -62,7 +62,7 @@ public class PlayerEquipment : MonoBehaviour
         
     }
 
-    public void UnEquipWeapon(ItemClass weapon, int slot)
+    public void UnEquipWeapon(ItemClass weapon, int slot) // lorsqu'une arme est désiquipé
     {
         WeaponSystem ws = GetComponentInChildren<WeaponSystem>();
 

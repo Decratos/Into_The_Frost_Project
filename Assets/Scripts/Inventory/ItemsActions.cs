@@ -11,11 +11,11 @@ public class ItemsActions : MesFonctions
     void Awake()
     {
         FindGestionDesScripts(PlayerSingleton.playerInstance.gameObject, out scriptsGestion);
-        itemsActionsInstance = this;
+        itemsActionsInstance = this; 
     }
 
 
-    public void ItemAction(string name, ItemClass item)
+    public void ItemAction(string name, ItemClass item) //itemAction?
     {
         switch (item.itemType)
         {

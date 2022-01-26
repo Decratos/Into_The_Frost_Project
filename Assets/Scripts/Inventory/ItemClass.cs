@@ -14,7 +14,7 @@ public class ItemClass
    public int amount;
    
 
-   public Sprite GetSprite() // Fonction permettant d'afficher la bonne image
+   public Sprite GetSprite() //Fonction permettant d'afficher la bonne image
    {
       if(spriteId != 0)
          return ItemAssets.ItemAssetsInstance.sprites[spriteId-1];
@@ -24,7 +24,7 @@ public class ItemClass
       }
    }
 
-   public bool isStackable()
+   public bool isStackable() 
    {
       switch (itemType)
       {

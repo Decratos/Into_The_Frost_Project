@@ -10,7 +10,7 @@ public class Crafting
         craftsList = new List<Craft>();
     }
 
-    public void CraftItem(Craft craft, liseurExel Excel, GestionDesScipt gestion, InfoGlobalExel global)
+    public void CraftItem(Craft craft, liseurExel Excel, GestionDesScipt gestion, InfoGlobalExel global) // Craft l'item 
     {
         bool canCraft = true;
         

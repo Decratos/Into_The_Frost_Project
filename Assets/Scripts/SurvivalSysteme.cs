@@ -181,21 +181,16 @@ public class SurvivalSysteme : MesFonctions
         myCanva.transform.Find("TempBar").GetComponent<Slider>().value =
             LesDataPourSurvie[3].ActualValue / LesDataPourSurvie[3].Range.y;
     }
+
+
+    #region method accessible à tous
     public void GetFood(Vector4 value)
     {
         for (int i = 0; i < 4; i++)
         {
-
             ChangementDuneDataDeSurvie(value[i], i);
-
-
         }
-
-
-
     }
-
-    #region method accessible à tous
     public void ChangementDuneDataDeSurvie(float value, StateForSurvival.PointDeSurvie ToModifiate)
     {
         foreach (StateForSurvival item in LesDataPourSurvie)
@@ -268,6 +263,11 @@ public class SurvivalSysteme : MesFonctions
             print("A remplir");
         }
 
+    }
+    public void Death() 
+    {
+    
+    
     }
     #endregion
 }

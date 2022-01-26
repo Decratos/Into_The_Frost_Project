@@ -21,7 +21,8 @@ public class ItemAssets : MonoBehaviour
 
 
     [Button(ButtonSizes.Medium)]
-    private void SetLenght() {
+    private void SetLenght() //set la length de la sprite 
+    {
         liseurExel ExcelList;
         MesFonctions.FindDataExelForObject(out ExcelList);
         int globalLenght = ExcelList.MesListe.LesItems.Length;

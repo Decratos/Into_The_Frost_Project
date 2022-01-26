@@ -13,7 +13,7 @@ public class WeaponSystem : MonoBehaviour
     public WeaponsClass EquippedWeapon1;
     public WeaponsClass EquippedWeapon2;
 
-    public void ChangeWeaponMode()
+    public void ChangeWeaponMode() // change entre l'arme 1 et 2
     {
         FirstWeapon = !FirstWeapon;
 
@@ -31,7 +31,7 @@ public class WeaponSystem : MonoBehaviour
         }
     }
 
-    public void ActiveWeapon(WeaponsClass newWeapon, int slot)
+    public void ActiveWeapon(WeaponsClass newWeapon, int slot)// Ça active la bonne arme équipé dans la main
     {
         if (slot == 1)
         {
@@ -57,7 +57,8 @@ public class WeaponSystem : MonoBehaviour
         }
     }
 
-    public void DesactiveWeapon(int slot) {
+    public void DesactiveWeapon(int slot)// Désactive les armes equipe
+    {
         if (slot == 1)
         {
             if(EquippedWeapon1)
