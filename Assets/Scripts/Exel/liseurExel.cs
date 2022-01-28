@@ -423,7 +423,6 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
    
 
     #endregion
-
     #region methode Accessible à tous
         
     #region findObjectMethod
@@ -460,29 +459,12 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                 if (correctedType == InfoGlobalExel.Type.Nourriture.ToString()) // si c'est de la bouffe
                 {
                     lesInfos.exelNourriturre = new InfoExelNourriturre(); // je créer une type bouffe
-                    foreach (InfoNourriture SubInfo in MesListe.LaBouffe)// je check toutes les bouffes
-                    {
-                        if (SubInfo.Name == name)
-                        {
-                           lesInfos.exelNourriturre.Nourritture = SubInfo.Nutrition;
-                           lesInfos.exelNourriturre.Eau = SubInfo.Eau;
-                           lesInfos.exelNourriturre.Chaleur = SubInfo.Chaleur;
-                           lesInfos.exelNourriturre.Vie = SubInfo.Vie;
-                           lesInfos.exelNourriturre.resume = new Vector4(SubInfo.Nutrition, SubInfo.Eau, SubInfo.Chaleur, SubInfo.Vie); // je met la value
-                           
-                        }
-                    }
+                    FindObjectInfo(name,out lesInfos.exelNourriturre);
                 }
                 else if (correctedType == InfoGlobalExel.Type.Soins.ToString())
                 {
                     lesInfos.exelSoins = new InfoExelSoins();
-                    foreach (InfoSoins SubInfo in MesListe.LesSoins)
-                    {
-                        if (SubInfo.Name == name)
-                        {
-                            lesInfos.exelSoins.value = SubInfo.value;
-                        }
-                    }
+                    FindObjectInfo(name ,out lesInfos.exelSoins);
                 }
                 else if (correctedType == InfoGlobalExel.Type.Materials.ToString())
                 {
@@ -506,70 +488,26 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                 else if (correctedType == InfoGlobalExel.Type.ArmeAfeu.ToString())
                 {
                     lesInfos.exelGun = new InfoExelGun();
-                    foreach (InfoGun SubInfo in MesListe.LesFlingues)
-                    {
-                        if (SubInfo.Name == name)
-                        {
-                            lesInfos.exelGun.Degat = SubInfo.degat;
-                            lesInfos.exelGun.Chargeur = SubInfo.Chargeur;
-                            lesInfos.exelGun.Power = SubInfo.Power;
-                            lesInfos.exelGun.Rechargement = SubInfo.Rechargement;
-                            lesInfos.exelGun.Speed = SubInfo.Speed;
-                        }
-                    }
+                    FindObjectInfo(name, out lesInfos.exelGun);
                     
                 }
                 else if (correctedType == InfoGlobalExel.Type.ArmeMelee.ToString())
                 {
                     lesInfos.exelArme = new InfoExelArme();
-                    foreach (InfoWeapon SubInfo in MesListe.LesArmes)
-                    {
-                        if (SubInfo.Name == name)
-                        {
-                            lesInfos.exelArme.Degat = SubInfo.degat;
-                            lesInfos.exelArme.Speed = SubInfo.Speed;
-                        }
-                    }
+                    FindObjectInfo( name , out lesInfos.exelArme);
 
                 }
                 else if (correctedType == InfoGlobalExel.Type.Vetement.ToString())
                 {
                     lesInfos.Exelvetements = new InfoExelvetements();
-                    foreach (InfoVetements SubInfo in MesListe.LesVetements)
-                    {
-                        if (SubInfo.Name == name)
-                        {
-                            lesInfos.Exelvetements.ChaleurResistance = SubInfo.ChaleurResistance;
-                            lesInfos.Exelvetements.DegatResistance = SubInfo.DegatResistance;
-                            string[] EnumTypeVetements = System.Enum.GetNames(typeof(InfoExelvetements.SousCategorie)); // récupére une liste des sous type
-                            for (int i = 0; i < EnumTypeVetements.Length; i++)
-                            {
-                                correctionType(EnumTypeVetements[i], out EnumTypeVetements[i]);
-                                if (EnumTypeVetements[i] == SubInfo.Name)
-                                {
-
-                                    lesInfos.Exelvetements.MaCategorie = (InfoExelvetements.SousCategorie)System.Enum.Parse(typeof(InfoExelvetements.SousCategorie), SubInfo.Categorie); ;
-                                    break;
-                                }
-
-                            }
-                        }
-                    }
+                    FindObjectInfo( name ,out lesInfos.Exelvetements);
 
 
                 }
                 else if (correctedType == InfoGlobalExel.Type.Sac.ToString())
                 {
                     lesInfos.ExelSac = new InfoExelSac();
-                    foreach (InfoSac SubInfo in MesListe.LesSacs)
-                    {
-
-                        if (SubInfo.Name == name)
-                        {
-                            lesInfos.ExelSac.NbrEmplacement = SubInfo.NbrEmplacement;
-                        }
-
-                    }
+                    FindObjectInfo(name ,out lesInfos.ExelSac);
 
                 }
                 else
@@ -590,7 +528,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
         }
         if (lesInfos.ID == 0) // si l'objet n'est pas dans la base de donner
         {
-            //print("l'item n'est pas dans la base de donnée");
+            print("l'item n'est pas dans la base de donnée");
             //Debug.Break();
 
         }
@@ -795,31 +733,12 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                 if (correctedType == InfoGlobalExel.Type.Nourriture.ToString()) // si c'est de la bouffe
                 {
                     lesInfos.exelNourriturre = new InfoExelNourriturre(); // je créer une type bouffe
-                    foreach (InfoNourriture SubInfo in MesListe.LaBouffe)// je check toutes les bouffes
-                    {
-                        if (SubInfo.ID == ID)
-                        {
-                            lesInfos.exelNourriturre.Nourritture = SubInfo.Nutrition;
-                            lesInfos.exelNourriturre.Eau = SubInfo.Eau;
-                            lesInfos.exelNourriturre.Chaleur = SubInfo.Chaleur;
-                            lesInfos.exelNourriturre.Vie = SubInfo.Vie;
-                            lesInfos.exelNourriturre.resume = new Vector4(SubInfo.Nutrition, SubInfo.Eau, SubInfo.Chaleur, SubInfo.Vie); // je met la value
-                        }
-                    }
+                    FindObjectInfo(ID, out lesInfos.exelNourriturre);
                 }
                 else if (correctedType == InfoGlobalExel.Type.Soins.ToString())
                 {
                     lesInfos.exelSoins = new InfoExelSoins();
-                    foreach (InfoSoins SubInfo in MesListe.LesSoins)
-                    {
-                        if (SubInfo.ID == ID)
-                        {
-
-
-                            lesInfos.exelSoins.value = SubInfo.value;
-
-                        }
-                    }
+                    FindObjectInfo(ID, out lesInfos.exelSoins);
                 }
                 else if (correctedType == InfoGlobalExel.Type.Materials.ToString())
                 {
@@ -843,68 +762,24 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                 {
 
                     lesInfos.exelGun = new InfoExelGun();
-                    foreach (InfoGun SubInfo in MesListe.LesFlingues)
-                    {
-                        if (SubInfo.ID == ID)
-                        {
-                            lesInfos.exelGun.Degat = SubInfo.degat;
-                            lesInfos.exelGun.Chargeur = SubInfo.Chargeur;
-                            lesInfos.exelGun.Power = SubInfo.Power;
-                            lesInfos.exelGun.Rechargement = SubInfo.Rechargement;
-                            lesInfos.exelGun.Speed = SubInfo.Speed;
-                        }
-                    }
+                    FindObjectInfo(ID, out lesInfos.exelGun);
                 }
                 else if (correctedType == InfoGlobalExel.Type.ArmeMelee.ToString())
                 {
                     lesInfos.exelArme = new InfoExelArme();
-                    foreach (InfoWeapon SubInfo in MesListe.LesArmes)
-                    {
-                        if (SubInfo.ID == ID)
-                        {
-                            lesInfos.exelArme.Degat = SubInfo.degat;
-                            lesInfos.exelArme.Speed = SubInfo.Speed;
-                        }
-                    }
+                    FindObjectInfo(ID, out lesInfos.exelArme);
                 }
                 else if (correctedType == InfoGlobalExel.Type.Vetement.ToString())
                 {
                     lesInfos.Exelvetements = new InfoExelvetements();
-                    foreach (InfoVetements SubInfo in MesListe.LesVetements)
-                    {
-                        if (SubInfo.ID == ID)
-                        {
-                            lesInfos.Exelvetements.ChaleurResistance = SubInfo.ChaleurResistance;
-                            lesInfos.Exelvetements.DegatResistance = SubInfo.DegatResistance;
-                            string[] EnumTypeVetements = System.Enum.GetNames(typeof(InfoExelvetements.SousCategorie)); // récupére une liste des sous type
-                            for (int i = 0; i < EnumTypeVetements.Length; i++)
-                            {
-                                correctionType(EnumTypeVetements[i], out EnumTypeVetements[i]);
-                                if (EnumTypeVetements[i] == SubInfo.Name)
-                                {
+                    FindObjectInfo(ID, out lesInfos.Exelvetements);
 
-                                    lesInfos.Exelvetements.MaCategorie = (InfoExelvetements.SousCategorie)System.Enum.Parse(typeof(InfoExelvetements.SousCategorie), SubInfo.Categorie); ;
-                                    break;
-                                }
 
-                            }
-                        }
-                    }
-                    
-                    
                 }
                 else if (correctedType == InfoGlobalExel.Type.Sac.ToString())
                 {
                     lesInfos.ExelSac = new InfoExelSac();
-                    foreach (InfoSac SubInfo in MesListe.LesSacs)
-                    {
-
-                        if (SubInfo.ID == ID)
-                        {
-                            lesInfos.ExelSac.NbrEmplacement = SubInfo.NbrEmplacement;
-                        }
-
-                    }
+                    FindObjectInfo(ID, out lesInfos.ExelSac);
 
                 }
                 else
