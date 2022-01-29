@@ -720,7 +720,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                 lesInfos.inflammability = info.Inflamability; 
                 correctionType(info.Type, out correctedType); // corrige le type
                 string[] EnumType = System.Enum.GetNames(typeof(InfoGlobalExel.Type));// créer un tableau de string des types
-                print("Commentaire à résoudre");
+                
                 for (int i = 0; i < EnumType.Length; i++) // pour chaque type dans l'enum //Retirer le - 1 vérifier que cela fonctionne\\
                 {
                     correctionType(EnumType[i], out EnumType[i]); // corrige les enums au cas ou

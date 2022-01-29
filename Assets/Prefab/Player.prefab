@@ -735,7 +735,7 @@ MonoBehaviour:
     spriteId: 2
     itemType: 1
     amount: 10
-  - itemName: Sword
+  - itemName: Couteau
     spriteId: 1
     itemType: 4
     amount: 1
