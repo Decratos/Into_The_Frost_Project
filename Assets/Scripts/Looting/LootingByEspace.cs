@@ -79,7 +79,6 @@ public class LootingByEspace : MesFonctions
         }
         
     } // Choisis par quel procédé on récupére les spawners
-
     void recuperationSpawnViaScript() 
     {
         List<GameObject> SpawnPoints = new List<GameObject>();// liste des spawn
@@ -115,8 +114,6 @@ public class LootingByEspace : MesFonctions
             InfoGlobalExel toSpawn = ChooseItemToSpawn(); // Choisis l'objet à spawn
             item.GetComponent<Looter>().InstantiateObject(toSpawn,Quaternion.Euler(rotationAuSpawn));
             //appel la fonction 
-
-
         }
     
 
