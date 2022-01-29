@@ -52,7 +52,7 @@ MonoBehaviour:
     ChanceChoisis: 0
     ChanceDeBase: 0
   type: 0
-  chanceForNoSpawn: 0.1
+  chanceForNoSpawn: 0.4
   lesLootPossible: []
   inDebug: 1
 --- !u!65 &7734959274548417032
