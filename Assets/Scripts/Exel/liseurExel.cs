@@ -128,14 +128,14 @@ public class PageExel //info de page exel
     {
     
     General,
-    nourriture,
-    Materiaux,
-    soins,
+    Nourriture,
+    Materials,
+    Soins,
     Craft,
-    Weapon,
-    Gun,
+    ArmeMelee,
+    ArmeAfeu,
     Utilitaire,
-    SacADos,
+    Sac,
     Vetements
 
 
@@ -211,7 +211,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                 MesListe.LesItems[i].Inflamability = MonParse(data[nombreDeColonne * (i + 1) + 6]);// récupére l'inflammabitité de de l'objet
             }
         }// si la page est de type général
-        else if (mon_type == PageExel.TypeDePageExel.Materiaux)
+        else if (mon_type == PageExel.TypeDePageExel.Materials)
         {
             MesListe.LesMat = new InfoMateriaux[size];// créer un tableau qui contiendra toute les valeurs
             for (int i = 0; i < size; i++)
@@ -222,7 +222,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                 
             }
         }// si la page est de type materiaux
-        else if (mon_type == PageExel.TypeDePageExel.nourriture)
+        else if (mon_type == PageExel.TypeDePageExel.Nourriture)
         {
             MesListe.LaBouffe = new InfoNourriture[size];// créer un tableau qui contiendra toute les valeurs
             for (int i = 0; i < size; i++)
@@ -238,7 +238,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                 
             }
         }// si la page est de type nourriture
-        else if (mon_type == PageExel.TypeDePageExel.soins)
+        else if (mon_type == PageExel.TypeDePageExel.Soins)
         {
             MesListe.LesSoins = new InfoSoins[size];// créer un tableau qui contiendra toute les valeurs
             for (int i = 0; i < size; i++)
@@ -273,7 +273,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
 
             }
         }// si la page est craft
-        else if (mon_type == PageExel.TypeDePageExel.Weapon)
+        else if (mon_type == PageExel.TypeDePageExel.ArmeMelee)
         {
             MesListe.LesArmes = new InfoWeapon[size]; // créer un tableau qui contiendra toute les valeurs
             for (int i = 0; i < size; i++)
@@ -289,7 +289,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
             }
 
         }// si la page est celle des arme de mélée
-        else if (mon_type == PageExel.TypeDePageExel.Gun)
+        else if (mon_type == PageExel.TypeDePageExel.ArmeAfeu)
         {
             MesListe.LesFlingues = new InfoGun[size];// créer un tableau qui contiendra toute les valeurs
             for (int i = 0; i < size; i++)
@@ -312,7 +312,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
             
 
         }// si la page est celle des armes à feu
-        else if (mon_type == PageExel.TypeDePageExel.SacADos)
+        else if (mon_type == PageExel.TypeDePageExel.Sac)
         {
             MesListe.LesSacs = new InfoSac[size];
             for (int i = 0; i < size; i++)
@@ -427,7 +427,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
         
     #region findObjectMethod
 
-    #region byName
+            #region byName
 
     public void FindObjectInfo(string name, out InfoGlobalExel InfoGlobal) 
     {
@@ -452,7 +452,8 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                     
                     if (EnumType[i] == correctedType) // si l'enum est égale au type
                     {
-                        lesInfos.TypeGeneral = (InfoGlobalExel.Type)i; // set le type général
+                        lesInfos.TypeGeneral = (InfoGlobalExel.Type)System.Enum.Parse(typeof(InfoGlobalExel.Type),correctedType); // set le type général
+                       
                         break; // break le for
                     }
                 }
@@ -701,7 +702,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
     //
     #endregion
 
-    #region ByID
+            #region ByID
     public void FindObjectInfo(int ID, out InfoGlobalExel InfoGlobal)
     {
         //print("FindObjectInfo name out Infoglobal");
@@ -726,7 +727,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
 
                     if (EnumType[i] == correctedType) // si l'enum est égale au type
                     {
-                        lesInfos.TypeGeneral = (InfoGlobalExel.Type)i; // set le type général
+                        lesInfos.TypeGeneral = (InfoGlobalExel.Type)System.Enum.Parse(typeof(InfoGlobalExel.Type), correctedType); // set le type général
                         break; // break le for
                     }
                 }
@@ -1026,8 +1027,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
         else 
         {
             ID = new int[0];
-            //print("je n'ai pas trouvé l'objet du type" + mon_type.ToString());
-            //Debug.Break();
+            
         }
         
 
@@ -1080,7 +1080,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
         {
             tosend = true;
         }
-        else if (mon_type == PageExel.TypeDePageExel.Materiaux)
+        else if (mon_type == PageExel.TypeDePageExel.Materials)
         {
             foreach (InfoMateriaux item in MesListe.LesMat)
             {
@@ -1090,7 +1090,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                 }
             }
         }
-        else if (mon_type == PageExel.TypeDePageExel.nourriture) 
+        else if (mon_type == PageExel.TypeDePageExel.Nourriture) 
         {
             foreach (InfoNourriture item in MesListe.LaBouffe)
             {
@@ -1100,7 +1100,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                 }
             }
         } 
-        else if (mon_type == PageExel.TypeDePageExel.soins) 
+        else if (mon_type == PageExel.TypeDePageExel.Soins) 
         {
             foreach (InfoSoins item in MesListe.LesSoins)
             {
@@ -1120,7 +1120,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                 }
             }
         }
-        else if (mon_type == PageExel.TypeDePageExel.SacADos)
+        else if (mon_type == PageExel.TypeDePageExel.Sac)
         {
             foreach (InfoSac item in MesListe.LesSacs)
             {
@@ -1164,7 +1164,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
         {
             tosend = true;
         }
-        else if (mon_type == PageExel.TypeDePageExel.Materiaux)
+        else if (mon_type == PageExel.TypeDePageExel.Materials)
         {
             foreach (InfoMateriaux item in MesListe.LesMat)
             {
@@ -1174,7 +1174,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                 }
             }
         }
-        else if (mon_type == PageExel.TypeDePageExel.nourriture)
+        else if (mon_type == PageExel.TypeDePageExel.Nourriture)
         {
             foreach (InfoNourriture item in MesListe.LaBouffe)
             {
@@ -1184,7 +1184,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                 }
             }
         }
-        else if (mon_type == PageExel.TypeDePageExel.soins)
+        else if (mon_type == PageExel.TypeDePageExel.Soins)
         {
             foreach (InfoSoins item in MesListe.LesSoins)
             {
@@ -1204,7 +1204,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                 }
             }
         }
-        else if (mon_type == PageExel.TypeDePageExel.SacADos)
+        else if (mon_type == PageExel.TypeDePageExel.Sac)
         {
             foreach (InfoSac item in MesListe.LesSacs)
             {
