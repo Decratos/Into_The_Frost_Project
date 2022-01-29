@@ -12,7 +12,8 @@ public class ItemClass
 
    public ResumeExelForObject.Type itemType;
    public int amount;
-   
+    public float ChanceChoisis;
+    public float ChanceDeBase;
 
    public Sprite GetSprite() //Fonction permettant d'afficher la bonne image
    {

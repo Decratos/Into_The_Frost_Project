@@ -47,10 +47,14 @@ MonoBehaviour:
   item:
     itemName: 
     spriteId: 0
-    itemType: 3
-    amount: 0
+    itemType: 0
+    amount: 1
+    ChanceChoisis: 0
+    ChanceDeBase: 0
   type: 0
   chanceForNoSpawn: 0.1
+  lesLootPossible: []
+  inDebug: 1
 --- !u!65 &7734959274548417032
 BoxCollider:
   m_ObjectHideFlags: 0
