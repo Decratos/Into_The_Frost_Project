@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class ItemWorldSpawner : MonoBehaviour
 {
@@ -8,29 +9,39 @@ public class ItemWorldSpawner : MonoBehaviour
     public ItemClass item;
     [SerializeField] private ResumeExelForObject.Type type;
     [SerializeField] private float chanceForNoSpawn;
-    
+    public List<ItemClass> lesLootPossible;
+    public bool inDebug = false;
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        if (CheckNoSpawnParameter())
+        if(!inDebug)
         {
-            InitSpawnMecanism();
+            if (CheckNoSpawnParameter())
+            {
+                InitSpawnMecanism();
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
         }
-        else
-        {
-            Destroy(this.gameObject);
-        }
+        
     }
 
+    [Button]
     private void InitSpawnMecanism()
     {
+        lesLootPossible.Clear();
         liseurExel excelLiseur;
         MesFonctions.FindDataExelForObject(out excelLiseur);
-        item = ChooseAnItem();
+        GetAllItemPossible();
+        item = ChooseItemToSpawn();
         excelLiseur.findObjectIDByName(item.itemName, out item.spriteId);
         var myItem = ItemWorld.SpawnItemWorld(item, transform.position);
         myItem.transform.parent = transform.parent;
-        Destroy(this.gameObject);
+        if(!inDebug)
+            Destroy(this.gameObject);
     }
     
 
@@ -42,7 +53,7 @@ public class ItemWorldSpawner : MonoBehaviour
         InfoGlobalExel _info = new InfoGlobalExel();
         while (!hasFindItem)
         {
-            ID = Random.Range(0, 79);
+            ID = Random.Range(0, liseurExel.LesDatas.MesListe.LesItems.Length);
             liseurExel.LesDatas.findObjectNameByID(ID, out _name);
             liseurExel.LesDatas.FindObjectInfo(_name, out _info);
             print(_info.TypeGeneral.ToString() + " " + _info.Name);
@@ -70,5 +81,118 @@ public class ItemWorldSpawner : MonoBehaviour
             return true;
         }
             
+    }
+
+    private void GetAllItemPossible()
+    {
+        PageExel.TypeDePageExel mon_type = PageExel.TypeDePageExel.General;
+        switch (type)
+        {
+            case ResumeExelForObject.Type.Nourriture:
+                mon_type = PageExel.TypeDePageExel.Nourriture;
+                break;
+            case ResumeExelForObject.Type.Materials:
+                mon_type = PageExel.TypeDePageExel.Materials;
+                break;
+            case ResumeExelForObject.Type.ArmeAfeu:
+                mon_type = PageExel.TypeDePageExel.ArmeAfeu;
+                break;
+            case ResumeExelForObject.Type.ArmeMelee:
+                mon_type = PageExel.TypeDePageExel.ArmeMelee;
+                break;
+            case ResumeExelForObject.Type.Sac:
+                mon_type = PageExel.TypeDePageExel.Sac;
+                break;
+            case ResumeExelForObject.Type.Soins:
+                mon_type = PageExel.TypeDePageExel.Soins;
+                break;
+            case ResumeExelForObject.Type.Utilitaire:
+                mon_type = PageExel.TypeDePageExel.Utilitaire;
+                break;
+            case ResumeExelForObject.Type.Vetements:
+                mon_type = PageExel.TypeDePageExel.Vetements;
+                break;
+        }
+        InfoGlobalExel ToReturn = new InfoGlobalExel();
+        int[] itemsID;
+        liseurExel.LesDatas.findObjectsByType(mon_type,out itemsID);
+        foreach(int i in itemsID)
+        {
+            liseurExel.LesDatas.FindObjectInfo(i, out ToReturn);
+            lesLootPossible.Add(new ItemClass { itemName = ToReturn.Name, itemType = type, globalInfo = ToReturn, spriteId = ToReturn.ID, amount = 1, ChanceDeBase = ToReturn.rarity });
+        }
+    }
+
+    ItemClass ChooseItemToSpawn()
+    {
+        InfoGlobalExel ToReturn = new InfoGlobalExel(); // créer la valeur a retourner
+        int IDObjectChoose = 0;
+        float AllChances = 0;
+        float[,] arrayChanceTrier = new float[lesLootPossible.Count, 3]; // [Le nombre d'array, Le nombre qu'ils contiennent]
+
+        while(IDObjectChoose == 0)
+        {
+               foreach (ItemClass item in lesLootPossible)
+            {
+
+                if (item.ChanceChoisis != 0f)
+                {
+                    AllChances += item.ChanceChoisis;
+
+                }
+                else
+                {
+                    AllChances += item.ChanceDeBase;
+
+                }
+
+            } // additionne toutes les chances
+            float random = Random.Range(0, AllChances); // fait un nombre random
+            //print("Voici mon random" + random);
+
+            float cumulOrdonne = 0;
+
+            float LaChanceChoisi = 0;
+
+            for (int i = 0; i < lesLootPossible.Count; i++)
+            {
+                float LaChanceSuperieur = 0;
+                for (int j = 0; j < lesLootPossible.Count; j++)
+                {
+
+                    if (lesLootPossible[j].ChanceChoisis != 0)
+                    {
+                        LaChanceChoisi = lesLootPossible[j].ChanceChoisis;
+                    }
+                    else
+                    {
+                        LaChanceChoisi = lesLootPossible[j].ChanceDeBase;
+                    }
+
+                    if (LaChanceChoisi > LaChanceSuperieur && (i == 0 || LaChanceChoisi < arrayChanceTrier[i - 1, 1]))
+                    {
+                        LaChanceSuperieur = LaChanceChoisi;
+                        arrayChanceTrier[i, 2] = lesLootPossible[j].spriteId;
+                    }
+                }
+
+                arrayChanceTrier[i, 1] = LaChanceSuperieur;
+
+                cumulOrdonne += arrayChanceTrier[i, 1];
+
+                if (random < cumulOrdonne)
+                {
+                    IDObjectChoose = (int)arrayChanceTrier[i, 2];
+                    break;
+                }// choisis l'objet a spawn
+            } // trie les chances dans l'ordre
+        }
+        
+
+
+        liseurExel.LesDatas.FindObjectInfo(IDObjectChoose, out ToReturn);
+        print("Id choisi : " + IDObjectChoose);
+        var finalItem = new ItemClass { itemName = ToReturn.Name, itemType = type, globalInfo = ToReturn, spriteId = ToReturn.ID, amount = 1, ChanceDeBase = ToReturn.rarity };
+        return finalItem;
     }
 }
