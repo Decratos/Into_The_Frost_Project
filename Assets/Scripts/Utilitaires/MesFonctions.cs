@@ -96,6 +96,39 @@ public class MesFonctions : MonoBehaviour
         return GameObject.Find("MeteoManager").GetComponent<MeteoManager>();
     }
 
+    public static GameObject FindPostProcessVolume() 
+    {
+        GameObject toReturn = GameObject.Find("PostProcessVolume");
+        return toReturn;
+    }
+
+    public static bool IsItInRange(Vector2 Range, float Value) 
+    {
+        if (Value >= Range.x && Value <= Range.y) {return true;}
+        else { return false; }
+    }
+    public static bool IsItInRange(float a,float b, float Value)
+    {
+        if (Value >= a && Value <= b) { return true; }
+        else { return false; }
+    }
+    public static bool IsItInRange(Vector3 Values)
+    {
+        if (Values.z >= Values.x && Values.z <= Values.y) { return true; }
+        else { return false; }
+    }
+    public static float PourcentageBetweenValue(float min, float max, float value) 
+    {
+
+        return (max-value) / (max-min);
+    
+    }
+     public static float PourcentageBetweenValue(Vector2 Range, float value)
+    {
+
+        return (Range.y - value) / (Range.y - Range.x);
+
+    }
 }
 public struct InfoGlobalExel // créer une struct qui me permet de récupérer toutes les infos sur un objet 
 {
