@@ -38,12 +38,20 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         {
             ItemWorld.DropItem(PlayerSingleton.playerInstance.transform.position, eventData.pointerDrag.GetComponentInChildren<ItemInfo>().item);
         }
-        else if(eventData.hovered[0].transform != initialWindow)
+        else if(eventData.hovered[eventData.hovered.Count-1].transform != initialWindow && !eventData.hovered[eventData.hovered.Count-1].transform.GetComponent<ItemSlot>())
         {
             print("J'ai déposé l'item sur une autre fenêtre");
             Inventory newInv = eventData.hovered[0].transform.GetComponentInParent<UIInventory>()._inventory;
             initialWindow.GetComponent<UIInventory>()._inventory.TransferItem(newInv, eventData.pointerDrag.GetComponentInChildren<ItemInfo>().item);
-            eventData.hovered[0].transform.GetComponentInParent<UIInventory>().RefreshInventoryItems();
+            eventData.hovered[eventData.hovered.Count-1].transform.GetComponentInParent<UIInventory>().RefreshInventoryItems();
+        }
+        else if(eventData.hovered[eventData.hovered.Count - 1].transform.GetComponent<ItemSlot>())
+        {
+            print("Il y a un slot");
+        }
+        else
+        {
+            print("Il n'y a rien");
         }
         _canvasGroup.alpha = 1f;
         _canvasGroup.blocksRaycasts = true;

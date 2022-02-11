@@ -20,7 +20,7 @@ public class Inventory_Debug : MonoBehaviour
     {
         foreach(ItemClass item in startInventory)
         {
-            inv.AddItem(item);
+            inv.CheckCapability(item);
         }
     }
 

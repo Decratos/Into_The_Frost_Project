@@ -29,7 +29,8 @@ public class Crafting
         }
         if(canCraft)
         {
-            gestion.Inventory.AddItem(new ItemClass{itemName = global.Name, amount = 1});
+
+            gestion.Inventory.CheckCapability(new ItemClass{itemName = global.Name, amount = 1});
             for (int i = 0; i < craft.infos.LeNombreNecessaire.Length; i++)
             {
                gestion.Inventory.RemoveItem(new ItemClass {itemName = craft.infos.NomdesRessourcesNecessaire[i], amount = craft.infos.LeNombreNecessaire[i]}); 
