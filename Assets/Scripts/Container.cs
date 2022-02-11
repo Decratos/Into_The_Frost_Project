@@ -17,7 +17,7 @@ public class Container : MonoBehaviour
 
     void Start()
     {
-        inventory.AddItem(startInventory);
+        inventory.CheckCapability(startInventory);
     }
 
     [Button("ResetInventory")]

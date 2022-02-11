@@ -7,7 +7,7 @@ public class Inventory
 {
     public event EventHandler OnItemListChanged;
     private List<ItemClass> itemList;
-    
+    public int capability;
 
     public Inventory()
     {
@@ -19,6 +19,7 @@ public class Inventory
         ItemClass newItem = new ItemClass();
         InfoGlobalExel inf = new InfoGlobalExel();
         liseurExel.LesDatas.FindObjectInfo(item.itemName, out inf);
+        newItem.itemType = item.itemType;
         newItem.amount = item.amount;
         newItem.spriteId = item.spriteId;
         if (item.isStackable())
@@ -49,6 +50,26 @@ public class Inventory
         OnItemListChanged?.Invoke(this,EventArgs.Empty);
     }
 
+    public void CheckCapability(ItemClass itemToPass)
+    {
+        if(itemList.Count < capability)
+        {
+            AddItem(itemToPass);
+        }
+        else
+        {
+            Debug.Log("No more space in inventory");
+        }
+    }
+
+    public void CheckCapability(ItemClass itemToPass, GameObject obj)
+    {
+        if (itemList.Count < capability)
+        {
+            AddItem(itemToPass);
+            GameObject.Destroy(obj.transform);
+        }
+    }
     public void RemoveItem(ItemClass item)// Supprime un item de l'inventaire
     {
         ItemClass newItem = new ItemClass();
@@ -56,8 +77,6 @@ public class Inventory
         liseurExel.LesDatas.FindObjectInfo(item.itemName, out inf);
         newItem.amount = item.amount;
         newItem.spriteId = item.spriteId;
-
-        Debug.Log("Je supprime l'item");
         if (item.isStackable())
         {
             ItemClass itemAlreadyInInventory = null;

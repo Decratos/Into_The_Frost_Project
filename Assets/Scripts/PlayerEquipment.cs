@@ -24,6 +24,7 @@ public class PlayerEquipment : MonoBehaviour
 
     public void OnWeaponEquipped(ItemClass weapon, int slotNumber)// lorsqu'une arme est équippé
     {
+        print("J'équipe l'arme");
         InfoGlobalExel objectInfo = new InfoGlobalExel();
         liseurExel.LesDatas.FindObjectInfo(weapon.itemName, out objectInfo);
         WeaponSystem ws = GetComponentInChildren<WeaponSystem>();
@@ -41,7 +42,7 @@ public class PlayerEquipment : MonoBehaviour
             case 1:
                 if(Weapon1Item.itemName != "")
                 {
-                    GestionDesScipt.ScriptGestion.Inventory.AddItem(Weapon1Item);
+                    GestionDesScipt.ScriptGestion.Inventory.CheckCapability(Weapon1Item);
                 }
                 ws.ActiveWeapon(newWeapon, 1);
                 GestionDesScipt.ScriptGestion.Inventory.RemoveItem(weapon);
@@ -51,7 +52,7 @@ public class PlayerEquipment : MonoBehaviour
             case 2:
                 if(Weapon2Item.itemName != "")
                 {
-                    GestionDesScipt.ScriptGestion.Inventory.AddItem(Weapon2Item);
+                    GestionDesScipt.ScriptGestion.Inventory.CheckCapability(Weapon2Item);
                 }
                 ws.ActiveWeapon(newWeapon, 2);
                 GestionDesScipt.ScriptGestion.Inventory.RemoveItem(weapon);
@@ -79,6 +80,59 @@ public class PlayerEquipment : MonoBehaviour
                 Weapon2.GetComponentInChildren<Image>().sprite = defaultWeapon;
             break;
         }
+    }
+
+    public void EquipClothes(ItemClass cloth, ItemSlot.equipmentType type, bool willBeEquiped, InfoExelvetements infos)
+    {
+        if(willBeEquiped)
+        {
+            switch (type.ToString())
+            {
+                case "Coat":
+                    ChestClothSlot.GetComponentInChildren<Image>().sprite = cloth.GetSprite();
+                    break;
+                case "Pull":
+                    ChestArmorSlot.GetComponentInChildren<Image>().sprite = cloth.GetSprite();
+                    break;
+                case "HelmetOrTop":
+                    helmetSlot.GetComponentInChildren<Image>().sprite = cloth.GetSprite();
+                    break;
+                case "Pants":
+                    PantsSlot.GetComponentInChildren<Image>().sprite = cloth.GetSprite();
+                    break;
+                case "Shoes":
+                    ShoesSlot.GetComponentInChildren<Image>().sprite = cloth.GetSprite();
+                    break;
+            }
+            GestionDesScipt.ScriptGestion.Inventory.RemoveItem(cloth);
+            GestionDesScipt.ScriptGestion.SurvieScript.ResistanceFroidsTotal += infos.ChaleurResistance;
+            GestionDesScipt.ScriptGestion.SurvieScript.ResistanceDegatsTotal += infos.DegatResistance;
+        }
+        else
+        {
+            switch (type.ToString())
+            {
+                case "Coat":
+                    ChestClothSlot.GetComponentInChildren<Image>().sprite = defaultHelmet;
+                    break;
+                case "Pull":
+                    ChestArmorSlot.GetComponentInChildren<Image>().sprite = defaultHelmet;
+                    break;
+                case "HelmetOrTop":
+                    helmetSlot.GetComponentInChildren<Image>().sprite = defaultHelmet;
+                    break;
+                case "Pants":
+                    PantsSlot.GetComponentInChildren<Image>().sprite = defaultHelmet;
+                    break;
+                case "Shoes":
+                    ShoesSlot.GetComponentInChildren<Image>().sprite = defaultHelmet;
+                    break;
+            }
+            GestionDesScipt.ScriptGestion.Inventory.CheckCapability(cloth);
+            GestionDesScipt.ScriptGestion.SurvieScript.ResistanceFroidsTotal -= infos.ChaleurResistance;
+            GestionDesScipt.ScriptGestion.SurvieScript.ResistanceDegatsTotal -= infos.DegatResistance;
+        }
+        
     }
     
 }

@@ -705,6 +705,7 @@ MonoBehaviour:
   ContainerWindow: {fileID: 0}
   PlayerInventoryContainerWindow: {fileID: 0}
   mainInventory: {fileID: 0}
+  startingInventoryCapability: 10
 --- !u!114 &1326747683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -735,10 +736,20 @@ MonoBehaviour:
     spriteId: 2
     itemType: 1
     amount: 10
+    ChanceChoisis: 0
+    ChanceDeBase: 0
   - itemName: Couteau
     spriteId: 1
     itemType: 4
     amount: 1
+    ChanceChoisis: 0
+    ChanceDeBase: 0
+  - itemName: Pull en laine
+    spriteId: 0
+    itemType: 7
+    amount: 0
+    ChanceChoisis: 0
+    ChanceDeBase: 0
 --- !u!114 &1326747698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -797,36 +808,50 @@ MonoBehaviour:
     spriteId: 0
     itemType: 0
     amount: 0
+    ChanceChoisis: 0
+    ChanceDeBase: 0
   Weapon2Item:
     itemName: 
     spriteId: 0
     itemType: 0
     amount: 0
+    ChanceChoisis: 0
+    ChanceDeBase: 0
   helmet:
     itemName: 
     spriteId: 0
     itemType: 0
     amount: 0
+    ChanceChoisis: 0
+    ChanceDeBase: 0
   ChestCloth:
     itemName: 
     spriteId: 0
     itemType: 0
     amount: 0
+    ChanceChoisis: 0
+    ChanceDeBase: 0
   ChestArmor:
     itemName: 
     spriteId: 0
     itemType: 0
     amount: 0
+    ChanceChoisis: 0
+    ChanceDeBase: 0
   Pants:
     itemName: 
     spriteId: 0
     itemType: 0
     amount: 0
+    ChanceChoisis: 0
+    ChanceDeBase: 0
   Shoes:
     itemName: 
     spriteId: 0
     itemType: 0
     amount: 0
+    ChanceChoisis: 0
+    ChanceDeBase: 0
   defaultWeapon: {fileID: 0}
   defaultHelmet: {fileID: 0}
   Weapon1: {fileID: 0}
