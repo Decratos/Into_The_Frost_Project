@@ -56,11 +56,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_a8562bc31140438185f8b65e57f32dcb:
-        m_Texture: {fileID: 2800000, guid: 35b8af17c8444eb4b936fc826cb910a8, type: 3}
+        m_Texture: {fileID: 2800000, guid: 885f08d582c01d24a93e900cc54e0104, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_bbfd91691ccb4e31a08cf0a3d0035b5d:
-        m_Texture: {fileID: 2800000, guid: 6805a97297bda5144b4719be9e3b41bb, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_e378936a2cc24ca093e1b6107e99f371:
@@ -176,14 +176,14 @@ Material:
     - Vector1_1a60afa596014e109820e73f8037a690: 0.99
     - Vector1_225eba19e8c84b1798f546ad1483ef6d: 1
     - Vector1_298e2ed7e3654b09ac25406883777678: 1
-    - Vector1_34049371aeed457c85929c73fac8532a: 500
+    - Vector1_34049371aeed457c85929c73fac8532a: 2000
     - Vector1_37f154c318924deca6c3cdb290c91e8e: 1
     - Vector1_38211f68462b46bd9a3db182ca6e3afd: 0
     - Vector1_4149b02bde434496896e8000a530b16c: 0
     - Vector1_4522a1b5360e473884ce10af7db05d7c: 10000
-    - Vector1_4e805aa2861d447faaf2e86bf44ead50: 0.21
+    - Vector1_4e805aa2861d447faaf2e86bf44ead50: 1
     - Vector1_63b65c0ba5774a5ab597511539960074: 1
-    - Vector1_888f1f78da094719a0253e40821636ed: 0.98
+    - Vector1_888f1f78da094719a0253e40821636ed: 1
     - Vector1_b28b6848662746bd9191c1a607495e68: 20.66
     - Vector1_b9295e60b64644c0a61b12f3cfacb461: 1
     - Vector1_de51ab69e95a4ff484c1fbfd5020ecb2: 1
@@ -306,7 +306,7 @@ Material:
     m_Colors:
     - Color_1434d76123124324a1de769a9b3a38cc: {r: 1, g: 0, b: 0.7879014, a: 0}
     - Color_42fdaafbf3264b7683a9c8f2ab9d19c7: {r: 0.12834784, g: 0, b: 1, a: 0}
-    - Color_5925c1c63cfb4217af8e49f6341ab684: {r: 0, g: 0.80716705, b: 1, a: 1}
+    - Color_5925c1c63cfb4217af8e49f6341ab684: {r: 0, g: 0.016950607, b: 1, a: 1}
     - Vector2_5112b1121f9c4f0294b9e03368c4a898: {r: 0, g: 0, b: 0, a: 0}
     - Vector3_ae8c9fe50ca645fea03f51199fc5249f: {r: 0, g: 0, b: 0, a: 0}
     - Vector4_6360e1e78cae4708a8e4c9a07c19ab22: {r: 0, g: 0, b: 0, a: 0}
