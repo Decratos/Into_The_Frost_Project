@@ -16,9 +16,21 @@ public class DropEquippedWeapon : MonoBehaviour, IPointerDownHandler
     {
         if(parentItemSlot.equippedItemStat.itemName != "")
         {
-            PlayerSingleton.playerInstance.GetComponent<PlayerEquipment>().UnEquipWeapon(parentItemSlot.equippedItemStat, 1);
-            GestionDesScipt.ScriptGestion.Inventory.AddItem(parentItemSlot.equippedItemStat);
-            parentItemSlot.equippedItemStat = null;
+            if(parentItemSlot.equippedItemStat.itemType == ResumeExelForObject.Type.ArmeAfeu || parentItemSlot.equippedItemStat.itemType == ResumeExelForObject.Type.ArmeMelee)
+            {
+                PlayerSingleton.playerInstance.GetComponent<PlayerEquipment>().UnEquipWeapon(parentItemSlot.equippedItemStat, 1);
+                GestionDesScipt.ScriptGestion.Inventory.CheckCapability(parentItemSlot.equippedItemStat);
+                parentItemSlot.equippedItemStat = null;
+            }
+            else
+            {
+                liseurExel excel;
+                InfoExelvetements infoVetement;
+                excel = liseurExel.LesDatas;
+                excel.FindObjectInfo(parentItemSlot.equippedItemStat.itemName, out infoVetement);
+                PlayerSingleton.playerInstance.GetComponent<PlayerEquipment>().EquipClothes(parentItemSlot.equippedItemStat, parentItemSlot.slotType, false, infoVetement);
+            }
+            
         }
     }
 }

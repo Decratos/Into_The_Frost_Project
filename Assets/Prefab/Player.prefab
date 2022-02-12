@@ -645,8 +645,6 @@ MonoBehaviour:
   NombreDemplacementPourVetement: 0
   TemperatureBeginLoseLife: 28
   MultiplayerBehind37: 0.2
-  TemperatureValueForEffect: 30
-  LifeValueForEffect: 30
 --- !u!114 &3397247159004486040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -707,6 +705,7 @@ MonoBehaviour:
   ContainerWindow: {fileID: 0}
   PlayerInventoryContainerWindow: {fileID: 0}
   mainInventory: {fileID: 0}
+  startingInventoryCapability: 10
 --- !u!114 &1326747683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -743,6 +742,12 @@ MonoBehaviour:
     spriteId: 1
     itemType: 4
     amount: 1
+    ChanceChoisis: 0
+    ChanceDeBase: 0
+  - itemName: Pull en laine
+    spriteId: 0
+    itemType: 7
+    amount: 0
     ChanceChoisis: 0
     ChanceDeBase: 0
 --- !u!114 &1326747698
@@ -981,6 +986,7 @@ GameObject:
   - component: {fileID: 1123951330631785799}
   - component: {fileID: 1123951330631785798}
   - component: {fileID: -2376970720490811657}
+  - component: {fileID: 809116537657823254}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1033,7 +1039,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1527
+    m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1176,6 +1182,20 @@ MonoBehaviour:
   MaxAngle: {x: 70, y: 0}
   canLook: 1
 --- !u!114 &-2376970720490811657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123951330631785795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
+  ListenerNumber: -1
+--- !u!114 &809116537657823254
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
