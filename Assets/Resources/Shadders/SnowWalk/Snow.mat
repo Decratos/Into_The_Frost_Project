@@ -173,18 +173,18 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_01f78b3a6b87453e8e8c6c9ba649caa1: 0
-    - Vector1_1a60afa596014e109820e73f8037a690: 0.99
-    - Vector1_225eba19e8c84b1798f546ad1483ef6d: 1
+    - Vector1_1a60afa596014e109820e73f8037a690: 1
+    - Vector1_225eba19e8c84b1798f546ad1483ef6d: 0.1
     - Vector1_298e2ed7e3654b09ac25406883777678: 1
-    - Vector1_34049371aeed457c85929c73fac8532a: 2000
+    - Vector1_34049371aeed457c85929c73fac8532a: 2500
     - Vector1_37f154c318924deca6c3cdb290c91e8e: 1
     - Vector1_38211f68462b46bd9a3db182ca6e3afd: 0
     - Vector1_4149b02bde434496896e8000a530b16c: 0
     - Vector1_4522a1b5360e473884ce10af7db05d7c: 10000
     - Vector1_4e805aa2861d447faaf2e86bf44ead50: 1
     - Vector1_63b65c0ba5774a5ab597511539960074: 1
-    - Vector1_888f1f78da094719a0253e40821636ed: 1
-    - Vector1_b28b6848662746bd9191c1a607495e68: 20.66
+    - Vector1_888f1f78da094719a0253e40821636ed: 0.73
+    - Vector1_b28b6848662746bd9191c1a607495e68: 40.4
     - Vector1_b9295e60b64644c0a61b12f3cfacb461: 1
     - Vector1_de51ab69e95a4ff484c1fbfd5020ecb2: 1
     - Vector1_eeea3aed73b94c1a91b413e0a43b6157: 1
