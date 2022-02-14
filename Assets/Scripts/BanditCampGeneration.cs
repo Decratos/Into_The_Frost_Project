@@ -41,7 +41,9 @@ public class BanditCampGeneration : MonoBehaviour
         for (int i = 0; i < numberOfBandits; i++)
         {
             Vector3 spawnPosition = new Vector3(Random.Range(min.x, max.x), transform.position.y, Random.Range(min.z, max.z));
-            Instantiate(banditPrefab, spawnPosition, Quaternion.identity);
+            var bandit = Instantiate(banditPrefab, spawnPosition, Quaternion.identity);
+            bandit.GetComponent<AIBehaviour>().CampPosition = this.transform.position;
+            bandit.GetComponent<AIBehaviour>().isFromACamp = true;
         }
     }
 }

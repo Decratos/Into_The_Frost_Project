@@ -107,7 +107,7 @@ MonoBehaviour:
   - {fileID: 5942111600617134462}
   StringsBanks:
   - {fileID: 5075908363993971647}
-  cacheTime: 637697489711993891
+  cacheTime: 637784560202080724
   cacheVersion: 9
 --- !u!114 &2541879805269755351
 MonoBehaviour:
@@ -151,7 +151,7 @@ MonoBehaviour:
   Path: FMOD/AudioSource_IntoTheFrost/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637697489711963957
+  lastModified: 637784560202080724
   FileSizes:
   - Name: Desktop
     Value: 962
@@ -171,7 +171,7 @@ MonoBehaviour:
   Path: FMOD/AudioSource_IntoTheFrost/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637697489711993891
+  lastModified: 637784560202071046
   FileSizes:
   - Name: Desktop
     Value: 589184
