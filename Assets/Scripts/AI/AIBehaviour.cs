@@ -30,6 +30,7 @@ public class AIBehaviour : MonoBehaviour
     
     private void Start() {
         _agent = GetComponent<NavMeshAgent>();
+        ChangeState(State.Roaming);
     }
 
     private void Update() {

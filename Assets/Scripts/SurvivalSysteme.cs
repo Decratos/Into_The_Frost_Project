@@ -99,6 +99,7 @@ public class SurvivalSysteme : MesFonctions
         baisseLesDatas(); // envois la baisse des stats de survie
         SetFeedback();// Selon les valeurs calculer envois les feedbacks
         UpdateFeedBack();// Update le feedback 
+        UpdateUI();
     }
     void baisseLesDatas()// fais baisser les datas
     {
@@ -224,16 +225,16 @@ public class SurvivalSysteme : MesFonctions
     private void UpdateUI()
     {
         Canvas myCanva = CanvasReference._canvasReference.GetCanva();
-        myCanva.transform.Find("HungerBar").GetComponent<Slider>().value =
+        myCanva.transform.Find("SurvivalUI").transform.Find("HungerBar").GetComponent<Slider>().value =
             LesDataPourSurvie[0].ActualValue / LesDataPourSurvie[0].Range.y ;
         
-        myCanva.transform.Find("ThirstBar").GetComponent<Slider>().value =
+        myCanva.transform.Find("SurvivalUI").transform.Find("ThirstBar").GetComponent<Slider>().value =
             LesDataPourSurvie[1].ActualValue / LesDataPourSurvie[1].Range.y ;
         
-        myCanva.transform.Find("HealthBar").GetComponent<Slider>().value =
+        myCanva.transform.Find("SurvivalUI").transform.Find("HealthBar").GetComponent<Slider>().value =
             LesDataPourSurvie[2].ActualValue / LesDataPourSurvie[2].Range.y;
         
-        myCanva.transform.Find("TempBar").GetComponent<Slider>().value =
+        myCanva.transform.Find("SurvivalUI").transform.Find("TempBar").GetComponent<Slider>().value =
             LesDataPourSurvie[3].ActualValue / LesDataPourSurvie[3].Range.y;
     }
 

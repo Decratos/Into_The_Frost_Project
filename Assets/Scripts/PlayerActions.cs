@@ -1,9 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerActions : MonoBehaviour
 {
+    public TextMeshProUGUI ObjectText;
+
+    private void Start()
+    {
+        ObjectText = CanvasReference._canvasReference.GetCanva().transform.Find("ObjectText").GetComponent<TextMeshProUGUI>();
+    }
     public void Gather(RaycastHit hit, GestionDesScipt ScriptGestion) // récolte
     {
         if(GetComponentInChildren<WeaponSystem>().actualWeaponInHands)
@@ -60,5 +68,25 @@ public class PlayerActions : MonoBehaviour
         }*/
         
 
+    }
+
+    private void Update()
+    {
+       Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
+       if(Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
+       {
+            if(hit.transform.GetComponent<ItemWorld>())
+            {
+                ObjectText.text = hit.transform.GetComponent<ItemWorld>().GetItem().itemName;
+            }
+            else
+            {
+                ObjectText.text = "";
+            }
+       }
+        else
+        {
+            ObjectText.text = "";
+        }
     }
 }
