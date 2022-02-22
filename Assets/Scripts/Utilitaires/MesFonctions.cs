@@ -139,6 +139,7 @@ public struct InfoGlobalExel // créer une struct qui me permet de récupérer t
     public int CraftingLevel;
     public float rarity;
     public float inflammability;
+    public int Stockability;
     public enum Type
     {
         Nourriture,

@@ -15,6 +15,7 @@ public class InfoGeneral // Liste de tous les items
     public int CraftingLevel;
     public float Rarity;
     public float Inflamability;
+    public int Stockability;
 }
 [System.Serializable]
 public class InfoMateriaux // Liste de tous les matériaux
@@ -209,6 +210,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                 MesListe.LesItems[i].CraftingLevel = int.Parse(data[nombreDeColonne * (i + 1) + 4]); // Récupére le crafting level
                 MesListe.LesItems[i].Rarity = MonParse(data[nombreDeColonne * (i + 1) + 5]); // récupére la rareté de base 
                 MesListe.LesItems[i].Inflamability = MonParse(data[nombreDeColonne * (i + 1) + 6]);// récupére l'inflammabitité de de l'objet
+                MesListe.LesItems[i].Stockability= int.Parse(data[nombreDeColonne * (i + 1) + 7]); // Récupére le nombre d'objet stockable
             }
         }// si la page est de type général
         else if (mon_type == PageExel.TypeDePageExel.Materials)
@@ -444,6 +446,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                 lesInfos.CraftingLevel = info.CraftingLevel;// set le niveau de crafting
                 lesInfos.rarity = info.Rarity;
                 lesInfos.inflammability = info.Inflamability;
+                lesInfos.Stockability = info.Stockability;
                 correctionType(info.Type , out correctedType); // corrige le type
                 string [] EnumType = System.Enum.GetNames(typeof(InfoGlobalExel.Type));// créer un tableau de string des types
                 for (int i = 0; i < EnumType.Length-1; i++) // pour chaque type dans l'enum
@@ -717,7 +720,8 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                 lesInfos.Durability = info.Durability; // set la durabilité
                 lesInfos.CraftingLevel = info.CraftingLevel;// set le niveau de crafting
                 lesInfos.rarity = info.Rarity;
-                lesInfos.inflammability = info.Inflamability; 
+                lesInfos.inflammability = info.Inflamability;
+                lesInfos.Stockability = info.Stockability;
                 correctionType(info.Type, out correctedType); // corrige le type
                 string[] EnumType = System.Enum.GetNames(typeof(InfoGlobalExel.Type));// créer un tableau de string des types
                 
