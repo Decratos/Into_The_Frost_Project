@@ -89,7 +89,7 @@ public class UIInventory : MonoBehaviour
                         };
                         itemSlotRectTransform.GetComponent<Button_UI>().MouseRightClickFunc = () =>
                         {
-                            ItemClass duplicateItem = new ItemClass {itemType = item.itemType, amount = item.amount, itemName = item.itemName, globalInfo = item.globalInfo};
+                            ItemClass duplicateItem = new ItemClass {amount = item.amount,globalInfo = item.globalInfo};
                             ItemWorld.DropItem(PlayerSingleton.playerInstance.GetPosition(), duplicateItem);
                             _inventory.RemoveItem(item);
                             RefreshInventoryItems();
@@ -99,7 +99,7 @@ public class UIInventory : MonoBehaviour
                         image.sprite = item.GetSprite();
                         TextMeshProUGUI text = itemSlotRectTransform.Find("AmountText").GetComponent<TextMeshProUGUI>();
                         TextMeshProUGUI tooltipText = itemSlotRectTransform.Find("Tooltip").GetComponentInChildren<TextMeshProUGUI>();
-                        tooltipText.SetText(item.itemName);
+                        tooltipText.SetText(item.globalInfo.Name);
                         itemSlotRectTransform.GetComponentInChildren<ItemInfo>().item = item;
                         if (item.amount == 1)
                         {

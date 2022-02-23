@@ -16,6 +16,7 @@ public class PlayerActions : MonoBehaviour
     {
         if(GetComponentInChildren<WeaponSystem>().actualWeaponInHands)
         {
+            
             string name = hit.transform.GetComponent<BasicRessourcesSource>().ressourceName;
             int amount = hit.transform.GetComponent<BasicRessourcesSource>().ressourceAmount;
             if(name == "Bois" && GetComponentInChildren<WeaponSystem>().actualWeaponInHands.canCutWood || name == "Rocher" && GetComponentInChildren<WeaponSystem>().actualWeaponInHands.canCutStone)
@@ -29,7 +30,10 @@ public class PlayerActions : MonoBehaviour
                         FMODUnity.RuntimeManager.PlayOneShot("event:/Collecting/GatheringStone", hit.point);
                     break;
                 }
-                ScriptGestion.Inventory.CheckCapability(new ItemClass{itemType = ResumeExelForObject.Type.Materials, amount = amount}, hit.transform.gameObject);
+                InfoGlobalExel objectInfo = new InfoGlobalExel();
+                liseurExel.LesDatas.FindObjectInfo(name, out objectInfo);
+                var newItem = new ItemClass {globalInfo = objectInfo, amount = amount };
+                ScriptGestion.Inventory.CheckCapability(newItem, hit.transform.gameObject);
                 hit.transform.GetComponent<BasicRessourcesSource>().ReduceDurability();
                 Instantiate(ItemAssets.ItemAssetsInstance.GetComponent<ParticlesAssets>().particles[0], hit.point, PlayerSingleton.playerInstance.transform.rotation);
             }
@@ -48,7 +52,7 @@ public class PlayerActions : MonoBehaviour
             ResumeExelForObject stats = hit.transform.GetComponent<ResumeExelForObject>();
             liseurExel.LesDatas.FindObjectInfo(stats.ID, out objectInfo);
             ItemClass itemWorld = hit.transform.GetComponent<ItemWorld>().GetItem();
-            ScriptGestion.Inventory.CheckCapability(new ItemClass{itemName = itemWorld.itemName, itemType = stats.MainType, amount = itemWorld.amount, spriteId = itemWorld.spriteId}, hit.transform.gameObject);
+            ScriptGestion.Inventory.CheckCapability(new ItemClass{globalInfo = objectInfo}, hit.transform.gameObject);
             Destroy(hit.transform.gameObject);
             FMODUnity.RuntimeManager.PlayOneShot("event:/Collecting/TakeItem", hit.point);
             GetComponent<Animator>().Play("TakeItem");
@@ -77,7 +81,7 @@ public class PlayerActions : MonoBehaviour
        {
             if(hit.transform.GetComponent<ItemWorld>())
             {
-                ObjectText.text = hit.transform.GetComponent<ItemWorld>().GetItem().itemName;
+                ObjectText.text = hit.transform.GetComponent<ItemWorld>().GetItem().globalInfo.Name;
             }
             else
             {

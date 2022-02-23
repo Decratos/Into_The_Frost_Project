@@ -14,7 +14,7 @@ public class AiDropItem : MonoBehaviour
         {
             InfoGlobalExel globalExel = new InfoGlobalExel();
             liseurExel.LesDatas.FindObjectInfo(itemName, out globalExel);
-            ItemWorld.DropItem(transform.position, new ItemClass{itemName = globalExel.Name, amount = itemAmount, globalInfo = globalExel, itemType = itemType});
+            ItemWorld.DropItem(transform.position, new ItemClass{amount = itemAmount, globalInfo = globalExel});
         }
     }
 }

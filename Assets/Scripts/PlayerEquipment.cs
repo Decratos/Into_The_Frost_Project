@@ -26,12 +26,12 @@ public class PlayerEquipment : MonoBehaviour
     {
         print("J'équipe l'arme");
         InfoGlobalExel objectInfo = new InfoGlobalExel();
-        liseurExel.LesDatas.FindObjectInfo(weapon.itemName, out objectInfo);
+        liseurExel.LesDatas.FindObjectInfo(weapon.globalInfo.Name, out objectInfo);
         WeaponSystem ws = GetComponentInChildren<WeaponSystem>();
         WeaponsClass newWeapon = null;
         foreach (var wp in ws.Weapons)
         {
-            if(wp.name == weapon.itemName)
+            if(wp.name == weapon.globalInfo.Name)
             {
                 newWeapon = wp;
             }
@@ -40,7 +40,7 @@ public class PlayerEquipment : MonoBehaviour
         switch (slotNumber)
         {
             case 1:
-                if(Weapon1Item.itemName != "")
+                if(Weapon1Item.globalInfo.Name != "")
                 {
                     GestionDesScipt.ScriptGestion.Inventory.CheckCapability(Weapon1Item);
                 }
@@ -50,7 +50,7 @@ public class PlayerEquipment : MonoBehaviour
                 Weapon1Item = weapon;
             break;
             case 2:
-                if(Weapon2Item.itemName != "")
+                if(Weapon2Item.globalInfo.Name != "")
                 {
                     GestionDesScipt.ScriptGestion.Inventory.CheckCapability(Weapon2Item);
                 }
@@ -71,12 +71,12 @@ public class PlayerEquipment : MonoBehaviour
         {
             case 1:
                 ws.DesactiveWeapon(1);
-                Weapon1Item = new ItemClass{itemName = ""};
+                Weapon1Item = new ItemClass{globalInfo = weapon.globalInfo};
                 Weapon1.GetComponentInChildren<Image>().sprite = defaultWeapon;
             break;
             case 2:
                 ws.DesactiveWeapon(2);
-                Weapon2Item = new ItemClass{itemName = ""};
+                Weapon2Item = new ItemClass{globalInfo = weapon.globalInfo};
                 Weapon2.GetComponentInChildren<Image>().sprite = defaultWeapon;
             break;
         }

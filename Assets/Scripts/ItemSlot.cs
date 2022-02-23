@@ -40,15 +40,15 @@ public class ItemSlot : MonoBehaviour, IDropHandler
             eventData.pointerDrag.GetComponent<RectTransform>().position = 
             GetComponent<RectTransform>().position;
             equippedItemStat = item;
-            if(item.itemType != ResumeExelForObject.Type.Vetements)
+            if(item.globalInfo.TypeGeneral != InfoGlobalExel.Type.Vetement)
             {
                 print("Ce n'est pas un vêtement");
-                if (item.itemType == ResumeExelForObject.Type.ArmeAfeu || item.itemType == ResumeExelForObject.Type.ArmeMelee)
+                if (item.globalInfo.TypeGeneral == InfoGlobalExel.Type.ArmeAfeu || item.globalInfo.TypeGeneral == InfoGlobalExel.Type.ArmeMelee)
                 {
                     print("C'est une arme");
                     PlayerSingleton.playerInstance.GetComponent<PlayerEquipment>().OnWeaponEquipped(item, slotNumber);
                 }
-                print(item.itemType);
+                print(item.globalInfo.Name);
             }
             else
             {
@@ -56,7 +56,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler
                 liseurExel excel;
                 InfoExelvetements infoVetement;
                 excel = liseurExel.LesDatas;
-                excel.FindObjectInfo(item.itemName, out infoVetement);
+                excel.FindObjectInfo(item.globalInfo.Name, out infoVetement);
                 if (infoVetement.MaCategorie == InfoExelvetements.SousCategorie.Tshirt && slotType == equipmentType.Coat)
                 {
                     PlayerSingleton.playerInstance.GetComponent<PlayerEquipment>().EquipClothes(item, slotType, true, infoVetement);

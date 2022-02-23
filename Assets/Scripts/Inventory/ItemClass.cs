@@ -6,35 +6,31 @@ using UnityEngine;
 [Serializable]
 public class ItemClass
 {
-   public InfoGlobalExel globalInfo;
-   public string itemName;
-   public int spriteId;
-
-   public ResumeExelForObject.Type itemType;
-   public int amount;
+    public InfoGlobalExel globalInfo;
+    public int amount;
     public float ChanceChoisis;
     public float ChanceDeBase;
 
    public Sprite GetSprite() //Fonction permettant d'afficher la bonne image
    {
-      if(spriteId != 0)
-         return ItemAssets.ItemAssetsInstance.sprites[spriteId-1];
+      if(globalInfo.ID != 0)
+         return ItemAssets.ItemAssetsInstance.sprites[globalInfo.ID- 1];
       else
       {
-         return ItemAssets.ItemAssetsInstance.sprites[spriteId];
+         return ItemAssets.ItemAssetsInstance.sprites[globalInfo.ID];
       }
    }
 
    public bool isStackable() 
    {
-      switch (itemType)
+      switch (globalInfo.TypeGeneral)
       {
          default: 
-         case ResumeExelForObject.Type.Nourriture:
-         case ResumeExelForObject.Type.Soins:
-         case ResumeExelForObject.Type.Materials:
+         case InfoGlobalExel.Type.Nourriture:
+         case InfoGlobalExel.Type.Soins:
+         case InfoGlobalExel.Type.Materials:
             return true;
-         case ResumeExelForObject.Type.ArmeAfeu:
+         case InfoGlobalExel.Type.ArmeAfeu:
             return false;
       }
    }

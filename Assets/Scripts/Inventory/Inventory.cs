@@ -18,16 +18,19 @@ public class Inventory
     {
         ItemClass newItem = new ItemClass();
         InfoGlobalExel inf = new InfoGlobalExel();
-        liseurExel.LesDatas.FindObjectInfo(item.itemName, out inf);
-        newItem.itemType = item.itemType;
+        liseurExel.LesDatas.FindObjectInfo(item.globalInfo.Name, out inf);
+        newItem = item;
+        /*newItem.itemType = item.itemType;
         newItem.amount = item.amount;
         newItem.spriteId = item.spriteId;
+        newItem.durability = item.durability;
+        newItem.inflamability = item.inflamability;*/
         if (item.isStackable())
         {
             bool itemAlreadyInInventory = false;
             foreach (ItemClass inventoryItem in itemList)
             {
-                if (inventoryItem.itemName == inf.Name)
+                if (inventoryItem.globalInfo.Name == inf.Name)
                 {
                     inventoryItem.amount += newItem.amount;
                     itemAlreadyInInventory = true;
@@ -45,7 +48,7 @@ public class Inventory
         {
             itemList.Add(newItem);  
         }
-        newItem.itemName = inf.Name;
+        newItem.globalInfo.Name = inf.Name;
         newItem.globalInfo = inf;
         OnItemListChanged?.Invoke(this,EventArgs.Empty);
     }
@@ -74,15 +77,15 @@ public class Inventory
     {
         ItemClass newItem = new ItemClass();
         InfoGlobalExel inf = new InfoGlobalExel();
-        liseurExel.LesDatas.FindObjectInfo(item.itemName, out inf);
+        liseurExel.LesDatas.FindObjectInfo(item.globalInfo.Name, out inf);
         newItem.amount = item.amount;
-        newItem.spriteId = item.spriteId;
+        newItem.globalInfo.ID = item.globalInfo.ID;
         if (item.isStackable())
         {
             ItemClass itemAlreadyInInventory = null;
             foreach (ItemClass inventoryItem in itemList)
             {
-                if (inventoryItem.itemName == item.itemName)
+                if (inventoryItem.globalInfo.Name == item.globalInfo.Name)
                 {
                     inventoryItem.amount -= newItem.amount;
                     itemAlreadyInInventory = inventoryItem;
@@ -101,6 +104,37 @@ public class Inventory
         }
         OnItemListChanged?.Invoke(this,EventArgs.Empty);
     }
+    public void RemoveItem(ItemClass item, InfoExelCraft infoCraft, int step)
+    {
+        ItemClass newItem = new ItemClass();
+        InfoGlobalExel inf = new InfoGlobalExel();
+        liseurExel.LesDatas.FindObjectInfo(item.globalInfo.Name, out inf);
+        newItem.amount = infoCraft.LeNombreNecessaire[step];
+        newItem.globalInfo.ID = item.globalInfo.ID;
+        if (item.isStackable())
+        {
+            ItemClass itemAlreadyInInventory = null;
+            foreach (ItemClass inventoryItem in itemList)
+            {
+                if (inventoryItem.globalInfo.Name == infoCraft.NomdesRessourcesNecessaire[step])
+                {
+                    inventoryItem.amount -= newItem.amount;
+                    itemAlreadyInInventory = inventoryItem;
+                }
+
+            }
+
+            if (itemAlreadyInInventory != null && itemAlreadyInInventory.amount <= 0)
+            {
+                itemList.Remove(itemAlreadyInInventory);
+            }
+        }
+        else
+        {
+            itemList.Remove(newItem);
+        }
+        OnItemListChanged?.Invoke(this, EventArgs.Empty);
+    }
 
     public void TransferItem(Inventory newInventory, ItemClass item)// Transfert un item
     {
@@ -115,7 +149,7 @@ public class Inventory
 
     public void UseItem(ItemClass item) //
     {
-        ItemsActions.itemsActionsInstance.ItemAction(item.itemName, item);
+        ItemsActions.itemsActionsInstance.ItemAction(item.globalInfo.Name, item);
     }
 
     public int CheckItemOnList(ItemClass item)// vérifie le nombre existant
@@ -123,7 +157,7 @@ public class Inventory
         int amount = 0;
         foreach (var items in itemList)
         {
-            if (items.itemName == item.itemName)
+            if (items.globalInfo.Name == item.globalInfo.Name)
             {
                 amount = items.amount;
             }

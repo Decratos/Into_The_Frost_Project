@@ -17,9 +17,9 @@ public class ItemsActions : MesFonctions
 
     public void ItemAction(string name, ItemClass item) //itemAction?
     {
-        switch (item.itemType)
+        switch (item.globalInfo.TypeGeneral)
         {
-            case ResumeExelForObject.Type.Nourriture:
+            case InfoGlobalExel.Type.Nourriture:
                 scriptsGestion.SurvieScript.LesDataPourSurvie[0].ActualValue +=
                     item.globalInfo.exelNourriturre.Nourritture;
                 scriptsGestion.SurvieScript.LesDataPourSurvie[1].ActualValue +=
@@ -29,11 +29,11 @@ public class ItemsActions : MesFonctions
                 scriptsGestion.SurvieScript.LesDataPourSurvie[3].ActualValue +=
                     item.globalInfo.exelNourriturre.Vie;
                 break;
-            case ResumeExelForObject.Type.Soins:
+            case InfoGlobalExel.Type.Soins:
                 scriptsGestion.SurvieScript.LesDataPourSurvie[2].ActualValue +=
                     item.globalInfo.exelSoins.value;
                 break;
-            case ResumeExelForObject.Type.ArmeAfeu:
+            case InfoGlobalExel.Type.ArmeAfeu:
                 break;
             default:
                 break;

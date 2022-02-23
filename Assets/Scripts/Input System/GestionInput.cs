@@ -49,7 +49,7 @@ public class GestionInput : MesFonctions
         {
             if(ScriptGestion.PlayerConstruct.constructionMode)
             {
-                ScriptGestion.PlayerConstruct.Construct();
+                //ScriptGestion.PlayerConstruct.Construct();
             }
             else
             {

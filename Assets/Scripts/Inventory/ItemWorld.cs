@@ -9,7 +9,7 @@ public class ItemWorld : MonoBehaviour
     public static ItemWorld SpawnItemWorld(ItemClass item, Vector3 position) //Spawn un item
     {
         Transform itemToInst = Instantiate(ItemAssets.ItemAssetsInstance.itemWorldPrefab, position, Quaternion.identity);
-        itemToInst.name = item.itemName;
+        itemToInst.name = item.globalInfo.Name;
         ItemWorld itemWorld = itemToInst.GetComponent<ItemWorld>();
         itemWorld.SetItem(item);
         return itemWorld;
@@ -40,7 +40,7 @@ public class ItemWorld : MonoBehaviour
     {
         Vector3 randomDir = UtilsClass.GetRandomDir();
         ItemWorld ItemWorld = SpawnItemWorld(item, DropPosition + (randomDir + Vector3.up) * 5f );
-        ItemWorld.transform.name = item.itemName;
+        ItemWorld.transform.name = item.globalInfo.Name;
         ItemWorld.item.amount = item.amount;
         ItemWorld.GetComponent<Rigidbody>().AddForce(randomDir * 1.5f, ForceMode.Impulse);
         return ItemWorld;
