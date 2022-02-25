@@ -30123,6 +30123,71 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7696476121015621077, guid: ff7936aa491aab7419651660cb5641eb,
+        type: 3}
+      propertyPath: LesDataPourSurvie.Array.data[0].SpeedRegen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696476121015621077, guid: ff7936aa491aab7419651660cb5641eb,
+        type: 3}
+      propertyPath: LesDataPourSurvie.Array.data[0].StartRegen
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696476121015621077, guid: ff7936aa491aab7419651660cb5641eb,
+        type: 3}
+      propertyPath: LesDataPourSurvie.Array.data[1].StartRegen
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696476121015621077, guid: ff7936aa491aab7419651660cb5641eb,
+        type: 3}
+      propertyPath: LesDataPourSurvie.Array.data[3].SpeedRegen
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696476121015621077, guid: ff7936aa491aab7419651660cb5641eb,
+        type: 3}
+      propertyPath: LesDataPourSurvie.Array.data[3].StartRegen
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696476121015621077, guid: ff7936aa491aab7419651660cb5641eb,
+        type: 3}
+      propertyPath: LesDataPourSurvie.Array.data[2].ActualValue
+      value: 37.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696476121015621077, guid: ff7936aa491aab7419651660cb5641eb,
+        type: 3}
+      propertyPath: LesDataPourSurvie.Array.data[0].RegenLimit.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696476121015621077, guid: ff7936aa491aab7419651660cb5641eb,
+        type: 3}
+      propertyPath: LesDataPourSurvie.Array.data[0].RegenLimit.y
+      value: 95
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696476121015621077, guid: ff7936aa491aab7419651660cb5641eb,
+        type: 3}
+      propertyPath: LesDataPourSurvie.Array.data[1].RegenLimit.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696476121015621077, guid: ff7936aa491aab7419651660cb5641eb,
+        type: 3}
+      propertyPath: LesDataPourSurvie.Array.data[1].RegenLimit.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696476121015621077, guid: ff7936aa491aab7419651660cb5641eb,
+        type: 3}
+      propertyPath: LesDataPourSurvie.Array.data[2].RegenLimit.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696476121015621077, guid: ff7936aa491aab7419651660cb5641eb,
+        type: 3}
+      propertyPath: LesDataPourSurvie.Array.data[2].RegenLimit.y
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696476121015621077, guid: ff7936aa491aab7419651660cb5641eb,
+        type: 3}
+      propertyPath: LesDataPourSurvie.Array.data[2].DecroissementVieUnderMinima
+      value: 0.75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff7936aa491aab7419651660cb5641eb, type: 3}
 --- !u!1 &934374273
@@ -53397,6 +53462,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
+      propertyPath: MesPages.Array.data[0].nombreDeColonne
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
       propertyPath: MesListe.LaBouffe.Array.data[6].Chaleur
       value: 25
       objectReference: {fileID: 0}
@@ -54107,8 +54177,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
+      propertyPath: MesListe.LesItems.Array.data[0].TempsCuisson
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
       propertyPath: MesListe.LesItems.Array.data[1].Stockability
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
+      propertyPath: MesListe.LesItems.Array.data[1].TempsCuisson
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
@@ -54117,8 +54197,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
+      propertyPath: MesListe.LesItems.Array.data[2].TempsCuisson
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
       propertyPath: MesListe.LesItems.Array.data[3].Stockability
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
+      propertyPath: MesListe.LesItems.Array.data[3].TempsCuisson
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
@@ -54127,8 +54217,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
+      propertyPath: MesListe.LesItems.Array.data[4].TempsCuisson
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
       propertyPath: MesListe.LesItems.Array.data[5].Stockability
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
+      propertyPath: MesListe.LesItems.Array.data[5].TempsCuisson
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
@@ -54137,8 +54237,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
+      propertyPath: MesListe.LesItems.Array.data[6].TempsCuisson
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
       propertyPath: MesListe.LesItems.Array.data[7].Stockability
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
+      propertyPath: MesListe.LesItems.Array.data[7].TempsCuisson
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
@@ -54147,8 +54257,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
+      propertyPath: MesListe.LesItems.Array.data[8].TempsCuisson
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
       propertyPath: MesListe.LesItems.Array.data[9].Stockability
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
+      propertyPath: MesListe.LesItems.Array.data[9].TempsCuisson
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
+      propertyPath: MesListe.LesItems.Array.data[0].Inflamability
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
@@ -54157,8 +54282,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
+      propertyPath: MesListe.LesItems.Array.data[10].TempsCuisson
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
       propertyPath: MesListe.LesItems.Array.data[11].Stockability
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
+      propertyPath: MesListe.LesItems.Array.data[11].TempsCuisson
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
@@ -54167,8 +54302,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
+      propertyPath: MesListe.LesItems.Array.data[12].TempsCuisson
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
       propertyPath: MesListe.LesItems.Array.data[13].Stockability
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
+      propertyPath: MesListe.LesItems.Array.data[13].TempsCuisson
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
@@ -54177,8 +54322,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
+      propertyPath: MesListe.LesItems.Array.data[14].TempsCuisson
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
       propertyPath: MesListe.LesItems.Array.data[15].Stockability
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
+      propertyPath: MesListe.LesItems.Array.data[15].TempsCuisson
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
@@ -54187,8 +54342,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
+      propertyPath: MesListe.LesItems.Array.data[16].TempsCuisson
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
       propertyPath: MesListe.LesItems.Array.data[17].Stockability
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
+      propertyPath: MesListe.LesItems.Array.data[17].TempsCuisson
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
@@ -54197,8 +54362,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
+      propertyPath: MesListe.LesItems.Array.data[18].TempsCuisson
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
       propertyPath: MesListe.LesItems.Array.data[19].Stockability
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
+      propertyPath: MesListe.LesItems.Array.data[19].TempsCuisson
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
@@ -54212,8 +54387,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
+      propertyPath: MesListe.LesItems.Array.data[20].TempsCuisson
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
       propertyPath: MesListe.LesItems.Array.data[21].Stockability
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
+      propertyPath: MesListe.LesItems.Array.data[21].TempsCuisson
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
@@ -54222,8 +54407,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
+      propertyPath: MesListe.LesItems.Array.data[22].TempsCuisson
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
       propertyPath: MesListe.LesItems.Array.data[23].Stockability
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
+      propertyPath: MesListe.LesItems.Array.data[23].TempsCuisson
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
@@ -54232,8 +54427,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
+      propertyPath: MesListe.LesItems.Array.data[24].TempsCuisson
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
       propertyPath: MesListe.LesItems.Array.data[25].Stockability
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
+      propertyPath: MesListe.LesItems.Array.data[25].TempsCuisson
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
@@ -54242,8 +54447,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
+      propertyPath: MesListe.LesItems.Array.data[26].TempsCuisson
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
       propertyPath: MesListe.LesItems.Array.data[27].Stockability
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
+      propertyPath: MesListe.LesItems.Array.data[27].TempsCuisson
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
@@ -54252,8 +54467,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
+      propertyPath: MesListe.LesItems.Array.data[28].TempsCuisson
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
       propertyPath: MesListe.LesItems.Array.data[29].Stockability
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
+      propertyPath: MesListe.LesItems.Array.data[29].TempsCuisson
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
@@ -54267,8 +54492,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
+      propertyPath: MesListe.LesItems.Array.data[30].TempsCuisson
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
       propertyPath: MesListe.LesItems.Array.data[31].Stockability
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
+      propertyPath: MesListe.LesItems.Array.data[31].TempsCuisson
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
@@ -54277,8 +54512,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
+      propertyPath: MesListe.LesItems.Array.data[32].TempsCuisson
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
       propertyPath: MesListe.LesItems.Array.data[33].Stockability
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
+      propertyPath: MesListe.LesItems.Array.data[33].TempsCuisson
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
@@ -54287,8 +54532,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
+      propertyPath: MesListe.LesItems.Array.data[34].TempsCuisson
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
       propertyPath: MesListe.LesItems.Array.data[35].Stockability
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
+      propertyPath: MesListe.LesItems.Array.data[35].TempsCuisson
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
@@ -54297,8 +54552,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
+      propertyPath: MesListe.LesItems.Array.data[36].TempsCuisson
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
       propertyPath: MesListe.LesItems.Array.data[37].Stockability
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
+      propertyPath: MesListe.LesItems.Array.data[37].TempsCuisson
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
@@ -54307,8 +54572,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
+      propertyPath: MesListe.LesItems.Array.data[38].TempsCuisson
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
       propertyPath: MesListe.LesItems.Array.data[39].Stockability
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
+      propertyPath: MesListe.LesItems.Array.data[39].TempsCuisson
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
@@ -54322,8 +54597,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
+      propertyPath: MesListe.LesItems.Array.data[40].TempsCuisson
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
       propertyPath: MesListe.LesItems.Array.data[41].Stockability
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
+      propertyPath: MesListe.LesItems.Array.data[41].TempsCuisson
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
@@ -54332,8 +54617,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
+      propertyPath: MesListe.LesItems.Array.data[42].TempsCuisson
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
       propertyPath: MesListe.LesItems.Array.data[43].Stockability
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
+      propertyPath: MesListe.LesItems.Array.data[43].TempsCuisson
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
@@ -54342,8 +54637,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
+      propertyPath: MesListe.LesItems.Array.data[44].TempsCuisson
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
       propertyPath: MesListe.LesItems.Array.data[45].Stockability
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
+      propertyPath: MesListe.LesItems.Array.data[45].TempsCuisson
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
@@ -54352,8 +54657,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
+      propertyPath: MesListe.LesItems.Array.data[46].TempsCuisson
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
       propertyPath: MesListe.LesItems.Array.data[47].Stockability
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
+      propertyPath: MesListe.LesItems.Array.data[47].TempsCuisson
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
@@ -54362,8 +54677,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
+      propertyPath: MesListe.LesItems.Array.data[48].TempsCuisson
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
       propertyPath: MesListe.LesItems.Array.data[49].Stockability
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
+      propertyPath: MesListe.LesItems.Array.data[49].TempsCuisson
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
@@ -54377,8 +54702,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
+      propertyPath: MesListe.LesItems.Array.data[50].TempsCuisson
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
       propertyPath: MesListe.LesItems.Array.data[51].Stockability
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
+      propertyPath: MesListe.LesItems.Array.data[51].TempsCuisson
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
@@ -54387,8 +54722,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
+      propertyPath: MesListe.LesItems.Array.data[52].TempsCuisson
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
       propertyPath: MesListe.LesItems.Array.data[53].Stockability
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
+      propertyPath: MesListe.LesItems.Array.data[53].TempsCuisson
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
@@ -54397,8 +54742,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
+      propertyPath: MesListe.LesItems.Array.data[54].TempsCuisson
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
       propertyPath: MesListe.LesItems.Array.data[55].Stockability
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
+      propertyPath: MesListe.LesItems.Array.data[55].TempsCuisson
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
@@ -54407,8 +54762,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
+      propertyPath: MesListe.LesItems.Array.data[56].TempsCuisson
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
       propertyPath: MesListe.LesItems.Array.data[57].Stockability
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
+      propertyPath: MesListe.LesItems.Array.data[57].TempsCuisson
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
@@ -54417,8 +54782,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
+      propertyPath: MesListe.LesItems.Array.data[58].TempsCuisson
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
       propertyPath: MesListe.LesItems.Array.data[59].Stockability
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
+      propertyPath: MesListe.LesItems.Array.data[59].TempsCuisson
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
@@ -54432,8 +54807,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
+      propertyPath: MesListe.LesItems.Array.data[60].TempsCuisson
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
       propertyPath: MesListe.LesItems.Array.data[61].Stockability
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
+      propertyPath: MesListe.LesItems.Array.data[61].TempsCuisson
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
@@ -54442,13 +54827,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
+      propertyPath: MesListe.LesItems.Array.data[62].TempsCuisson
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
       propertyPath: MesListe.LesItems.Array.data[63].Stockability
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
+      propertyPath: MesListe.LesItems.Array.data[63].TempsCuisson
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
       propertyPath: MesListe.LesItems.Array.data[64].Stockability
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
+      propertyPath: MesListe.LesItems.Array.data[64].TempsCuisson
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
@@ -54627,6 +55027,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
+      propertyPath: MesListe.LesItems.Array.data[19].Inflamability
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
       propertyPath: MesListe.LesItems.Array.data[20].CraftingLevel
       value: 1
       objectReference: {fileID: 0}
@@ -54667,6 +55072,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
+      propertyPath: MesListe.LesItems.Array.data[27].Inflamability
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
       propertyPath: MesListe.LesItems.Array.data[28].CraftingLevel
       value: -1
       objectReference: {fileID: 0}
@@ -54679,6 +55089,16 @@ PrefabInstance:
         type: 3}
       propertyPath: MesListe.LesItems.Array.data[30].CraftingLevel
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
+      propertyPath: MesListe.LesItems.Array.data[30].Inflamability
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
+      propertyPath: MesListe.LesItems.Array.data[31].Inflamability
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
@@ -54739,6 +55159,11 @@ PrefabInstance:
         type: 3}
       propertyPath: MesListe.LesItems.Array.data[44].CraftingLevel
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
+      propertyPath: MesListe.LesItems.Array.data[45].Inflamability
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
@@ -54829,6 +55254,11 @@ PrefabInstance:
         type: 3}
       propertyPath: MesListe.LesItems.Array.data[63].CraftingLevel
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
+        type: 3}
+      propertyPath: MesListe.LesItems.Array.data[64].Inflamability
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 6577673143113461415, guid: e73135d9833c68e4e870fce91b2ab3ab,
         type: 3}
