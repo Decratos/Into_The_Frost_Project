@@ -558,7 +558,7 @@ MonoBehaviour:
     Range: {x: 23, y: 44}
     ActualValue: 37.5
     DecroissementVieUnderMinima: 1
-    PerteMaxByFrame: 0.001
+    PerteMaxByFrame: 0.002
     PerteByPourcentage:
       serializedVersion: 2
       m_Curve:
@@ -641,7 +641,6 @@ MonoBehaviour:
   LesDammages: 0
   ResistanceFroidsTotal: 0
   ResistanceDegatsTotal: 0
-  NombreDemplacementPourVetement: 0
   TemperatureBeginLoseLife: 28
   MultiplayerBehind37: 0.2
   TemperatureValueForEffect: 0
@@ -874,6 +873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1558dac1a8efdb0418de8ee8d1f88151, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ObjectText: {fileID: 0}
 --- !u!95 &635795273
 Animator:
   serializedVersion: 3

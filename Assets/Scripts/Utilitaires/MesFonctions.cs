@@ -120,13 +120,13 @@ public class MesFonctions : MonoBehaviour
     public static float PourcentageBetweenValue(float min, float max, float value) 
     {
 
-        return (max-value) / (max-min);
+        return (value-min) / (max-min);
     
     }
      public static float PourcentageBetweenValue(Vector2 Range, float value)
     {
 
-        return (Range.y - value) / (Range.y - Range.x);
+        return ( value - Range.x) / (Range.y - Range.x);
 
     }
 }

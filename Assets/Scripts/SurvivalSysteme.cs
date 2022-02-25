@@ -47,7 +47,7 @@ public class SurvivalSysteme : MesFonctions
     #region value vetements
     public float ResistanceFroidsTotal;
     public float ResistanceDegatsTotal;
-    public int NombreDemplacementPourVetement;
+    
     #endregion
 
     //private
@@ -91,8 +91,7 @@ public class SurvivalSysteme : MesFonctions
                 IndexDataSoif = i;
             }
         }
-        LesVetementsQueJePorte = new InfoExelvetements[NombreDemplacementPourVetement]; // A voir avec th�o
-        print("Commentaire à résoudre");
+        
     }
     void Update()
     {
@@ -140,7 +139,7 @@ public class SurvivalSysteme : MesFonctions
     {
 
         return ((MonState.ActualValue - TemperatureExt.temperature) - ResistanceFroidsTotal) *
-             MonState.PerteByPourcentage.Evaluate((MonState.Range.y - MonState.ActualValue) / (MonState.Range.y - MonState.Range.x)) * MonState.PerteMaxByFrame;
+             MonState.PerteByPourcentage.Evaluate((MonState.ActualValue - MonState.Range.x  ) / (MonState.Range.y - MonState.Range.x)) * MonState.PerteMaxByFrame;//!\ modifié 
 
 
     }
@@ -166,7 +165,7 @@ public class SurvivalSysteme : MesFonctions
     float calculPerteLifeHeat(StateForSurvival MonState)
     {
         return MonState.DecroissementVieUnderMinima *
-            PerteChaleur.Evaluate((TemperatureBeginLoseLife - MonState.ActualValue) /
+            PerteChaleur.Evaluate(( MonState.ActualValue - MonState.Range.x) /       //!\ modifié 
                 (TemperatureBeginLoseLife - MonState.Range.x));
     }
     #endregion
@@ -196,11 +195,11 @@ public class SurvivalSysteme : MesFonctions
     {
         if (PostprocessChange.PostprocessScript.IsCibleAlreadySet(PostprocessChange.Effect.Life))
         {
-            PostprocessChange.PostprocessScript.SetWeight(PostprocessChange.Effect.Life, PourcentageBetweenValue(LesDataPourSurvie[IndexDataVie].Range.x, LifeValueForEffect, LesDataPourSurvie[IndexDataVie].ActualValue ));
+            PostprocessChange.PostprocessScript.SetWeight(PostprocessChange.Effect.Life, 1/PourcentageBetweenValue(LesDataPourSurvie[IndexDataVie].Range.x, LifeValueForEffect, LesDataPourSurvie[IndexDataVie].ActualValue ));
         }
         else if (PostprocessChange.PostprocessScript.IsCibleAlreadySet(PostprocessChange.Effect.Frost))
         {
-            PostprocessChange.PostprocessScript.SetWeight(PostprocessChange.Effect.Frost, PourcentageBetweenValue(LesDataPourSurvie[IndexDataFrost].Range.x, LifeValueForEffect, LesDataPourSurvie[IndexDataFrost].ActualValue));
+            PostprocessChange.PostprocessScript.SetWeight(PostprocessChange.Effect.Frost, 1/PourcentageBetweenValue(LesDataPourSurvie[IndexDataFrost].Range.x, LifeValueForEffect, LesDataPourSurvie[IndexDataFrost].ActualValue));
         } 
     }
 
@@ -305,26 +304,7 @@ public class SurvivalSysteme : MesFonctions
         }
 
     }
-    public void SetVetements(InfoExelvetements Info, int IndexEmplacement)
-    {
-        if (IndexEmplacement > NombreDemplacementPourVetement || IndexEmplacement < 0) // viens de retirer un -1
-        {
-            //print("L'emplacement Demander n'existe pas");
-        }
-        else
-        {
-            if (LesVetementsQueJePorte[IndexEmplacement].MaCategorie == Info.MaCategorie || !LesVetementsQueJePorte[IndexEmplacement].IsWeared)
-            {
-
-                ResistanceDegatsTotal -= LesVetementsQueJePorte[IndexEmplacement].DegatResistance;
-                ResistanceFroidsTotal -= LesVetementsQueJePorte[IndexEmplacement].ChaleurResistance;
-                ResistanceDegatsTotal += Info.DegatResistance;
-                ResistanceFroidsTotal += Info.ChaleurResistance;
-                LesVetementsQueJePorte[IndexEmplacement] = Info;
-            }
-        }
-
-    }
+   
     public void TakeDamage(float dammageBrut, TypeOfDammage CeQuiMeFaitMal)
     {
 
@@ -427,3 +407,24 @@ public class SurvivalSysteme : MesFonctions
                         LesDataPourSurvie[IndexDataVie].ActualValue = checkLaRange(IndexDataVie);
                     }
                 }*/
+
+/* public void SetVetements(InfoExelvetements Info, int IndexEmplacement)
+    {
+        if (IndexEmplacement > NombreDemplacementPourVetement || IndexEmplacement < 0) // viens de retirer un -1
+        {
+            //print("L'emplacement Demander n'existe pas");
+        }
+        else
+        {
+            if (LesVetementsQueJePorte[IndexEmplacement].MaCategorie == Info.MaCategorie || !LesVetementsQueJePorte[IndexEmplacement].IsWeared)
+            {
+
+                ResistanceDegatsTotal -= LesVetementsQueJePorte[IndexEmplacement].DegatResistance;
+                ResistanceFroidsTotal -= LesVetementsQueJePorte[IndexEmplacement].ChaleurResistance;
+                ResistanceDegatsTotal += Info.DegatResistance;
+                ResistanceFroidsTotal += Info.ChaleurResistance;
+                LesVetementsQueJePorte[IndexEmplacement] = Info;
+            }
+        }
+
+    }*/
