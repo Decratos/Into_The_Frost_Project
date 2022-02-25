@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MesPages:
   - MaPage: {fileID: 4900000, guid: 6ecd3a912db785c4c8aa9ec0195fd75a, type: 3}
-    nombreDeColonne: 7
+    nombreDeColonne: 8
     LesInfoPagesExel: 0
   - MaPage: {fileID: 4900000, guid: f451382e4566f6e4fa981411c93b75b0, type: 3}
     nombreDeColonne: 2

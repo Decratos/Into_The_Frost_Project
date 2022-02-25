@@ -51,12 +51,63 @@ MonoBehaviour:
   TimeOfDay: 12
   EnvironmentProfile: {fileID: 11400000, guid: 582adbd84082fdb4faf7cd4beb1ccd14, type: 2}
   WeatherVFXs:
-  - {fileID: 7215643279730585105}
+  - {fileID: 0}
   - {fileID: 7215643279730585105}
   - {fileID: 7215643279730585105}
   actualWeatherVFXused: {fileID: 0}
-  _weather: 3
-  _intensity: 2
+  lowCurve:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 25
+  mediumCurve:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 50
+  highCurve:
+    m_Mode: 0
+    m_CurveMultiplier: 0
+    m_CurveMin:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_CurveMax:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ConstantMin: 0
+    m_ConstantMax: 100
+  _weather: 0
+  _intensity: 0
 --- !u!114 &7215643279542345064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a67e9f5c7e86be42bf35c7c9dc825d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  temperature: 10
+  temperature: -15
 --- !u!1 &7215643279730585105
 GameObject:
   m_ObjectHideFlags: 0

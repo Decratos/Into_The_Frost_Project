@@ -1069,44 +1069,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7215643279542345066, guid: a9b2024562445354cbc175df8145ae87,
         type: 3}
-      propertyPath: _weather
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7215643279542345066, guid: a9b2024562445354cbc175df8145ae87,
-        type: 3}
-      propertyPath: _intensity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7215643279542345066, guid: a9b2024562445354cbc175df8145ae87,
-        type: 3}
-      propertyPath: DirectionalLight
-      value: 
-      objectReference: {fileID: 549837789}
-    - target: {fileID: 7215643279542345066, guid: a9b2024562445354cbc175df8145ae87,
-        type: 3}
       propertyPath: actualWeatherVFXused
       value: 
       objectReference: {fileID: 1297932889}
     - target: {fileID: 7215643279542345066, guid: a9b2024562445354cbc175df8145ae87,
         type: 3}
-      propertyPath: lowCurve.m_ConstantMax
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 7215643279542345066, guid: a9b2024562445354cbc175df8145ae87,
-        type: 3}
-      propertyPath: highCurve.m_ConstantMax
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 7215643279542345066, guid: a9b2024562445354cbc175df8145ae87,
-        type: 3}
       propertyPath: WeatherVFXs.Array.data[0]
       value: 
       objectReference: {fileID: 1297932889}
-    - target: {fileID: 7215643279542345066, guid: a9b2024562445354cbc175df8145ae87,
-        type: 3}
-      propertyPath: mediumCurve.m_ConstantMax
-      value: 50
-      objectReference: {fileID: 0}
     - target: {fileID: 7215643279542345067, guid: a9b2024562445354cbc175df8145ae87,
         type: 3}
       propertyPath: m_RootOrder
