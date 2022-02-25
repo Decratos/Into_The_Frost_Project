@@ -100,6 +100,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Torchlight",
+                    "type": "Button",
+                    "id": "6183c90c-cb8b-466b-b886-9382ddbc4af5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -309,6 +317,17 @@
                     "processors": "",
                     "groups": "Clavier",
                     "action": "Crounch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c3f1b98f-021a-4fee-ad75-827b148e4692",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Clavier",
+                    "action": "Torchlight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

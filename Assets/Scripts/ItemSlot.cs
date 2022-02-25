@@ -20,6 +20,8 @@ public class ItemSlot : MonoBehaviour, IDropHandler
         HelmetOrTop,
         Pants,
         Shoes,
+        Food,
+        Materials
 
     } 
     public equipmentType slotType;
@@ -47,6 +49,14 @@ public class ItemSlot : MonoBehaviour, IDropHandler
                 {
                     print("C'est une arme");
                     PlayerSingleton.playerInstance.GetComponent<PlayerEquipment>().OnWeaponEquipped(item, slotNumber);
+                }
+                else if(item.globalInfo.TypeGeneral == InfoGlobalExel.Type.Nourriture && slotType == equipmentType.Food)
+                {
+                    equippedItemStat.globalInfo = item.globalInfo;
+                }
+                else if(item.globalInfo.TypeGeneral == InfoGlobalExel.Type.Materials && slotType == equipmentType.Materials)
+                {
+                    equippedItemStat.globalInfo = item.globalInfo;
                 }
                 print(item.globalInfo.Name);
             }

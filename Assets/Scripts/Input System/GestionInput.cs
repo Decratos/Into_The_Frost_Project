@@ -104,6 +104,10 @@ public class GestionInput : MesFonctions
                     {
                         hit.transform.GetComponent<CraftingTable>().OpenHideTableWindow();
                     }
+                    else if(hit.transform.tag == "Cooker")
+                    {
+                        hit.transform.GetComponent<Cooker>().OpenHideWindow();
+                    }
                 }
         }
     }
