@@ -556,7 +556,7 @@ MonoBehaviour:
     applyDecroissement: 0
     Index: 0
     Range: {x: 23, y: 44}
-    ActualValue: 37.5
+    ActualValue: 30
     DecroissementVieUnderMinima: 1
     PerteMaxByFrame: 0.002
     PerteByPourcentage:
@@ -643,8 +643,8 @@ MonoBehaviour:
   ResistanceDegatsTotal: 0
   TemperatureBeginLoseLife: 28
   MultiplayerBehind37: 0.2
-  TemperatureValueForEffect: 0
-  LifeValueForEffect: 0
+  TemperatureValueForEffect: 32
+  LifeValueForEffect: 30
 --- !u!114 &3397247159004486040
 MonoBehaviour:
   m_ObjectHideFlags: 0

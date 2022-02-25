@@ -30123,11 +30123,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7696476121015621077, guid: ff7936aa491aab7419651660cb5641eb,
-        type: 3}
-      propertyPath: LesDataPourSurvie.Array.data[2].ActualValue
-      value: 30
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff7936aa491aab7419651660cb5641eb, type: 3}
 --- !u!1 &934374273
