@@ -19,6 +19,13 @@ public class StateForSurvival
     [HideInInspector] public int Index;
     
     public Vector2 Range;
+    [Tooltip("Vitesse à laquel la vie se regen")]
+    public float SpeedRegen;
+    [Tooltip("Vie de regen")]
+    public Vector2 RegenLimit;
+    [Tooltip("Value et > à laquelle la vie remonte")]
+    public float StartRegen;
+
     public float ActualValue;
     
    
@@ -96,6 +103,10 @@ public class SurvivalSysteme : MesFonctions
     void Update()
     {
         baisseLesDatas(); // envois la baisse des stats de survie
+        if (LesDataPourSurvie[IndexDataFrost].ActualValue > TemperatureBeginLoseLife)
+        {
+            Regen();//Vois si les datas permettent une regen
+        }
         SetFeedback();// Selon les valeurs calculer envois les feedbacks
         UpdateFeedBack();// Update le feedback 
         UpdateUI();
@@ -127,6 +138,18 @@ public class SurvivalSysteme : MesFonctions
             }
             LesDataPourSurvie[i].ActualValue = checkLaRange(i);// v�rifie qu'il n'y a pas de d�passement de valeur
         }// selon les datas de survie
+    }
+    void Regen() 
+    {
+        
+        foreach (StateForSurvival State in LesDataPourSurvie)
+        {
+            if (State.ActualValue >= State.StartRegen && IsItInRange(State.RegenLimit, LesDataPourSurvie[IndexDataVie].ActualValue))
+            {
+                LesDataPourSurvie[IndexDataVie].ActualValue += State.SpeedRegen * Time.deltaTime;
+            }
+        }
+
     }
     #region calcul perte des datas
     float CalculPerteFaimEtSoi(StateForSurvival MonState)
