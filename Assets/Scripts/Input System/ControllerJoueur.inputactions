@@ -9,6 +9,14 @@
                     "name": "MovementFB",
                     "type": "PassThrough",
                     "id": "5b198211-f76a-491a-a67d-88b47bd16766",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Sprint",
+                    "type": "Button",
+                    "id": "8a94d83d-46bf-4e27-8738-ed5396623f57",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -30,7 +38,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Action",
+                    "name": "Shoot",
                     "type": "Button",
                     "id": "257228ac-12cf-4357-ae56-598dedd4e801",
                     "expectedControlType": "Button",
@@ -38,33 +46,9 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Sprint",
+                    "name": "Viser",
                     "type": "Button",
-                    "id": "8a94d83d-46bf-4e27-8738-ed5396623f57",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Construct",
-                    "type": "Button",
-                    "id": "360420f8-6494-47c1-8c2e-8cc7d1281270",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "BuildMode",
-                    "type": "Button",
-                    "id": "98c14cff-a031-4247-acaf-20870249df82",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "MouseWheelButton",
-                    "type": "PassThrough",
-                    "id": "0c714afb-c1ac-440f-a1f7-f7e20685c350",
+                    "id": "5bcfdc64-2add-40da-8297-ff5b8690a2a6",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -79,8 +63,40 @@
                 },
                 {
                     "name": "SwitchWeapon",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "e5a3b7ed-6df0-49a1-91d0-ab6e7506acef",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "First QuickSloth",
+                    "type": "Button",
+                    "id": "e2c22625-d511-47ea-b4be-7c23dc68a91f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Second  QuickSloth",
+                    "type": "Button",
+                    "id": "99f85a73-8991-40d2-a626-4a871048e4a4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Third  QuickSloth",
+                    "type": "Button",
+                    "id": "343302a9-7d1c-4a17-9140-d51081957f8d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Fourth Quicksloth",
+                    "type": "Button",
+                    "id": "6f4b7c83-5584-4b08-9db6-8167c24b26e8",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -100,20 +116,25 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Torch",
+                    "type": "Button",
+                    "id": "fc611d30-0117-4ed0-942c-e432a08bb7b5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "15da1cd8-4203-49d8-b2a4-221224919c4a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "f2ea7497-0575-4d6d-8c41-4632576bd2d0",
-                    "path": "<Gamepad>/leftStick/y",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Manette",
-                    "action": "MovementFB",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "zqsd",
                     "id": "3f6e2d17-ff30-4d17-ad17-fb75642955e7",
@@ -171,6 +192,17 @@
                 },
                 {
                     "name": "",
+                    "id": "7e2f38e5-f730-466c-9b87-bb2949dc69b3",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovementFB",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "1bd41f6d-4a0d-4388-a04a-df916c4fa419",
                     "path": "<Keyboard>/space",
                     "interactions": "",
@@ -182,23 +214,34 @@
                 },
                 {
                     "name": "",
+                    "id": "9c59f389-041d-4595-a67b-2b4068229989",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Manette",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "72e489f4-c44b-4a0f-858b-cd50d1024a92",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "Clavier",
-                    "action": "Action",
+                    "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "4e5295bb-1c3e-41d4-90aa-e4670d596026",
-                    "path": "<Gamepad>/buttonSouth",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "Manette",
-                    "action": "Action",
+                    "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -226,45 +269,67 @@
                 },
                 {
                     "name": "",
-                    "id": "cdabb361-55cd-44c1-b0ff-d3d8fb21c6c5",
-                    "path": "<Keyboard>/leftShift",
+                    "id": "2034ce41-8f35-4eca-9047-5cf12f5acb9e",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Clavier;Clavier Bureau",
+                    "action": "Use",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6adec50b-9806-4611-af07-11ed801e6ccf",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Use",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bf6d3674-49e2-451c-be55-5feca1d5c0bc",
+                    "path": "<Keyboard>/leftCtrl",
                     "interactions": "",
                     "processors": "",
                     "groups": "Clavier",
-                    "action": "Sprint",
+                    "action": "Crounch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "a15aae80-00d7-4024-8947-801c4dca7338",
-                    "path": "<Mouse>/middleButton",
+                    "id": "42a45113-4224-49f8-abab-e95d4747f0eb",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Construct",
+                    "groups": "Manette",
+                    "action": "Crounch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "c2172b8f-0ac7-4595-b653-0ebf0f2fdb69",
-                    "path": "<Keyboard>/b",
+                    "id": "3f3d237f-d32c-4da6-b5be-9ede1649969b",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Clavier Bureau;Clavier",
-                    "action": "BuildMode",
+                    "groups": "Clavier",
+                    "action": "Viser",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "fdc3e761-83a9-458f-961b-49818bfdfa85",
-                    "path": "<Mouse>/middleButton",
-                    "interactions": "Press",
+                    "id": "3b73522d-7830-41c8-9eaa-6b6a99eeaf40",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "MouseWheelButton",
+                    "groups": "Manette",
+                    "action": "Viser",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -281,8 +346,52 @@
                 },
                 {
                     "name": "",
-                    "id": "b17588b5-fcca-43fd-816c-9a31afff97c7",
-                    "path": "<Keyboard>/c",
+                    "id": "ae1d1108-6335-49c7-b04b-9a4913605652",
+                    "path": "<Gamepad>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Inventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cdabb361-55cd-44c1-b0ff-d3d8fb21c6c5",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Clavier",
+                    "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d753a3c3-cb5e-4d03-b3b1-70c23032ad05",
+                    "path": "<Gamepad>/leftStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Manette",
+                    "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0ae8e0fd-9119-4b86-b802-c4f928a7c328",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Clavier",
+                    "action": "SwitchWeapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7e25a686-2479-46ee-a3d3-cce56c7b4b51",
+                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -292,23 +401,133 @@
                 },
                 {
                     "name": "",
-                    "id": "2034ce41-8f35-4eca-9047-5cf12f5acb9e",
-                    "path": "<Keyboard>/e",
+                    "id": "bf828b03-3938-4cd6-8e7b-bce725cf49d6",
+                    "path": "<Keyboard>/1",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Clavier;Clavier Bureau",
-                    "action": "Use",
+                    "groups": "Clavier",
+                    "action": "First QuickSloth",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "bf6d3674-49e2-451c-be55-5feca1d5c0bc",
-                    "path": "<Keyboard>/leftCtrl",
+                    "id": "85d221ed-5c9c-4e3a-917c-5535b027fc37",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Manette",
+                    "action": "First QuickSloth",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2b7523f2-615e-499b-9ea1-98da09e070e8",
+                    "path": "<Keyboard>/2",
                     "interactions": "",
                     "processors": "",
                     "groups": "Clavier",
-                    "action": "Crounch",
+                    "action": "Second  QuickSloth",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "805c7a00-4da4-446c-a7a6-e01d6e97fd3a",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Manette",
+                    "action": "Second  QuickSloth",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "41d4b572-d930-477b-87de-d8fe55309330",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Clavier",
+                    "action": "Third  QuickSloth",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bf44c5fb-9985-4418-bbac-aa272e04d218",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Manette",
+                    "action": "Third  QuickSloth",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bd7ab449-f8b2-4090-895e-54e553d60c8d",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Clavier",
+                    "action": "Fourth Quicksloth",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c9617f66-89a8-4343-8f4f-56a1a406c9c3",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Manette",
+                    "action": "Fourth Quicksloth",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "74a99e40-e1b7-42a1-90a3-7c08576b8a98",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Clavier",
+                    "action": "Torch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9283f050-a6b8-496a-9a45-c237ba0ee055",
+                    "path": "<Gamepad>/rightStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Manette",
+                    "action": "Torch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "50804925-cdac-4d71-8b10-f31cb4fdf355",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Manette",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "edd6b6bb-dd73-4ddc-8a98-12161c6c64fd",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Clavier",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

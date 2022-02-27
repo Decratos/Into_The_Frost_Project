@@ -268,7 +268,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1123951329656893954}
         m_TargetAssemblyTypeName: GestionInput, Assembly-CSharp
-        m_MethodName: Action
+        m_MethodName: Shoot
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -299,54 +299,6 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1123951329656893954}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 360420f8-6494-47c1-8c2e-8cc7d1281270
-    m_ActionName: Controlleur/Construct[/Mouse/middleButton]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1123951329656893954}
-        m_TargetAssemblyTypeName: GestionInput, Assembly-CSharp
-        m_MethodName: BuildMode
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 98c14cff-a031-4247-acaf-20870249df82
-    m_ActionName: Controlleur/BuildMode[/Keyboard/b]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1123951329656893954}
-        m_TargetAssemblyTypeName: GestionInput, Assembly-CSharp
-        m_MethodName: SwitchStructure
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 0c714afb-c1ac-440f-a1f7-f7e20685c350
-    m_ActionName: Controlleur/MouseWheelUp
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1123951329656893954}
         m_TargetAssemblyTypeName: GestionInput, Assembly-CSharp
         m_MethodName: InventoryMode
         m_Mode: 0
@@ -363,12 +315,12 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1123951329656893954}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+        m_TargetAssemblyTypeName: GestionInput, Assembly-CSharp
+        m_MethodName: SwitchWeapon
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -408,6 +360,118 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 60241ed5-6fd3-4a65-bb94-21fdbb7245ee
     m_ActionName: Controlleur/Crounch[/Keyboard/leftCtrl]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1123951329656893954}
+        m_TargetAssemblyTypeName: GestionInput, Assembly-CSharp
+        m_MethodName: Vise
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5bcfdc64-2add-40da-8297-ff5b8690a2a6
+    m_ActionName: Controlleur/Viser[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1123951329656893954}
+        m_TargetAssemblyTypeName: GestionInput, Assembly-CSharp
+        m_MethodName: UseQuicksloth1
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e2c22625-d511-47ea-b4be-7c23dc68a91f
+    m_ActionName: Controlleur/New action
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1123951329656893954}
+        m_TargetAssemblyTypeName: GestionInput, Assembly-CSharp
+        m_MethodName: UseQuicksloth2
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 99f85a73-8991-40d2-a626-4a871048e4a4
+    m_ActionName: Controlleur/First QuickSloth1
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1123951329656893954}
+        m_TargetAssemblyTypeName: GestionInput, Assembly-CSharp
+        m_MethodName: UseQuicksloth3
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 343302a9-7d1c-4a17-9140-d51081957f8d
+    m_ActionName: Controlleur/Second  QuickSloth1
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1123951329656893954}
+        m_TargetAssemblyTypeName: GestionInput, Assembly-CSharp
+        m_MethodName: UseQuicksloth4
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6f4b7c83-5584-4b08-9db6-8167c24b26e8
+    m_ActionName: Controlleur/New action
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1123951329656893954}
+        m_TargetAssemblyTypeName: GestionInput, Assembly-CSharp
+        m_MethodName: Torch
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: fc611d30-0117-4ed0-942c-e432a08bb7b5
+    m_ActionName: Controlleur/New action
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1123951329656893954}
+        m_TargetAssemblyTypeName: GestionInput, Assembly-CSharp
+        m_MethodName: Pause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 15da1cd8-4203-49d8-b2a4-221224919c4a
+    m_ActionName: Controlleur/New action
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Clavier Bureau
   m_DefaultActionMap: Controlleur
@@ -494,6 +558,9 @@ MonoBehaviour:
     applyDecroissement: 0
     Index: 0
     Range: {x: 0, y: 100}
+    SpeedRegen: 1
+    RegenLimit: {x: 5, y: 95}
+    StartRegen: 80
     ActualValue: 100
     DecroissementVieUnderMinima: 5
     PerteMaxByFrame: 0.04
@@ -525,6 +592,9 @@ MonoBehaviour:
     applyDecroissement: 0
     Index: 0
     Range: {x: 0, y: 100}
+    SpeedRegen: 0
+    RegenLimit: {x: 5, y: 90}
+    StartRegen: 80
     ActualValue: 100
     DecroissementVieUnderMinima: 7
     PerteMaxByFrame: 0.06
@@ -556,8 +626,11 @@ MonoBehaviour:
     applyDecroissement: 0
     Index: 0
     Range: {x: 23, y: 44}
-    ActualValue: 30
-    DecroissementVieUnderMinima: 1
+    SpeedRegen: 0
+    RegenLimit: {x: 50, y: 80}
+    StartRegen: 0
+    ActualValue: 37.5
+    DecroissementVieUnderMinima: 0.75
     PerteMaxByFrame: 0.002
     PerteByPourcentage:
       serializedVersion: 2
@@ -587,6 +660,9 @@ MonoBehaviour:
     applyDecroissement: 0
     Index: 0
     Range: {x: 0, y: 100}
+    SpeedRegen: 0
+    RegenLimit: {x: 0, y: 0}
+    StartRegen: 0
     ActualValue: 100
     DecroissementVieUnderMinima: 0
     PerteMaxByFrame: 0
@@ -1181,6 +1257,7 @@ MonoBehaviour:
   joueur: {fileID: 1123951329656893961}
   Sensibilite: {x: 0.2, y: 0.2}
   MaxAngle: {x: 70, y: 0}
+  SensibiliteManette: {x: 150, y: 150}
   canLook: 1
 --- !u!114 &-2376970720490811657
 MonoBehaviour:
