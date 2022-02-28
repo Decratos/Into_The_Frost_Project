@@ -7,6 +7,9 @@ using UnityEngine;
 public class ItemClass
 {
     public InfoGlobalExel globalInfo;
+    [Tooltip("Sert juste à savoir quel item possède le joueur dans l'inventory_debug")]
+    public string name;
+
     public int amount;
     public float ChanceChoisis;
     public float ChanceDeBase;

@@ -50,6 +50,7 @@ public class Inventory
         }
         newItem.globalInfo.Name = inf.Name;
         newItem.globalInfo = inf;
+        newItem.name = inf.Name;
         OnItemListChanged?.Invoke(this,EventArgs.Empty);
     }
 

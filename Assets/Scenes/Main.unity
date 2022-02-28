@@ -5186,6 +5186,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cookingWindow: {fileID: 0}
   isOpen: 1
+  fuel: 0
+  maxFuel: 50
 --- !u!1 &147011278
 GameObject:
   m_ObjectHideFlags: 0
@@ -30129,6 +30131,38 @@ PrefabInstance:
     - target: {fileID: 702578166, guid: ff7936aa491aab7419651660cb5641eb, type: 3}
       propertyPath: m_InnerSpotAngle
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1326747697, guid: ff7936aa491aab7419651660cb5641eb, type: 3}
+      propertyPath: startInventory.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1326747697, guid: ff7936aa491aab7419651660cb5641eb, type: 3}
+      propertyPath: startInventory.Array.data[0]
+      value: Planche
+      objectReference: {fileID: 0}
+    - target: {fileID: 1326747697, guid: ff7936aa491aab7419651660cb5641eb, type: 3}
+      propertyPath: startInventory.Array.data[1]
+      value: fusil
+      objectReference: {fileID: 0}
+    - target: {fileID: 1326747697, guid: ff7936aa491aab7419651660cb5641eb, type: 3}
+      propertyPath: startInventory.Array.data[2]
+      value: kit de soin
+      objectReference: {fileID: 0}
+    - target: {fileID: 1326747697, guid: ff7936aa491aab7419651660cb5641eb, type: 3}
+      propertyPath: startInventory.Array.data[0].amount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1326747697, guid: ff7936aa491aab7419651660cb5641eb, type: 3}
+      propertyPath: startInventory.Array.data[1].amount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1826935432, guid: ff7936aa491aab7419651660cb5641eb, type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 1934520430}
+    - target: {fileID: 1826935432, guid: ff7936aa491aab7419651660cb5641eb, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1842692929, guid: ff7936aa491aab7419651660cb5641eb, type: 3}
       propertyPath: m_RootOrder
@@ -61405,6 +61439,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1931001375}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1934520430 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1828316415, guid: c4fbb43383af29d4ebcdfc097427e5c6,
+    type: 3}
+  m_PrefabInstance: {fileID: 2049594420}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1936192306
 GameObject:
   m_ObjectHideFlags: 0
@@ -65824,7 +65870,8 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8944795181936850188, guid: c4fbb43383af29d4ebcdfc097427e5c6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c4fbb43383af29d4ebcdfc097427e5c6, type: 3}
 --- !u!1001 &2050701844
 PrefabInstance:
