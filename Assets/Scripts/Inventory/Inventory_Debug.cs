@@ -32,6 +32,7 @@ public class Inventory_Debug : MonoBehaviour
             InfoGlobalExel infoGlobal;
             liseurExel.LesDatas.FindObjectInfo(name, out infoGlobal);
             var startItem = new ItemClass { globalInfo = infoGlobal, amount = 1 };
+            print(startItem.globalInfo.Name + " " + startItem.globalInfo.TypeGeneral);
             CanvasReference._canvasReference.GetCanva().GetComponentInChildren<UIInventory>().equippedItems.Add(startItem);
         }
     }
