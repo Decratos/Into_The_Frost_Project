@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class GestionInput : MesFonctions
 {
 
+    PlayerInput PI; 
     [SerializeField] float Distance;
 
 
@@ -20,7 +21,12 @@ public class GestionInput : MesFonctions
         FindGestionDesScripts(this.gameObject, out ScriptGestion);
        
     }
-   
+
+    private void Start()
+    {
+        PI = GetComponent<PlayerInput>();
+        
+    }
 
     public void movement(InputAction.CallbackContext context)
     {
@@ -43,11 +49,13 @@ public class GestionInput : MesFonctions
         
     }
 
-    public void Action(InputAction.CallbackContext context)
+    public void Shoot(InputAction.CallbackContext context)
     {
+       
         if (context.started)
         {
-            if(ScriptGestion.PlayerConstruct.constructionMode)
+            print("Shoot");
+            if (ScriptGestion.PlayerConstruct.constructionMode)
             {
                 //ScriptGestion.PlayerConstruct.Construct();
             }
@@ -114,13 +122,24 @@ public class GestionInput : MesFonctions
 
     public void SourisMouvement(InputAction.CallbackContext context) 
     {
-
-      
        
-        MouvementDeSouris = context.ReadValue<Vector2>();
-        //faire un debug du raycast de la souris
-        if(Time.timeScale != 0)
-            ScriptGestion.MouvementDeCamera.ReceptionDonnerInput(MouvementDeSouris);
+       
+        
+        
+        
+        if(Time.timeScale != 0) 
+        {
+            if (PI.currentControlScheme == "Manette")
+            {
+                ScriptGestion.MouvementDeCamera.ReceptionDataManette(context.ReadValue<Vector2>());
+            }
+            else
+            {
+                MouvementDeSouris = context.ReadValue<Vector2>();
+                ScriptGestion.MouvementDeCamera.ReceptionDonnerInput(MouvementDeSouris);
+            }
+        }
+            
 
     }
     
@@ -129,11 +148,13 @@ public class GestionInput : MesFonctions
         
         if (context.started)
         {
+            print("Start Sprint");
             ScriptGestion.LesMouvements.StateChange(MouvementPlayer.StateDeplacement.Cour);
             
         }
         if (context.canceled)
         {
+            print("End Sprint");
             ScriptGestion.LesMouvements.StateChange(MouvementPlayer.StateDeplacement.Marche);
         }
        
@@ -182,9 +203,54 @@ public class GestionInput : MesFonctions
 
     public void SwitchWeapon(InputAction.CallbackContext context)
     {
-        if (context.started)
+        //Atester
+        if (context.ReadValue<float>()!=0)
         {
             PlayerSingleton.playerInstance.GetComponentInChildren<WeaponSystem>().ChangeWeaponMode();
         }
+     
+        
+    }
+
+    public void UseQuicksloth1(InputAction.CallbackContext context) 
+    {
+
+        print("Quicksloth1");
+
+    }
+    public void UseQuicksloth2(InputAction.CallbackContext context)
+    {
+
+        print("Quicksloth2");
+
+    }
+    public void UseQuicksloth3(InputAction.CallbackContext context)
+    {
+
+        print("Quicksloth3");
+
+    }
+    public void UseQuicksloth4(InputAction.CallbackContext context)
+    {
+
+        print("Quicksloth4");
+
+    }
+    public void Torch(InputAction.CallbackContext context) 
+    {
+
+        print("Allumez la lamp torch");
+
+    }
+    public void Pause(InputAction.CallbackContext context) 
+    {
+
+        print("Mettre en pause");
+
+    }
+
+    public void Vise(InputAction.CallbackContext context) 
+    {
+        print("Je vise");
     }
 }

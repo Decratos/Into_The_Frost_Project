@@ -9,12 +9,14 @@ public class CameraMouvement : MesFonctions
     public GameObject joueur;
     public Vector2 Sensibilite = Vector2.zero;
     public Vector2 MaxAngle = Vector2.zero;
+    public Vector2 SensibiliteManette;
     public bool canLook;
     //public Vector2 MaxAngleInJump = Vector2.zero;
 
 
     //private
-
+    Vector2 ManetteDirection;
+    bool ManetteActivated;
     GestionDesScipt ScriptGestion;
 
     float RotationSurX = 0;
@@ -32,6 +34,32 @@ public class CameraMouvement : MesFonctions
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
+    }
+
+    void Update()
+    {
+
+        if (ManetteActivated)
+        {
+            ReceptionDonnerInput(ManetteDirection);
+        }
+
+    }
+
+    public void ReceptionDataManette(Vector2 Data) 
+    {
+
+        ManetteActivated = true;
+        if (Data != Vector2.zero)
+        {
+            ManetteDirection = Data.normalized*SensibiliteManette;
+        }
+        else
+        {
+            ManetteActivated = false;
+            ManetteDirection = Vector2.zero;
+        }
+        
     }
 
 
