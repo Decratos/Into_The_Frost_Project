@@ -1,22 +1,22 @@
 ID,Name,Ressources,nombre,Crafting Level
 1,Planche,Bois,1,0
-4,Pain,Farine/eau 50cl,3/50,1
-14,Feu de camp,Bois/Petit bois/Livre,2/5/1,0
-15,Barril en tôle,Ferraille,30,2
-16,Barril de feu,Barril en tôle/Feu de camp,1/1,2
-18,pistolet,Planche/Ferraille,2/30,4
-19,fusil,Planche/Ferraille,1/20,4
-20,Couteau,Planche/Shatterton/Ferraille,2/1/10,2
-21,batte,Planche,3,1
-22,barre de fer,Ferraille/Planche/Shatterton,15/2/1,1
-23,Katana,Ferraille/Planche/Shatterton,25/1/1,3
-32,Hache,Pierre/Planche/Shatterton,10/1/1,2
-33,Hache en pierre,Pierre/Planche,10/1,0
-34,Four en pierre,Pierre/Feu de camp,15/1,1
-35,Forge,Four en pierre/Ferraille/Clou,1/20/10,2
-36,Atelier,Planche/Ferraille/Clou,8/5/15,0
-37,Atelier L2,Planche/Ferraille/Clou,5/30/10,1
-38,Atelier L3,Planche/Ferraille/Clou,5/50/10,2
-39,Établie,Planche/Ferraille/Clou,3/40/10,3
-47,Petit bois,Bois/scie,1/1,0
-66,Caisse en bois,Planche/Clou,2/4,0
+3,Pain,Farine/eau 50cl,3/50,1
+13,Feu de camp,Bois/Petit bois/Livre,2/5/1,0
+14,Barril en tôle,Ferraille,30,2
+15,Barril de feu,Barril en tôle/Feu de camp,1/1,2
+17,pistolet,Planche/Ferraille,2/30,4
+18,fusil,Planche/Ferraille,1/20,4
+19,Couteau,Planche/Shatterton/Ferraille,2/1/10,2
+20,batte,Planche,3,1
+21,barre de fer,Ferraille/Planche/Shatterton,15/2/1,1
+22,Katana,Ferraille/Planche/Shatterton,25/1/1,3
+31,Hache,Pierre/Planche/Shatterton,10/1/1,2
+32,Hache en pierre,Pierre/Planche,10/1,0
+33,Four en pierre,Pierre/Feu de camp,15/1,1
+34,Forge,Four en pierre/Ferraille/Clou,1/20/10,2
+35,Atelier,Planche/Ferraille/Clou,8/5/15,0
+36,Atelier L2,Planche/Ferraille/Clou,5/30/10,1
+37,Atelier L3,Planche/Ferraille/Clou,5/50/10,2
+38,Établie,Planche/Ferraille/Clou,3/40/10,3
+46,Petit bois,Bois/scie,1/1,0
+65,Caisse en bois,Planche/Clou,2/4,0
