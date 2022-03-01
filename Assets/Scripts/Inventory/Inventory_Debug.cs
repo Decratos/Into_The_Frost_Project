@@ -8,6 +8,7 @@ public class Inventory_Debug : MonoBehaviour
     
     [SerializeField] private List<ItemClass> inventoryList;
     [SerializeField] private List<string> startInventory;
+    [SerializeField] private List<string> startEquipement;
     public Inventory inv;
 
     public void SetInventory(Inventory inventory) // set l'inventory
@@ -24,6 +25,14 @@ public class Inventory_Debug : MonoBehaviour
             liseurExel.LesDatas.FindObjectInfo(name, out infoGlobal);
             var startItem = new ItemClass {globalInfo = infoGlobal, amount = 1 };
             inv.CheckCapability(startItem);
+        }
+
+        foreach(string name in startEquipement)
+        {
+            InfoGlobalExel infoGlobal;
+            liseurExel.LesDatas.FindObjectInfo(name, out infoGlobal);
+            var startItem = new ItemClass { globalInfo = infoGlobal, amount = 1 };
+            CanvasReference._canvasReference.GetCanva().GetComponentInChildren<UIInventory>().equippedItems.Add(startItem);
         }
     }
 

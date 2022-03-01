@@ -11,6 +11,9 @@ using Sirenix.OdinInspector;
 public class UIInventory : MonoBehaviour
 {
     public Inventory _inventory;
+    public List<ItemClass> equippedItems;
+    private Transform equippedItemContainer;
+    public Transform equippedItemTemplate;
     public List<UIInventory> inheritedInventory;
     private Transform itemSlotContainer;
     public Transform itemSlotTemplate;
@@ -23,6 +26,7 @@ public class UIInventory : MonoBehaviour
     {
         GestionDesScipt gestion = null;
         itemSlotContainer = transform.Find("itemSlotContainer");
+        equippedItemContainer = transform.Find("EquipmentList");
 
         if(isPlayerInventory)
         {
@@ -64,6 +68,7 @@ public class UIInventory : MonoBehaviour
     private void Inventory_OnItemListChanged(object sender, System.EventArgs e)
     {
         RefreshInventoryItems();
+        RefreshEquippedItem();
     }
 
     public void RefreshInventoryItems() //refresh l'inventaire
@@ -119,6 +124,46 @@ public class UIInventory : MonoBehaviour
         }
         
     }
+
+    public void RefreshEquippedItem()
+    {
+        if(inventoryIsOpen)
+        {
+            foreach (Transform child in equippedItemContainer)
+            {
+                if (child == equippedItemTemplate) continue;
+                Destroy(child.gameObject);
+            }
+            int itemSlotCellSize = 50;
+            int x = 0;
+            int y = 0;
+            foreach (var item in equippedItems)
+            {
+                RectTransform itemSlotRectTransform = Instantiate(equippedItemTemplate, equippedItemContainer).GetComponent<RectTransform>();
+                itemSlotRectTransform.gameObject.SetActive(true);
+                itemSlotRectTransform.GetComponent<Button_UI>().ClickFunc = () =>
+                {
+                    if(item.globalInfo.TypeGeneral == InfoGlobalExel.Type.ArmeAfeu || item.globalInfo.TypeGeneral == InfoGlobalExel.Type.ArmeMelee)
+                    {
+                        PlayerSingleton.playerInstance.GetComponent<PlayerEquipment>().UnEquipWeapon(item, 1);  
+                    }
+                    else
+                    {
+                        InfoExelvetements infoVetements;
+                        liseurExel.LesDatas.FindObjectInfo(item.globalInfo.Name, out infoVetements);
+                        PlayerSingleton.playerInstance.GetComponent<PlayerEquipment>().EquipClothes(item, false, infoVetements);
+                    }
+                    equippedItems.Remove(item);
+                    _inventory.CheckCapability(item);
+                };
+                itemSlotRectTransform.anchoredPosition = new Vector2(equippedItemTemplate.GetComponent<RectTransform>().anchoredPosition.x, equippedItemTemplate.GetComponent<RectTransform>().anchoredPosition.y);
+                Image image = itemSlotRectTransform.Find("Image").GetComponent<Image>();
+                image.sprite = item.GetSprite();
+                itemSlotRectTransform.GetComponentInChildren<ItemInfo>().item = item;
+                itemSlotRectTransform.GetComponentInChildren<TextMeshProUGUI>().text = item.globalInfo.Name;
+            }
+        }
+    }
     
     public void RemoveClick()//?
     {}
@@ -142,6 +187,7 @@ public class UIInventory : MonoBehaviour
         PlayerSingleton.playerInstance.GetComponentInChildren<CameraMouvement>().canLook = !inventoryIsOpen;
         PlayerSingleton.playerInstance.GetComponent<CharacterController>().enabled = !inventoryIsOpen;
         RefreshInventoryItems();
+        RefreshEquippedItem();
         MouseCursorHiderShower.instance.ManageCursor(inventoryIsOpen);
     }
 }

@@ -29,6 +29,7 @@ public class PlayerEquipment : MonoBehaviour
         liseurExel.LesDatas.FindObjectInfo(weapon.globalInfo.Name, out objectInfo);
         WeaponSystem ws = GetComponentInChildren<WeaponSystem>();
         WeaponsClass newWeapon = null;
+        
         foreach (var wp in ws.Weapons)
         {
             if(wp.name == weapon.globalInfo.Name)
@@ -48,7 +49,8 @@ public class PlayerEquipment : MonoBehaviour
                 GestionDesScipt.ScriptGestion.Inventory.RemoveItem(weapon);
                 Weapon1.GetComponentInChildren<Image>().sprite = weapon.GetSprite();
                 Weapon1Item = weapon;
-            break;
+                CanvasReference._canvasReference.GetComponent<UIInventory>().equippedItems.Add(Weapon1Item);
+                break;
             case 2:
                 if(Weapon2Item.globalInfo.Name != "")
                 {
@@ -58,7 +60,8 @@ public class PlayerEquipment : MonoBehaviour
                 GestionDesScipt.ScriptGestion.Inventory.RemoveItem(weapon);
                 Weapon2.GetComponentInChildren<Image>().sprite = weapon.GetSprite();
                 Weapon2Item = weapon;
-            break;
+                CanvasReference._canvasReference.GetComponent<UIInventory>().equippedItems.Add(Weapon2Item);
+                break;
         }
         
     }
@@ -73,12 +76,14 @@ public class PlayerEquipment : MonoBehaviour
                 ws.DesactiveWeapon(1);
                 Weapon1Item = new ItemClass{globalInfo = weapon.globalInfo};
                 Weapon1.GetComponentInChildren<Image>().sprite = defaultWeapon;
-            break;
+                CanvasReference._canvasReference.GetComponent<UIInventory>().equippedItems.Remove(Weapon1Item);
+                break;
             case 2:
                 ws.DesactiveWeapon(2);
                 Weapon2Item = new ItemClass{globalInfo = weapon.globalInfo};
                 Weapon2.GetComponentInChildren<Image>().sprite = defaultWeapon;
-            break;
+                CanvasReference._canvasReference.GetComponent<UIInventory>().equippedItems.Remove(Weapon2Item);
+                break;
         }
     }
 
@@ -90,20 +95,29 @@ public class PlayerEquipment : MonoBehaviour
             {
                 case InfoExelvetements.SousCategorie.Manteau:
                     ChestClothSlot.GetComponentInChildren<Image>().sprite = cloth.GetSprite();
+                    ChestCloth = cloth;
+                    CanvasReference._canvasReference.GetComponent<UIInventory>().equippedItems.Remove(ChestCloth);
                     break;
                 case InfoExelvetements.SousCategorie.pull:
                     ChestArmorSlot.GetComponentInChildren<Image>().sprite = cloth.GetSprite();
+                    ChestArmor = cloth;
+                    CanvasReference._canvasReference.GetComponent<UIInventory>().equippedItems.Remove(ChestArmor);
                     break;
                 case InfoExelvetements.SousCategorie.Pantalon:
                     PantsSlot.GetComponentInChildren<Image>().sprite = cloth.GetSprite();
+                    Pants = cloth;
+                    CanvasReference._canvasReference.GetComponent<UIInventory>().equippedItems.Remove(Pants);
                     break;
                 case InfoExelvetements.SousCategorie.Chaussure:
                     ShoesSlot.GetComponentInChildren<Image>().sprite = cloth.GetSprite();
+                    Shoes = cloth;
+                    CanvasReference._canvasReference.GetComponent<UIInventory>().equippedItems.Remove(Shoes);
                     break;
             }
             GestionDesScipt.ScriptGestion.Inventory.RemoveItem(cloth);
             GestionDesScipt.ScriptGestion.SurvieScript.ResistanceFroidsTotal += infos.ChaleurResistance;
             GestionDesScipt.ScriptGestion.SurvieScript.ResistanceDegatsTotal += infos.DegatResistance;
+            
         }
         else
         {
