@@ -149,7 +149,7 @@ public struct InfoGlobalExel // créer une struct qui me permet de récupérer t
         ArmeAfeu,
         ArmeMelee,
         Sac,
-        Vetement,
+        Vetements,
         Utilitaire
     }
 

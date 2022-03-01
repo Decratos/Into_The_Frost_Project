@@ -452,7 +452,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                 lesInfos.TempsCuisson = info.TempsCuisson;
                 correctionType(info.Type , out correctedType); // corrige le type
                 string [] EnumType = System.Enum.GetNames(typeof(InfoGlobalExel.Type));// créer un tableau de string des types
-                for (int i = 0; i < EnumType.Length-1; i++) // pour chaque type dans l'enum
+                for (int i = 0; i < EnumType.Length; i++) // pour chaque type dans l'enum
                 {
                     correctionType(EnumType[i],out EnumType[i]); // corrige les enums au cas ou
                     
@@ -504,7 +504,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                     FindObjectInfo( name , out lesInfos.exelArme);
 
                 }
-                else if (correctedType == InfoGlobalExel.Type.Vetement.ToString())
+                else if (correctedType == InfoGlobalExel.Type.Vetements.ToString())
                 {
                     lesInfos.Exelvetements = new InfoExelvetements();
                     FindObjectInfo( name ,out lesInfos.Exelvetements);
@@ -778,7 +778,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                     lesInfos.exelArme = new InfoExelArme();
                     FindObjectInfo(ID, out lesInfos.exelArme);
                 }
-                else if (correctedType == InfoGlobalExel.Type.Vetement.ToString())
+                else if (correctedType == InfoGlobalExel.Type.Vetements.ToString())
                 {
                     lesInfos.Exelvetements = new InfoExelvetements();
                     FindObjectInfo(ID, out lesInfos.Exelvetements);
