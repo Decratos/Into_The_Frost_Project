@@ -28,7 +28,7 @@ public class DropEquippedWeapon : MonoBehaviour, IPointerDownHandler
                 InfoExelvetements infoVetement;
                 excel = liseurExel.LesDatas;
                 excel.FindObjectInfo(parentItemSlot.equippedItemStat.globalInfo.Name, out infoVetement);
-                PlayerSingleton.playerInstance.GetComponent<PlayerEquipment>().EquipClothes(parentItemSlot.equippedItemStat, parentItemSlot.slotType, false, infoVetement);
+                PlayerSingleton.playerInstance.GetComponent<PlayerEquipment>().EquipClothes(parentItemSlot.equippedItemStat, false, infoVetement);
             }
             
         }

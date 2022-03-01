@@ -60,7 +60,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler
                 }
                 print(item.globalInfo.Name);
             }
-            else
+            /*else
             {
                 print("C'est un vêtement");
                 liseurExel excel;
@@ -83,7 +83,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler
                 {
                     PlayerSingleton.playerInstance.GetComponent<PlayerEquipment>().EquipClothes(item, slotType, true, infoVetement);
                 }
-            }
+            }*/
             equippedItemStat.amount = 1;
 
 

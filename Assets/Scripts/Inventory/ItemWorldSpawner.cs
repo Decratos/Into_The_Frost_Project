@@ -191,7 +191,7 @@ public class ItemWorldSpawner : MonoBehaviour
 
 
         liseurExel.LesDatas.FindObjectInfo(IDObjectChoose, out ToReturn);
-        print("Id choisi : " + IDObjectChoose);
+        //print("Id choisi : " + IDObjectChoose);
         var finalItem = new ItemClass {globalInfo = ToReturn, amount = 1, ChanceDeBase = ToReturn.rarity };
         return finalItem;
     }

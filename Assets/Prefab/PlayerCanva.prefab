@@ -547,7 +547,7 @@ RectTransform:
   m_Children:
   - {fileID: 545862611}
   m_Father: {fileID: 3457572721526904157}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -568,6 +568,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDropping: 0
   equippedItemStat:
+    name: 
     amount: 0
     ChanceChoisis: 0
     ChanceDeBase: 0
@@ -603,7 +604,7 @@ RectTransform:
   m_Children:
   - {fileID: 935852473}
   m_Father: {fileID: 3457572721526904157}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -624,6 +625,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDropping: 0
   equippedItemStat:
+    name: 
     amount: 0
     ChanceChoisis: 0
     ChanceDeBase: 0
@@ -659,7 +661,7 @@ RectTransform:
   m_Children:
   - {fileID: 1048598384}
   m_Father: {fileID: 3457572721526904157}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -680,6 +682,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDropping: 0
   equippedItemStat:
+    name: 
     amount: 0
     ChanceChoisis: 0
     ChanceDeBase: 0
@@ -983,8 +986,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 47519445}
   m_HandleRect: {fileID: 47519444}
   m_Direction: 2
-  m_Value: 1.0000083
-  m_Size: 0.61
+  m_Value: 1.0000098
+  m_Size: 0.6666667
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1648,7 +1651,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1075068135
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2016,6 +2019,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item:
+    name: 
     amount: 0
     ChanceChoisis: 0
     ChanceDeBase: 0
@@ -2231,7 +2235,7 @@ RectTransform:
   m_Children:
   - {fileID: 723145813}
   m_Father: {fileID: 3457572721526904157}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2252,6 +2256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDropping: 0
   equippedItemStat:
+    name: 
     amount: 0
     ChanceChoisis: 0
     ChanceDeBase: 0
@@ -2567,7 +2572,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3199,7 +3204,7 @@ RectTransform:
   m_Children:
   - {fileID: 1702811806}
   m_Father: {fileID: 3457572721526904157}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3220,6 +3225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDropping: 0
   equippedItemStat:
+    name: 
     amount: 0
     ChanceChoisis: 0
     ChanceDeBase: 0
@@ -3255,7 +3261,7 @@ RectTransform:
   m_Children:
   - {fileID: 2077111553}
   m_Father: {fileID: 3457572721526904157}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3276,6 +3282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDropping: 0
   equippedItemStat:
+    name: 
     amount: 0
     ChanceChoisis: 0
     ChanceDeBase: 0
@@ -3445,6 +3452,78 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43cc80c176070274a8d9e9efa32544d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &796466331422126645
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9190220225538192754}
+  - component: {fileID: 708551259604509768}
+  - component: {fileID: 8863462876717238641}
+  m_Layer: 5
+  m_Name: CharacterImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &9190220225538192754
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 796466331422126645}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3457572721526904157}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 1.7164001, y: 1.7164}
+  m_SizeDelta: {x: 272.7875, y: 339.1562}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &708551259604509768
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 796466331422126645}
+  m_CullTransparentMesh: 1
+--- !u!114 &8863462876717238641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 796466331422126645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 8400000, guid: 65443fe3e9394e245bc00780aee0309f, type: 2}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
 --- !u!1 &995154897282706112
 GameObject:
   m_ObjectHideFlags: 0
@@ -3894,7 +3973,6 @@ GameObject:
   - component: {fileID: 5488680082760117698}
   - component: {fileID: 3810605902274762863}
   - component: {fileID: 6992281582507516243}
-  - component: {fileID: 8944795181936850188}
   m_Layer: 5
   m_Name: CookingWindow
   m_TagString: Untagged
@@ -3962,18 +4040,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8944795181936850188
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1615399367958312653}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc2321fe130514e4e8e026530ec0d32f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2072033607219267474
 GameObject:
   m_ObjectHideFlags: 0
@@ -4064,6 +4130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item:
+    name: 
     amount: 0
     ChanceChoisis: 0
     ChanceDeBase: 0
@@ -4697,7 +4764,7 @@ RectTransform:
   m_Children:
   - {fileID: 8432291005859608923}
   m_Father: {fileID: 7698837155415424264}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4733,8 +4800,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2164004958721985106}
-  - {fileID: 8483039287598710785}
   - {fileID: 3457572721526904157}
+  - {fileID: 8483039287598710785}
   m_Father: {fileID: 7962365836789950988}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4791,7 +4858,7 @@ RectTransform:
   m_Children:
   - {fileID: 6766342556748513223}
   m_Father: {fileID: 3457572721526904157}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4812,6 +4879,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDropping: 0
   equippedItemStat:
+    name: 
     amount: 0
     ChanceChoisis: 0
     ChanceDeBase: 0
@@ -4973,6 +5041,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDropping: 0
   equippedItemStat:
+    name: 
     amount: 0
     ChanceChoisis: 0
     ChanceDeBase: 0
@@ -5144,6 +5213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item:
+    name: 
     amount: 0
     ChanceChoisis: 0
     ChanceDeBase: 0
@@ -5298,6 +5368,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDropping: 0
   equippedItemStat:
+    name: 
     amount: 0
     ChanceChoisis: 0
     ChanceDeBase: 0
@@ -5332,6 +5403,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 9190220225538192754}
   - {fileID: 7567834661995040708}
   - {fileID: 372737567}
   - {fileID: 366780174}
@@ -5340,7 +5412,7 @@ RectTransform:
   - {fileID: 384710308}
   - {fileID: 1464096140}
   m_Father: {fileID: 7698837155415424264}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -5436,6 +5508,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDropping: 0
   equippedItemStat:
+    name: 
     amount: 0
     ChanceChoisis: 0
     ChanceDeBase: 0

@@ -81,15 +81,18 @@ public class MouvementPlayer : MesFonctions
         DirectionPerso = Direction;
         if (!ResteImmobile)
         {
+            
             if (Direction == Vector2.zero)
             {
                 StateChange(StateDeplacement.Immobile);
+                GetComponent<Animator>().SetBool("IsWalking", false);
             }
             else if (Direction != Vector2.zero && StateDeDeplacement != StateDeplacement.Saute || StateDeDeplacement != StateDeplacement.Fall)
             {
                 if (ActualVitesseWanted == VitesseDeplacement)
                 {
                     StateChange(StateDeplacement.Marche);
+                    GetComponent<Animator>().SetBool("IsWalking", true);
                 }
                 else if (ActualVitesseWanted == VitesseAccroupie)
                 {
@@ -101,6 +104,7 @@ public class MouvementPlayer : MesFonctions
                 }
             }
         }
+
        
         
 
@@ -130,11 +134,11 @@ public class MouvementPlayer : MesFonctions
             calculDeLavitesse();
         }
         MyCharacterController.Move(((Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0) * DirectionCalculate).normalized * ActualVitesse + CalulateVitesseY()) * Time.deltaTime);// la ligne qui permet le déplacement
-
+        
         //                              selon la rotation                       vas dans la direction voulue       normarliser  par la vitesse voulue   +la vitesse Y (saut ou chute)
 
-        
-        
+            
+
         if (StateDeDeplacement == StateDeplacement.Saute)
         {
             if (transform.position.y > EnregistrementHigh.y)
@@ -179,14 +183,16 @@ public class MouvementPlayer : MesFonctions
                     break;
 
                 case StateDeplacement.Saute:
-                    
+                    GetComponent<Animator>().Play("Jump");
                     Saut();
                     break;
                 case StateDeplacement.Fall:
-                    
+                    GetComponent<Animator>().SetBool("IsFalling", true);
                     fall();
                     break;
                 case StateDeplacement.Atteri:
+                    GetComponent<Animator>().SetBool("IsFalling", false);
+                    GetComponent<Animator>().Play("Landing");
                     atteri();
                     break;
                 

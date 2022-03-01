@@ -82,25 +82,22 @@ public class PlayerEquipment : MonoBehaviour
         }
     }
 
-    public void EquipClothes(ItemClass cloth, ItemSlot.equipmentType type, bool willBeEquiped, InfoExelvetements infos)
+    public void EquipClothes(ItemClass cloth, bool willBeEquiped, InfoExelvetements infos)
     {
         if(willBeEquiped)
         {
-            switch (type.ToString())
+            switch (infos.MaCategorie)
             {
-                case "Coat":
+                case InfoExelvetements.SousCategorie.Manteau:
                     ChestClothSlot.GetComponentInChildren<Image>().sprite = cloth.GetSprite();
                     break;
-                case "Pull":
+                case InfoExelvetements.SousCategorie.pull:
                     ChestArmorSlot.GetComponentInChildren<Image>().sprite = cloth.GetSprite();
                     break;
-                case "HelmetOrTop":
-                    helmetSlot.GetComponentInChildren<Image>().sprite = cloth.GetSprite();
-                    break;
-                case "Pants":
+                case InfoExelvetements.SousCategorie.Pantalon:
                     PantsSlot.GetComponentInChildren<Image>().sprite = cloth.GetSprite();
                     break;
-                case "Shoes":
+                case InfoExelvetements.SousCategorie.Chaussure:
                     ShoesSlot.GetComponentInChildren<Image>().sprite = cloth.GetSprite();
                     break;
             }
@@ -110,22 +107,19 @@ public class PlayerEquipment : MonoBehaviour
         }
         else
         {
-            switch (type.ToString())
+            switch (infos.MaCategorie)
             {
-                case "Coat":
-                    ChestClothSlot.GetComponentInChildren<Image>().sprite = defaultHelmet;
+                case InfoExelvetements.SousCategorie.Manteau:
+                    ChestClothSlot.GetComponentInChildren<Image>().sprite = cloth.GetSprite();
                     break;
-                case "Pull":
-                    ChestArmorSlot.GetComponentInChildren<Image>().sprite = defaultHelmet;
+                case InfoExelvetements.SousCategorie.pull:
+                    ChestArmorSlot.GetComponentInChildren<Image>().sprite = cloth.GetSprite();
                     break;
-                case "HelmetOrTop":
-                    helmetSlot.GetComponentInChildren<Image>().sprite = defaultHelmet;
+                case InfoExelvetements.SousCategorie.Pantalon:
+                    PantsSlot.GetComponentInChildren<Image>().sprite = cloth.GetSprite();
                     break;
-                case "Pants":
-                    PantsSlot.GetComponentInChildren<Image>().sprite = defaultHelmet;
-                    break;
-                case "Shoes":
-                    ShoesSlot.GetComponentInChildren<Image>().sprite = defaultHelmet;
+                case InfoExelvetements.SousCategorie.Chaussure:
+                    ShoesSlot.GetComponentInChildren<Image>().sprite = cloth.GetSprite();
                     break;
             }
             GestionDesScipt.ScriptGestion.Inventory.CheckCapability(cloth);
