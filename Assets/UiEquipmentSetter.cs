@@ -40,7 +40,7 @@ public class UiEquipmentSetter : MonoBehaviour, IDropHandler
             case InfoGlobalExel.Type.Sac:
                 PlayerSingleton.playerInstance.GetComponent<Inventory_Debug>().inv.RemoveItem(item);
                 break;
-            case InfoGlobalExel.Type.Vetement:
+            case InfoGlobalExel.Type.Vetements:
                 liseurExel excel;
                 InfoExelvetements infoVetement;
                 excel = liseurExel.LesDatas;
@@ -50,6 +50,7 @@ public class UiEquipmentSetter : MonoBehaviour, IDropHandler
                 break;
 
         }
-        
+        GetComponentInParent<UIInventory>().RefreshEquippedItem();
+
     }
 }

@@ -42,7 +42,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler
             eventData.pointerDrag.GetComponent<RectTransform>().position = 
             GetComponent<RectTransform>().position;
             equippedItemStat = item;
-            if(item.globalInfo.TypeGeneral != InfoGlobalExel.Type.Vetement)
+            if(item.globalInfo.TypeGeneral != InfoGlobalExel.Type.Vetements)
             {
                 print("Ce n'est pas un vêtement");
                 if (item.globalInfo.TypeGeneral == InfoGlobalExel.Type.ArmeAfeu || item.globalInfo.TypeGeneral == InfoGlobalExel.Type.ArmeMelee)

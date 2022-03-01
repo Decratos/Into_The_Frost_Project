@@ -96,22 +96,27 @@ public class PlayerEquipment : MonoBehaviour
                 case InfoExelvetements.SousCategorie.Manteau:
                     ChestClothSlot.GetComponentInChildren<Image>().sprite = cloth.GetSprite();
                     ChestCloth = cloth;
-                    CanvasReference._canvasReference.GetComponent<UIInventory>().equippedItems.Remove(ChestCloth);
+                    CanvasReference._canvasReference.GetCanva().GetComponentInChildren<UIInventory>().equippedItems.Add(ChestCloth);
+
+
                     break;
                 case InfoExelvetements.SousCategorie.pull:
                     ChestArmorSlot.GetComponentInChildren<Image>().sprite = cloth.GetSprite();
                     ChestArmor = cloth;
-                    CanvasReference._canvasReference.GetComponent<UIInventory>().equippedItems.Remove(ChestArmor);
+                    CanvasReference._canvasReference.GetCanva().GetComponentInChildren<UIInventory>().equippedItems.Add(ChestArmor);
+
                     break;
                 case InfoExelvetements.SousCategorie.Pantalon:
                     PantsSlot.GetComponentInChildren<Image>().sprite = cloth.GetSprite();
                     Pants = cloth;
-                    CanvasReference._canvasReference.GetComponent<UIInventory>().equippedItems.Remove(Pants);
+                    CanvasReference._canvasReference.GetCanva().GetComponentInChildren<UIInventory>().equippedItems.Add(Pants);
+
                     break;
                 case InfoExelvetements.SousCategorie.Chaussure:
                     ShoesSlot.GetComponentInChildren<Image>().sprite = cloth.GetSprite();
                     Shoes = cloth;
-                    CanvasReference._canvasReference.GetComponent<UIInventory>().equippedItems.Remove(Shoes);
+                    CanvasReference._canvasReference.GetCanva().GetComponentInChildren<UIInventory>().equippedItems.Add(Shoes);
+
                     break;
             }
             GestionDesScipt.ScriptGestion.Inventory.RemoveItem(cloth);
@@ -125,15 +130,19 @@ public class PlayerEquipment : MonoBehaviour
             {
                 case InfoExelvetements.SousCategorie.Manteau:
                     ChestClothSlot.GetComponentInChildren<Image>().sprite = cloth.GetSprite();
+                    CanvasReference._canvasReference.GetCanva().GetComponentInChildren<UIInventory>().equippedItems.Remove(ChestCloth);
                     break;
                 case InfoExelvetements.SousCategorie.pull:
                     ChestArmorSlot.GetComponentInChildren<Image>().sprite = cloth.GetSprite();
+                    CanvasReference._canvasReference.GetCanva().GetComponentInChildren<UIInventory>().equippedItems.Remove(ChestArmor);
                     break;
                 case InfoExelvetements.SousCategorie.Pantalon:
                     PantsSlot.GetComponentInChildren<Image>().sprite = cloth.GetSprite();
+                    CanvasReference._canvasReference.GetCanva().GetComponentInChildren<UIInventory>().equippedItems.Remove(Pants);
                     break;
                 case InfoExelvetements.SousCategorie.Chaussure:
                     ShoesSlot.GetComponentInChildren<Image>().sprite = cloth.GetSprite();
+                    CanvasReference._canvasReference.GetCanva().GetComponentInChildren<UIInventory>().equippedItems.Remove(Shoes);
                     break;
             }
             GestionDesScipt.ScriptGestion.Inventory.CheckCapability(cloth);
