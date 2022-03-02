@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WeaponsClass : MonoBehaviour
 {
+    public int weaponAnimationID;
 
     [Header("Gathering Attributes")]
     public bool canCutWood;

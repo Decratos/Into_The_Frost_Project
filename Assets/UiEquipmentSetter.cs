@@ -29,7 +29,8 @@ public class UiEquipmentSetter : MonoBehaviour, IDropHandler
     {
         
         ItemClass item = eventData.pointerDrag.GetComponentInChildren<ItemInfo>().item;
-        print(item.globalInfo.TypeGeneral);
+
+        print(item.globalInfo.ID);
         switch (item.globalInfo.TypeGeneral)
         {
             case InfoGlobalExel.Type.ArmeAfeu:

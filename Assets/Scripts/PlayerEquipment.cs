@@ -25,8 +25,6 @@ public class PlayerEquipment : MonoBehaviour
     public void OnWeaponEquipped(ItemClass weapon, int slotNumber)// lorsqu'une arme est équippé
     {
         print("J'équipe l'arme");
-        InfoGlobalExel objectInfo = new InfoGlobalExel();
-        liseurExel.LesDatas.FindObjectInfo(weapon.globalInfo.Name, out objectInfo);
         WeaponSystem ws = GetComponentInChildren<WeaponSystem>();
         WeaponsClass newWeapon = null;
         
@@ -41,15 +39,17 @@ public class PlayerEquipment : MonoBehaviour
         switch (slotNumber)
         {
             case 1:
-                if(Weapon1Item.globalInfo.Name != "")
+                if(Weapon1Item.globalInfo.Name != null)
                 {
                     GestionDesScipt.ScriptGestion.Inventory.CheckCapability(Weapon1Item);
+                    print(Weapon1Item.globalInfo.Name);
                 }
-                ws.ActiveWeapon(newWeapon, 1);
                 GestionDesScipt.ScriptGestion.Inventory.RemoveItem(weapon);
                 Weapon1.GetComponentInChildren<Image>().sprite = weapon.GetSprite();
                 Weapon1Item = weapon;
-                CanvasReference._canvasReference.GetComponent<UIInventory>().equippedItems.Add(Weapon1Item);
+                CanvasReference._canvasReference.GetCanva().GetComponentInChildren<UIInventory>().equippedItems.Add(Weapon1Item);
+                print("Le nom de mon arme : " + newWeapon);
+                ws.ActiveWeapon(newWeapon, 1);
                 break;
             case 2:
                 if(Weapon2Item.globalInfo.Name != "")

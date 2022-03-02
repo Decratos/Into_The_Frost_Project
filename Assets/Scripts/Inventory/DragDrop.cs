@@ -32,7 +32,6 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     public void OnEndDrag(PointerEventData eventData)// lorsque je finis de drag un item
     {
-        print(eventData.hovered.Count);
         if (eventData.pointerCurrentRaycast.gameObject == null)
         {
             ItemWorld.DropItem(PlayerSingleton.playerInstance.transform.position, eventData.pointerDrag.GetComponentInChildren<ItemInfo>().item);
