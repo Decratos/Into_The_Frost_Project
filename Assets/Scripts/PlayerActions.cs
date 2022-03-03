@@ -12,9 +12,11 @@ public class PlayerActions : MonoBehaviour
     {
         ObjectText = CanvasReference._canvasReference.GetCanva().transform.Find("ObjectText").GetComponent<TextMeshProUGUI>();
     }
-    public void Gather(RaycastHit hit, GestionDesScipt ScriptGestion) // récolte
+    public void Gather(RaycastHit hit) // récolte
     {
-        if(GetComponentInChildren<WeaponSystem>().actualWeaponInHands)
+        GestionDesScipt ScriptGestion;
+        ScriptGestion = GetComponent<GestionInput>().ScriptGestion;
+        if (GetComponentInChildren<WeaponSystem>().actualWeaponInHands)
         {
             
             string name = hit.transform.GetComponent<BasicRessourcesSource>().ressourceName;
@@ -60,10 +62,23 @@ public class PlayerActions : MonoBehaviour
 
     public void Attack()// il me semble qu'il y'a un deuxiéme void attack
     {
-        if(GetComponentInChildren<WeaponSystem>().actualWeaponInHands)
+        var wp = GetComponentInChildren<WeaponSystem>().actualWeaponInHands;
+        if (wp.rangedWeapon)
         {
-            var wp = GetComponentInChildren<WeaponSystem>().actualWeaponInHands;
-            wp.Shoot(wp);
+            print("Je tir");
+            wp.Shoot(wp);           
+        }
+        else
+        {
+            print("Je tape");
+            if (wp.canCutStone || wp.canCutWood)
+            {
+                Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
+                if (Physics.Raycast(ray, out RaycastHit hit, wp.attackDistance))
+                {
+                    GetComponent<PlayerActions>().Gather(hit);
+                }
+            }
         }
         /*else
         {

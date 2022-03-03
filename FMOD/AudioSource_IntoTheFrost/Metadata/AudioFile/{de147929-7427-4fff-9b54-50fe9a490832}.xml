@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{de147929-7427-4fff-9b54-50fe9a490832}">
+		<property name="assetPath">
+			<value>hand-saw-1.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>24.682666666666666</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{6f779f5e-b760-4f9a-ab0a-1d4500b3211f}</destination>
+		</relationship>
+	</object>
+</objects>

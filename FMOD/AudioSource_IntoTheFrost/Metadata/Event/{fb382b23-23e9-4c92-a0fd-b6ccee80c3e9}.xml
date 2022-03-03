@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.00.00">
+<objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{fb382b23-23e9-4c92-a0fd-b6ccee80c3e9}">
 		<property name="name">
 			<value>GatheringWood</value>
@@ -54,7 +54,7 @@
 			<destination>{5b1aa2a3-5cd6-4cbf-b9eb-b0ea4e6e9c51}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{b80d526d-eea2-4c2d-bba9-963611bec7e2}</destination>
+			<destination>{040b4da9-caea-4bc8-a9c8-966008ec73dc}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{6e35b516-9559-4231-b6bd-231bfd6ed16b}" />
@@ -107,9 +107,6 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{98a72013-c2e2-4aeb-83f2-b6d0c8427964}">
-		<property name="volume">
-			<value>-12</value>
-		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>
@@ -125,7 +122,7 @@
 	</object>
 	<object class="SingleSound" id="{a17ef559-4096-4bf9-950d-2f7c8c66686d}">
 		<property name="length">
-			<value>1.3590279146141215</value>
+			<value>0.81000000000000005</value>
 		</property>
 		<property name="timelockedOffset">
 			<value>0.24630541871921185</value>
@@ -135,9 +132,6 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{92bcad6b-0b58-43e3-a00f-489c9e932c5f}">
-		<property name="volume">
-			<value>-16.5</value>
-		</property>
 		<property name="name">
 			<value>Audio 2</value>
 		</property>
@@ -156,6 +150,7 @@
 			<destination>{6c5f2854-91db-49d9-ae55-8960b7d6433b}</destination>
 			<destination>{0d24a696-61ae-416e-abd4-d00a492b77bb}</destination>
 			<destination>{994cd39c-c826-4ec9-9166-54e19c83039b}</destination>
+			<destination>{dd53c5ac-b63c-41dd-b940-e62bb9d4ee87}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{a25fa4bd-eebf-4200-bc84-4c9ab632347c}" />
@@ -185,6 +180,7 @@
 	</object>
 	<object class="MixerBusFader" id="{0d24a696-61ae-416e-abd4-d00a492b77bb}" />
 	<object class="SpatialiserEffect" id="{994cd39c-c826-4ec9-9166-54e19c83039b}" />
+	<object class="DistortionEffect" id="{dd53c5ac-b63c-41dd-b940-e62bb9d4ee87}" />
 	<object class="MixerBusFader" id="{0d20f9ba-9f37-4d93-9b9c-873e036dcbc3}" />
 	<object class="MixerBusFader" id="{9be5aae7-e029-41c3-a4b8-ec94519a6381}" />
 </objects>
