@@ -6,6 +6,7 @@ public class TestWeapon : WeaponsClass
 {
     private void Start() {
         InvokeRepeating("attackRateManagement", 0, attackRate);
+        GetComponentInParent<Animator>().SetInteger("WeaponID", weaponAnimationID);
     }
 
     public override void Shoot(WeaponsClass myWeapon)

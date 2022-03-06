@@ -12,10 +12,13 @@ public class PlayerActions : MonoBehaviour
     {
         ObjectText = CanvasReference._canvasReference.GetCanva().transform.Find("ObjectText").GetComponent<TextMeshProUGUI>();
     }
-    public void Gather(RaycastHit hit, GestionDesScipt ScriptGestion) // récolte
+    public void Gather(RaycastHit hit) // récolte
     {
-        if(GetComponentInChildren<WeaponSystem>().actualWeaponInHands)
+        GestionDesScipt ScriptGestion;
+        ScriptGestion = GetComponent<GestionInput>().ScriptGestion;
+        if (GetComponentInChildren<WeaponSystem>().actualWeaponInHands)
         {
+            
             string name = hit.transform.GetComponent<BasicRessourcesSource>().ressourceName;
             int amount = hit.transform.GetComponent<BasicRessourcesSource>().ressourceAmount;
             if(name == "Bois" && GetComponentInChildren<WeaponSystem>().actualWeaponInHands.canCutWood || name == "Rocher" && GetComponentInChildren<WeaponSystem>().actualWeaponInHands.canCutStone)
@@ -29,7 +32,10 @@ public class PlayerActions : MonoBehaviour
                         FMODUnity.RuntimeManager.PlayOneShot("event:/Collecting/GatheringStone", hit.point);
                     break;
                 }
-                ScriptGestion.Inventory.CheckCapability(new ItemClass{itemType = ResumeExelForObject.Type.Materials, amount = amount}, hit.transform.gameObject);
+                InfoGlobalExel objectInfo = new InfoGlobalExel();
+                liseurExel.LesDatas.FindObjectInfo(name, out objectInfo);
+                var newItem = new ItemClass {globalInfo = objectInfo, amount = amount };
+                ScriptGestion.Inventory.CheckCapability(newItem, hit.transform.gameObject);
                 hit.transform.GetComponent<BasicRessourcesSource>().ReduceDurability();
                 Instantiate(ItemAssets.ItemAssetsInstance.GetComponent<ParticlesAssets>().particles[0], hit.point, PlayerSingleton.playerInstance.transform.rotation);
             }
@@ -48,19 +54,35 @@ public class PlayerActions : MonoBehaviour
             ResumeExelForObject stats = hit.transform.GetComponent<ResumeExelForObject>();
             liseurExel.LesDatas.FindObjectInfo(stats.ID, out objectInfo);
             ItemClass itemWorld = hit.transform.GetComponent<ItemWorld>().GetItem();
-            ScriptGestion.Inventory.CheckCapability(new ItemClass{itemName = itemWorld.itemName, itemType = stats.MainType, amount = itemWorld.amount, spriteId = itemWorld.spriteId}, hit.transform.gameObject);
-            Destroy(hit.transform.gameObject);
+            ScriptGestion.Inventory.CheckCapability(new ItemClass{globalInfo = objectInfo}, hit.transform.gameObject);
             FMODUnity.RuntimeManager.PlayOneShot("event:/Collecting/TakeItem", hit.point);
             GetComponent<Animator>().Play("TakeItem");
     }
 
     public void Attack()// il me semble qu'il y'a un deuxiéme void attack
     {
-        if(GetComponentInChildren<WeaponSystem>().actualWeaponInHands)
+        var wp = GetComponentInChildren<WeaponSystem>().actualWeaponInHands;
+        if (!GetComponent<InventoryManager>().mainInventory.inventoryIsOpen && wp)
         {
-            var wp = GetComponentInChildren<WeaponSystem>().actualWeaponInHands;
-            wp.Shoot(wp);
+            if (wp.rangedWeapon)
+            {
+                print("Je tir");
+                wp.Shoot(wp);
+            }
+            else
+            {
+                print("Je tape");
+                if (wp.canCutStone || wp.canCutWood)
+                {
+                    Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
+                    if (Physics.Raycast(ray, out RaycastHit hit, wp.attackDistance))
+                    {
+                        GetComponent<PlayerActions>().Gather(hit);
+                    }
+                }
+            }
         }
+        
         /*else
         {
             if(hit.transform.GetComponent<AIstats>())
@@ -77,7 +99,7 @@ public class PlayerActions : MonoBehaviour
        {
             if(hit.transform.GetComponent<ItemWorld>())
             {
-                ObjectText.text = hit.transform.GetComponent<ItemWorld>().GetItem().itemName;
+                ObjectText.text = hit.transform.GetComponent<ItemWorld>().GetItem().globalInfo.Name;
             }
             else
             {

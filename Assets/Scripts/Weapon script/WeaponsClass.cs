@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class WeaponsClass : MonoBehaviour
 {
-
+    public int weaponAnimationID;
+    public string weaponName;
     [Header("Gathering Attributes")]
     public bool canCutWood;
     public bool canCutStone;
@@ -24,7 +26,9 @@ public class WeaponsClass : MonoBehaviour
     public int reloadSpeed;
     public virtual void Shoot(WeaponsClass myWeapon)// Lorsque le joueur tir
     {
-        if(rangedWeapon && myWeapon.actualAttackRate <= 0)
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Weapons/" + myWeapon.weaponName +"Shoot", transform.position);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Weapons/BerettaShoot", transform.position);
+        if (rangedWeapon && myWeapon.actualAttackRate <= 0 && myWeapon.ammo > 0)
         {
             if(Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, Mathf.Infinity))
             {
@@ -35,6 +39,7 @@ public class WeaponsClass : MonoBehaviour
                 }
             }
             myWeapon.actualAttackRate = myWeapon.attackRate;
+            myWeapon.ammo -= 1;
         }
         else if(!rangedWeapon && myWeapon.actualAttackRate <= 0)
         {
@@ -61,6 +66,7 @@ public class WeaponsClass : MonoBehaviour
         {
             myWeapon.ammo += reserve;
         }
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Weapons/" + myWeapon.weaponName +"Reload", transform.position);
     }
 
     public virtual void attackRateManagement()

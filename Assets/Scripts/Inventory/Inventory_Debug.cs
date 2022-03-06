@@ -7,7 +7,8 @@ public class Inventory_Debug : MonoBehaviour
 {
     
     [SerializeField] private List<ItemClass> inventoryList;
-    [SerializeField] private List<ItemClass> startInventory;
+    [SerializeField] private List<string> startInventory;
+    [SerializeField] private List<string> startEquipement;
     public Inventory inv;
 
     public void SetInventory(Inventory inventory) // set l'inventory
@@ -18,9 +19,21 @@ public class Inventory_Debug : MonoBehaviour
     
     private void CreateStartItem() // ajoute les items à l'inventaire 
     {
-        foreach(ItemClass item in startInventory)
+        foreach(string name in startInventory)
         {
-            inv.CheckCapability(item);
+            InfoGlobalExel infoGlobal;
+            liseurExel.LesDatas.FindObjectInfo(name, out infoGlobal);
+            var startItem = new ItemClass {globalInfo = infoGlobal, amount = 1 };
+            inv.CheckCapability(startItem);
+        }
+
+        foreach(string name in startEquipement)
+        {
+            InfoGlobalExel infoGlobal;
+            liseurExel.LesDatas.FindObjectInfo(name, out infoGlobal);
+            var startItem = new ItemClass { globalInfo = infoGlobal, amount = 1 };
+            print(startItem.globalInfo.Name + " " + startItem.globalInfo.TypeGeneral);
+            CanvasReference._canvasReference.GetCanva().GetComponentInChildren<UIInventory>().equippedItems.Add(startItem);
         }
     }
 

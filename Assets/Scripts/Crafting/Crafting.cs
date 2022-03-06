@@ -16,7 +16,7 @@ public class Crafting
         
         for (int i = 0; i < craft.infos.LeNombreNecessaire.Length; i++)
         {
-            if(gestion.Inventory.CheckItemOnList(new ItemClass {itemName = craft.infos.NomdesRessourcesNecessaire[i]}) >= craft.infos.LeNombreNecessaire[i])
+            if(gestion.Inventory.CheckItemOnList(new ItemClass {globalInfo = global}) >= craft.infos.LeNombreNecessaire[i])
             {
                 continue;
             }
@@ -30,10 +30,10 @@ public class Crafting
         if(canCraft)
         {
 
-            gestion.Inventory.CheckCapability(new ItemClass{itemName = global.Name, amount = 1});
+            gestion.Inventory.CheckCapability(new ItemClass{globalInfo = global, amount = 1});
             for (int i = 0; i < craft.infos.LeNombreNecessaire.Length; i++)
             {
-               gestion.Inventory.RemoveItem(new ItemClass {itemName = craft.infos.NomdesRessourcesNecessaire[i], amount = craft.infos.LeNombreNecessaire[i]}); 
+               gestion.Inventory.RemoveItem(new ItemClass {globalInfo = global}, craft.infos, i); 
             }   
             
         }

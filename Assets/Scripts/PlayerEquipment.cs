@@ -25,13 +25,12 @@ public class PlayerEquipment : MonoBehaviour
     public void OnWeaponEquipped(ItemClass weapon, int slotNumber)// lorsqu'une arme est équippé
     {
         print("J'équipe l'arme");
-        InfoGlobalExel objectInfo = new InfoGlobalExel();
-        liseurExel.LesDatas.FindObjectInfo(weapon.itemName, out objectInfo);
         WeaponSystem ws = GetComponentInChildren<WeaponSystem>();
         WeaponsClass newWeapon = null;
+        
         foreach (var wp in ws.Weapons)
         {
-            if(wp.name == weapon.itemName)
+            if(wp.name == weapon.globalInfo.Name)
             {
                 newWeapon = wp;
             }
@@ -40,17 +39,20 @@ public class PlayerEquipment : MonoBehaviour
         switch (slotNumber)
         {
             case 1:
-                if(Weapon1Item.itemName != "")
+                if(Weapon1Item.globalInfo.Name != null)
                 {
                     GestionDesScipt.ScriptGestion.Inventory.CheckCapability(Weapon1Item);
+                    print(Weapon1Item.globalInfo.Name);
                 }
-                ws.ActiveWeapon(newWeapon, 1);
                 GestionDesScipt.ScriptGestion.Inventory.RemoveItem(weapon);
                 Weapon1.GetComponentInChildren<Image>().sprite = weapon.GetSprite();
                 Weapon1Item = weapon;
-            break;
+                CanvasReference._canvasReference.GetCanva().GetComponentInChildren<UIInventory>().equippedItems.Add(Weapon1Item);
+                print("Le nom de mon arme : " + newWeapon);
+                ws.ActiveWeapon(newWeapon, 1);
+                break;
             case 2:
-                if(Weapon2Item.itemName != "")
+                if(Weapon2Item.globalInfo.Name != "")
                 {
                     GestionDesScipt.ScriptGestion.Inventory.CheckCapability(Weapon2Item);
                 }
@@ -58,7 +60,8 @@ public class PlayerEquipment : MonoBehaviour
                 GestionDesScipt.ScriptGestion.Inventory.RemoveItem(weapon);
                 Weapon2.GetComponentInChildren<Image>().sprite = weapon.GetSprite();
                 Weapon2Item = weapon;
-            break;
+                CanvasReference._canvasReference.GetComponent<UIInventory>().equippedItems.Add(Weapon2Item);
+                break;
         }
         
     }
@@ -71,61 +74,75 @@ public class PlayerEquipment : MonoBehaviour
         {
             case 1:
                 ws.DesactiveWeapon(1);
-                Weapon1Item = new ItemClass{itemName = ""};
+                Weapon1Item = new ItemClass{globalInfo = weapon.globalInfo};
                 Weapon1.GetComponentInChildren<Image>().sprite = defaultWeapon;
-            break;
+                CanvasReference._canvasReference.GetComponent<UIInventory>().equippedItems.Remove(Weapon1Item);
+                break;
             case 2:
                 ws.DesactiveWeapon(2);
-                Weapon2Item = new ItemClass{itemName = ""};
+                Weapon2Item = new ItemClass{globalInfo = weapon.globalInfo};
                 Weapon2.GetComponentInChildren<Image>().sprite = defaultWeapon;
-            break;
+                CanvasReference._canvasReference.GetComponent<UIInventory>().equippedItems.Remove(Weapon2Item);
+                break;
         }
     }
 
-    public void EquipClothes(ItemClass cloth, ItemSlot.equipmentType type, bool willBeEquiped, InfoExelvetements infos)
+    public void EquipClothes(ItemClass cloth, bool willBeEquiped, InfoExelvetements infos)
     {
         if(willBeEquiped)
         {
-            switch (type.ToString())
+            switch (infos.MaCategorie)
             {
-                case "Coat":
+                case InfoExelvetements.SousCategorie.Manteau:
                     ChestClothSlot.GetComponentInChildren<Image>().sprite = cloth.GetSprite();
+                    ChestCloth = cloth;
+                    CanvasReference._canvasReference.GetCanva().GetComponentInChildren<UIInventory>().equippedItems.Add(ChestCloth);
+
+
                     break;
-                case "Pull":
+                case InfoExelvetements.SousCategorie.pull:
                     ChestArmorSlot.GetComponentInChildren<Image>().sprite = cloth.GetSprite();
+                    ChestArmor = cloth;
+                    CanvasReference._canvasReference.GetCanva().GetComponentInChildren<UIInventory>().equippedItems.Add(ChestArmor);
+
                     break;
-                case "HelmetOrTop":
-                    helmetSlot.GetComponentInChildren<Image>().sprite = cloth.GetSprite();
-                    break;
-                case "Pants":
+                case InfoExelvetements.SousCategorie.Pantalon:
                     PantsSlot.GetComponentInChildren<Image>().sprite = cloth.GetSprite();
+                    Pants = cloth;
+                    CanvasReference._canvasReference.GetCanva().GetComponentInChildren<UIInventory>().equippedItems.Add(Pants);
+
                     break;
-                case "Shoes":
+                case InfoExelvetements.SousCategorie.Chaussure:
                     ShoesSlot.GetComponentInChildren<Image>().sprite = cloth.GetSprite();
+                    Shoes = cloth;
+                    CanvasReference._canvasReference.GetCanva().GetComponentInChildren<UIInventory>().equippedItems.Add(Shoes);
+
                     break;
             }
             GestionDesScipt.ScriptGestion.Inventory.RemoveItem(cloth);
             GestionDesScipt.ScriptGestion.SurvieScript.ResistanceFroidsTotal += infos.ChaleurResistance;
             GestionDesScipt.ScriptGestion.SurvieScript.ResistanceDegatsTotal += infos.DegatResistance;
+            
         }
         else
         {
-            switch (type.ToString())
+            switch (infos.MaCategorie)
             {
-                case "Coat":
-                    ChestClothSlot.GetComponentInChildren<Image>().sprite = defaultHelmet;
+                case InfoExelvetements.SousCategorie.Manteau:
+                    ChestClothSlot.GetComponentInChildren<Image>().sprite = cloth.GetSprite();
+                    CanvasReference._canvasReference.GetCanva().GetComponentInChildren<UIInventory>().equippedItems.Remove(ChestCloth);
                     break;
-                case "Pull":
-                    ChestArmorSlot.GetComponentInChildren<Image>().sprite = defaultHelmet;
+                case InfoExelvetements.SousCategorie.pull:
+                    ChestArmorSlot.GetComponentInChildren<Image>().sprite = cloth.GetSprite();
+                    CanvasReference._canvasReference.GetCanva().GetComponentInChildren<UIInventory>().equippedItems.Remove(ChestArmor);
                     break;
-                case "HelmetOrTop":
-                    helmetSlot.GetComponentInChildren<Image>().sprite = defaultHelmet;
+                case InfoExelvetements.SousCategorie.Pantalon:
+                    PantsSlot.GetComponentInChildren<Image>().sprite = cloth.GetSprite();
+                    CanvasReference._canvasReference.GetCanva().GetComponentInChildren<UIInventory>().equippedItems.Remove(Pants);
                     break;
-                case "Pants":
-                    PantsSlot.GetComponentInChildren<Image>().sprite = defaultHelmet;
-                    break;
-                case "Shoes":
-                    ShoesSlot.GetComponentInChildren<Image>().sprite = defaultHelmet;
+                case InfoExelvetements.SousCategorie.Chaussure:
+                    ShoesSlot.GetComponentInChildren<Image>().sprite = cloth.GetSprite();
+                    CanvasReference._canvasReference.GetCanva().GetComponentInChildren<UIInventory>().equippedItems.Remove(Shoes);
                     break;
             }
             GestionDesScipt.ScriptGestion.Inventory.CheckCapability(cloth);

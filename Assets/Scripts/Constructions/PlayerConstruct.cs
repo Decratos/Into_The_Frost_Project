@@ -87,14 +87,14 @@ public class PlayerConstruct : MonoBehaviour
         }
     }
 
-    public void Construct()
+   /* public void Construct()
     {
         int price = _structureList.structuresPrice[listID];
         if (GetComponent<GestionDesScipt>().Inventory
-            .CheckItemOnList(new ItemClass {itemName = "Planche"}) >= price)
+            .CheckItemOnList(new ItemClass {globalInfo = }) >= price)
         {
             GameObject structure = Instantiate(selectedStructure, buildingPrevisualizationObject.transform.GetChild(0).position, buildingPrevisualizationObject.transform.GetChild(0).rotation);
-            GetComponent<GestionDesScipt>().Inventory.RemoveItem(new ItemClass {itemName = "Planche", amount = price});
+            GetComponent<GestionDesScipt>().Inventory.RemoveItem(new ItemClass {globalInfo = , amount = price});
             
             if(structure.GetComponentsInChildren<Collider>().Length > 0){
                 foreach (var col in  structure.GetComponentsInChildren<Collider>())
@@ -108,10 +108,10 @@ public class PlayerConstruct : MonoBehaviour
         else
         {
             print(GetComponent<GestionDesScipt>().Inventory
-            .CheckItemOnList(new ItemClass {itemName = "Planche"}));
+            .CheckItemOnList(new ItemClass {globalInfo = "Planche"}));
         }
             
-    }
+    }*/
 
     public void increaseIdStructure()
     {

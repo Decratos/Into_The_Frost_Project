@@ -14,9 +14,9 @@ public class DropEquippedWeapon : MonoBehaviour, IPointerDownHandler
     }
     public void OnPointerDown(PointerEventData eventData)// lorsque je clique
     {
-        if(parentItemSlot.equippedItemStat.itemName != "")
+        if(parentItemSlot.equippedItemStat.globalInfo.Name != "")
         {
-            if(parentItemSlot.equippedItemStat.itemType == ResumeExelForObject.Type.ArmeAfeu || parentItemSlot.equippedItemStat.itemType == ResumeExelForObject.Type.ArmeMelee)
+            if(parentItemSlot.equippedItemStat.globalInfo.TypeGeneral == InfoGlobalExel.Type.ArmeAfeu || parentItemSlot.equippedItemStat.globalInfo.TypeGeneral == InfoGlobalExel.Type.ArmeMelee)
             {
                 PlayerSingleton.playerInstance.GetComponent<PlayerEquipment>().UnEquipWeapon(parentItemSlot.equippedItemStat, 1);
                 GestionDesScipt.ScriptGestion.Inventory.CheckCapability(parentItemSlot.equippedItemStat);
@@ -27,8 +27,8 @@ public class DropEquippedWeapon : MonoBehaviour, IPointerDownHandler
                 liseurExel excel;
                 InfoExelvetements infoVetement;
                 excel = liseurExel.LesDatas;
-                excel.FindObjectInfo(parentItemSlot.equippedItemStat.itemName, out infoVetement);
-                PlayerSingleton.playerInstance.GetComponent<PlayerEquipment>().EquipClothes(parentItemSlot.equippedItemStat, parentItemSlot.slotType, false, infoVetement);
+                excel.FindObjectInfo(parentItemSlot.equippedItemStat.globalInfo.Name, out infoVetement);
+                PlayerSingleton.playerInstance.GetComponent<PlayerEquipment>().EquipClothes(parentItemSlot.equippedItemStat, false, infoVetement);
             }
             
         }

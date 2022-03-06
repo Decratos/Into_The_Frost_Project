@@ -31,6 +31,7 @@ public class AIBehaviour : MonoBehaviour
     private void Start() {
         _agent = GetComponent<NavMeshAgent>();
         ChangeState(State.Roaming);
+        GetComponent<Animator>().SetBool("IsWalking", true);
     }
 
     private void Update() {
@@ -41,10 +42,9 @@ public class AIBehaviour : MonoBehaviour
             finishedTravel = true;
             ChangeState(State.Wait);
         }
-
-        if(profile.target)
+        if (profile.target)
         {
-            print("Je vois le joueur");
+           // print("Je vois le joueur");
         }
     }
 
@@ -62,6 +62,7 @@ public class AIBehaviour : MonoBehaviour
             case State.Roaming:
                 destination = Random.insideUnitSphere * 25f;
                 _agent.SetDestination(destination);
+                GetComponent<Animator>().SetBool("IsWalking", true);
                 finishedTravel = false;
             break;
             case State.Chase:
@@ -98,7 +99,7 @@ public class AIBehaviour : MonoBehaviour
             case State.Roaming:
                 if(finishedTravel)
                 {
-                    if(!isFromACamp)
+                    if (!isFromACamp)
                     {
                         destination = Random.insideUnitSphere * 25f;
                     }
@@ -106,7 +107,6 @@ public class AIBehaviour : MonoBehaviour
                     {
                         destination = Random.insideUnitSphere * 25f + CampPosition;
                     }
-                    
                     _agent.SetDestination(destination);
                     finishedTravel = false;
                 }
@@ -130,6 +130,7 @@ public class AIBehaviour : MonoBehaviour
                 }
             break;
             case State.Attack:
+                print(profile.target.position);
                 if(Vector3.Distance(transform.position, profile.target.position) > profile.attackDistance)
                     ChangeState(State.Chase);
                 else
@@ -158,7 +159,8 @@ public class AIBehaviour : MonoBehaviour
             break;
             case State.Wait:
                 WaitSequence();
-                if(profile.target)
+                GetComponent<Animator>().SetBool("IsWalking", false);
+                if (profile.target)
                 {
                     if(profile.type == AiProfil.AItype.AnimalNeutral ||profile.type == AiProfil.AItype.HumanNeutral)
                         ChangeState(State.Flee);
@@ -188,6 +190,7 @@ public class AIBehaviour : MonoBehaviour
         {
             //Attack
             print("Attack");
+            GetComponent<Animator>().Play("SlashOneHand");
             profile.actualAttackInterval = profile.attackInterval;
         }
         else

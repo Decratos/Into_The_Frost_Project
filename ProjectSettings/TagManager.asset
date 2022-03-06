@@ -12,6 +12,7 @@ TagManager:
   - SpawnLoot
   - Container
   - CraftTable
+  - Cooker
   layers:
   - Default
   - TransparentFX

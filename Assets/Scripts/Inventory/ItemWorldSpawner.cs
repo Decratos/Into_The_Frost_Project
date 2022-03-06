@@ -37,7 +37,7 @@ public class ItemWorldSpawner : MonoBehaviour
         MesFonctions.FindDataExelForObject(out excelLiseur);
         GetAllItemPossible();
         item = ChooseItemToSpawn();
-        excelLiseur.findObjectIDByName(item.itemName, out item.spriteId);
+        excelLiseur.findObjectIDByName(item.globalInfo.Name, out item.globalInfo.ID);
         var myItem = ItemWorld.SpawnItemWorld(item, transform.position);
         myItem.transform.parent = transform.parent;
         if(!inDebug)
@@ -60,7 +60,7 @@ public class ItemWorldSpawner : MonoBehaviour
 
             if (_info.TypeGeneral.ToString() == type.ToString())
             {
-                item = new ItemClass { itemName = _info.Name, globalInfo = _info, itemType = type, spriteId = _info.ID };
+                item = new ItemClass {globalInfo = _info};
                 hasFindItem = true;
             }
             
@@ -119,7 +119,7 @@ public class ItemWorldSpawner : MonoBehaviour
         foreach(int i in itemsID)
         {
             liseurExel.LesDatas.FindObjectInfo(i, out ToReturn);
-            lesLootPossible.Add(new ItemClass { itemName = ToReturn.Name, itemType = type, globalInfo = ToReturn, spriteId = ToReturn.ID, amount = 1, ChanceDeBase = ToReturn.rarity });
+            lesLootPossible.Add(new ItemClass {globalInfo = ToReturn, amount = 1, ChanceDeBase = ToReturn.rarity });
         }
     }
 
@@ -172,7 +172,7 @@ public class ItemWorldSpawner : MonoBehaviour
                     if (LaChanceChoisi > LaChanceSuperieur && (i == 0 || LaChanceChoisi < arrayChanceTrier[i - 1, 1]))
                     {
                         LaChanceSuperieur = LaChanceChoisi;
-                        arrayChanceTrier[i, 2] = lesLootPossible[j].spriteId;
+                        arrayChanceTrier[i, 2] = lesLootPossible[j].globalInfo.ID;
                     }
                 }
 
@@ -191,8 +191,8 @@ public class ItemWorldSpawner : MonoBehaviour
 
 
         liseurExel.LesDatas.FindObjectInfo(IDObjectChoose, out ToReturn);
-        print("Id choisi : " + IDObjectChoose);
-        var finalItem = new ItemClass { itemName = ToReturn.Name, itemType = type, globalInfo = ToReturn, spriteId = ToReturn.ID, amount = 1, ChanceDeBase = ToReturn.rarity };
+        //print("Id choisi : " + IDObjectChoose);
+        var finalItem = new ItemClass {globalInfo = ToReturn, amount = 1, ChanceDeBase = ToReturn.rarity };
         return finalItem;
     }
 }
