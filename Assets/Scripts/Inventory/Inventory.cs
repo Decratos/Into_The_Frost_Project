@@ -71,7 +71,7 @@ public class Inventory
         if (itemList.Count < capability)
         {
             AddItem(itemToPass);
-            GameObject.Destroy(obj.transform);
+            GameObject.Destroy(obj.transform.gameObject);
         }
     }
     public void RemoveItem(ItemClass item)// Supprime un item de l'inventaire

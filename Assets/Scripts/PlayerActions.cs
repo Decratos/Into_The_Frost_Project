@@ -55,7 +55,6 @@ public class PlayerActions : MonoBehaviour
             liseurExel.LesDatas.FindObjectInfo(stats.ID, out objectInfo);
             ItemClass itemWorld = hit.transform.GetComponent<ItemWorld>().GetItem();
             ScriptGestion.Inventory.CheckCapability(new ItemClass{globalInfo = objectInfo}, hit.transform.gameObject);
-            Destroy(hit.transform.gameObject);
             FMODUnity.RuntimeManager.PlayOneShot("event:/Collecting/TakeItem", hit.point);
             GetComponent<Animator>().Play("TakeItem");
     }
@@ -63,23 +62,27 @@ public class PlayerActions : MonoBehaviour
     public void Attack()// il me semble qu'il y'a un deuxiéme void attack
     {
         var wp = GetComponentInChildren<WeaponSystem>().actualWeaponInHands;
-        if (wp.rangedWeapon)
+        if (!GetComponent<InventoryManager>().mainInventory.inventoryIsOpen && wp)
         {
-            print("Je tir");
-            wp.Shoot(wp);           
-        }
-        else
-        {
-            print("Je tape");
-            if (wp.canCutStone || wp.canCutWood)
+            if (wp.rangedWeapon)
             {
-                Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
-                if (Physics.Raycast(ray, out RaycastHit hit, wp.attackDistance))
+                print("Je tir");
+                wp.Shoot(wp);
+            }
+            else
+            {
+                print("Je tape");
+                if (wp.canCutStone || wp.canCutWood)
                 {
-                    GetComponent<PlayerActions>().Gather(hit);
+                    Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
+                    if (Physics.Raycast(ray, out RaycastHit hit, wp.attackDistance))
+                    {
+                        GetComponent<PlayerActions>().Gather(hit);
+                    }
                 }
             }
         }
+        
         /*else
         {
             if(hit.transform.GetComponent<AIstats>())

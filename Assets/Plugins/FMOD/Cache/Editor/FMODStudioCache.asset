@@ -1,5 +1,32 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9165417184968146761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Weapons/SKSReload
+  m_EditorClassIdentifier: 
+  Path: event:/Weapons/SKSReload
+  Guid:
+    Data1: -2069177377
+    Data2: 1329373779
+    Data3: 228037566
+    Data4: 1141317872
+  Banks:
+  - {fileID: 5942111600617134462}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4404
 --- !u!114 &-8071846916586045565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24,9 +51,63 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 1
   Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
+  MinDistance: 1
+  MaxDistance: 20
   Length: 500
+--- !u!114 &-7447875815932343464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/HitNPC
+  m_EditorClassIdentifier: 
+  Path: event:/HitNPC
+  Guid:
+    Data1: -650131065
+    Data2: 1307384249
+    Data3: -1960345444
+    Data4: 730862148
+  Banks:
+  - {fileID: 5942111600617134462}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1496
+--- !u!114 &-6480220552185074692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Weapons/BerettaReload
+  m_EditorClassIdentifier: 
+  Path: event:/Weapons/BerettaReload
+  Guid:
+    Data1: 1389984470
+    Data2: 1164074518
+    Data3: -481898579
+    Data4: 527675438
+  Banks:
+  - {fileID: 5942111600617134462}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4088
 --- !u!114 &-5256159174085607128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51,9 +132,111 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 1
   Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1300
+--- !u!114 &-5206342503426272414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SKSShoot/Parameter 1
+  m_EditorClassIdentifier: 
+  Name: Parameter 1
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-2807203481417399365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SKSShoot/Parameter 1
+  m_EditorClassIdentifier: 
+  Name: Parameter 1
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
+--- !u!114 &-2620398755615398827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: snapshot:/InsideSnapshot
+  m_EditorClassIdentifier: 
+  Path: snapshot:/InsideSnapshot
+  Guid:
+    Data1: -582310110
+    Data2: 1217883357
+    Data3: -363533381
+    Data4: -169468411
+  Banks:
+  - {fileID: 5942111600617134462}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 3309
+  Length: 0
+--- !u!114 &-2339655208067312484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Campfire
+  m_EditorClassIdentifier: 
+  Path: event:/Campfire
+  Guid:
+    Data1: -362400787
+    Data2: 1130281137
+    Data3: -1555112555
+    Data4: 1500626288
+  Banks:
+  - {fileID: 5942111600617134462}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 14000
 --- !u!114 &-318377281506437160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,8 +261,8 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 1
   Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
+  MinDistance: 1
+  MaxDistance: 20
   Length: 1088
 --- !u!114 &11400000
 MonoBehaviour:
@@ -102,12 +285,23 @@ MonoBehaviour:
   - {fileID: 7979983743117950582}
   - {fileID: -5256159174085607128}
   - {fileID: -8071846916586045565}
+  - {fileID: 4967886488983318401}
+  - {fileID: -2620398755615398827}
+  - {fileID: 8074963938088634909}
+  - {fileID: 3908718277676887860}
+  - {fileID: 6731499479982239874}
+  - {fileID: -7447875815932343464}
+  - {fileID: 4171548039008372414}
+  - {fileID: -6480220552185074692}
+  - {fileID: -9165417184968146761}
+  - {fileID: 8368276810616578954}
+  - {fileID: -2339655208067312484}
   EditorParameters: []
   MasterBanks:
   - {fileID: 5942111600617134462}
   StringsBanks:
   - {fileID: 5075908363993971647}
-  cacheTime: 637695958947037388
+  cacheTime: 637821311066128150
   cacheVersion: 9
 --- !u!114 &2541879805269755351
 MonoBehaviour:
@@ -133,9 +327,91 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 1
   Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
+  MinDistance: 1
+  MaxDistance: 20
   Length: 1088
+--- !u!114 &3908718277676887860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Weapons/BerettaShoot
+  m_EditorClassIdentifier: 
+  Path: event:/Weapons/BerettaShoot
+  Guid:
+    Data1: 1920432446
+    Data2: 1257656689
+    Data3: 1030581670
+    Data4: 1861974591
+  Banks:
+  - {fileID: 5942111600617134462}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 580
+--- !u!114 &4171548039008372414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambient/Wind
+  m_EditorClassIdentifier: 
+  Path: event:/Ambient/Wind
+  Guid:
+    Data1: -1892805485
+    Data2: 1133074857
+    Data3: 1114540682
+    Data4: 745394854
+  Banks:
+  - {fileID: 5942111600617134462}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 29500
+--- !u!114 &4967886488983318401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Weapons/SKSShoot
+  m_EditorClassIdentifier: 
+  Path: event:/Weapons/SKSShoot
+  Guid:
+    Data1: -934824688
+    Data2: 1287981653
+    Data3: -829342293
+    Data4: 1986269942
+  Banks:
+  - {fileID: 5942111600617134462}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters:
+  - {fileID: -5206342503426272414}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1520
 --- !u!114 &5075908363993971647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,10 +427,10 @@ MonoBehaviour:
   Path: FMOD/AudioSource_IntoTheFrost/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637695958947037388
+  lastModified: 637821311066128150
   FileSizes:
-  - Name: Desktop
-    Value: 962
+  - Name: 
+    Value: 1714
   Exists: 1
 --- !u!114 &5942111600617134462
 MonoBehaviour:
@@ -171,11 +447,36 @@ MonoBehaviour:
   Path: FMOD/AudioSource_IntoTheFrost/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637695958946957579
-  FileSizes:
-  - Name: Desktop
-    Value: 589184
+  lastModified: 637821311066118176
+  FileSizes: []
   Exists: 1
+--- !u!114 &6731499479982239874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Inventory/Craft
+  m_EditorClassIdentifier: 
+  Path: event:/Inventory/Craft
+  Guid:
+    Data1: 647032638
+    Data2: 1249227722
+    Data3: -551032680
+    Data4: -74016331
+  Banks:
+  - {fileID: 5942111600617134462}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1100
 --- !u!114 &7979983743117950582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,6 +501,84 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 1
   Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 1359
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1002
+--- !u!114 &8074963938088634909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Collecting/MetalHit
+  m_EditorClassIdentifier: 
+  Path: event:/Collecting/MetalHit
+  Guid:
+    Data1: 1241909546
+    Data2: 1252696239
+    Data3: 230535071
+    Data4: 1176580794
+  Banks:
+  - {fileID: 5942111600617134462}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 921
+--- !u!114 &8368276810616578954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Hunger
+  m_EditorClassIdentifier: 
+  Path: event:/Hunger
+  Guid:
+    Data1: 1879186912
+    Data2: 1222218218
+    Data3: 1296188807
+    Data4: 1666349203
+  Banks:
+  - {fileID: 5942111600617134462}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3000
+--- !u!114 &8728363624693972704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SKSShoot/Parameter 1
+  m_EditorClassIdentifier: 
+  Name: Parameter 1
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 0
