@@ -176,10 +176,10 @@ public class UIInventory : MonoBehaviour
             switch (inventoryIsOpen)
             {
                 case true:
-                    FMODUnity.RuntimeManager.PlayOneShot("event:/Inventory/InventoryOpen", transform.position);
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/Inventory/InventoryOpen", PlayerSingleton.playerInstance.transform.position);
                 break;
                 case false:
-                    FMODUnity.RuntimeManager.PlayOneShot("event:/Inventory/InventoryClose", transform.position);
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/Inventory/InventoryClose", PlayerSingleton.playerInstance.transform.position);
                 break;
             }
         }

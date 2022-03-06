@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{5a6f469b-df1c-404b-a06b-42a7fd78f751}">
+		<property name="assetPath">
+			<value>Wind,Int,Howl,Tonal,Mumble.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>33.158999999999999</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{6f779f5e-b760-4f9a-ab0a-1d4500b3211f}</destination>
+		</relationship>
+	</object>
+</objects>

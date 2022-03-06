@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{b45afc0d-5940-4048-a304-9c48b296baa6}">
+		<property name="assetPath">
+			<value>Wind,Raindrops,Int,Open window,Long whoosh.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>30.070822916666668</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{6f779f5e-b760-4f9a-ab0a-1d4500b3211f}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -13,7 +13,7 @@ public class GestionInput : MesFonctions
     private Vector2 movementInput = Vector2.zero;
     private Vector2 MouvementDeSouris = Vector2.zero;
     private bool sprint = true;
-    GestionDesScipt ScriptGestion;
+    public GestionDesScipt ScriptGestion;
 
     void Awake()
     {
@@ -54,34 +54,8 @@ public class GestionInput : MesFonctions
        
         if (context.started)
         {
-            print("Shoot");
-            if (ScriptGestion.PlayerConstruct.constructionMode)
-            {
-                //ScriptGestion.PlayerConstruct.Construct();
-            }
-            else
-            {
-                RaycastHit hit; // créer une valeur raycast
-                Vector2 centerCamera = new Vector2(Camera.main.pixelWidth / 2, Camera.main.pixelHeight / 2); // centre la souris
-                Ray ray = Camera.main.ScreenPointToRay(centerCamera); // créer le ray 
-            
-                if (Physics.Raycast(ray, out hit, Distance)) // si le raycast touche
-                {
-                    if (hit.transform.tag == "Construction")
-                    {
-                    }
-                    else if(hit.transform.tag == "RawRessources")
-                    {
-                        GetComponent<PlayerActions>().Gather(hit, ScriptGestion);
-                    }
-                    
-                }
-                else
-                {
-                    GetComponent<PlayerActions>().Attack();
-                }
-            }
-
+            GetComponent<PlayerActions>().Attack();
+        
         }
 
 
@@ -188,7 +162,7 @@ public class GestionInput : MesFonctions
     {
         if (context.started && !PlayerSingleton.playerInstance.GetComponent<InventoryManager>().CheckInventoryOpen())
         {
-            ScriptGestion.uiInventory.OpenHideInventory(true);
+            ScriptGestion.uiInventory.OpenHideInventory(false);
             CraftUI.instance.OpenHideCraftUI(0);
         }
     }

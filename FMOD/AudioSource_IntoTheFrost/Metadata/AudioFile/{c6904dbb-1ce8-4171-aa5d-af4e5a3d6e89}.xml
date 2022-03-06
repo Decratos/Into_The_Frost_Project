@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{c6904dbb-1ce8-4171-aa5d-af4e5a3d6e89}">
+		<property name="assetPath">
+			<value>Stomach Growl Sound Effect.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>4.2492708333333331</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{6f779f5e-b760-4f9a-ab0a-1d4500b3211f}</destination>
+		</relationship>
+	</object>
+</objects>
