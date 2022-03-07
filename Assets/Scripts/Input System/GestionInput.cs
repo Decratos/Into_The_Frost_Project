@@ -163,7 +163,6 @@ public class GestionInput : MesFonctions
         if (context.started && !PlayerSingleton.playerInstance.GetComponent<InventoryManager>().CheckInventoryOpen())
         {
             ScriptGestion.uiInventory.OpenHideInventory(false);
-            CraftUI.instance.OpenHideCraftUI(0);
         }
     }
 

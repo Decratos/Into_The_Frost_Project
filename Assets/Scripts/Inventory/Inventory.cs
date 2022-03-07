@@ -101,7 +101,7 @@ public class Inventory
         }
         else
         {
-            itemList.Remove(newItem);  
+            itemList.Remove(item);  
         }
         OnItemListChanged?.Invoke(this,EventArgs.Empty);
     }
@@ -132,7 +132,7 @@ public class Inventory
         }
         else
         {
-            itemList.Remove(newItem);
+            itemList.Remove(item);
         }
         OnItemListChanged?.Invoke(this, EventArgs.Empty);
     }
