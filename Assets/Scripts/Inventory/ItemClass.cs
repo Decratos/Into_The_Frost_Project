@@ -34,6 +34,8 @@ public class ItemClass
          case InfoGlobalExel.Type.Materials:
             return true;
          case InfoGlobalExel.Type.ArmeAfeu:
+         case InfoGlobalExel.Type.ArmeMelee:
+         case InfoGlobalExel.Type.Vetements:
             return false;
       }
    }

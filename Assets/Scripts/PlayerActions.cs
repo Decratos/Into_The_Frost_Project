@@ -62,6 +62,7 @@ public class PlayerActions : MonoBehaviour
     public void Attack()// il me semble qu'il y'a un deuxiéme void attack
     {
         var wp = GetComponentInChildren<WeaponSystem>().actualWeaponInHands;
+        print(wp);
         if (!GetComponent<InventoryManager>().mainInventory.inventoryIsOpen && wp)
         {
             if (wp.rangedWeapon)

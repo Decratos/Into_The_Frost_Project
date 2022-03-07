@@ -24,7 +24,6 @@ public class PlayerEquipment : MonoBehaviour
 
     public void OnWeaponEquipped(ItemClass weapon, int slotNumber)// lorsqu'une arme est équippé
     {
-        print("J'équipe l'arme");
         WeaponSystem ws = GetComponentInChildren<WeaponSystem>();
         WeaponsClass newWeapon = null;
         
@@ -76,13 +75,14 @@ public class PlayerEquipment : MonoBehaviour
                 ws.DesactiveWeapon(1);
                 Weapon1Item = new ItemClass{globalInfo = weapon.globalInfo};
                 Weapon1.GetComponentInChildren<Image>().sprite = defaultWeapon;
-                CanvasReference._canvasReference.GetComponent<UIInventory>().equippedItems.Remove(Weapon1Item);
+                print(Weapon1Item);
+                GetComponent<InventoryManager>().mainInventory.equippedItems.Remove(Weapon1Item);
                 break;
             case 2:
                 ws.DesactiveWeapon(2);
                 Weapon2Item = new ItemClass{globalInfo = weapon.globalInfo};
                 Weapon2.GetComponentInChildren<Image>().sprite = defaultWeapon;
-                CanvasReference._canvasReference.GetComponent<UIInventory>().equippedItems.Remove(Weapon2Item);
+                GetComponent<InventoryManager>().mainInventory.equippedItems.Remove(Weapon2Item);
                 break;
         }
     }

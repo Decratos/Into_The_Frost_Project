@@ -19,6 +19,7 @@ public class UIInventory : MonoBehaviour
     public Transform itemSlotTemplate;
     public bool inventoryIsOpen = false;
     public bool isPlayerInventory = false;
+    public Transform BasicUI;
 
     public bool isPrimaryWindow = false;
 
@@ -35,6 +36,7 @@ public class UIInventory : MonoBehaviour
                 MesFonctions.FindGestionDesScripts(PlayerSingleton.playerInstance.gameObject, out gestion);
                 gestion.uiInventory = this;
                 PlayerSingleton.playerInstance.GetComponent<InventoryManager>().Initiate();
+                PlayerSingleton.playerInstance.GetComponent<InventoryManager>().mainInventory = this;
             }
         }
         if(inheritedInventory.Count > 0)
@@ -127,7 +129,7 @@ public class UIInventory : MonoBehaviour
 
     public void RefreshEquippedItem()
     {
-        if(inventoryIsOpen)
+        if(inventoryIsOpen && equippedItems.Count > 0)
         {
             foreach (Transform child in equippedItemContainer)
             {
@@ -171,16 +173,19 @@ public class UIInventory : MonoBehaviour
     public void OpenHideInventory(bool onStart)// ouvre ou ferme l'inventaire
     {
         inventoryIsOpen = !inventoryIsOpen;
-        if(!onStart)
+        BasicUI.gameObject.SetActive(inventoryIsOpen);
+        if (!onStart)
         {
             switch (inventoryIsOpen)
             {
                 case true:
                     FMODUnity.RuntimeManager.PlayOneShot("event:/Inventory/InventoryOpen", PlayerSingleton.playerInstance.transform.position);
+                    BasicUI.GetComponent<BasicUIGestion>().SetLastWindow(this.transform);
                 break;
                 case false:
                     FMODUnity.RuntimeManager.PlayOneShot("event:/Inventory/InventoryClose", PlayerSingleton.playerInstance.transform.position);
-                break;
+                    BasicUI.GetComponent<BasicUIGestion>().CloseLastWindow();
+                    break;
             }
         }
         gameObject.SetActive(inventoryIsOpen);
@@ -189,5 +194,23 @@ public class UIInventory : MonoBehaviour
         RefreshInventoryItems();
         RefreshEquippedItem();
         MouseCursorHiderShower.instance.ManageCursor(inventoryIsOpen);
+    }
+    public void OpenHideInventory(string forceOpen)
+    {
+        switch (forceOpen)
+        {
+            case "Open":
+                gameObject.SetActive(true);
+                inventoryIsOpen = true;
+                RefreshInventoryItems();
+                RefreshEquippedItem();
+                break;
+            case "Close":
+                gameObject.SetActive(false);
+                inventoryIsOpen = false;
+                break;
+        }
+        
+        
     }
 }
