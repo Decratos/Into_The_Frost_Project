@@ -52,7 +52,7 @@ MonoBehaviour:
   type: 0
   chanceForNoSpawn: 0.65
   lesLootPossible: []
-  inDebug: 1
+  inDebug: 0
 --- !u!65 &7734959274548417032
 BoxCollider:
   m_ObjectHideFlags: 0
