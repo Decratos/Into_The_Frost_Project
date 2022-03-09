@@ -39,6 +39,7 @@ public class UiEquipmentSetter : MonoBehaviour, IDropHandler
                 PlayerSingleton.playerInstance.GetComponent<Inventory_Debug>().inv.RemoveItem(item);
                 break;
             case InfoGlobalExel.Type.Sac:
+                PlayerSingleton.playerInstance.GetComponent<PlayerEquipment>().EquipBackpack(item, false);
                 PlayerSingleton.playerInstance.GetComponent<Inventory_Debug>().inv.RemoveItem(item);
                 break;
             case InfoGlobalExel.Type.Vetements:

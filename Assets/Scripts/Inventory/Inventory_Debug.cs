@@ -10,6 +10,7 @@ public class Inventory_Debug : MonoBehaviour
     [SerializeField] private List<string> startInventory;
     [SerializeField] private List<string> startEquipement;
     public Inventory inv;
+    public int playerInventoryCapacity;
 
     public void SetInventory(Inventory inventory) // set l'inventory
     {
@@ -40,5 +41,6 @@ public class Inventory_Debug : MonoBehaviour
     private void Update() //récupére la liste
     {
         inventoryList = inv.GetItemList();
+        playerInventoryCapacity = inv.capability;
     }
 }

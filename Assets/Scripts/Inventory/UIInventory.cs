@@ -136,9 +136,6 @@ public class UIInventory : MonoBehaviour
                 if (child == equippedItemTemplate) continue;
                 Destroy(child.gameObject);
             }
-            int itemSlotCellSize = 50;
-            int x = 0;
-            int y = 0;
             foreach (var item in equippedItems)
             {
                 RectTransform itemSlotRectTransform = Instantiate(equippedItemTemplate, equippedItemContainer).GetComponent<RectTransform>();
@@ -149,14 +146,20 @@ public class UIInventory : MonoBehaviour
                     {
                         PlayerSingleton.playerInstance.GetComponent<PlayerEquipment>().UnEquipWeapon(item, 1);  
                     }
-                    else
+                    else if(item.globalInfo.TypeGeneral == InfoGlobalExel.Type.Vetements)
                     {
                         InfoExelvetements infoVetements;
                         liseurExel.LesDatas.FindObjectInfo(item.globalInfo.Name, out infoVetements);
                         PlayerSingleton.playerInstance.GetComponent<PlayerEquipment>().EquipClothes(item, false, infoVetements);
                     }
+                    else if(item.globalInfo.TypeGeneral == InfoGlobalExel.Type.Sac)
+                    {
+                        PlayerSingleton.playerInstance.GetComponent<PlayerEquipment>().EquipBackpack(null, true);
+                    }
+                    Destroy(itemSlotRectTransform.gameObject);
                     equippedItems.Remove(item);
                     _inventory.CheckCapability(item);
+                    
                 };
                 itemSlotRectTransform.anchoredPosition = new Vector2(equippedItemTemplate.GetComponent<RectTransform>().anchoredPosition.x, equippedItemTemplate.GetComponent<RectTransform>().anchoredPosition.y);
                 Image image = itemSlotRectTransform.Find("Image").GetComponent<Image>();
@@ -166,9 +169,6 @@ public class UIInventory : MonoBehaviour
             }
         }
     }
-    
-    public void RemoveClick()//?
-    {}
 
     public void OpenHideInventory(bool onStart)// ouvre ou ferme l'inventaire
     {
