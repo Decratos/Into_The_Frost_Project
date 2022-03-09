@@ -17,6 +17,9 @@ public class InventoryManager : MonoBehaviour
         GetComponent<Inventory_Debug>().SetInventory(inventory);
         MesFonctions.FindGestionDesScripts(this.gameObject,out gestion);
         gestion.uiInventory.SetInventory(GetComponent<GestionDesScipt>().Inventory);
+        ContainerWindow = CanvasReference._canvasReference.GetCanva().transform.Find("ContainerInventory");
+        PlayerInventoryContainerWindow = ContainerWindow.transform.Find("PlayerInventoryWithContainer");
+
     }
 
     public bool CheckInventoryOpen()// permet de savoir si l'inventaire est ouvert

@@ -18,6 +18,7 @@ public class CraftUI : MonoBehaviour
     public RectTransform tooltipWindow;
     InfoGlobalExel globalInfo;
     public Transform BasicUI;
+    public CraftingTable myTable;
 
     private void Awake()
     {
@@ -35,10 +36,26 @@ public class CraftUI : MonoBehaviour
     public void OpenHideCraftUI(int maxLevel) // ouvre ou non le craft
     {
         isOpen = !isOpen;
-        BasicUI.gameObject.SetActive(isOpen);
+        //BasicUI.gameObject.SetActive(isOpen);
         PlayerSubInventory.GetComponent<UIInventory>().OpenHideInventory("Open");
         gameObject.SetActive(isOpen);
-        RefreshUI(maxLevel);
+        if(isOpen)
+        {
+            if (maxLevel >= 0)
+            {
+                RefreshUI(maxLevel);
+            }
+            else if(myTable)
+            {
+                RefreshUI((int)myTable.tableLevel);
+            }
+            else
+            {
+                RefreshUI(0);
+            }
+        }
+        
+        
     }
     public void OpenHideCraftUI(bool forceOpen, int maxLevel)
     {
@@ -86,5 +103,10 @@ public class CraftUI : MonoBehaviour
                 craftRectTransform.GetComponentInChildren<CraftButtonUI>().DelayedStart();
             }
         }
+    }
+
+    public void DisengageTable()
+    {
+        myTable.OpenHideTableWindow();
     }
 }

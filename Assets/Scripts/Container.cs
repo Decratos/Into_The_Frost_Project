@@ -37,8 +37,11 @@ public class Container : MonoBehaviour
         var playerWindowUi = PlayerSingleton.playerInstance.GetComponent<InventoryManager>().PlayerInventoryContainerWindow.GetComponent<UIInventory>();
         var ContainerWindowUi = PlayerSingleton.playerInstance.GetComponent<InventoryManager>().ContainerWindow.GetComponent<UIInventory>();
         //PlayerSingleton.playerInstance.GetComponentInChildren<CameraMouvement>().canLook = !isOpen;
-        if(!isOpen && !PlayerSingleton.playerInstance.GetComponent<InventoryManager>().CheckInventoryOpen())
+        if (!isOpen)
         {
+            print("jouvre la fenetre");
+            ContainerWindowUi.BasicUI.GetComponent<BasicUIGestion>().contextWindow = ContainerWindowUi.transform;
+            ContainerWindowUi.BasicUI.GetComponent<BasicUIGestion>().LastWindowOpened = ContainerWindowUi.transform;
             ContainerWindowUi.SetInventory(inventory);
             ContainerWindowUi.OpenHideInventory(true);
             playerWindowUi.OpenHideInventory(true);
@@ -47,10 +50,12 @@ public class Container : MonoBehaviour
         }
         else
         {
+            print("je ferme la fenetre");
             ContainerWindowUi.OpenHideInventory(false);
             playerWindowUi.OpenHideInventory(false);
             PlayerSingleton.playerInstance.GetComponent<InventoryManager>().SetInventoryOpen(false);
             isOpen = false;
+            ContainerWindowUi.BasicUI.GetComponent<BasicUIGestion>().CloseLastWindow();
         }
         
     }

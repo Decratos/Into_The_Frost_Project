@@ -78,15 +78,15 @@ public class GestionInput : MesFonctions
                         GetComponent<PlayerActions>().Collect(hit, ScriptGestion);
                         //ScriptGestion.LaGestionDesRessources.AjouteAInventaire(hit.transform.gameObject);
                     }
-                    else if(hit.transform.tag == "Container" && !PlayerSingleton.playerInstance.GetComponent<InventoryManager>().mainInventory.inventoryIsOpen)
+                    else if(hit.transform.tag == "Container" && !PlayerSingleton.playerInstance.GetComponent<InventoryManager>().CheckInventoryOpen())
                     {
                         hit.transform.GetComponent<Container>().OpenHideContainer();
                     }
-                    else if(hit.transform.tag == "CraftTable" && !PlayerSingleton.playerInstance.GetComponent<InventoryManager>().mainInventory.inventoryIsOpen)
+                    else if(hit.transform.tag == "CraftTable" && !PlayerSingleton.playerInstance.GetComponent<InventoryManager>().CheckInventoryOpen())
                     {
                         hit.transform.GetComponent<CraftingTable>().OpenHideTableWindow();
                     }
-                    else if(hit.transform.tag == "Cooker")
+                    else if(hit.transform.tag == "Cooker" && !PlayerSingleton.playerInstance.GetComponent<InventoryManager>().CheckInventoryOpen())
                     {
                         hit.transform.GetComponent<Cooker>().OpenHideWindow();
                     }
@@ -160,9 +160,18 @@ public class GestionInput : MesFonctions
 
     public void InventoryMode(InputAction.CallbackContext context)
     {
-        if (context.started && !PlayerSingleton.playerInstance.GetComponent<InventoryManager>().CheckInventoryOpen())
+        if (context.started && !PlayerSingleton.playerInstance.GetComponent<InventoryManager>().CheckInventoryOpen()) 
         {
             ScriptGestion.uiInventory.OpenHideInventory(false);
+        }
+        else if(context.started)
+        {
+            ScriptGestion.uiInventory.OpenHideInventory("Close", true);
+            PlayerSingleton.playerInstance.GetComponent<InventoryManager>().SetInventoryOpen(false);
+            if(CanvasReference._canvasReference.GetCanva().GetComponentInChildren<CraftUI>().myTable)
+                CanvasReference._canvasReference.GetCanva().GetComponentInChildren<CraftUI>().myTable.CloseTableWindow();
+            ScriptGestion.uiInventory.BasicUI.GetComponent<BasicUIGestion>().CloseLastWindow();
+            ScriptGestion.uiInventory.BasicUI.GetComponent<BasicUIGestion>().CloseBasicUI();
         }
     }
 

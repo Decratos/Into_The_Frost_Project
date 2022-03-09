@@ -12,7 +12,7 @@ public class CraftingTable : MonoBehaviour
         level4 = 4
     }
 
-    [SerializeField] private levels tableLevel;
+    public levels tableLevel;
     private bool isOpen = false;
     void Start()
     {
@@ -24,6 +24,7 @@ public class CraftingTable : MonoBehaviour
         var playerWindowUi = PlayerSingleton.playerInstance.GetComponent<InventoryManager>().PlayerInventoryContainerWindow.GetComponent<UIInventory>();
         if(!isOpen && !PlayerSingleton.playerInstance.GetComponent<InventoryManager>().CheckInventoryOpen())
         {
+            CraftUI.instance.myTable = this;
             CraftUI.instance.OpenHideCraftUI((int)tableLevel);
             playerWindowUi.OpenHideInventory(true);
             PlayerSingleton.playerInstance.GetComponent<InventoryManager>().SetInventoryOpen(true);
@@ -31,10 +32,22 @@ public class CraftingTable : MonoBehaviour
         }
         else
         {
+            print("Je ferme la table de craft");
+            CraftUI.instance.myTable = null;
             CraftUI.instance.OpenHideCraftUI((int)tableLevel);
             playerWindowUi.OpenHideInventory(false); 
             PlayerSingleton.playerInstance.GetComponent<InventoryManager>().SetInventoryOpen(false);
             isOpen = false;
         }
+    }
+    public void CloseTableWindow()
+    {
+        var playerWindowUi = PlayerSingleton.playerInstance.GetComponent<InventoryManager>().PlayerInventoryContainerWindow.GetComponent<UIInventory>();
+        print("Je ferme la table de craft");
+        CraftUI.instance.myTable = null;
+        CraftUI.instance.OpenHideCraftUI((int)tableLevel);
+        playerWindowUi.OpenHideInventory(false);
+        PlayerSingleton.playerInstance.GetComponent<InventoryManager>().SetInventoryOpen(false);
+        isOpen = false;
     }
 }

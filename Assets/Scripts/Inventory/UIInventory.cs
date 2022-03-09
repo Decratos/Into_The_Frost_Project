@@ -195,6 +195,29 @@ public class UIInventory : MonoBehaviour
         RefreshEquippedItem();
         MouseCursorHiderShower.instance.ManageCursor(inventoryIsOpen);
     }
+    public void OpenHideInventory(string forceOpen, bool reactivePlayer)
+    {
+        switch (forceOpen)
+        {
+            case "Open":
+                gameObject.SetActive(true);
+                inventoryIsOpen = true;
+                RefreshInventoryItems();
+                RefreshEquippedItem();
+                break;
+            case "Close":
+                gameObject.SetActive(false);
+                inventoryIsOpen = false;
+                break;
+        }
+        if(reactivePlayer)
+        {
+            PlayerSingleton.playerInstance.GetComponentInChildren<CameraMouvement>().canLook = true;
+            PlayerSingleton.playerInstance.GetComponent<CharacterController>().enabled = true;
+            MouseCursorHiderShower.instance.ManageCursor(false);
+        }
+        
+    }
     public void OpenHideInventory(string forceOpen)
     {
         switch (forceOpen)
@@ -210,7 +233,6 @@ public class UIInventory : MonoBehaviour
                 inventoryIsOpen = false;
                 break;
         }
-        
-        
+
     }
 }
