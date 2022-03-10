@@ -32995,6 +32995,86 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7696476121015621077, guid: ff7936aa491aab7419651660cb5641eb,
+        type: 3}
+      propertyPath: LifeValueForEffect
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696476121015621077, guid: ff7936aa491aab7419651660cb5641eb,
+        type: 3}
+      propertyPath: TemperatureValueForEffect
+      value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696476121015621077, guid: ff7936aa491aab7419651660cb5641eb,
+        type: 3}
+      propertyPath: LesDataPourSurvie.Array.data[3].Range.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696476121015621077, guid: ff7936aa491aab7419651660cb5641eb,
+        type: 3}
+      propertyPath: LesDataPourSurvie.Array.data[0].SpeedRegen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696476121015621077, guid: ff7936aa491aab7419651660cb5641eb,
+        type: 3}
+      propertyPath: LesDataPourSurvie.Array.data[0].StartRegen
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696476121015621077, guid: ff7936aa491aab7419651660cb5641eb,
+        type: 3}
+      propertyPath: LesDataPourSurvie.Array.data[1].SpeedRegen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696476121015621077, guid: ff7936aa491aab7419651660cb5641eb,
+        type: 3}
+      propertyPath: LesDataPourSurvie.Array.data[1].StartRegen
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696476121015621077, guid: ff7936aa491aab7419651660cb5641eb,
+        type: 3}
+      propertyPath: LesDataPourSurvie.Array.data[2].SpeedRegen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696476121015621077, guid: ff7936aa491aab7419651660cb5641eb,
+        type: 3}
+      propertyPath: LesDataPourSurvie.Array.data[2].StartRegen
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696476121015621077, guid: ff7936aa491aab7419651660cb5641eb,
+        type: 3}
+      propertyPath: LesDataPourSurvie.Array.data[3].SpeedRegen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696476121015621077, guid: ff7936aa491aab7419651660cb5641eb,
+        type: 3}
+      propertyPath: LesDataPourSurvie.Array.data[0].RegenLimit.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696476121015621077, guid: ff7936aa491aab7419651660cb5641eb,
+        type: 3}
+      propertyPath: LesDataPourSurvie.Array.data[0].RegenLimit.y
+      value: 85
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696476121015621077, guid: ff7936aa491aab7419651660cb5641eb,
+        type: 3}
+      propertyPath: LesDataPourSurvie.Array.data[1].RegenLimit.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696476121015621077, guid: ff7936aa491aab7419651660cb5641eb,
+        type: 3}
+      propertyPath: LesDataPourSurvie.Array.data[1].RegenLimit.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696476121015621077, guid: ff7936aa491aab7419651660cb5641eb,
+        type: 3}
+      propertyPath: LesDataPourSurvie.Array.data[2].RegenLimit.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7696476121015621077, guid: ff7936aa491aab7419651660cb5641eb,
+        type: 3}
+      propertyPath: LesDataPourSurvie.Array.data[2].RegenLimit.y
+      value: 85
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff7936aa491aab7419651660cb5641eb, type: 3}
 --- !u!1 &934374273
