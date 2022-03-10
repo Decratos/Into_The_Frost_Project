@@ -20,10 +20,7 @@ public class AiProfil : ScriptableObject
     [HideInInspector]
     public float actualWaitTime;
     public float fleeDistance;
-     
-    public Transform target;
 
-    public float attackDistance;
     public float attackInterval;
      [HideInInspector]
     public float actualAttackInterval;

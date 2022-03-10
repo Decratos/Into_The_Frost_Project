@@ -14,9 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 3
   waitTime: 3
-  actualWaitTime: 0
+  actualWaitTime: 3
   fleeDistance: 0
-  target: {fileID: 0}
-  attackDistance: 2
-  attackInterval: 1
-  actualAttackInterval: 0
+  attackInterval: 1.5
+  actualAttackInterval: 0.90712774
