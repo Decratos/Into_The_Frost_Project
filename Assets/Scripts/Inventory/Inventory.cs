@@ -62,6 +62,7 @@ public class Inventory
         }
         else
         {
+            ItemWorld.SpawnItemWorld(itemToPass, PlayerSingleton.playerInstance.transform.position);
             Debug.Log("No more space in inventory");
         }
     }
@@ -101,7 +102,7 @@ public class Inventory
         }
         else
         {
-            itemList.Remove(newItem);  
+            itemList.Remove(item);  
         }
         OnItemListChanged?.Invoke(this,EventArgs.Empty);
     }
@@ -132,7 +133,7 @@ public class Inventory
         }
         else
         {
-            itemList.Remove(newItem);
+            itemList.Remove(item);
         }
         OnItemListChanged?.Invoke(this, EventArgs.Empty);
     }
@@ -151,6 +152,7 @@ public class Inventory
     public void UseItem(ItemClass item) //
     {
         ItemsActions.itemsActionsInstance.ItemAction(item.globalInfo.Name, item);
+        RemoveItem(item);
     }
 
     public int CheckItemOnList(ItemClass item)// vérifie le nombre existant

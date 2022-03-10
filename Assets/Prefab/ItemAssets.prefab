@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7548561565666448767}
   - component: {fileID: 594428742}
   - component: {fileID: 1953331448}
+  - component: {fileID: 2067307112}
   m_Layer: 0
   m_Name: ItemAssets
   m_TagString: Untagged
@@ -50,7 +51,7 @@ MonoBehaviour:
     type: 3}
   sprites:
   - {fileID: 21300000, guid: 3bd5fb60fdbe1574ea50dd2083ee9387, type: 3}
-  - {fileID: 21300000, guid: a146049bb71ebb84e8e1af0352ce4673, type: 3}
+  - {fileID: 21300000, guid: a7124834e3aaec441a2dd9c2c10b18cc, type: 3}
   - {fileID: 21300000, guid: a7124834e3aaec441a2dd9c2c10b18cc, type: 3}
   - {fileID: 21300000, guid: 14107d5b399dcc44391022625b23f5cd, type: 3}
   - {fileID: 21300000, guid: b2910506f3f487a429b156e0e9a4f955, type: 3}
@@ -148,3 +149,15 @@ MonoBehaviour:
   particles:
   - {fileID: 4187049911095326294, guid: 173e7c64ac994b14cbe7b2cbe600be55, type: 3}
   - {fileID: 4187049911095326294, guid: 92771f8bd90652c4ea7db02f5550434b, type: 3}
+--- !u!114 &2067307112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7548561565666448766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab9fefb6a17fe074098c7972bde55a1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

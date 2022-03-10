@@ -19,6 +19,7 @@ public class UIInventory : MonoBehaviour
     public Transform itemSlotTemplate;
     public bool inventoryIsOpen = false;
     public bool isPlayerInventory = false;
+    public Transform BasicUI;
 
     public bool isPrimaryWindow = false;
 
@@ -35,6 +36,7 @@ public class UIInventory : MonoBehaviour
                 MesFonctions.FindGestionDesScripts(PlayerSingleton.playerInstance.gameObject, out gestion);
                 gestion.uiInventory = this;
                 PlayerSingleton.playerInstance.GetComponent<InventoryManager>().Initiate();
+                PlayerSingleton.playerInstance.GetComponent<InventoryManager>().mainInventory = this;
             }
         }
         if(inheritedInventory.Count > 0)
@@ -127,16 +129,13 @@ public class UIInventory : MonoBehaviour
 
     public void RefreshEquippedItem()
     {
-        if(inventoryIsOpen)
+        if(inventoryIsOpen && equippedItems.Count > 0)
         {
             foreach (Transform child in equippedItemContainer)
             {
                 if (child == equippedItemTemplate) continue;
                 Destroy(child.gameObject);
             }
-            int itemSlotCellSize = 50;
-            int x = 0;
-            int y = 0;
             foreach (var item in equippedItems)
             {
                 RectTransform itemSlotRectTransform = Instantiate(equippedItemTemplate, equippedItemContainer).GetComponent<RectTransform>();
@@ -147,14 +146,20 @@ public class UIInventory : MonoBehaviour
                     {
                         PlayerSingleton.playerInstance.GetComponent<PlayerEquipment>().UnEquipWeapon(item, 1);  
                     }
-                    else
+                    else if(item.globalInfo.TypeGeneral == InfoGlobalExel.Type.Vetements)
                     {
                         InfoExelvetements infoVetements;
                         liseurExel.LesDatas.FindObjectInfo(item.globalInfo.Name, out infoVetements);
                         PlayerSingleton.playerInstance.GetComponent<PlayerEquipment>().EquipClothes(item, false, infoVetements);
                     }
+                    else if(item.globalInfo.TypeGeneral == InfoGlobalExel.Type.Sac)
+                    {
+                        PlayerSingleton.playerInstance.GetComponent<PlayerEquipment>().EquipBackpack(null, true);
+                    }
+                    Destroy(itemSlotRectTransform.gameObject);
                     equippedItems.Remove(item);
                     _inventory.CheckCapability(item);
+                    
                 };
                 itemSlotRectTransform.anchoredPosition = new Vector2(equippedItemTemplate.GetComponent<RectTransform>().anchoredPosition.x, equippedItemTemplate.GetComponent<RectTransform>().anchoredPosition.y);
                 Image image = itemSlotRectTransform.Find("Image").GetComponent<Image>();
@@ -164,23 +169,23 @@ public class UIInventory : MonoBehaviour
             }
         }
     }
-    
-    public void RemoveClick()//?
-    {}
 
     public void OpenHideInventory(bool onStart)// ouvre ou ferme l'inventaire
     {
         inventoryIsOpen = !inventoryIsOpen;
-        if(!onStart)
+        BasicUI.gameObject.SetActive(inventoryIsOpen);
+        if (!onStart)
         {
             switch (inventoryIsOpen)
             {
                 case true:
                     FMODUnity.RuntimeManager.PlayOneShot("event:/Inventory/InventoryOpen", PlayerSingleton.playerInstance.transform.position);
+                    BasicUI.GetComponent<BasicUIGestion>().SetLastWindow(this.transform);
                 break;
                 case false:
                     FMODUnity.RuntimeManager.PlayOneShot("event:/Inventory/InventoryClose", PlayerSingleton.playerInstance.transform.position);
-                break;
+                    BasicUI.GetComponent<BasicUIGestion>().CloseLastWindow();
+                    break;
             }
         }
         gameObject.SetActive(inventoryIsOpen);
@@ -189,5 +194,45 @@ public class UIInventory : MonoBehaviour
         RefreshInventoryItems();
         RefreshEquippedItem();
         MouseCursorHiderShower.instance.ManageCursor(inventoryIsOpen);
+    }
+    public void OpenHideInventory(string forceOpen, bool reactivePlayer)
+    {
+        switch (forceOpen)
+        {
+            case "Open":
+                gameObject.SetActive(true);
+                inventoryIsOpen = true;
+                RefreshInventoryItems();
+                RefreshEquippedItem();
+                break;
+            case "Close":
+                gameObject.SetActive(false);
+                inventoryIsOpen = false;
+                break;
+        }
+        if(reactivePlayer)
+        {
+            PlayerSingleton.playerInstance.GetComponentInChildren<CameraMouvement>().canLook = true;
+            PlayerSingleton.playerInstance.GetComponent<CharacterController>().enabled = true;
+            MouseCursorHiderShower.instance.ManageCursor(false);
+        }
+        
+    }
+    public void OpenHideInventory(string forceOpen)
+    {
+        switch (forceOpen)
+        {
+            case "Open":
+                gameObject.SetActive(true);
+                inventoryIsOpen = true;
+                RefreshInventoryItems();
+                RefreshEquippedItem();
+                break;
+            case "Close":
+                gameObject.SetActive(false);
+                inventoryIsOpen = false;
+                break;
+        }
+
     }
 }

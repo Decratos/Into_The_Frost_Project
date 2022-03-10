@@ -99,10 +99,10 @@ GameObject:
   m_Component:
   - component: {fileID: 868399360}
   - component: {fileID: 868399363}
-  - component: {fileID: 868399362}
   - component: {fileID: 868399361}
   - component: {fileID: 868399364}
   - component: {fileID: 8319651000233474642}
+  - component: {fileID: 8918461154084021819}
   m_Layer: 0
   m_Name: InventoryView
   m_TagString: Untagged
@@ -167,14 +167,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &868399362
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 868399359}
-  m_Enabled: 1
 --- !u!114 &868399361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,6 +308,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attenuationObject: {fileID: 0}
   ListenerNumber: -1
+--- !u!114 &8918461154084021819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 868399359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
+  ListenerNumber: -1
 --- !u!1 &1842692928
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,9 +367,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FirstWeapon: 0
   Weapons:
-  - {fileID: 618035217}
-  - {fileID: 6169623275545194918}
   - {fileID: 8647339027092866952}
+  - {fileID: 6169623275545194918}
   actualWeaponInHands: {fileID: 0}
   EquippedWeapon1: {fileID: 0}
   EquippedWeapon2: {fileID: 0}
@@ -393,9 +398,9 @@ GameObject:
   - component: {fileID: 635795274}
   - component: {fileID: 1353224069}
   - component: {fileID: 635795273}
-  - component: {fileID: 1123951329656893967}
   - component: {fileID: 12625607029824253}
   - component: {fileID: 931764455}
+  - component: {fileID: 1670261714}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -501,7 +506,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1123951329656893954}
         m_TargetAssemblyTypeName: GestionInput, Assembly-CSharp
-        m_MethodName: Action
+        m_MethodName: Shoot
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -959,11 +964,10 @@ MonoBehaviour:
   inventoryList: []
   startInventory:
   - Parka
-  - fusil
-  - kit de soin
-  startEquipement:
-  - Parka
-  - Pull polaire
+  - pistolet
+  - "Sac \xE0 dos"
+  startEquipement: []
+  playerInventoryCapacity: 0
 --- !u!114 &1326747698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1052,6 +1056,11 @@ MonoBehaviour:
     amount: 0
     ChanceChoisis: 0
     ChanceDeBase: 0
+  Backpack:
+    name: 
+    amount: 0
+    ChanceChoisis: 0
+    ChanceDeBase: 0
   defaultWeapon: {fileID: 0}
   defaultHelmet: {fileID: 0}
   Weapon1: {fileID: 0}
@@ -1093,20 +1102,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!136 &1123951329656893967
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1123951329656893961}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!143 &12625607029824253
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1138,6 +1133,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
+--- !u!114 &1670261714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123951329656893961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
+  ListenerNumber: -1
 --- !u!1 &1123951330631785795
 GameObject:
   m_ObjectHideFlags: 0
@@ -1167,7 +1176,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1123951330631785795}
   m_LocalRotation: {x: 0.008128433, y: -0.000000059604638, z: -0, w: 0.999967}
-  m_LocalPosition: {x: -0.044, y: 0.761, z: -0.129}
+  m_LocalPosition: {x: -0.044, y: 0.761, z: -0.044}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1123951329656893964}
@@ -1457,8 +1466,9 @@ Transform:
   m_GameObject: {fileID: 8207970709823283415}
   m_LocalRotation: {x: -0, y: -0.000000029802319, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_Children:
+  - {fileID: 543450651726902558}
   m_Father: {fileID: 506712998}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1474,8 +1484,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cef7807f66ce2a04d91f30d937c16902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponAnimationID: 0
-  weaponName: 
+  weaponAnimationID: 1
+  weaponName: Beretta
   canCutWood: 0
   canCutStone: 0
   damage: 40
@@ -1532,6 +1542,96 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectToPrevisualize: {fileID: 3177321289459920586, guid: f2229dbef172a4f4ebdc8cc22475cc68,
     type: 3}
+--- !u!1001 &2006946549
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3525919678865244955}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 673062bb4fe38894fbac87b39fc59836,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 673062bb4fe38894fbac87b39fc59836,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 673062bb4fe38894fbac87b39fc59836,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 673062bb4fe38894fbac87b39fc59836,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 673062bb4fe38894fbac87b39fc59836,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 673062bb4fe38894fbac87b39fc59836,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 673062bb4fe38894fbac87b39fc59836,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 673062bb4fe38894fbac87b39fc59836,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 673062bb4fe38894fbac87b39fc59836,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.000000047078483
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 673062bb4fe38894fbac87b39fc59836,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 673062bb4fe38894fbac87b39fc59836,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.000000047078483
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 673062bb4fe38894fbac87b39fc59836,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 673062bb4fe38894fbac87b39fc59836,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 673062bb4fe38894fbac87b39fc59836,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 673062bb4fe38894fbac87b39fc59836,
+        type: 3}
+      propertyPath: m_Name
+      value: beretta m9
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 673062bb4fe38894fbac87b39fc59836, type: 3}
+--- !u!4 &543450651726902558 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 673062bb4fe38894fbac87b39fc59836,
+    type: 3}
+  m_PrefabInstance: {fileID: 2006946549}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7331192120486407913
 PrefabInstance:
   m_ObjectHideFlags: 0

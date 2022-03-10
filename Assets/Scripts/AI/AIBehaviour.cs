@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using FMODUnity;
 
 public class AIBehaviour : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class AIBehaviour : MonoBehaviour
     private NavMeshAgent _agent;
     private bool finishedTravel;
     private Vector3 destination;
+    private BanditEquipmentLevel equipment;
    
     [SerializeField] private AiProfil profile;
 
@@ -27,24 +29,30 @@ public class AIBehaviour : MonoBehaviour
 
     public bool isFromACamp = false;
     public Vector3 CampPosition;
+    public Transform target;
+    public AiTeam myTeam;
     
     private void Start() {
         _agent = GetComponent<NavMeshAgent>();
         ChangeState(State.Roaming);
         GetComponent<Animator>().SetBool("IsWalking", true);
+        if(profile.type == AiProfil.AItype.HumanHostile)
+        {
+            equipment = GetComponent<BanditEquipmentLevel>();
+        }
     }
 
     private void Update() {
         UpdateState();
-        profile.target = GetComponent<BotDetection>().FindVisibleTargets();
+        target = GetComponent<BotDetection>().FindVisibleTargets();
         if(Vector3.Distance(transform.position, _agent.destination) < 2 && state == State.Roaming)
         {
             finishedTravel = true;
             ChangeState(State.Wait);
         }
-        if (profile.target)
+        if (target)
         {
-           // print("Je vois le joueur");
+           print("Je vois le joueur");
         }
     }
 
@@ -68,7 +76,7 @@ public class AIBehaviour : MonoBehaviour
             case State.Chase:
                 _agent.SetDestination(transform.position);
                 chasePositionStart = transform.position;
-                _agent.SetDestination(profile.target.position);
+                _agent.SetDestination(target.position);
                 _agent.isStopped = false;
             break;
             case State.Attack:
@@ -79,7 +87,7 @@ public class AIBehaviour : MonoBehaviour
             break;
             case State.Flee:
                 _agent.SetDestination(transform.position);
-                Vector3 fleeDir = ((transform.position - profile.target.transform.position)).normalized;
+                Vector3 fleeDir = ((transform.position - target.transform.position)).normalized;
                 Vector3 fleeMotion = fleeDir * profile.fleeDistance;
                 destination = transform.position + fleeMotion;
                 _agent.SetDestination(destination);
@@ -110,7 +118,7 @@ public class AIBehaviour : MonoBehaviour
                     _agent.SetDestination(destination);
                     finishedTravel = false;
                 }
-                else if(profile.target)
+                else if(target)
                 {
                     if(profile.type == AiProfil.AItype.AnimalNeutral ||profile.type == AiProfil.AItype.HumanNeutral)
                         ChangeState(State.Flee);
@@ -119,55 +127,65 @@ public class AIBehaviour : MonoBehaviour
                 }
             break;
             case State.Chase:
-                if(!profile.target)
+                if(!target)
                 {
+                    print("Je reviens à mon point de départ");
                     ChangeState(State.BackToStart);
                 }
                 else
                 {
-                    if(Vector3.Distance(transform.position, profile.target.position) <= profile.attackDistance)
+                    if(Vector3.Distance(transform.position, target.position) <= equipment.attackDistance)
                                         ChangeState(State.Attack);
+                    else
+                        _agent.SetDestination(target.position);
                 }
             break;
             case State.Attack:
-                print(profile.target.position);
-                if(Vector3.Distance(transform.position, profile.target.position) > profile.attackDistance)
+                print("J'attaque");
+                if(target.GetComponent<AIstats>().GetHealth() > 0 && Vector3.Distance(transform.position, target.position) > equipment.attackDistance)
                     ChangeState(State.Chase);
                 else
                     Attack();
+                if(target == null || target.GetComponent<AIstats>().GetHealth() <= 0)
+                {
+                    ChangeState(State.Roaming);
+                }
             break;
             case State.BackToStart:
                 if(Vector3.Distance(transform.position, _agent.destination) <= 2)
                     ChangeState(State.Roaming);
             break;
             case State.Flee:
-                if(!profile.target)
+                if(!target)
                 {
-                    profile.target = null;
+                    target = null;
                     _agent.SetDestination(transform.position);
                     finishedTravel = true;
                     ChangeState(State.Roaming);
                 }
                 else
                 {
-                    Vector3 fleeDir = ((transform.position - profile.target.transform.position)).normalized;
+                    Vector3 fleeDir = ((transform.position - target.transform.position)).normalized;
                     Vector3 fleeMotion = fleeDir * profile.fleeDistance;
                     destination = transform.position + fleeMotion;
                     _agent.SetDestination(destination);
                     finishedTravel = false;
                 }
             break;
-            case State.Wait:
-                WaitSequence();
+            case State.Wait:               
                 GetComponent<Animator>().SetBool("IsWalking", false);
-                if (profile.target)
+                if (target)
                 {
                     if(profile.type == AiProfil.AItype.AnimalNeutral ||profile.type == AiProfil.AItype.HumanNeutral)
                         ChangeState(State.Flee);
                     else
+                    {
                         ChangeState(State.Attack);
+                    }
+                        
                 }
-            break;
+                WaitSequence();
+                break;
             default:
             break;
         }
@@ -188,10 +206,23 @@ public class AIBehaviour : MonoBehaviour
     {
         if(profile.actualAttackInterval <= 0)
         {
+            switch(equipment.equipmentLevel)
+            {
+                case BanditEquipmentLevel.Levels.Light:
+                    
+                    break;
+                case BanditEquipmentLevel.Levels.Moderate:
+                    RuntimeManager.PlayOneShot("event:/Weapons/BerettaShoot", transform.position);
+                    break;
+                case BanditEquipmentLevel.Levels.Heavy:
+                    RuntimeManager.PlayOneShot("event:/Weapons/SKSShoot", transform.position);
+                    break;
+            }
             //Attack
             print("Attack");
             GetComponent<Animator>().Play("SlashOneHand");
             profile.actualAttackInterval = profile.attackInterval;
+            GetComponent<BanditAttack>().Attack(target.position, equipment.attackDistance, equipment.damage);
         }
         else
         {

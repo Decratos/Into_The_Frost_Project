@@ -8,7 +8,7 @@ public class ItemsActions : MesFonctions
 
     private GestionDesScipt scriptsGestion;
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         FindGestionDesScripts(PlayerSingleton.playerInstance.gameObject, out scriptsGestion);
         itemsActionsInstance = this; 
@@ -30,7 +30,7 @@ public class ItemsActions : MesFonctions
                     item.globalInfo.exelNourriturre.Vie;
                 break;
             case InfoGlobalExel.Type.Soins:
-                scriptsGestion.SurvieScript.LesDataPourSurvie[2].ActualValue +=
+                scriptsGestion.SurvieScript.LesDataPourSurvie[3].ActualValue +=
                     item.globalInfo.exelSoins.value;
                 break;
             case InfoGlobalExel.Type.ArmeAfeu:
