@@ -15,6 +15,12 @@ public class BotDetection : MonoBehaviour
     public Transform validTarget;
     public float height;
     public Collider[] targetsInViewRadius = new Collider[0];
+    private AIBehaviour myBehaviour;
+
+    private void Start()
+    {
+        myBehaviour = GetComponent<AIBehaviour>();
+    }
 
     public Transform FindVisibleTargets()
     {
@@ -23,15 +29,34 @@ public class BotDetection : MonoBehaviour
         {
             for (int i = 0; i < targetsInViewRadius.Length; i++)
             {
-                Transform target = targetsInViewRadius[i].transform;
-                Vector3 dirToTarget = (target.position - transform.position).normalized;
-                if (Vector3.Angle(transform.forward, dirToTarget) < viewAngle / 2)
+                if(targetsInViewRadius[i].transform.root != transform)
                 {
-                    float dstToTarget = Vector3.Distance(transform.position, target.position);
-                    if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
+                    Transform target = targetsInViewRadius[i].transform;
+                    Vector3 dirToTarget = (target.position - transform.position).normalized;
+                    if (Vector3.Angle(transform.forward, dirToTarget) < viewAngle / 2)
                     {
-                        validTarget = target;
+                        if (myBehaviour.myTeam != null)
+                        {
+                            if (myBehaviour.myTeam != target.GetComponent<AIBehaviour>().myTeam)
+                            {
+                                float dstToTarget = Vector3.Distance(transform.position, target.position);
+                                if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
+                                {
+                                    validTarget = target;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            float dstToTarget = Vector3.Distance(transform.position, target.position);
+                            if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
+                            {
+                                validTarget = target;
+                            }
+                        }
                     }
+                
+                    
 
                 }
             }

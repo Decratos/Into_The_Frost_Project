@@ -21,8 +21,13 @@ public class AIstats : MonoBehaviour
         }
     }
 
-    public void ReduceHealth(int dmg)
+    public void ReduceHealth(float dmg)
     {
         health -= dmg;
+    }
+
+    public float GetHealth()
+    {
+        return health;
     }
 }

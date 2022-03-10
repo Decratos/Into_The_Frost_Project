@@ -24,13 +24,6 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{43f5165f-2e06-4e74-a0e6-3529f9a790d5}" />
-	<object class="SFXReverbEffect" id="{65b9d6e9-1165-4489-99fa-c4a14b77e768}">
-		<property name="wetLevel">
-			<value>0</value>
-		</property>
-		<property name="dryLevel">
-			<value>-80</value>
-		</property>
-	</object>
+	<object class="SFXReverbEffect" id="{65b9d6e9-1165-4489-99fa-c4a14b77e768}" />
 	<object class="MixerBusFader" id="{02eab30e-c3ef-47a5-ad79-50cbd6f4b4b5}" />
 </objects>

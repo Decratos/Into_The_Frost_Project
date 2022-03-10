@@ -78,6 +78,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 500
+--- !u!114 &-7659402282502216249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SKSShoot/Parameter 1
+  m_EditorClassIdentifier: 
+  Name: Parameter 1
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &-7447875815932343464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,8 +276,7 @@ MonoBehaviour:
     Data2: 1130281137
     Data3: -1555112555
     Data4: 1500626288
-  Banks:
-  - {fileID: 5942111600617134462}
+  Banks: []
   IsStream: 1
   Is3D: 1
   IsOneShot: 0
@@ -319,13 +342,13 @@ MonoBehaviour:
   - {fileID: -6480220552185074692}
   - {fileID: -9165417184968146761}
   - {fileID: 8368276810616578954}
-  - {fileID: -2339655208067312484}
+  - {fileID: 5807870551662642500}
   EditorParameters: []
   MasterBanks:
   - {fileID: 5942111600617134462}
   StringsBanks:
   - {fileID: 5075908363993971647}
-  cacheTime: 637821319091625662
+  cacheTime: 637825109960958119
   cacheVersion: 9
 --- !u!114 &2541879805269755351
 MonoBehaviour:
@@ -379,8 +402,8 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 20
-  Length: 580
+  MaxDistance: 400
+  Length: 1750
 --- !u!114 &4171548039008372414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -408,6 +431,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 29500
+--- !u!114 &4337425479539181387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SKSShoot/Parameter 1
+  m_EditorClassIdentifier: 
+  Name: Parameter 1
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 0
 --- !u!114 &4967886488983318401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -428,14 +475,14 @@ MonoBehaviour:
     Data4: 1986269942
   Banks:
   - {fileID: 5942111600617134462}
-  IsStream: 0
+  IsStream: 1
   Is3D: 1
   IsOneShot: 1
   Parameters:
-  - {fileID: -9197370882185140739}
+  - {fileID: -7659402282502216249}
   MinDistance: 1
-  MaxDistance: 20
-  Length: 1520
+  MaxDistance: 600
+  Length: 2650
 --- !u!114 &5075908363993971647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -451,11 +498,38 @@ MonoBehaviour:
   Path: FMOD/AudioSource_IntoTheFrost/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637821319091625662
+  lastModified: 637825109960958119
   FileSizes:
   - Name: 
-    Value: 1714
+    Value: 1734
   Exists: 1
+--- !u!114 &5807870551662642500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/CraftedEnvironment/Campfire
+  m_EditorClassIdentifier: 
+  Path: event:/CraftedEnvironment/Campfire
+  Guid:
+    Data1: -362400787
+    Data2: 1130281137
+    Data3: -1555112555
+    Data4: 1500626288
+  Banks:
+  - {fileID: 5942111600617134462}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 14000
 --- !u!114 &5942111600617134462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -471,7 +545,7 @@ MonoBehaviour:
   Path: FMOD/AudioSource_IntoTheFrost/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637821319091615698
+  lastModified: 637825109960938171
   FileSizes: []
   Exists: 1
 --- !u!114 &6731499479982239874
