@@ -79,7 +79,7 @@ public class UIInventory : MonoBehaviour
         {
             foreach (Transform child in itemSlotContainer)
                     {
-                        if (child == itemSlotTemplate) continue;
+                        if (child == itemSlotTemplate && child.transform.name != "ScrolArea") continue;
                         Destroy(child.gameObject);
                     }
                     int x = 0;
@@ -101,7 +101,9 @@ public class UIInventory : MonoBehaviour
                             _inventory.RemoveItem(item);
                             RefreshInventoryItems();
                         };
-                        itemSlotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellSize, y * itemSlotCellSize);
+                        //itemSlotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellSize, y * itemSlotCellSize);
+                        itemSlotRectTransform.anchoredPosition = new Vector2(itemSlotTemplate.GetComponent<RectTransform>().anchoredPosition.x, itemSlotTemplate.GetComponent<RectTransform>().anchoredPosition.y);
+                        itemSlotRectTransform.localScale = itemSlotTemplate.localScale;
                         Image image = itemSlotRectTransform.Find("Image").GetComponent<Image>();
                         image.sprite = item.GetSprite();
                         TextMeshProUGUI text = itemSlotRectTransform.Find("AmountText").GetComponent<TextMeshProUGUI>();
@@ -173,7 +175,6 @@ public class UIInventory : MonoBehaviour
     public void OpenHideInventory(bool onStart)// ouvre ou ferme l'inventaire
     {
         inventoryIsOpen = !inventoryIsOpen;
-        BasicUI.gameObject.SetActive(inventoryIsOpen);
         if (!onStart)
         {
             switch (inventoryIsOpen)
@@ -184,7 +185,6 @@ public class UIInventory : MonoBehaviour
                 break;
                 case false:
                     FMODUnity.RuntimeManager.PlayOneShot("event:/Inventory/InventoryClose", PlayerSingleton.playerInstance.transform.position);
-                    BasicUI.GetComponent<BasicUIGestion>().CloseLastWindow();
                     break;
             }
         }
@@ -204,6 +204,9 @@ public class UIInventory : MonoBehaviour
                 inventoryIsOpen = true;
                 RefreshInventoryItems();
                 RefreshEquippedItem();
+                PlayerSingleton.playerInstance.GetComponentInChildren<CameraMouvement>().canLook = false;
+                PlayerSingleton.playerInstance.GetComponent<CharacterController>().enabled = false;
+                MouseCursorHiderShower.instance.ManageCursor(true);
                 break;
             case "Close":
                 gameObject.SetActive(false);

@@ -6,11 +6,13 @@ public class BasicUIGestion : MonoBehaviour
 {
     public Transform LastWindowOpened;
     public Transform contextWindow;
-    public void CloseLastWindow()
+    public Transform contextObject;
+    public void CloseLastWindow(bool playerInput)
     {
         if(LastWindowOpened)
         {
-            if(LastWindowOpened.GetComponent<UIInventory>())
+            print("Je ferme la dernière fenêtre");
+            if (LastWindowOpened.GetComponent<UIInventory>() && LastWindowOpened.transform.name != "ContainerInventory")
             {
                 LastWindowOpened.GetComponent<UIInventory>().OpenHideInventory("Close");
             }
@@ -22,10 +24,22 @@ public class BasicUIGestion : MonoBehaviour
             {
                 OpenCloseContextWindow("Close");
             }
-            else if (LastWindowOpened.GetComponent<Container>())
+            else if (LastWindowOpened.transform.name == "ContainerInventory")
             {
-                LastWindowOpened.GetComponent<Container>().OpenHideContainer();
+                print("Je ferme le container");
+                OpenCloseContextWindow("Close");
             }
+            else
+            {
+                print("Je n'ai pas trouvé la fenêtre correspondante : " + LastWindowOpened.transform.name);
+            }
+            if(playerInput)
+            {
+                LastWindowOpened = null;
+                contextWindow = null;
+                contextObject = null;
+            }
+            
         }
             
     }
@@ -41,14 +55,18 @@ public class BasicUIGestion : MonoBehaviour
     }
     public void OpenCloseContextWindow(string open)
     {
-        if (open == "Open")
+        if(contextWindow)
         {
-            contextWindow.gameObject.SetActive(true);
+            if (open == "Open")
+            {
+                contextWindow.gameObject.SetActive(true);
+            }
+            else
+            {
+                contextWindow.gameObject.SetActive(false);
+            }
         }
-        else
-        {
-            contextWindow.gameObject.SetActive(false);
-        }
+        
     }
 
     public void CloseBasicUI()
