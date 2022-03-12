@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class ItemSlot : MonoBehaviour, IDropHandler
 {
@@ -36,6 +37,8 @@ public class ItemSlot : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData eventData) // lache l'item
     {
         ItemClass item = eventData.pointerDrag.GetComponentInChildren<ItemInfo>().item;
+        GestionDesScipt gestion;
+        MesFonctions.FindGestionDesScripts(PlayerSingleton.playerInstance.gameObject, out gestion);
         OnItemDropped?.Invoke(this, new OnItemDroppedEventArgs {item = item});
         if(eventData.pointerDrag != null)
         {
@@ -52,38 +55,15 @@ public class ItemSlot : MonoBehaviour, IDropHandler
                 }
                 else if(item.globalInfo.TypeGeneral == InfoGlobalExel.Type.Nourriture && slotType == equipmentType.Food)
                 {
-                    equippedItemStat.globalInfo = item.globalInfo;
+                    gestion.Inventory.RemoveItem(item);
                 }
                 else if(item.globalInfo.TypeGeneral == InfoGlobalExel.Type.Materials && slotType == equipmentType.Materials)
-                {
-                    equippedItemStat.globalInfo = item.globalInfo;
+                {          
+                    gestion.Inventory.RemoveItem(item);
                 }
-                print(item.globalInfo.Name);
+                print(item.globalInfo.TypeGeneral);
+                GetComponentInChildren<Image>().sprite = equippedItemStat.GetSprite();
             }
-            /*else
-            {
-                print("C'est un vêtement");
-                liseurExel excel;
-                InfoExelvetements infoVetement;
-                excel = liseurExel.LesDatas;
-                excel.FindObjectInfo(item.globalInfo.Name, out infoVetement);
-                if (infoVetement.MaCategorie == InfoExelvetements.SousCategorie.Tshirt && slotType == equipmentType.Coat)
-                {
-                    PlayerSingleton.playerInstance.GetComponent<PlayerEquipment>().EquipClothes(item, slotType, true, infoVetement);
-                }
-                else if(infoVetement.MaCategorie == InfoExelvetements.SousCategorie.Pantalon && slotType == equipmentType.Pants)
-                {
-                    PlayerSingleton.playerInstance.GetComponent<PlayerEquipment>().EquipClothes(item, slotType, true, infoVetement);
-                }
-                else if(infoVetement.MaCategorie == InfoExelvetements.SousCategorie.Chaussure && slotType == equipmentType.Shoes)
-                {
-                    PlayerSingleton.playerInstance.GetComponent<PlayerEquipment>().EquipClothes(item, slotType, true, infoVetement);
-                }
-                else if(infoVetement.MaCategorie == InfoExelvetements.SousCategorie.pull && slotType == equipmentType.Pull)
-                {
-                    PlayerSingleton.playerInstance.GetComponent<PlayerEquipment>().EquipClothes(item, slotType, true, infoVetement);
-                }
-            }*/
             equippedItemStat.amount = 1;
 
 

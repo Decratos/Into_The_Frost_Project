@@ -151,8 +151,15 @@ public class Inventory
 
     public void UseItem(ItemClass item) //
     {
-        ItemsActions.itemsActionsInstance.ItemAction(item.globalInfo.Name, item);
-        RemoveItem(item);
+        switch (item.globalInfo.TypeGeneral)
+        {
+            case InfoGlobalExel.Type.Nourriture:
+            case InfoGlobalExel.Type.Soins:
+                ItemsActions.itemsActionsInstance.ItemAction(item.globalInfo.Name, item);
+                RemoveItem(item);
+                break;
+        }
+        
     }
 
     public int CheckItemOnList(ItemClass item)// vérifie le nombre existant

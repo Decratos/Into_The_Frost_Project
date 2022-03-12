@@ -64,7 +64,7 @@ public class GestionInput : MesFonctions
 
     public void Use(InputAction.CallbackContext context)
     {
-        if(context.started)
+        if(context.started && PlayerSingleton.playerInstance.GetComponent<InventoryManager>().CheckInventoryOpen() == false)
         {
             print("Using !");
             RaycastHit hit; // créer une valeur raycast
@@ -163,12 +163,13 @@ public class GestionInput : MesFonctions
         if (context.started && !PlayerSingleton.playerInstance.GetComponent<InventoryManager>().CheckInventoryOpen()) 
         {
             ScriptGestion.uiInventory.OpenHideInventory(false);
+            PlayerSingleton.playerInstance.GetComponent<InventoryManager>().SetInventoryOpen(true);
         }
         else if(context.started)
         {
             ScriptGestion.uiInventory.OpenHideInventory("Close", true);
             PlayerSingleton.playerInstance.GetComponent<InventoryManager>().SetInventoryOpen(false);
-            if(CanvasReference._canvasReference.GetCanva().GetComponentInChildren<CraftUI>().myTable)
+            if(CanvasReference._canvasReference.GetCanva().GetComponentInChildren<CraftUI>())
                 CanvasReference._canvasReference.GetCanva().GetComponentInChildren<CraftUI>().myTable.CloseTableWindow();
             ScriptGestion.uiInventory.BasicUI.GetComponent<BasicUIGestion>().CloseLastWindow();
             ScriptGestion.uiInventory.BasicUI.GetComponent<BasicUIGestion>().CloseBasicUI();

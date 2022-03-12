@@ -33,8 +33,6 @@ public class ItemsActions : MesFonctions
                 scriptsGestion.SurvieScript.LesDataPourSurvie[3].ActualValue +=
                     item.globalInfo.exelSoins.value;
                 break;
-            case InfoGlobalExel.Type.ArmeAfeu:
-                break;
             default:
                 break;
         }
