@@ -712,7 +712,7 @@ MonoBehaviour:
   - SurvivalData: 0
     Index: 0
     Range: {x: 0, y: 100}
-    SpeedRegen: 1
+    SpeedRegen: 0.1
     RegenLimit: {x: 1, y: 85}
     StartRegen: 90
     ActualValue: 100
@@ -745,7 +745,7 @@ MonoBehaviour:
   - SurvivalData: 1
     Index: 0
     Range: {x: 0, y: 100}
-    SpeedRegen: 1
+    SpeedRegen: 0.03
     RegenLimit: {x: 1, y: 90}
     StartRegen: 90
     ActualValue: 100
@@ -778,7 +778,7 @@ MonoBehaviour:
   - SurvivalData: 3
     Index: 0
     Range: {x: 23, y: 44}
-    SpeedRegen: 1
+    SpeedRegen: 0.08
     RegenLimit: {x: 1, y: 85}
     StartRegen: 35
     ActualValue: 37.5
