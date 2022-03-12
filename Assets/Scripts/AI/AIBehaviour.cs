@@ -142,8 +142,9 @@ public class AIBehaviour : MonoBehaviour
             break;
             case State.Attack:
                 print("J'attaque");
-                if(target.GetComponent<AIstats>().GetHealth() > 0 && Vector3.Distance(transform.position, target.position) > equipment.attackDistance)
-                    ChangeState(State.Chase);
+                if(target && target.GetComponent<AIstats>().GetHealth() > 0 || target && target.GetComponent<SurvivalSysteme>().LesDataPourSurvie[4].ActualValue > 0)
+                    if(Vector3.Distance(transform.position, target.position) > equipment.attackDistance)
+                        ChangeState(State.Chase);
                 else
                     Attack();
                 if(target == null || target.GetComponent<AIstats>().GetHealth() <= 0)

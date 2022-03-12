@@ -23264,6 +23264,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1206594455, guid: ed961ca430009f947a1f73ddfc9684fd, type: 3}
+      propertyPath: equipmentLevel
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 676034614069979459, guid: ed961ca430009f947a1f73ddfc9684fd,
         type: 3}
       propertyPath: m_Name
@@ -42937,6 +42941,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1206594455, guid: ed961ca430009f947a1f73ddfc9684fd, type: 3}
+      propertyPath: equipmentLevel
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 676034614069979459, guid: ed961ca430009f947a1f73ddfc9684fd,
         type: 3}
       propertyPath: m_Name

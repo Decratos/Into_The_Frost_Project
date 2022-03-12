@@ -4,17 +4,14 @@ using UnityEngine;
 
 public class AiDropItem : MonoBehaviour
 {
-    [SerializeField] private string itemName;
     [SerializeField] private int itemAmount;
     [SerializeField] private int amountToInstantiate;
-    [SerializeField] private ResumeExelForObject.Type itemType;
     public void DropItem()
     {
-        for (int i = 0; i < amountToInstantiate; i++)
+        List<ItemClass> items = GetComponent<BanditInventory>().GetInventory();
+        foreach (ItemClass item in items)
         {
-            InfoGlobalExel globalExel = new InfoGlobalExel();
-            liseurExel.LesDatas.FindObjectInfo(itemName, out globalExel);
-            ItemWorld.DropItem(transform.position, new ItemClass{amount = itemAmount, globalInfo = globalExel});
+            ItemWorld.DropItem(transform.position, item);
         }
     }
 }
