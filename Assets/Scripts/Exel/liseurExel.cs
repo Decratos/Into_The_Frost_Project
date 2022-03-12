@@ -305,7 +305,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                 MesListe.LesFlingues[i].degat= MonParse(data[nombreDeColonne * (i + 1) + 2]); // récupére les dégats de l'arme
                 MesListe.LesFlingues[i].Power = MonParse(data[nombreDeColonne * (i + 1) + 3]); // récupére la puissance de l'arme
                 MesListe.LesFlingues[i].Speed = MonParse(data[nombreDeColonne * (i + 1) + 4]); // récupére la vitesse de l'arme
-                MesListe.LesFlingues[i].Chargeur = int.Parse(data[nombreDeColonne * (i + 1)] + 5); // récupére la taille du chargeur
+                MesListe.LesFlingues[i].Chargeur = int.Parse(data[nombreDeColonne * (i + 1) + 5] ); // récupére la taille du chargeur
                 MesListe.LesFlingues[i].Rechargement= MonParse(data[nombreDeColonne * (i + 1) + 6]); // récupére le temps de rechargement
 
                
@@ -435,6 +435,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
 
     public void FindObjectInfo(string name, out InfoGlobalExel InfoGlobal) 
     {
+        
         //print("FindObjectInfo name out Infoglobal");
         InfoGlobalExel lesInfos = new InfoGlobalExel(); // créer une nouvelle struct
         string correctedType; // enregistre le type d'objet

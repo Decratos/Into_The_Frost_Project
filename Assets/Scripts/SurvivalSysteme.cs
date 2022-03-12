@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class StateForSurvival
@@ -15,13 +15,12 @@ public class StateForSurvival
         Heat
     }
     public PointDeSurvie SurvivalData;
-    public bool applyDecroissement; // value de test à supprimer un de ces 4
     [HideInInspector] public int Index;
     
     public Vector2 Range;
     [Tooltip("Vitesse à laquel la vie se regen")]
     public float SpeedRegen;
-    [Tooltip("Vie de regen")]
+    [Tooltip("Interval de la vie dans laquel la regen est possible")]
     public Vector2 RegenLimit;
     [Tooltip("Value et > à laquelle la vie remonte")]
     public float StartRegen;
@@ -51,6 +50,8 @@ public class SurvivalSysteme : MesFonctions
 
     }
     public TypeOfDammage LesDammages;
+
+    public bool Dead = false;
     #region value vetements
     public float ResistanceFroidsTotal;
     public float ResistanceDegatsTotal;
@@ -103,13 +104,11 @@ public class SurvivalSysteme : MesFonctions
     void Update()
     {
         baisseLesDatas(); // envois la baisse des stats de survie
-        if (LesDataPourSurvie[IndexDataFrost].ActualValue > TemperatureBeginLoseLife)
-        {
-            Regen();//Vois si les datas permettent une regen
-        }
+        Regen();// vas checker si des variables doit regen
         SetFeedback();// Selon les valeurs calculer envois les feedbacks
         UpdateFeedBack();// Update le feedback 
-        UpdateUI();
+        UpdateUI(); //Update l'UI
+        DoIDied(); //check si je meurs
     }
     void baisseLesDatas()// fais baisser les datas
     {
@@ -137,8 +136,10 @@ public class SurvivalSysteme : MesFonctions
                 }
             }
             LesDataPourSurvie[i].ActualValue = checkLaRange(i);// v�rifie qu'il n'y a pas de d�passement de valeur
+            
         }// selon les datas de survie
     }
+    
     void Regen() 
     {
         
@@ -151,6 +152,9 @@ public class SurvivalSysteme : MesFonctions
         }
 
     }
+
+   
+
     #region calcul perte des datas
     float CalculPerteFaimEtSoi(StateForSurvival MonState)
     {
@@ -182,6 +186,10 @@ public class SurvivalSysteme : MesFonctions
                 LesDataPourSurvie[IndexDataVie].ActualValue -= calculPerteLifeHeat(MonState) * Time.deltaTime; // fais baisser selon la chaleur
             }
             LesDataPourSurvie[IndexDataVie].ActualValue = checkLaRange(IndexDataVie);// v�rifie que la valeur est bien dans la range
+            if (true)
+            {
+
+            }
         }
 
     }
@@ -260,6 +268,16 @@ public class SurvivalSysteme : MesFonctions
             PourcentageState(IndexDataFrost);
     }
 
+    void DoIDied() 
+    {
+
+        if (LesDataPourSurvie[IndexDataFrost].ActualValue<= LesDataPourSurvie[IndexDataFrost].Range.x 
+            || LesDataPourSurvie[IndexDataVie].ActualValue== LesDataPourSurvie[IndexDataVie].Range.x)
+        {
+            Death();
+        }
+
+    }
 
     #region method accessible à tous
     public float PourcentageState(StateForSurvival.PointDeSurvie State) 
@@ -348,8 +366,9 @@ public class SurvivalSysteme : MesFonctions
     }
     public void Death() 
     {
-    
-    
+        Dead = true;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
     }
     public StateForSurvival GetState(int index) 
     {

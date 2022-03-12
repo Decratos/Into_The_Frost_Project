@@ -710,12 +710,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LesDataPourSurvie:
   - SurvivalData: 0
-    applyDecroissement: 0
     Index: 0
     Range: {x: 0, y: 100}
-    SpeedRegen: 0
-    RegenLimit: {x: 0, y: 0}
-    StartRegen: 0
+    SpeedRegen: 0.1
+    RegenLimit: {x: 1, y: 85}
+    StartRegen: 90
     ActualValue: 100
     DecroissementVieUnderMinima: 5
     PerteMaxByFrame: 0.04
@@ -744,12 +743,11 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   - SurvivalData: 1
-    applyDecroissement: 0
     Index: 0
     Range: {x: 0, y: 100}
-    SpeedRegen: 0
-    RegenLimit: {x: 0, y: 0}
-    StartRegen: 0
+    SpeedRegen: 0.03
+    RegenLimit: {x: 1, y: 90}
+    StartRegen: 90
     ActualValue: 100
     DecroissementVieUnderMinima: 7
     PerteMaxByFrame: 0.06
@@ -778,12 +776,11 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   - SurvivalData: 3
-    applyDecroissement: 0
     Index: 0
     Range: {x: 23, y: 44}
-    SpeedRegen: 0
-    RegenLimit: {x: 0, y: 0}
-    StartRegen: 0
+    SpeedRegen: 0.08
+    RegenLimit: {x: 1, y: 85}
+    StartRegen: 35
     ActualValue: 37.5
     DecroissementVieUnderMinima: 1
     PerteMaxByFrame: 0.001
@@ -812,10 +809,9 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   - SurvivalData: 2
-    applyDecroissement: 0
     Index: 0
     Range: {x: 0, y: 100}
-    SpeedRegen: 0
+    SpeedRegen: 1
     RegenLimit: {x: 0, y: 0}
     StartRegen: 0
     ActualValue: 100
@@ -870,12 +866,13 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   LesDammages: 0
+  Dead: 0
   ResistanceFroidsTotal: 0
   ResistanceDegatsTotal: 0
   TemperatureBeginLoseLife: 28
   MultiplayerBehind37: 0.2
-  TemperatureValueForEffect: 0
-  LifeValueForEffect: 0
+  TemperatureValueForEffect: 29
+  LifeValueForEffect: 30
 --- !u!114 &3397247159004486040
 MonoBehaviour:
   m_ObjectHideFlags: 0
