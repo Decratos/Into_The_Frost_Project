@@ -102,6 +102,16 @@ public class InfoUtilitaire //Les infos de la page utilitaire
 
 }
 
+[System.Serializable]
+public class InfoCuisine 
+{
+    public int ID;
+    public string Name;
+    public float TempsCuisson;
+    public List<string> Possibilities = new List<string>();
+
+}
+
 
 [System.Serializable]
 public class Info // regroupement  de toutes les infos
@@ -117,6 +127,7 @@ public class Info // regroupement  de toutes les infos
     public InfoVetements[] LesVetements;
     public InfoSac[] LesSacs;
     public InfoUtilitaire[] LesUtilitaires;
+    public InfoCuisine[] LaCuisine;
 
 }
 
@@ -138,7 +149,8 @@ public class PageExel //info de page exel
     ArmeAfeu,
     Utilitaire,
     Sac,
-    Vetements
+    Vetements,
+    Cuisine
 
 
     }
@@ -354,6 +366,28 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
             }
 
         }// si la page est de type vetements 
+        else if (mon_type == PageExel.TypeDePageExel.Cuisine)
+        {
+            MesListe.LaCuisine = new InfoCuisine[size];
+            for (int i = 0; i < size; i++)
+            {
+                MesListe.LaCuisine[i] = new InfoCuisine();
+                MesListe.LaCuisine[i].ID = int.Parse(data[nombreDeColonne * (i + 1)]);
+                correctionType(data[nombreDeColonne * (i + 1) + 1], out MesListe.LaCuisine[i].Name);
+                MesListe.LaCuisine[i].TempsCuisson = MonParse(data[nombreDeColonne * (i + 1) + 2]);
+                string temp= "";
+                correctionType(data[nombreDeColonne * (i + 1) + 3], out temp);
+                MesListe.LaCuisine[i].Possibilities.Add(temp);
+                correctionType(data[nombreDeColonne * (i + 1) + 4], out temp);
+                if (temp!="None")
+                {
+                    MesListe.LaCuisine[i].Possibilities.Add(temp);
+                }
+
+
+            }
+
+        }
     }
 
     #endregion
@@ -528,6 +562,10 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                 {
                    
                     FindObjectInfo( name, out lesInfos.exelCraft);
+                }
+                if (IsItInThisPage(PageExel.TypeDePageExel.Cuisine,info.ID))
+                {
+                    FindObjectInfo(info.ID, out lesInfos.ExelCuisine);
                 }
                
 
@@ -707,6 +745,25 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
 
     } // récupére les données des vêtements
     //
+    public void FindObjectInfo(string name, out InfoExelCuisine CuisineInfo) 
+    {
+        CuisineInfo = new InfoExelCuisine();
+        foreach ( InfoCuisine KUIZINE in MesListe.LaCuisine)
+        {
+            if (KUIZINE.Name == name)
+            {
+                CuisineInfo.TempsDeCuisson = KUIZINE.TempsCuisson;
+                CuisineInfo.NameOfResult = KUIZINE.Possibilities.ToArray();
+                CuisineInfo.IDOfResult = new int[CuisineInfo.NameOfResult.Length];
+                for (int i = 0; i < CuisineInfo.NameOfResult.Length; i++)
+                {
+                    findObjectIDByName(CuisineInfo.NameOfResult[i], out CuisineInfo.IDOfResult[i]);
+                }
+            }
+
+        }
+    
+    }
     #endregion
 
             #region ByID
@@ -801,6 +858,11 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                 if (IsItInThisPage(PageExel.TypeDePageExel.Craft, info.ID))
                 {
                     FindObjectInfo(ID, out lesInfos.exelCraft);
+                }
+
+                if (IsItInThisPage(PageExel.TypeDePageExel.Cuisine, info.ID))
+                {
+                    FindObjectInfo(info.ID, out lesInfos.ExelCuisine);
                 }
 
                 break; // j'ai trouvé ma cible je peux casser
@@ -976,6 +1038,26 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
         }
 
     } // récupére les données des vêtements
+
+    public void FindObjectInfo(int ID, out InfoExelCuisine CuisineInfo)
+    {
+        CuisineInfo = new InfoExelCuisine();
+        foreach (InfoCuisine KUIZINE in MesListe.LaCuisine)
+        {
+            if (KUIZINE.ID == ID)
+            {
+                CuisineInfo.TempsDeCuisson = KUIZINE.TempsCuisson;
+                CuisineInfo.NameOfResult = KUIZINE.Possibilities.ToArray();
+                CuisineInfo.IDOfResult = new int[CuisineInfo.NameOfResult.Length];
+                for (int i = 0; i < CuisineInfo.NameOfResult.Length; i++)
+                {
+                    findObjectIDByName(CuisineInfo.NameOfResult[i], out CuisineInfo.IDOfResult[i]);
+                }
+            }
+
+        }
+
+    }
     #endregion
 
     #endregion
