@@ -22,7 +22,8 @@ public class ResumeExelForObject : MesFonctions
     ArmeMelee,
     Utilitaire,
     Sac,
-    Vetements
+    Vetements,
+    
     }
     public Type MainType;
 

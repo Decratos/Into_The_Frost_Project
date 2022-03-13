@@ -161,6 +161,7 @@ public struct InfoGlobalExel // créer une struct qui me permet de récupérer t
     public InfoExelGun exelGun;
     public InfoExelvetements Exelvetements;
     public InfoExelSac ExelSac;
+    public InfoExelCuisine ExelCuisine;
 
     public void GetRightInfo()
     {
@@ -276,5 +277,11 @@ public struct InfoExelvetements
     public float ChaleurResistance;
     public float DegatResistance;
     public bool IsWeared;
+}
+public struct InfoExelCuisine 
+{
+    public int[] IDOfResult;
+    public string[] NameOfResult;
+    public float TempsDeCuisson;
 }
 
