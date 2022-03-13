@@ -50,10 +50,6 @@ public class AIBehaviour : MonoBehaviour
             finishedTravel = true;
             ChangeState(State.Wait);
         }
-        if (target)
-        {
-           print("Je vois le joueur");
-        }
     }
 
     public void ChangeState(State newState)
@@ -129,7 +125,6 @@ public class AIBehaviour : MonoBehaviour
             case State.Chase:
                 if(!target)
                 {
-                    print("Je reviens à mon point de départ");
                     ChangeState(State.BackToStart);
                 }
                 else
@@ -141,12 +136,12 @@ public class AIBehaviour : MonoBehaviour
                 }
             break;
             case State.Attack:
-                print("J'attaque");
-                if(target.GetComponent<AIstats>().GetHealth() > 0 && Vector3.Distance(transform.position, target.position) > equipment.attackDistance)
-                    ChangeState(State.Chase);
+                if(target && target.GetComponent<AIstats>().GetHealth() > 0 || target && target.GetComponent<SurvivalSysteme>().LesDataPourSurvie[4].ActualValue > 0)
+                    if(Vector3.Distance(transform.position, target.position) > equipment.attackDistance)
+                        ChangeState(State.Chase);
                 else
                     Attack();
-                if(target == null || target.GetComponent<AIstats>().GetHealth() <= 0)
+                if(target == null || target.GetComponent<AIstats>().GetHealth() <= 0 || target.GetComponent<SurvivalSysteme>())
                 {
                     ChangeState(State.Roaming);
                 }

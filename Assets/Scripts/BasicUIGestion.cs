@@ -22,6 +22,10 @@ public class BasicUIGestion : MonoBehaviour
             {
                 OpenCloseContextWindow("Close");
             }
+            else if (LastWindowOpened.GetComponent<Container>())
+            {
+                LastWindowOpened.GetComponent<Container>().OpenHideContainer();
+            }
         }
             
     }

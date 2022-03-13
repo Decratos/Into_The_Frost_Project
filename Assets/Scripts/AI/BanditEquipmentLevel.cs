@@ -6,11 +6,13 @@ public class BanditEquipmentLevel : MonoBehaviour
 {
     public enum Levels
     {
-        Light,
-        Moderate,
-        Heavy
+        Light = 0,
+        Moderate = 1,
+        Heavy = 2
     }
     public Levels equipmentLevel;
+    [SerializeField] private AIInventoryTemplate[] equipmentConfigs;
+    [SerializeField] private AIInventoryTemplate myInventoryConfig;
     [Header("Valeurs de base")]
     public float baseLife;
     public float baseAttackDistance;
@@ -21,14 +23,14 @@ public class BanditEquipmentLevel : MonoBehaviour
     public float attackDistance;
     public float damage;
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         switch(equipmentLevel)
         {
             case Levels.Light:
                 life = baseLife;
                 attackDistance = baseAttackDistance;
-                damage = baseDamage;
+                damage = baseDamage;                
                 break;
             case Levels.Moderate:
                 life = baseLife * 1.5f;
@@ -41,11 +43,9 @@ public class BanditEquipmentLevel : MonoBehaviour
                 damage = baseDamage * 10;
                 break;
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        myInventoryConfig = equipmentConfigs[(int)equipmentLevel];
+        GetComponent<BanditInventory>().AddInventoryItem(myInventoryConfig.weapon);
+        GetComponent<BanditInventory>().AddInventoryItem(myInventoryConfig.backpack);
+        GetComponent<BanditInventory>().AddInventoryItem(myInventoryConfig.medicalSupply);
     }
 }

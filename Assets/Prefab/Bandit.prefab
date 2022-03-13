@@ -18,6 +18,8 @@ GameObject:
   - component: {fileID: 4230289253252801590}
   - component: {fileID: 1206594455}
   - component: {fileID: 494867168}
+  - component: {fileID: 7307033941319462161}
+  - component: {fileID: 6952742340573068895}
   m_Layer: 12
   m_Name: Bandit
   m_TagString: NPC
@@ -97,10 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6583764f0a1e34848906f02b64343b94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Planche
   itemAmount: 2
   amountToInstantiate: 2
-  itemType: 0
 --- !u!195 &676034614069979485
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -178,6 +178,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   equipmentLevel: 0
+  equipmentConfigs:
+  - {fileID: 11400000, guid: 779026cb7904d7440ba5d0c24860531d, type: 2}
+  - {fileID: 11400000, guid: 8e09b90e4fe1383409f9280f03e8fe6e, type: 2}
+  - {fileID: 11400000, guid: 3def721d2dec1db4c9cc95e7f213f60f, type: 2}
+  myInventoryConfig: {fileID: 0}
   baseLife: 25
   baseAttackDistance: 2
   baseDamage: 5
@@ -196,6 +201,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d05df51860dcc740bdb282d4d32e3bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7307033941319462161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676034614069979459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6583764f0a1e34848906f02b64343b94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemAmount: 0
+  amountToInstantiate: 0
+--- !u!114 &6952742340573068895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676034614069979459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21cc1de82adbf03459f0ab64415d1d0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: []
 --- !u!1001 &2613171687760672471
 PrefabInstance:
   m_ObjectHideFlags: 0

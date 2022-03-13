@@ -8,21 +8,42 @@ public class Cooker : MonoBehaviour
     public bool isOpen = false;
     [SerializeField] private float fuel;
     private ItemSlot ComburantSlot;
+    private ItemSlot ToCookSlot;
+    private ItemSlot ResultSlot;
     [SerializeField] private float maxFuel;
+    private float cookingTime;
+    private bool hasAnObjectToCook = false;
+    private Transform playerInventory;
 
     // Start is called before the first frame update
     void Start()
     {
         cookingWindow = GameObject.Find("CookingWindow").transform;
+        ToCookSlot = cookingWindow.transform.Find("ToCook").GetComponent<ItemSlot>();
         ComburantSlot = cookingWindow.transform.Find("Comburant").GetComponent<ItemSlot>();
+        ResultSlot = cookingWindow.transform.Find("Result").GetComponent<ItemSlot>();
+        playerInventory = cookingWindow.transform.Find("PlayerInventoryWithCooker").transform;
         cookingWindow.gameObject.SetActive(false);
+        ToCookSlot.equippedItemStat = null;
+        ComburantSlot.equippedItemStat = null;
+        ResultSlot.equippedItemStat = null;
     }
 
     private void Update()
     {
-        if(ComburantSlot.equippedItemStat != null)
+        if(ToCookSlot.equippedItemStat != null && !hasAnObjectToCook)
         {
-            AddFuel(ComburantSlot.equippedItemStat.globalInfo.inflammability); 
+            SetCookObject();
+            hasAnObjectToCook = true;
+        }
+        else
+        {
+            //print("Je cherche un objet à cuire");
+        }
+        if(ComburantSlot.equippedItemStat != null && ToCookSlot.equippedItemStat != null && ResultSlot.equippedItemStat != null)
+        {
+            AddFuel(ComburantSlot.equippedItemStat.globalInfo.inflammability);
+            Cook();
         }
     }
 
@@ -32,13 +53,14 @@ public class Cooker : MonoBehaviour
         Transform bUI = UIi.BasicUI;
         isOpen = !isOpen;
         cookingWindow.gameObject.SetActive(isOpen);
-        bUI.gameObject.SetActive(isOpen);
+        playerInventory.GetComponent<UIInventory>().OpenHideInventory(true);
         bUI.GetComponent<BasicUIGestion>().contextWindow = cookingWindow;
         bUI.GetComponent<BasicUIGestion>().SetLastWindow(cookingWindow);
-        PlayerSingleton.playerInstance.GetComponentInChildren<CameraMouvement>().canLook = !isOpen;
+        PlayerSingleton.playerInstance.GetComponent<InventoryManager>().SetInventoryOpen(true);
+        /*PlayerSingleton.playerInstance.GetComponentInChildren<CameraMouvement>().canLook = !isOpen;
         PlayerSingleton.playerInstance.GetComponent<InventoryManager>().SetInventoryOpen(isOpen);
         PlayerSingleton.playerInstance.GetComponent<CharacterController>().enabled = !isOpen;
-        MouseCursorHiderShower.instance.ManageCursor(isOpen);
+        MouseCursorHiderShower.instance.ManageCursor(isOpen);*/
     }
 
     public void AddFuel(float fuelToAdd)
@@ -46,7 +68,16 @@ public class Cooker : MonoBehaviour
         if(fuel < maxFuel && fuelToAdd > 0)
         {
             fuel += fuelToAdd;
-            ComburantSlot.equippedItemStat = new ItemClass();
+            fuel = Mathf.Clamp(fuel, 0, maxFuel);
+            if(ComburantSlot.equippedItemStat.amount > 1)
+            {
+                ComburantSlot.equippedItemStat.amount--;
+            }
+            else
+            {
+                ComburantSlot.equippedItemStat = null;
+            }
+            
         }
         
     }
@@ -56,7 +87,31 @@ public class Cooker : MonoBehaviour
         if (fuel < maxFuel && fuelToAdd > 0)
         {
             fuel += fuelToAdd;
-            ComburantSlot.equippedItemStat = new ItemClass();
+            fuel = Mathf.Clamp(fuel, 0, maxFuel);
+            if (ComburantSlot.equippedItemStat.amount > 1)
+            {
+                ComburantSlot.equippedItemStat.amount--;
+            }
+            else
+            {
+                ComburantSlot.equippedItemStat = null;
+            }
+        }
+    }
+
+    public void SetCookObject()
+    {
+        cookingTime = ToCookSlot.equippedItemStat.globalInfo.TempsCuisson;
+    }
+
+    private void Cook()
+    {
+        cookingTime--;
+        fuel--;
+        if(cookingTime <= 0)
+        {
+            //L'objet est cuit
+            hasAnObjectToCook = false;
         }
     }
 }

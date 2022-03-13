@@ -11,7 +11,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     
     public PointerEventData data;
     public bool isDropping;
-    public ItemContainer initialWindow;
+    public Transform initialWindow;
     private void Awake()
     {
         _canvasGroup = GetComponent<CanvasGroup>();
@@ -27,7 +27,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     {
         _canvasGroup.alpha = .6f;
         _canvasGroup.blocksRaycasts = false;
-        initialWindow = transform.GetComponentInParent<ItemContainer>();
+        initialWindow = transform.parent.parent;
     }
 
     public void OnEndDrag(PointerEventData eventData)// lorsque je finis de drag un item
@@ -36,16 +36,16 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         {
             ItemWorld.DropItem(PlayerSingleton.playerInstance.transform.position, eventData.pointerDrag.GetComponentInChildren<ItemInfo>().item);
         }
+        else if(eventData.pointerCurrentRaycast.gameObject != initialWindow && eventData.pointerCurrentRaycast.gameObject.GetComponentInParent<UIInventory>())
+        {
+            print("J'ai déposé l'item sur une autre fenêtre");
+            Inventory newInv = eventData.pointerCurrentRaycast.gameObject.GetComponentInParent<UIInventory>()._inventory;
+            initialWindow.GetComponent<UIInventory>()._inventory.TransferItem(newInv, eventData.pointerDrag.GetComponentInChildren<ItemInfo>().item);
+            eventData.pointerCurrentRaycast.gameObject.GetComponentInParent<UIInventory>().RefreshInventoryItems();
+        }
         else if(eventData.pointerCurrentRaycast.gameObject.GetComponent<ItemContainer>() || eventData.pointerCurrentRaycast.gameObject.GetComponentInParent<ItemContainer>())
         {
-            if (eventData.pointerCurrentRaycast.gameObject != initialWindow && eventData.pointerCurrentRaycast.gameObject.GetComponent<ItemSlot>())
-            {
-                print("J'ai déposé l'item sur une autre fenêtre");
-                Inventory newInv = eventData.pointerCurrentRaycast.gameObject.GetComponentInParent<UIInventory>()._inventory;
-                initialWindow.GetComponent<UIInventory>()._inventory.TransferItem(newInv, eventData.pointerDrag.GetComponentInChildren<ItemInfo>().item);
-                print(eventData.pointerCurrentRaycast.gameObject.transform.parent);
-                eventData.pointerCurrentRaycast.gameObject.GetComponentInParent<UIInventory>().RefreshInventoryItems();
-            }
+            
             if (eventData.pointerCurrentRaycast.gameObject.GetComponent<ItemSlot>())
             {
                 print("Il y a un slot");
@@ -59,8 +59,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         }
         _canvasGroup.alpha = 1f;
         _canvasGroup.blocksRaycasts = true;
-        
-        transform.GetComponentInParent<UIInventory>().RefreshInventoryItems();
+        if(transform.GetComponentInParent<UIInventory>())
+            transform.GetComponentInParent<UIInventory>().RefreshInventoryItems();
     }
 
     public void OnDrag(PointerEventData eventData) //lors du drag
