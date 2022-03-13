@@ -5,7 +5,6 @@ using UnityEngine;
 public class Cooker : MonoBehaviour
 {
     [SerializeField] private Transform cookingWindow;
-    public bool isOpen = false;
     [SerializeField] private float fuel;
     private ItemSlot ComburantSlot;
     private ItemSlot ToCookSlot;
@@ -47,16 +46,14 @@ public class Cooker : MonoBehaviour
         }
     }
 
-    public void OpenHideWindow()
+    public void OpenWindow()
     {
         UIInventory UIi = PlayerSingleton.playerInstance.GetComponent<InventoryManager>().mainInventory;
         Transform bUI = UIi.BasicUI;
-        isOpen = !isOpen;
-        cookingWindow.gameObject.SetActive(isOpen);
+        cookingWindow.gameObject.SetActive(true);
         playerInventory.GetComponent<UIInventory>().OpenHideInventory(true);
         bUI.GetComponent<BasicUIGestion>().contextWindow = cookingWindow;
         bUI.GetComponent<BasicUIGestion>().SetLastWindow(cookingWindow);
-        PlayerSingleton.playerInstance.GetComponent<InventoryManager>().SetInventoryOpen(true);
         /*PlayerSingleton.playerInstance.GetComponentInChildren<CameraMouvement>().canLook = !isOpen;
         PlayerSingleton.playerInstance.GetComponent<InventoryManager>().SetInventoryOpen(isOpen);
         PlayerSingleton.playerInstance.GetComponent<CharacterController>().enabled = !isOpen;

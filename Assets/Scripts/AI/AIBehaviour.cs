@@ -136,12 +136,12 @@ public class AIBehaviour : MonoBehaviour
                 }
             break;
             case State.Attack:
-                if(target && target.GetComponent<AIstats>().GetHealth() > 0 || target && target.GetComponent<SurvivalSysteme>().LesDataPourSurvie[4].ActualValue > 0)
+                if(target && target.GetComponent<AIstats>() || target && target.GetComponent<SurvivalSysteme>())
                     if(Vector3.Distance(transform.position, target.position) > equipment.attackDistance)
                         ChangeState(State.Chase);
                 else
                     Attack();
-                if(target == null || target.GetComponent<AIstats>().GetHealth() <= 0 || target.GetComponent<SurvivalSysteme>())
+                if(target == null)
                 {
                     ChangeState(State.Roaming);
                 }
@@ -214,7 +214,6 @@ public class AIBehaviour : MonoBehaviour
                     break;
             }
             //Attack
-            print("Attack");
             GetComponent<Animator>().Play("SlashOneHand");
             profile.actualAttackInterval = profile.attackInterval;
             GetComponent<BanditAttack>().Attack(target.position, equipment.attackDistance, equipment.damage);

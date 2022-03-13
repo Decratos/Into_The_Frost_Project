@@ -36,7 +36,6 @@ public class CraftUI : MonoBehaviour
     public void OpenHideCraftUI(int maxLevel) // ouvre ou non le craft
     {
         isOpen = !isOpen;
-        //BasicUI.gameObject.SetActive(isOpen);
         PlayerSubInventory.GetComponent<UIInventory>().OpenHideInventory("Open");
         gameObject.SetActive(isOpen);
         if(isOpen)

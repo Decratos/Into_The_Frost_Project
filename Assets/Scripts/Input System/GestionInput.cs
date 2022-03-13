@@ -80,15 +80,21 @@ public class GestionInput : MesFonctions
                     }
                     else if(hit.transform.tag == "Container" && !PlayerSingleton.playerInstance.GetComponent<InventoryManager>().CheckInventoryOpen())
                     {
-                        hit.transform.GetComponent<Container>().OpenHideContainer();
+                        hit.transform.GetComponent<Container>().OpenContainer();
+                        PlayerSingleton.playerInstance.GetComponent<InventoryManager>().SetInventoryOpen(true);
+                        CanvasReference._canvasReference.GetCanva().transform.Find("BasicUi").gameObject.SetActive(true);
                     }
                     else if(hit.transform.tag == "CraftTable" && !PlayerSingleton.playerInstance.GetComponent<InventoryManager>().CheckInventoryOpen())
                     {
                         hit.transform.GetComponent<CraftingTable>().OpenHideTableWindow();
+                        PlayerSingleton.playerInstance.GetComponent<InventoryManager>().SetInventoryOpen(true);
+                        CanvasReference._canvasReference.GetCanva().transform.Find("BasicUi").gameObject.SetActive(true);
                     }
                     else if(hit.transform.tag == "Cooker" && !PlayerSingleton.playerInstance.GetComponent<InventoryManager>().CheckInventoryOpen())
                     {
-                        hit.transform.GetComponent<Cooker>().OpenHideWindow();
+                        hit.transform.GetComponent<Cooker>().OpenWindow();
+                        PlayerSingleton.playerInstance.GetComponent<InventoryManager>().SetInventoryOpen(true);
+                        CanvasReference._canvasReference.GetCanva().transform.Find("BasicUi").gameObject.SetActive(true);
                     }
                 }
         }
@@ -170,8 +176,9 @@ public class GestionInput : MesFonctions
             ScriptGestion.uiInventory.OpenHideInventory("Close", true);
             PlayerSingleton.playerInstance.GetComponent<InventoryManager>().SetInventoryOpen(false);
             if(CanvasReference._canvasReference.GetCanva().GetComponentInChildren<CraftUI>())
+                if(CanvasReference._canvasReference.GetCanva().GetComponentInChildren<CraftUI>().myTable)
                 CanvasReference._canvasReference.GetCanva().GetComponentInChildren<CraftUI>().myTable.CloseTableWindow();
-            ScriptGestion.uiInventory.BasicUI.GetComponent<BasicUIGestion>().CloseLastWindow();
+            ScriptGestion.uiInventory.BasicUI.GetComponent<BasicUIGestion>().CloseLastWindow(true);
             ScriptGestion.uiInventory.BasicUI.GetComponent<BasicUIGestion>().CloseBasicUI();
         }
     }
