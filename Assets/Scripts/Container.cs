@@ -8,7 +8,7 @@ public class Container : MonoBehaviour
     public Inventory inventory;
     [SerializeField] private List<ItemClass> inventoryList;
     [SerializeField] protected ItemClass startInventory;
-    bool isOpen = false;
+    [SerializeField] private bool isOpen = false;
     // Start is called before the first frame update
     void Awake()
     {
@@ -32,31 +32,29 @@ public class Container : MonoBehaviour
         inventoryList = inventory.GetItemList();
     }
 
-    public void OpenHideContainer()
+    public void OpenContainer()
     {
         var playerWindowUi = PlayerSingleton.playerInstance.GetComponent<InventoryManager>().PlayerInventoryContainerWindow.GetComponent<UIInventory>();
         var ContainerWindowUi = PlayerSingleton.playerInstance.GetComponent<InventoryManager>().ContainerWindow.GetComponent<UIInventory>();
         //PlayerSingleton.playerInstance.GetComponentInChildren<CameraMouvement>().canLook = !isOpen;
-        if (!isOpen)
-        {
-            print("jouvre la fenetre");
-            ContainerWindowUi.BasicUI.GetComponent<BasicUIGestion>().contextWindow = ContainerWindowUi.transform;
-            ContainerWindowUi.BasicUI.GetComponent<BasicUIGestion>().LastWindowOpened = ContainerWindowUi.transform;
-            ContainerWindowUi.SetInventory(inventory);
-            ContainerWindowUi.OpenHideInventory(true);
-            playerWindowUi.OpenHideInventory(true);
-            PlayerSingleton.playerInstance.GetComponent<InventoryManager>().SetInventoryOpen(true);
-            isOpen = true;
-        }
-        else
-        {
-            print("je ferme la fenetre");
-            ContainerWindowUi.OpenHideInventory(false);
-            playerWindowUi.OpenHideInventory(false);
-            PlayerSingleton.playerInstance.GetComponent<InventoryManager>().SetInventoryOpen(false);
-            isOpen = false;
-            ContainerWindowUi.BasicUI.GetComponent<BasicUIGestion>().CloseLastWindow();
-        }
+        print("jouvre la fenetre");
+        ContainerWindowUi.BasicUI.GetComponent<BasicUIGestion>().contextWindow = ContainerWindowUi.transform;
+        ContainerWindowUi.BasicUI.GetComponent<BasicUIGestion>().LastWindowOpened = ContainerWindowUi.transform;
+        ContainerWindowUi.BasicUI.GetComponent<BasicUIGestion>().contextObject = this.transform;
+        ContainerWindowUi.SetInventory(inventory);
+        ContainerWindowUi.gameObject.SetActive(true);
+        ContainerWindowUi.OpenHideInventory("Open", false);
+        playerWindowUi.OpenHideInventory("Open", false);
         
+    }
+
+    public void CloseContainer()
+    {
+        var playerWindowUi = PlayerSingleton.playerInstance.GetComponent<InventoryManager>().PlayerInventoryContainerWindow.GetComponent<UIInventory>();
+        var ContainerWindowUi = PlayerSingleton.playerInstance.GetComponent<InventoryManager>().ContainerWindow.GetComponent<UIInventory>();
+        print("je ferme la fenetre");
+        ContainerWindowUi.OpenHideInventory("Close", false);
+        playerWindowUi.OpenHideInventory("Close", false);
+        isOpen = false;
     }
 }

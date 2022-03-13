@@ -6,7 +6,7 @@ public class InventoryManager : MonoBehaviour
 {
     public Transform ContainerWindow;
     public Transform PlayerInventoryContainerWindow;
-    private bool hasInventoryOpen = false;
+    [SerializeField] private bool hasInventoryOpen = false;
     public UIInventory mainInventory;
     public int startingInventoryCapability;
     public void Initiate()

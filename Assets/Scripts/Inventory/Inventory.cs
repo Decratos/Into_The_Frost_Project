@@ -156,7 +156,10 @@ public class Inventory
             case InfoGlobalExel.Type.Nourriture:
             case InfoGlobalExel.Type.Soins:
                 ItemsActions.itemsActionsInstance.ItemAction(item.globalInfo.Name, item);
-                RemoveItem(item);
+                if (item.amount > 1)
+                    item.amount--;
+                else
+                    RemoveItem(item);
                 break;
         }
         
