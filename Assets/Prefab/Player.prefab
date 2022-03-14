@@ -1,5 +1,117 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &97964415
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 97964416}
+  - component: {fileID: 97964417}
+  m_Layer: 6
+  m_Name: batte
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &97964416
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 97964415}
+  m_LocalRotation: {x: -0, y: -0.000000029802319, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 506712998}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &97964417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 97964415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cef7807f66ce2a04d91f30d937c16902, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponAnimationID: 0
+  weaponName: 
+  canCutWood: 1
+  canCutStone: 1
+  damage: 10
+  rangedWeapon: 0
+  attackDistance: 2
+  attackRate: 1
+  actualAttackRate: 0
+  ammo: 0
+  maxAmmo: 0
+  reserve: 0
+  reloadSpeed: 0
+--- !u!1 &371577188
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 371577189}
+  - component: {fileID: 371577190}
+  m_Layer: 6
+  m_Name: Katana
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &371577189
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371577188}
+  m_LocalRotation: {x: -0, y: -0.000000029802319, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 506712998}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &371577190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371577188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cef7807f66ce2a04d91f30d937c16902, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponAnimationID: 0
+  weaponName: 
+  canCutWood: 1
+  canCutStone: 1
+  damage: 25
+  rangedWeapon: 0
+  attackDistance: 2
+  attackRate: 0.8
+  actualAttackRate: 0
+  ammo: 0
+  maxAmmo: 0
+  reserve: 0
+  reloadSpeed: 0
 --- !u!1 &506712997
 GameObject:
   m_ObjectHideFlags: 0
@@ -27,13 +139,18 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 618035216}
   - {fileID: 7741788079190981599}
   - {fileID: 3525919678865244955}
+  - {fileID: 569183630}
+  - {fileID: 1458412808}
+  - {fileID: 371577189}
+  - {fileID: 2003209585}
+  - {fileID: 1330927454}
+  - {fileID: 97964416}
   m_Father: {fileID: 1123951329656893964}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &618035215
+--- !u!1 &569183629
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,36 +158,36 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 618035216}
-  - component: {fileID: 618035217}
+  - component: {fileID: 569183630}
+  - component: {fileID: 569183631}
   m_Layer: 6
-  m_Name: Planche
+  m_Name: Hache en pierre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!4 &618035216
+--- !u!4 &569183630
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 618035215}
+  m_GameObject: {fileID: 569183629}
   m_LocalRotation: {x: -0, y: -0.000000029802319, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 506712998}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &618035217
+--- !u!114 &569183631
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 618035215}
+  m_GameObject: {fileID: 569183629}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cef7807f66ce2a04d91f30d937c16902, type: 3}
@@ -80,10 +197,10 @@ MonoBehaviour:
   weaponName: 
   canCutWood: 1
   canCutStone: 1
-  damage: 0
+  damage: 11
   rangedWeapon: 0
   attackDistance: 2
-  attackRate: 1
+  attackRate: 0.9
   actualAttackRate: 0
   ammo: 0
   maxAmmo: 0
@@ -322,6 +439,118 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attenuationObject: {fileID: 0}
   ListenerNumber: -1
+--- !u!1 &1330927453
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1330927454}
+  - component: {fileID: 1330927455}
+  m_Layer: 6
+  m_Name: barre en fer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1330927454
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330927453}
+  m_LocalRotation: {x: -0, y: -0.000000029802319, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 506712998}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1330927455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330927453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cef7807f66ce2a04d91f30d937c16902, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponAnimationID: 0
+  weaponName: 
+  canCutWood: 1
+  canCutStone: 1
+  damage: 12
+  rangedWeapon: 0
+  attackDistance: 2
+  attackRate: 1.2
+  actualAttackRate: 0
+  ammo: 0
+  maxAmmo: 0
+  reserve: 0
+  reloadSpeed: 0
+--- !u!1 &1458412807
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1458412808}
+  - component: {fileID: 1458412809}
+  m_Layer: 6
+  m_Name: Hache
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1458412808
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458412807}
+  m_LocalRotation: {x: -0, y: -0.000000029802319, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 506712998}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1458412809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458412807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cef7807f66ce2a04d91f30d937c16902, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponAnimationID: 0
+  weaponName: 
+  canCutWood: 1
+  canCutStone: 1
+  damage: 12
+  rangedWeapon: 0
+  attackDistance: 2
+  attackRate: 1.2
+  actualAttackRate: 0
+  ammo: 0
+  maxAmmo: 0
+  reserve: 0
+  reloadSpeed: 0
 --- !u!1 &1842692928
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,6 +601,62 @@ MonoBehaviour:
   actualWeaponInHands: {fileID: 0}
   EquippedWeapon1: {fileID: 0}
   EquippedWeapon2: {fileID: 0}
+--- !u!1 &2003209584
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2003209585}
+  - component: {fileID: 2003209586}
+  m_Layer: 6
+  m_Name: Couteau
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &2003209585
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003209584}
+  m_LocalRotation: {x: -0, y: -0.000000029802319, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 506712998}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2003209586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003209584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cef7807f66ce2a04d91f30d937c16902, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponAnimationID: 0
+  weaponName: 
+  canCutWood: 1
+  canCutStone: 1
+  damage: 15
+  rangedWeapon: 0
+  attackDistance: 2
+  attackRate: 0.5
+  actualAttackRate: 0
+  ammo: 0
+  maxAmmo: 0
+  reserve: 0
+  reloadSpeed: 0
 --- !u!1 &1123951329656893961
 GameObject:
   m_ObjectHideFlags: 0
@@ -1410,7 +1695,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 506712998}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6169623275545194918
 MonoBehaviour:
@@ -1428,7 +1713,7 @@ MonoBehaviour:
   weaponName: 
   canCutWood: 0
   canCutStone: 0
-  damage: 150
+  damage: 70
   rangedWeapon: 1
   attackDistance: 200
   attackRate: 0.15
@@ -1467,7 +1752,7 @@ Transform:
   m_Children:
   - {fileID: 543450651726902558}
   m_Father: {fileID: 506712998}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8647339027092866952
 MonoBehaviour:
