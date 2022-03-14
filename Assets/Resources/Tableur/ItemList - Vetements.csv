@@ -1,17 +1,17 @@
 ID,Nom,Catégorie,Chaleur resistance,Resistance degat
-49,Tshirt manche longues,Tshirt,1,1.1
-50,Tshirt thermique,Tshirt,1.45,1.2
-51,Pull en laine,pull,1.46,2.2
-52,Pull polaire,pull,1.47,3.2
-53,Pull cardigan,pull,1.48,4.2
-54,Parka,Manteau,1.49,5.2
-55,Blouson simple,Manteau,1.50,6.2
-56,Veste de ski,Manteau,1.51,7.2
-57,Blouson d'aviateur,Manteau,1.52,8.2
-58,Doudoune,Manteau,1.53,9.2
-59,Pantalon polaire,Pantalon,1.54,10.2
-60,Pantalon de ski,Pantalon,1.55,11.2
-61,Pantalon Thermique,Pantalon,1.56,12.2
-62,Chaussette et caleçon simple,SousVetement,1.57,13.2
-63,Chaussette et caleçon rembourré,SousVetement,1.58,14.2
-64,Chaussette et caleçon polaire,SousVetement,1.59,15.2
+48,Tshirt manche longues,Tshirt,1,1.1
+49,Tshirt thermique,Tshirt,1.45,1.2
+50,Pull en laine,pull,1.46,2.2
+51,Pull polaire,pull,1.47,3.2
+52,Pull cardigan,pull,1.48,4.2
+53,Parka,Manteau,1.49,5.2
+54,Blouson simple,Manteau,1.50,6.2
+55,Veste de ski,Manteau,1.51,7.2
+56,Blouson d'aviateur,Manteau,1.52,8.2
+57,Doudoune,Manteau,1.53,9.2
+58,Pantalon polaire,Pantalon,1.54,10.2
+59,Pantalon de ski,Pantalon,1.55,11.2
+60,Pantalon Thermique,Pantalon,1.56,12.2
+61,Chaussette et caleçon simple,SousVetement,1.57,13.2
+62,Chaussette et caleçon rembourré,SousVetement,1.58,14.2
+63,Chaussette et caleçon polaire,SousVetement,1.59,15.2

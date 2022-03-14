@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MesPages:
   - MaPage: {fileID: 4900000, guid: 6ecd3a912db785c4c8aa9ec0195fd75a, type: 3}
-    nombreDeColonne: 8
+    nombreDeColonne: 9
     LesInfoPagesExel: 0
   - MaPage: {fileID: 4900000, guid: f451382e4566f6e4fa981411c93b75b0, type: 3}
     nombreDeColonne: 2
@@ -74,14 +74,1052 @@ MonoBehaviour:
   - MaPage: {fileID: 4900000, guid: 5989e9769c4bf1b40a7e29480c3829a3, type: 3}
     nombreDeColonne: 3
     LesInfoPagesExel: 7
+  - MaPage: {fileID: 4900000, guid: a38daf33d8599324d9f8b0e15d38d6bd, type: 3}
+    nombreDeColonne: 5
+    LesInfoPagesExel: 10
   MesListe:
-    LesItems: []
-    LesMat: []
-    LaBouffe: []
-    LesSoins: []
-    LesCrafts: []
-    LesFlingues: []
-    LesArmes: []
-    LesVetements: []
-    LesSacs: []
-    LesUtilitaires: []
+    LesItems:
+    - ID: 1
+      Name: Planche
+      Type: Materials
+      Durability: 0
+      CraftingLevel: 0
+      Rarity: 0.5
+      Inflamability: 100
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 2
+      Name: Ferraille
+      Type: Materials
+      Durability: 0
+      CraftingLevel: -1
+      Rarity: 0.8
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 3
+      Name: Pain
+      Type: Nourriture
+      Durability: 0
+      CraftingLevel: 1
+      Rarity: 0.9
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 4
+      Name: eau 25cl
+      Type: Nourriture
+      Durability: 0
+      CraftingLevel: -1
+      Rarity: 0.1
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 5
+      Name: eau 50cl
+      Type: Nourriture
+      Durability: 0
+      CraftingLevel: -1
+      Rarity: 0.11
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 6
+      Name: pomme
+      Type: Nourriture
+      Durability: 0
+      CraftingLevel: -1
+      Rarity: 0.12
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 7
+      Name: Soupe
+      Type: Nourriture
+      Durability: 0
+      CraftingLevel: -1
+      Rarity: 0.13
+      Inflamability: 0
+      TempsCuisson: 3
+      Stockability: 1
+    - ID: 8
+      Name: Soupe chaude
+      Type: Nourriture
+      Durability: 0
+      CraftingLevel: 5
+      Rarity: 0.14
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 9
+      Name: "La soupe de m\xE9m\xE9"
+      Type: Nourriture
+      Durability: 0
+      CraftingLevel: 5
+      Rarity: 0.15
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 10
+      Name: Conserve
+      Type: Nourriture
+      Durability: 0
+      CraftingLevel: -1
+      Rarity: 0.1
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 11
+      Name: Viande
+      Type: Nourriture
+      Durability: 0
+      CraftingLevel: -1
+      Rarity: 0.16
+      Inflamability: 0
+      TempsCuisson: 10
+      Stockability: 1
+    - ID: 12
+      Name: Feu de camp
+      Type: Utilitaire
+      Durability: 0
+      CraftingLevel: 0
+      Rarity: 0.17
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 13
+      Name: "Barril en t\xF4le"
+      Type: Utilitaire
+      Durability: 0
+      CraftingLevel: 2
+      Rarity: 0.18
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 14
+      Name: Barril de feu
+      Type: Utilitaire
+      Durability: 0
+      CraftingLevel: 2
+      Rarity: 0
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 15
+      Name: Viande cuite
+      Type: Nourriture
+      Durability: 0
+      CraftingLevel: 5
+      Rarity: 0.17
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 16
+      Name: pistolet
+      Type: ArmeAfeu
+      Durability: 200
+      CraftingLevel: 4
+      Rarity: 0.18
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 17
+      Name: fusil
+      Type: ArmeAfeu
+      Durability: 200
+      CraftingLevel: 4
+      Rarity: 0.19
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 18
+      Name: Couteau
+      Type: ArmeMelee
+      Durability: 200
+      CraftingLevel: 2
+      Rarity: 0.2
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 19
+      Name: batte
+      Type: ArmeMelee
+      Durability: 200
+      CraftingLevel: 1
+      Rarity: 0.21
+      Inflamability: 150
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 20
+      Name: barre de fer
+      Type: ArmeMelee
+      Durability: 200
+      CraftingLevel: 1
+      Rarity: 0.22
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 21
+      Name: Katana
+      Type: ArmeMelee
+      Durability: 200
+      CraftingLevel: 3
+      Rarity: 0.23
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 22
+      Name: bandage
+      Type: Soins
+      Durability: 0
+      CraftingLevel: -1
+      Rarity: 0.25
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 23
+      Name: kit de soin
+      Type: Soins
+      Durability: 0
+      CraftingLevel: -1
+      Rarity: 0.26
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 24
+      Name: kit de secours
+      Type: Soins
+      Durability: 0
+      CraftingLevel: -1
+      Rarity: 0.27
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 25
+      Name: pillule
+      Type: Soins
+      Durability: 0
+      CraftingLevel: -1
+      Rarity: 0.28
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 26
+      Name: "cr\xE8me"
+      Type: Soins
+      Durability: 0
+      CraftingLevel: -1
+      Rarity: 0.29
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 27
+      Name: Bois
+      Type: Materials
+      Durability: 0
+      CraftingLevel: -1
+      Rarity: 0.3
+      Inflamability: 500
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 28
+      Name: Pierre
+      Type: Materials
+      Durability: 0
+      CraftingLevel: -1
+      Rarity: 0.31
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 29
+      Name: Shatterton
+      Type: Materials
+      Durability: 0
+      CraftingLevel: -1
+      Rarity: 0.33
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 30
+      Name: Hache
+      Type: ArmeMelee
+      Durability: 200
+      CraftingLevel: 2
+      Rarity: 0.34
+      Inflamability: 15
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 31
+      Name: Hache en pierre
+      Type: ArmeMelee
+      Durability: 185
+      CraftingLevel: 0
+      Rarity: 0.35
+      Inflamability: 50
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 32
+      Name: Four en pierre
+      Type: Utilitaire
+      Durability: 0
+      CraftingLevel: 1
+      Rarity: 0.36
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 33
+      Name: Forge
+      Type: Utilitaire
+      Durability: 0
+      CraftingLevel: 2
+      Rarity: 0.37
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 34
+      Name: Atelier
+      Type: Utilitaire
+      Durability: 0
+      CraftingLevel: 0
+      Rarity: 0.38
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 35
+      Name: Atelier L2
+      Type: Utilitaire
+      Durability: 0
+      CraftingLevel: 1
+      Rarity: 0.39
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 36
+      Name: Atelier L3
+      Type: Utilitaire
+      Durability: 0
+      CraftingLevel: 2
+      Rarity: 0.4
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 37
+      Name: "\xC9tablie"
+      Type: Utilitaire
+      Durability: 0
+      CraftingLevel: 3
+      Rarity: 0.41
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 38
+      Name: "Sac \xE0 dos"
+      Type: Sac
+      Durability: 0
+      CraftingLevel: -1
+      Rarity: 0.42
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 39
+      Name: Sac de rando
+      Type: Sac
+      Durability: 0
+      CraftingLevel: -1
+      Rarity: 0.43
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 40
+      Name: Sac Marin
+      Type: Sac
+      Durability: 0
+      CraftingLevel: -1
+      Rarity: 0.44
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 41
+      Name: Sac Militaire
+      Type: Sac
+      Durability: 0
+      CraftingLevel: -1
+      Rarity: 0.45
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 42
+      Name: Clou
+      Type: Materials
+      Durability: 0
+      CraftingLevel: -1
+      Rarity: 0.47
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 43
+      Name: Livre
+      Type: Materials
+      Durability: 0
+      CraftingLevel: -1
+      Rarity: 0.49
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 44
+      Name: Carte
+      Type: Materials
+      Durability: 0
+      CraftingLevel: -1
+      Rarity: 0.5
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 45
+      Name: Petit bois
+      Type: Materials
+      Durability: 0
+      CraftingLevel: 0
+      Rarity: 0.51
+      Inflamability: 25
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 46
+      Name: Tournevis
+      Type: Materials
+      Durability: 0
+      CraftingLevel: -1
+      Rarity: 0.52
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 47
+      Name: scie
+      Type: Materials
+      Durability: 0
+      CraftingLevel: -1
+      Rarity: 0.53
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 48
+      Name: Tshirt manche longues
+      Type: Vetements
+      Durability: 455
+      CraftingLevel: -1
+      Rarity: 0.55
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 49
+      Name: Tshirt thermique
+      Type: Vetements
+      Durability: 455
+      CraftingLevel: -1
+      Rarity: 0.57
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 50
+      Name: Pull en laine
+      Type: Vetements
+      Durability: 455
+      CraftingLevel: -1
+      Rarity: 0.58
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 51
+      Name: Pull polaire
+      Type: Vetements
+      Durability: 455
+      CraftingLevel: -1
+      Rarity: 0.59
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 52
+      Name: Pull cardigan
+      Type: Vetements
+      Durability: 455
+      CraftingLevel: -1
+      Rarity: 0.6
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 53
+      Name: Parka
+      Type: Vetements
+      Durability: 455
+      CraftingLevel: -1
+      Rarity: 0.67
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 54
+      Name: Blouson simple
+      Type: Vetements
+      Durability: 455
+      CraftingLevel: -1
+      Rarity: 0.68
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 55
+      Name: Veste de ski
+      Type: Vetements
+      Durability: 455
+      CraftingLevel: -1
+      Rarity: 0.7
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 56
+      Name: Blouson d'aviateur
+      Type: Vetements
+      Durability: 455
+      CraftingLevel: -1
+      Rarity: 0.73
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 57
+      Name: Doudoune
+      Type: Vetements
+      Durability: 455
+      CraftingLevel: -1
+      Rarity: 0.74
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 58
+      Name: Pantalon polaire
+      Type: Vetements
+      Durability: 455
+      CraftingLevel: -1
+      Rarity: 0.77
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 59
+      Name: Pantalon de ski
+      Type: Vetements
+      Durability: 455
+      CraftingLevel: -1
+      Rarity: 0.78
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 60
+      Name: Pantalon Thermique
+      Type: Vetements
+      Durability: 455
+      CraftingLevel: -1
+      Rarity: 0.8
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 61
+      Name: "Chaussette et cale\xE7on simple"
+      Type: Vetements
+      Durability: 455
+      CraftingLevel: -1
+      Rarity: 0.81
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 62
+      Name: "Chaussette et cale\xE7on rembourr\xE9"
+      Type: Vetements
+      Durability: 455
+      CraftingLevel: -1
+      Rarity: 0.82
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 63
+      Name: "Chaussette et cale\xE7on polaire"
+      Type: Vetements
+      Durability: 455
+      CraftingLevel: -1
+      Rarity: 0.83
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 64
+      Name: Caisse en bois
+      Type: Utilitaire
+      Durability: 0
+      CraftingLevel: 0
+      Rarity: 0.1
+      Inflamability: 300
+      TempsCuisson: -1
+      Stockability: 1
+    - ID: 65
+      Name: Farine
+      Type: Nourriture
+      Durability: 0
+      CraftingLevel: -1
+      Rarity: 0.1
+      Inflamability: 0
+      TempsCuisson: -1
+      Stockability: 1
+    LesMat:
+    - ID: 1
+      Name: Planche
+    - ID: 2
+      Name: Ferraille
+    - ID: 27
+      Name: Bois
+    - ID: 28
+      Name: Pierre
+    - ID: 29
+      Name: Shatterton
+    - ID: 42
+      Name: Clou
+    - ID: 43
+      Name: Livre
+    - ID: 44
+      Name: Carte
+    - ID: 45
+      Name: Petit bois
+    - ID: 46
+      Name: Tournevis
+    - ID: 47
+      Name: scie
+    LaBouffe:
+    - ID: 3
+      Name: Pain
+      Nutrition: 10
+      Eau: 0
+      Chaleur: 0
+      Vie: 0
+    - ID: 4
+      Name: eau 25cl
+      Nutrition: 1
+      Eau: 0
+      Chaleur: 0
+      Vie: 0
+    - ID: 5
+      Name: eau 50cl
+      Nutrition: 0
+      Eau: 25
+      Chaleur: 0
+      Vie: 0
+    - ID: 6
+      Name: pomme
+      Nutrition: 0
+      Eau: 50
+      Chaleur: 0
+      Vie: 0
+    - ID: 7
+      Name: Soupe
+      Nutrition: 10
+      Eau: 3
+      Chaleur: 0
+      Vie: 0
+    - ID: 8
+      Name: Soupe chaude
+      Nutrition: 50
+      Eau: 15
+      Chaleur: 0
+      Vie: 0
+    - ID: 9
+      Name: "La soupe de m\xE9m\xE9"
+      Nutrition: 50
+      Eau: 15
+      Chaleur: 25
+      Vie: 0
+    - ID: 10
+      Name: Conserve
+      Nutrition: 50
+      Eau: 15
+      Chaleur: 25
+      Vie: 15
+    - ID: 11
+      Name: Viande
+      Nutrition: 40
+      Eau: 10
+      Chaleur: 0
+      Vie: 1
+    - ID: 15
+      Name: Viande cuite
+      Nutrition: 30
+      Eau: -10
+      Chaleur: 0
+      Vie: 0
+    - ID: 65
+      Name: Farine
+      Nutrition: 30
+      Eau: 2
+      Chaleur: 0
+      Vie: 0
+    LesSoins:
+    - ID: 22
+      Name: bandage
+      value: 10
+    - ID: 23
+      Name: kit de soin
+      value: 25
+    - ID: 24
+      Name: kit de secours
+      value: 50
+    - ID: 25
+      Name: pillule
+      value: 15
+    - ID: 26
+      Name: "cr\xE8me"
+      value: 15
+    LesCrafts:
+    - ID: 1
+      Name: Planche
+      RessourcesNecessaire:
+      - Bois
+      LeNombreNecessaire: 01000000
+      IDDesressources: 1b000000
+      CraftingLevel: 0
+    - ID: 3
+      Name: Pain
+      RessourcesNecessaire:
+      - Farine
+      - eau 50cl
+      LeNombreNecessaire: 0300000032000000
+      IDDesressources: 4100000005000000
+      CraftingLevel: 1
+    - ID: 12
+      Name: Feu de camp
+      RessourcesNecessaire:
+      - Bois
+      - Petit bois
+      - Livre
+      LeNombreNecessaire: 020000000500000001000000
+      IDDesressources: 1b0000002d0000002b000000
+      CraftingLevel: 0
+    - ID: 13
+      Name: "Barril en t\xF4le"
+      RessourcesNecessaire:
+      - Ferraille
+      LeNombreNecessaire: 1e000000
+      IDDesressources: 02000000
+      CraftingLevel: 2
+    - ID: 14
+      Name: Barril de feu
+      RessourcesNecessaire:
+      - "Barril en t\xF4le"
+      - Feu de camp
+      LeNombreNecessaire: 0100000001000000
+      IDDesressources: 0d0000000c000000
+      CraftingLevel: 2
+    - ID: 16
+      Name: pistolet
+      RessourcesNecessaire:
+      - Planche
+      - Ferraille
+      LeNombreNecessaire: 020000001e000000
+      IDDesressources: 0100000002000000
+      CraftingLevel: 4
+    - ID: 17
+      Name: fusil
+      RessourcesNecessaire:
+      - Planche
+      - Ferraille
+      LeNombreNecessaire: 0100000014000000
+      IDDesressources: 0100000002000000
+      CraftingLevel: 4
+    - ID: 18
+      Name: Couteau
+      RessourcesNecessaire:
+      - Planche
+      - Shatterton
+      - Ferraille
+      LeNombreNecessaire: 02000000010000000a000000
+      IDDesressources: 010000001d00000002000000
+      CraftingLevel: 2
+    - ID: 19
+      Name: batte
+      RessourcesNecessaire:
+      - Planche
+      LeNombreNecessaire: 03000000
+      IDDesressources: 01000000
+      CraftingLevel: 1
+    - ID: 20
+      Name: barre de fer
+      RessourcesNecessaire:
+      - Ferraille
+      - Planche
+      - Shatterton
+      LeNombreNecessaire: 0f0000000200000001000000
+      IDDesressources: 02000000010000001d000000
+      CraftingLevel: 1
+    - ID: 21
+      Name: Katana
+      RessourcesNecessaire:
+      - Ferraille
+      - Planche
+      - Shatterton
+      LeNombreNecessaire: 190000000100000001000000
+      IDDesressources: 02000000010000001d000000
+      CraftingLevel: 3
+    - ID: 30
+      Name: Hache
+      RessourcesNecessaire:
+      - Pierre
+      - Planche
+      - Shatterton
+      LeNombreNecessaire: 0a0000000100000001000000
+      IDDesressources: 1c000000010000001d000000
+      CraftingLevel: 2
+    - ID: 31
+      Name: Hache en pierre
+      RessourcesNecessaire:
+      - Pierre
+      - Planche
+      LeNombreNecessaire: 0a00000001000000
+      IDDesressources: 1c00000001000000
+      CraftingLevel: 0
+    - ID: 32
+      Name: Four en pierre
+      RessourcesNecessaire:
+      - Pierre
+      - Feu de camp
+      LeNombreNecessaire: 0f00000001000000
+      IDDesressources: 1c0000000c000000
+      CraftingLevel: 1
+    - ID: 33
+      Name: Forge
+      RessourcesNecessaire:
+      - Four en pierre
+      - Ferraille
+      - Clou
+      LeNombreNecessaire: 01000000140000000a000000
+      IDDesressources: 20000000020000002a000000
+      CraftingLevel: 2
+    - ID: 34
+      Name: Atelier
+      RessourcesNecessaire:
+      - Planche
+      - Ferraille
+      - Clou
+      LeNombreNecessaire: 08000000050000000f000000
+      IDDesressources: 01000000020000002a000000
+      CraftingLevel: 0
+    - ID: 35
+      Name: Atelier L2
+      RessourcesNecessaire:
+      - Planche
+      - Ferraille
+      - Clou
+      LeNombreNecessaire: 050000001e0000000a000000
+      IDDesressources: 01000000020000002a000000
+      CraftingLevel: 1
+    - ID: 36
+      Name: Atelier L3
+      RessourcesNecessaire:
+      - Planche
+      - Ferraille
+      - Clou
+      LeNombreNecessaire: 05000000320000000a000000
+      IDDesressources: 01000000020000002a000000
+      CraftingLevel: 2
+    - ID: 37
+      Name: "\xC9tablie"
+      RessourcesNecessaire:
+      - Planche
+      - Ferraille
+      - Clou
+      LeNombreNecessaire: 03000000280000000a000000
+      IDDesressources: 01000000020000002a000000
+      CraftingLevel: 3
+    - ID: 45
+      Name: Petit bois
+      RessourcesNecessaire:
+      - Bois
+      - scie
+      LeNombreNecessaire: 0100000001000000
+      IDDesressources: 1b0000002f000000
+      CraftingLevel: 0
+    - ID: 64
+      Name: Caisse en bois
+      RessourcesNecessaire:
+      - Planche
+      - Clou
+      LeNombreNecessaire: 0200000004000000
+      IDDesressources: 010000002a000000
+      CraftingLevel: 0
+    LesFlingues:
+    - ID: 16
+      Name: pistolet
+      degat: 40
+      Power: 10
+      Speed: 0.08
+      Chargeur: 11
+      Rechargement: 1
+    - ID: 17
+      Name: fusil
+      degat: 60
+      Power: 20
+      Speed: 0.04
+      Chargeur: 20
+      Rechargement: 1.5
+    LesArmes:
+    - ID: 18
+      Name: Couteau
+      degat: 15
+      Speed: 0.5
+    - ID: 19
+      Name: batte
+      degat: 10
+      Speed: 1
+    - ID: 20
+      Name: barre de fer
+      degat: 12
+      Speed: 1.2
+    - ID: 21
+      Name: Katana
+      degat: 25
+      Speed: 0.8
+    - ID: 30
+      Name: Hache
+      degat: 18
+      Speed: 1.3
+    - ID: 31
+      Name: Hache en pierre
+      degat: 11
+      Speed: 0.9
+    LesVetements:
+    - ID: 48
+      Name: Tshirt manche longues
+      Categorie: Tshirt
+      ChaleurResistance: 1
+      DegatResistance: 1.1
+    - ID: 49
+      Name: Tshirt thermique
+      Categorie: Tshirt
+      ChaleurResistance: 1.45
+      DegatResistance: 1.2
+    - ID: 50
+      Name: Pull en laine
+      Categorie: pull
+      ChaleurResistance: 1.46
+      DegatResistance: 2.2
+    - ID: 51
+      Name: Pull polaire
+      Categorie: pull
+      ChaleurResistance: 1.47
+      DegatResistance: 3.2
+    - ID: 52
+      Name: Pull cardigan
+      Categorie: pull
+      ChaleurResistance: 1.48
+      DegatResistance: 4.2
+    - ID: 53
+      Name: Parka
+      Categorie: Manteau
+      ChaleurResistance: 1.49
+      DegatResistance: 5.2
+    - ID: 54
+      Name: Blouson simple
+      Categorie: Manteau
+      ChaleurResistance: 1.5
+      DegatResistance: 6.2
+    - ID: 55
+      Name: Veste de ski
+      Categorie: Manteau
+      ChaleurResistance: 1.51
+      DegatResistance: 7.2
+    - ID: 56
+      Name: Blouson d'aviateur
+      Categorie: Manteau
+      ChaleurResistance: 1.52
+      DegatResistance: 8.2
+    - ID: 57
+      Name: Doudoune
+      Categorie: Manteau
+      ChaleurResistance: 1.53
+      DegatResistance: 9.2
+    - ID: 58
+      Name: Pantalon polaire
+      Categorie: Pantalon
+      ChaleurResistance: 1.54
+      DegatResistance: 10.2
+    - ID: 59
+      Name: Pantalon de ski
+      Categorie: Pantalon
+      ChaleurResistance: 1.55
+      DegatResistance: 11.2
+    - ID: 60
+      Name: Pantalon Thermique
+      Categorie: Pantalon
+      ChaleurResistance: 1.56
+      DegatResistance: 12.2
+    - ID: 61
+      Name: "Chaussette et cale\xE7on simple"
+      Categorie: SousVetement
+      ChaleurResistance: 1.57
+      DegatResistance: 13.2
+    - ID: 62
+      Name: "Chaussette et cale\xE7on rembourr\xE9"
+      Categorie: SousVetement
+      ChaleurResistance: 1.58
+      DegatResistance: 14.2
+    - ID: 63
+      Name: "Chaussette et cale\xE7on polaire"
+      Categorie: SousVetement
+      ChaleurResistance: 1.59
+      DegatResistance: 15.2
+    LesSacs:
+    - ID: 38
+      Name: "Sac \xE0 dos"
+      NbrEmplacement: 6
+    - ID: 39
+      Name: Sac de rando
+      NbrEmplacement: 12
+    - ID: 40
+      Name: Sac Marin
+      NbrEmplacement: 15
+    - ID: 41
+      Name: Sac Militaire
+      NbrEmplacement: 20
+    LesUtilitaires:
+    - ID: 12
+      Name: Feu de camp
+      TheLevelForCraft: 0
+    - ID: 13
+      Name: "Barril en t\xF4le"
+      TheLevelForCraft: 2
+    - ID: 14
+      Name: Barril de feu
+      TheLevelForCraft: 2
+    - ID: 32
+      Name: Four en pierre
+      TheLevelForCraft: 1
+    - ID: 33
+      Name: Forge
+      TheLevelForCraft: 2
+    - ID: 34
+      Name: Atelier
+      TheLevelForCraft: 0
+    - ID: 35
+      Name: Atelier L2
+      TheLevelForCraft: 1
+    - ID: 36
+      Name: Atelier L3
+      TheLevelForCraft: 2
+    - ID: 37
+      Name: "\xC9tablie"
+      TheLevelForCraft: 3
+    - ID: 64
+      Name: Caisse en bois
+      TheLevelForCraft: 0
+    LaCuisine:
+    - ID: 7
+      Name: Soupe
+      TempsCuisson: 3
+      Possibilities:
+      - Soupe chaude
+      - "La soupe de m\xE9m\xE9"
+    - ID: 11
+      Name: Viande
+      TempsCuisson: 10
+      Possibilities:
+      - Viande cuite

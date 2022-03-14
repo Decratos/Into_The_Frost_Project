@@ -11,22 +11,35 @@ public class testData : MesFonctions
     {
         Data = GetComponent<liseurExel>();
         objetToLook();
+        Debug.Break();
     }
 
     // Update is called once per frame
     void objetToLook() 
     {
         InfoGlobalExel test = new InfoGlobalExel();
-        InfoExelGun test2 = new InfoExelGun();
-        Data.FindObjectInfo(name,out test);
-        Data.FindObjectInfo(name, out test2);
-        if (test2.Chargeur!=0)
+        InfoExelCuisine test2 = new InfoExelCuisine();
+        Data.FindObjectInfo(id,out test);
+        Data.FindObjectInfo(id, out test2);
+        if (test.ID!=0)
         {
-            print("mon chargeur" +test2.Chargeur);
+            print("Il trouve dans global");
         }
-        if (test.ID !=0)
+        else
         {
-            print("je l'ai trouvé" + test.Name);
+            print("pas trouvé");
+        }
+        if (test2.TempsDeCuisson!=0)
+        {
+            print(test2.TempsDeCuisson);
+            foreach (int id in test2.IDOfResult)
+            {
+                print(id);
+            }
+            foreach(string names in test2.NameOfResult) 
+            {
+                print(names);
+            }
         }
         else 
         {
