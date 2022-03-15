@@ -9,12 +9,10 @@ public class Container : MonoBehaviour
     [SerializeField] private List<ItemClass> inventoryList;
     [SerializeField] protected ItemClass startInventory;
     [SerializeField] private bool isOpen = false;
-    [SerializeField] private int capacity;
     // Start is called before the first frame update
     void Awake()
     {
-        inventory = new Inventory();
-        inventory.capability = capacity;
+        inventory = new Inventory(); 
     }
 
     void Start()
