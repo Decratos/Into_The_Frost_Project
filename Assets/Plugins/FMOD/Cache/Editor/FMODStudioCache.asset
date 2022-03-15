@@ -396,7 +396,7 @@ MonoBehaviour:
   - {fileID: 5942111600617134462}
   StringsBanks:
   - {fileID: 5075908363993971647}
-  cacheTime: 637825229124654006
+  cacheTime: 637825185685247949
   cacheVersion: 9
 --- !u!114 &2541879805269755351
 MonoBehaviour:
@@ -503,6 +503,30 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 0
+--- !u!114 &4843710865523815935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SKSShoot/Parameter 1
+  m_EditorClassIdentifier: 
+  Name: Parameter 1
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Type: 0
+  IsGlobal: 0
+  Labels: []
+  Exists: 1
 --- !u!114 &4967886488983318401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -527,7 +551,7 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 1
   Parameters:
-  - {fileID: -7275943182826675493}
+  - {fileID: 4843710865523815935}
   MinDistance: 1
   MaxDistance: 600
   Length: 2650
@@ -546,7 +570,7 @@ MonoBehaviour:
   Path: FMOD/AudioSource_IntoTheFrost/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637825229124524360
+  lastModified: 637825185685247949
   FileSizes:
   - Name: 
     Value: 1734
@@ -617,7 +641,7 @@ MonoBehaviour:
   Path: FMOD/AudioSource_IntoTheFrost/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637825229124654006
+  lastModified: 637825185685237974
   FileSizes: []
   Exists: 1
 --- !u!114 &6643333676787382540

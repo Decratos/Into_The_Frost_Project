@@ -6,11 +6,11 @@ public class Cooker : MonoBehaviour
 {
     [SerializeField] private Transform cookingWindow;
     [SerializeField] private float fuel;
-    private ItemSlot ComburantSlot;
-    private ItemSlot ToCookSlot;
-    private ItemSlot ResultSlot;
+    [SerializeField]  private ItemSlot ComburantSlot;
+    [SerializeField]  private ItemSlot ToCookSlot;
+    [SerializeField]  private ItemSlot ResultSlot;
     [SerializeField] private float maxFuel;
-    private float cookingTime;
+    [SerializeField] private float cookingTime;
     private bool hasAnObjectToCook = false;
     private Transform playerInventory;
     public ItemClass resultItem;
@@ -19,9 +19,9 @@ public class Cooker : MonoBehaviour
     void Start()
     {
         cookingWindow = GameObject.Find("CookingWindow").transform;
-        ToCookSlot = cookingWindow.transform.Find("ToCook").GetComponent<ItemSlot>();
-        ComburantSlot = cookingWindow.transform.Find("Comburant").GetComponent<ItemSlot>();
-        ResultSlot = cookingWindow.transform.Find("Result").GetComponent<ItemSlot>();
+        ToCookSlot = cookingWindow.transform.GetChild(1).Find("ToCook").GetComponent<ItemSlot>();
+        ComburantSlot = cookingWindow.transform.GetChild(1).Find("Comburant").GetComponent<ItemSlot>();
+        ResultSlot = cookingWindow.transform.GetChild(1).Find("Result").GetComponent<ItemSlot>();
         playerInventory = cookingWindow.transform.Find("PlayerInventoryWithCooker").transform;
         cookingWindow.gameObject.SetActive(false);
         ToCookSlot.equippedItemStat = null;
@@ -31,7 +31,7 @@ public class Cooker : MonoBehaviour
 
     private void Update()
     {
-        if(ToCookSlot.equippedItemStat != null && !hasAnObjectToCook)
+        if(ToCookSlot.equippedItemStat.amount != 0 && !hasAnObjectToCook)
         {
             SetCookObject();
             hasAnObjectToCook = true;
@@ -40,9 +40,14 @@ public class Cooker : MonoBehaviour
         {
             //print("Je cherche un objet à cuire");
         }
-        if(ComburantSlot.equippedItemStat != null && ToCookSlot.equippedItemStat != null && ResultSlot.equippedItemStat != null)
+        if(ComburantSlot.equippedItemStat != null && ToCookSlot.equippedItemStat != null && resultItem.amount != 0)
         {
             AddFuel(ComburantSlot.equippedItemStat.globalInfo.inflammability);
+            
+        }
+        if(fuel > 0 && ToCookSlot.equippedItemStat.amount != 0)
+        {
+            print("Je commence la cuisson");
             Cook();
         }
     }
@@ -93,6 +98,7 @@ public class Cooker : MonoBehaviour
             else
             {
                 ComburantSlot.equippedItemStat = null;
+                ComburantSlot.GetComponentInChildren<UnityEngine.UI.Image>().sprite = null;
             }
         }
     }
@@ -109,11 +115,14 @@ public class Cooker : MonoBehaviour
 
     private void Cook()
     {
-        cookingTime--;
-        fuel--;
+        cookingTime -= 1 * Time.deltaTime;
+        fuel -= 1 * Time.deltaTime;
         if(cookingTime <= 0)
         {
             ResultSlot.equippedItemStat = resultItem;
+            ResultSlot.GetComponentInChildren<UnityEngine.UI.Image>().sprite = ResultSlot.equippedItemStat.GetSprite();
+            ToCookSlot.equippedItemStat = new ItemClass();
+            ToCookSlot.GetComponentInChildren<UnityEngine.UI.Image>().sprite = null;
             hasAnObjectToCook = false;
         }
     }
