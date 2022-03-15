@@ -13,6 +13,7 @@ public class Cooker : MonoBehaviour
     private float cookingTime;
     private bool hasAnObjectToCook = false;
     private Transform playerInventory;
+    public ItemClass resultItem;
 
     // Start is called before the first frame update
     void Start()
@@ -99,6 +100,11 @@ public class Cooker : MonoBehaviour
     public void SetCookObject()
     {
         cookingTime = ToCookSlot.equippedItemStat.globalInfo.TempsCuisson;
+        InfoExelCuisine cuisine;
+        liseurExel.LesDatas.FindObjectInfo(ToCookSlot.equippedItemStat.globalInfo.Name, out cuisine);
+        InfoGlobalExel global;
+        liseurExel.LesDatas.FindObjectInfo(cuisine.NameOfResult[0], out global);
+        resultItem = new ItemClass { globalInfo = global, amount = 1 , name = global.Name };
     }
 
     private void Cook()
@@ -107,7 +113,7 @@ public class Cooker : MonoBehaviour
         fuel--;
         if(cookingTime <= 0)
         {
-            //L'objet est cuit
+            ResultSlot.equippedItemStat = resultItem;
             hasAnObjectToCook = false;
         }
     }
