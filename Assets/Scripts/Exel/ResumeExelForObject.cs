@@ -75,7 +75,7 @@ public class ResumeExelForObject : MesFonctions
         {
             if (ID == MonItem.ID)
             {
-                print(System.Enum.Parse(typeof(Type), MonItem.Type)); // vérifier
+                //print(System.Enum.Parse(typeof(Type), MonItem.Type)); // vérifier
                 MainType = (Type)System.Enum.Parse(typeof(Type), MonItem.Type);
             }
         }

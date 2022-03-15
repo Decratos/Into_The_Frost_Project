@@ -10,8 +10,8 @@ public class testData : MesFonctions
     void Start()
     {
         Data = GetComponent<liseurExel>();
-        objetToLook();
-        Debug.Break();
+        Invoke("objetToLook",0.5f);
+        
     }
 
     // Update is called once per frame
@@ -20,16 +20,29 @@ public class testData : MesFonctions
         InfoGlobalExel test = new InfoGlobalExel();
         InfoExelCuisine test2 = new InfoExelCuisine();
         Data.FindObjectInfo(id,out test);
-        Data.FindObjectInfo(id, out test2);
+        print(Data.test(PageExel.TypeDePageExel.Cuisine, id) + "c'est dans la page");
         if (test.ID!=0)
         {
             print("Il trouve dans global");
+            print(test.ID);
+            print(test.ExelCuisine.TempsDeCuisson);
+            foreach (int id in test.ExelCuisine.IDOfResult)
+            {
+                print(id);
+            }
+            foreach (string names in test.ExelCuisine.NameOfResult)
+            {
+                print(names);
+            }
+           
         }
         else
         {
             print("pas trouvé");
         }
-        if (test2.TempsDeCuisson!=0)
+        
+    }
+    /*if (test2.TempsDeCuisson!=0)
         {
             print(test2.TempsDeCuisson);
             foreach (int id in test2.IDOfResult)
@@ -44,6 +57,5 @@ public class testData : MesFonctions
         else 
         {
             print("pas trouvé");
-        }
-    }
+        }*/
 }
