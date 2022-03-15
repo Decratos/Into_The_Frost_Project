@@ -13,6 +13,7 @@ public class Cooker : MonoBehaviour
     [SerializeField] private float cookingTime;
     private bool hasAnObjectToCook = false;
     private Transform playerInventory;
+    public ItemClass resultItem;
 
     // Start is called before the first frame update
     void Start()
@@ -113,14 +114,10 @@ public class Cooker : MonoBehaviour
         fuel -= 1 * Time.deltaTime;
         if(cookingTime <= 0)
         {
-<<<<<<< HEAD
             ResultSlot.equippedItemStat = resultItem;
             ResultSlot.GetComponentInChildren<UnityEngine.UI.Image>().sprite = ResultSlot.equippedItemStat.GetSprite();
             ToCookSlot.equippedItemStat = new ItemClass();
             ToCookSlot.GetComponentInChildren<UnityEngine.UI.Image>().sprite = null;
-=======
-            //L'objet est cuit
->>>>>>> parent of 47e3587 (Merge branch 'Théo')
             hasAnObjectToCook = false;
         }
     }
