@@ -20,7 +20,6 @@ public class testData : MesFonctions
         InfoGlobalExel test = new InfoGlobalExel();
         InfoExelCuisine test2 = new InfoExelCuisine();
         Data.FindObjectInfo(id,out test);
-        print(Data.test(PageExel.TypeDePageExel.Cuisine, id) + "c'est dans la page");
         if (test.ID!=0)
         {
             print("Il trouve dans global");
