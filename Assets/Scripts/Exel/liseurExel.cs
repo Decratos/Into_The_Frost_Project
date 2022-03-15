@@ -565,7 +565,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                 }
                 if (IsItInThisPage(PageExel.TypeDePageExel.Cuisine,info.ID))
                 {
-                    FindObjectInfo(info.ID, out lesInfos.ExelCuisine);
+                    FindObjectInfo(info.Name, out lesInfos.ExelCuisine);
                 }
                
 
@@ -753,6 +753,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
             if (KUIZINE.Name == name)
             {
                 CuisineInfo.TempsDeCuisson = KUIZINE.TempsCuisson;
+                CuisineInfo.NameOfResult = new string [KUIZINE.Possibilities.Count]; 
                 CuisineInfo.NameOfResult = KUIZINE.Possibilities.ToArray();
                 CuisineInfo.IDOfResult = new int[CuisineInfo.NameOfResult.Length];
                 for (int i = 0; i < CuisineInfo.NameOfResult.Length; i++)
@@ -862,6 +863,7 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
 
                 if (IsItInThisPage(PageExel.TypeDePageExel.Cuisine, info.ID))
                 {
+                    
                     FindObjectInfo(info.ID, out lesInfos.ExelCuisine);
                 }
 
@@ -1046,7 +1048,9 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
         {
             if (KUIZINE.ID == ID)
             {
+               
                 CuisineInfo.TempsDeCuisson = KUIZINE.TempsCuisson;
+                CuisineInfo.NameOfResult = new string[KUIZINE.Possibilities.Count];
                 CuisineInfo.NameOfResult = KUIZINE.Possibilities.ToArray();
                 CuisineInfo.IDOfResult = new int[CuisineInfo.NameOfResult.Length];
                 for (int i = 0; i < CuisineInfo.NameOfResult.Length; i++)
@@ -1243,6 +1247,16 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                 }
             }
         }
+        else if (mon_type == PageExel.TypeDePageExel.Cuisine)
+        {
+            foreach (InfoCuisine item in MesListe.LaCuisine)
+            {
+                if (item.ID == ID)
+                {
+                    tosend = true;
+                }
+            }
+        }
         return tosend;
     
     }// est ce que l'objet est dans cette page
@@ -1327,11 +1341,37 @@ public class liseurExel : MesFonctions // ce script vas chercher toutes les info
                 }
             }
         }
+        else if (mon_type == PageExel.TypeDePageExel.Cuisine)
+        {
+            foreach (InfoCuisine item in MesListe.LaCuisine)
+            {
+                if (item.Name == name)
+                {
+                    tosend = true;
+                }
+            }
+        }
         return tosend;
 
 
     } // est ce que l'objet est dans cette page
 
+    /*public bool test(PageExel.TypeDePageExel mon_type, int ID) 
+    {
+        bool temp = false;
+        foreach (PageExel.TypeDePageExel item in System.Enum.GetValues(typeof(PageExel.TypeDePageExel)))
+        {
+            if (item == mon_type)
+            {
+                foreach (var item in collection)
+                {
+
+                }
+            }
+        }
+        //int[] enumarray = //System.Enum.GetValues(typeof(PageExel.TypeDePageExel)); 
+        return temp;
+    }*/
     #endregion
 
 }

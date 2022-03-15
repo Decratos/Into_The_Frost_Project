@@ -100,11 +100,6 @@ public class Cooker : MonoBehaviour
     public void SetCookObject()
     {
         cookingTime = ToCookSlot.equippedItemStat.globalInfo.TempsCuisson;
-        InfoExelCuisine cuisine;
-        liseurExel.LesDatas.FindObjectInfo(ToCookSlot.equippedItemStat.globalInfo.Name, out cuisine);
-        InfoGlobalExel global;
-        liseurExel.LesDatas.FindObjectInfo(cuisine.NameOfResult[0], out global);
-        resultItem = new ItemClass { globalInfo = global, amount = 1 , name = global.Name };
     }
 
     private void Cook()
