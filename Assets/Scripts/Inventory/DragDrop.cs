@@ -87,6 +87,11 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
             
         }
+        else if(eventData.pointerCurrentRaycast.gameObject.GetComponent<Quickslot>())
+        {
+            print("Il y a un quickslot");
+            eventData.pointerCurrentRaycast.gameObject.GetComponent<Quickslot>().AssignItem(eventData.pointerDrag.GetComponentInChildren<ItemInfo>().item);
+        }
         else
         {
             print(eventData.pointerCurrentRaycast.gameObject.name);

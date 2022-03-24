@@ -77,9 +77,10 @@ public class Inventory
     }
     public void RemoveItem(ItemClass item)// Supprime un item de l'inventaire
     {
+        Debug.Log(item.name);
         ItemClass newItem = new ItemClass();
         InfoGlobalExel inf = new InfoGlobalExel();
-        liseurExel.LesDatas.FindObjectInfo(item.globalInfo.Name, out inf);
+        liseurExel.LesDatas.FindObjectInfo(item.name, out inf);
         newItem.amount = item.amount;
         newItem.globalInfo.ID = item.globalInfo.ID;
         if (item.isStackable())
@@ -155,11 +156,14 @@ public class Inventory
         {
             case InfoGlobalExel.Type.Nourriture:
             case InfoGlobalExel.Type.Soins:
-                ItemsActions.itemsActionsInstance.ItemAction(item.globalInfo.Name, item);
+                ItemsActions.itemsActionsInstance.ItemAction(item);
                 if (item.amount > 1)
                     item.amount--;
                 else
                     RemoveItem(item);
+                break;
+            default:
+                Debug.LogError("Je n'ai pas pû utiliser l'objet, cela vient sûrement du fait qu'il ne s'agit pas d'un consommable");
                 break;
         }
         
