@@ -15,7 +15,7 @@ public class ItemsActions : MesFonctions
     }
 
 
-    public void ItemAction(string name, ItemClass item) //itemAction?
+    public void ItemAction(ItemClass item) //itemAction?
     {
         switch (item.globalInfo.TypeGeneral)
         {

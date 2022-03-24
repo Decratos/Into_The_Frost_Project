@@ -204,26 +204,30 @@ public class GestionInput : MesFonctions
 
     public void UseQuicksloth1(InputAction.CallbackContext context) 
     {
-
-        print("Quicksloth1");
+        print("use slot");
+        var quickslot = GetComponent<CanvasReference>().GetCanva().transform.Find("Quickslots");
+        quickslot.GetComponent<QsHolder>().UseQuickslot(1);
 
     }
     public void UseQuicksloth2(InputAction.CallbackContext context)
     {
 
-        print("Quicksloth2");
+        var quickslot = GetComponent<CanvasReference>().GetCanva().transform.Find("Quickslots");
+        quickslot.GetComponent<QsHolder>().UseQuickslot(2);
 
     }
     public void UseQuicksloth3(InputAction.CallbackContext context)
     {
 
-        print("Quicksloth3");
+        var quickslot = GetComponent<CanvasReference>().GetCanva().transform.Find("Quickslots");
+        quickslot.GetComponent<QsHolder>().UseQuickslot(3);
 
     }
     public void UseQuicksloth4(InputAction.CallbackContext context)
     {
 
-        print("Quicksloth4");
+        var quickslot = GetComponent<CanvasReference>().GetCanva().transform.Find("Quickslots");
+        quickslot.GetComponent<QsHolder>().UseQuickslot(4);
 
     }
     public void Torch(InputAction.CallbackContext context) 
