@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+
 
 [System.Serializable]
 public class StateForSurvival
@@ -46,7 +46,10 @@ public class SurvivalSysteme : MesFonctions
     {
         Coup,
         Balle,
-        Chute
+        Chute, 
+        faim, 
+        Soif,
+        Chaleur
 
     }
     public TypeOfDammage LesDammages;
@@ -103,12 +106,16 @@ public class SurvivalSysteme : MesFonctions
     }
     void Update()
     {
-        baisseLesDatas(); // envois la baisse des stats de survie
-        Regen();// vas checker si des variables doit regen
-        SetFeedback();// Selon les valeurs calculer envois les feedbacks
-        UpdateFeedBack();// Update le feedback 
-        UpdateUI(); //Update l'UI
-        DoIDied(); //check si je meurs
+        if (!Dead)
+        {
+            baisseLesDatas(); // envois la baisse des stats de survie
+            Regen();// vas checker si des variables doit regen
+            SetFeedback();// Selon les valeurs calculer envois les feedbacks
+            UpdateFeedBack();// Update le feedback 
+            UpdateUI(); //Update l'UI
+            DoIDied(); //check si je meurs
+        }
+        
     }
     void baisseLesDatas()// fais baisser les datas
     {
@@ -186,10 +193,7 @@ public class SurvivalSysteme : MesFonctions
                 LesDataPourSurvie[IndexDataVie].ActualValue -= calculPerteLifeHeat(MonState) * Time.deltaTime; // fais baisser selon la chaleur
             }
             LesDataPourSurvie[IndexDataVie].ActualValue = checkLaRange(IndexDataVie);// v�rifie que la valeur est bien dans la range
-            if (true)
-            {
-
-            }
+            
         }
 
     }
@@ -274,7 +278,31 @@ public class SurvivalSysteme : MesFonctions
         if (LesDataPourSurvie[IndexDataFrost].ActualValue<= LesDataPourSurvie[IndexDataFrost].Range.x 
             || LesDataPourSurvie[IndexDataVie].ActualValue== LesDataPourSurvie[IndexDataVie].Range.x)
         {
-            Death();
+            if (LesDataPourSurvie[IndexDataFrost].ActualValue <= LesDataPourSurvie[IndexDataFrost].Range.x)
+            {
+                Death(TypeOfDammage.Chaleur);
+            }
+            else 
+            {
+                if (LesDataPourSurvie[IndexDataHunger].ActualValue<= LesDataPourSurvie[IndexDataHunger].Range.x)
+                {
+                    Death(TypeOfDammage.faim);
+                }
+                else if (LesDataPourSurvie[IndexDataSoif].ActualValue <= LesDataPourSurvie[IndexDataSoif].Range.x)
+                {
+                    Death(TypeOfDammage.Soif);
+                }
+                else if (LesDataPourSurvie[IndexDataSoif].ActualValue <= LesDataPourSurvie[IndexDataSoif].Range.x
+                    && LesDataPourSurvie[IndexDataHunger].ActualValue <= LesDataPourSurvie[IndexDataHunger].Range.x)
+                {
+                    Death(TypeOfDammage.Soif);
+                }
+                else
+                {
+                    Death(TypeOfDammage.faim);
+                }
+            }
+            
         }
 
     }
@@ -346,30 +374,56 @@ public class SurvivalSysteme : MesFonctions
 
     }
    
-    public void TakeDamage(float dammageBrut, TypeOfDammage CeQuiMeFaitMal)
+    public void TakeDamage(float dammageBrut, TypeOfDammage CeQuiMeFaitMal) // a faire par type de mort 
     {
 
         if (TypeOfDammage.Coup == CeQuiMeFaitMal)
         {
-            print("A remplir");
+            LesDataPourSurvie[IndexDataVie].ActualValue -= calculDegatCoup(dammageBrut);
         }
         else if (TypeOfDammage.Balle == CeQuiMeFaitMal)
         {
             LesDataPourSurvie[IndexDataVie].ActualValue -= dammageBrut;
         }
+        else if (TypeOfDammage.Chaleur ==CeQuiMeFaitMal)
+        {
+
+        }
+        else if (TypeOfDammage.Chute == CeQuiMeFaitMal)
+        {
+
+        }
+        else if (TypeOfDammage.faim == CeQuiMeFaitMal)
+        {
+
+        }
+        else if (TypeOfDammage.Soif == CeQuiMeFaitMal)
+        {
+
+        }
         else
         {
             //degat par metre de chute
-            print("A remplir");
+            print("n'existe pas comme ou pas d'info");
+        }
+
+        if (LesDataPourSurvie[IndexDataVie].ActualValue <= LesDataPourSurvie[IndexDataVie].Range.x)
+        {
+            Death(CeQuiMeFaitMal);
         }
 
     }
-    public void Death() 
+    
+    public void Death(TypeOfDammage CeQuiMaTuer) 
     {
         Dead = true;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        GestionDesScipt.ScriptGestion.Respawner.SetCauseOfDeath(CeQuiMaTuer);
+        GestionDesScipt.ScriptGestion.Respawner.LanceLeRespawn();
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
     }
+
+
     public StateForSurvival GetState(int index) 
     {
         
@@ -388,6 +442,29 @@ public class SurvivalSysteme : MesFonctions
             }
         }
         return toReturn;
+    }
+
+
+
+    #endregion
+
+    void setResonOfDeath() //A améliorer
+    {
+    
+    
+    }
+    #region calcul pour take dommage
+    float calculDegatCoup(float degatBrut) 
+    {
+
+
+        return 0;
+    }
+
+    float calculDegatBall(float degatBrut) 
+    {
+
+        return 0;
     }
     #endregion
 }
