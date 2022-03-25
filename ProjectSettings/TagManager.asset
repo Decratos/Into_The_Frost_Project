@@ -13,6 +13,9 @@ TagManager:
   - Container
   - CraftTable
   - Cooker
+  - Sol
+  - Immeuble
+  - RespawnPoint
   layers:
   - Default
   - TransparentFX

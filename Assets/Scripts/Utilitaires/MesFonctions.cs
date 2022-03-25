@@ -123,12 +123,14 @@ public class MesFonctions : MonoBehaviour
         return (value-min) / (max-min);
     
     }
-     public static float PourcentageBetweenValue(Vector2 Range, float value)
+    public static float PourcentageBetweenValue(Vector2 Range, float value)
     {
 
         return ( value - Range.x) / (Range.y - Range.x);
 
     }
+
+    
 }
 public struct InfoGlobalExel // créer une struct qui me permet de récupérer toutes les infos sur un objet 
 {

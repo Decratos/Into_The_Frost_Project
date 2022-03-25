@@ -13,6 +13,7 @@ public class GestionDesScipt : MesFonctions
     public Inventory Inventory;
     public UIInventory uiInventory;
     public PlayerConstruct PlayerConstruct;
+    public ResPawn Respawner;
 
     // pour faire de se script un singelton
     [HideInInspector] public static GestionDesScipt ScriptGestion;

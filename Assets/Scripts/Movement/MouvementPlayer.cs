@@ -299,7 +299,8 @@ public class MouvementPlayer : MesFonctions
         
         if (DistanceChute >= HighDegats.y)
         {
-            GestionDesScipt.ScriptGestion.SurvieScript.Death();
+            
+            GestionDesScipt.ScriptGestion.SurvieScript.Death(SurvivalSysteme.TypeOfDammage.Chute);
         }
         else 
         {
