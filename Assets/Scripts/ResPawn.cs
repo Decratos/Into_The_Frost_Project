@@ -77,16 +77,16 @@ public class ResPawn : MesFonctions
     {
         
         PositionOfDeath = transform.position;
-        print("position done");
+        
         
         distanceRespawn = SetDitance(ChooseDistance(TypeDeDommageQuiATuer, FinalPlace));
-        print("Distance done");
+        
         
         Position4Respawn = PositionForRespawn(PositionOfDeath);
-        print("Position du respawn Done");
+        
         
         resetStats();
-
+        resetInventory();
         transform.position = Position4Respawn;
     }
     
@@ -105,7 +105,6 @@ public class ResPawn : MesFonctions
             }
         }
         ObjetDeRespawn = LesObjetsATrier[Random.Range(0,LesObjetsATrier.Count)];
-        print("objet respawn" + LesObjetsATrier.Count);
         List<GameObject> LesSpawnPoint = new List<GameObject>();
         List<Transform> ToLook = new List<Transform>();
         List<Transform> Looked = new List<Transform>();
@@ -116,29 +115,29 @@ public class ResPawn : MesFonctions
             
             while (!checkedChild)
             {
-                print("J'ai objet");
+               
                 if (toCheck.tag == RespawnTag && !LesSpawnPoint.Contains(toCheck.gameObject))
                 {
-                    print("j'ajoute un objet a spawnpoint");
+                    
                     LesSpawnPoint.Add(toCheck.gameObject);
                 }
                 if (toCheck.childCount > 0)
                 {
-                    print("L'objet que je check" + toCheck + "à des enfants");
+                    
                     foreach (Transform childDirect in toCheck)
                     {
                         if (childDirect.childCount > 0)
                         {
-                            print("je vois que l'enfant un enfant et je l'ajoute");
+                            
                             ToLook.Add(childDirect);
                         }
                         else
                         {
-                            print("l'enfant n'a pas d'enfant");
+                            
                             Looked.Add(childDirect);
                             if (childDirect.tag == RespawnTag && !LesSpawnPoint.Contains(childDirect.gameObject))
                             {
-                                print("l'enfant à le bon tag");
+                                
                                 LesSpawnPoint.Add(childDirect.gameObject);
                             }
                         }
@@ -159,7 +158,7 @@ public class ResPawn : MesFonctions
                 }
                 if (ToLook.Count > 0)
                 {
-                    print("Je continue a chercher");
+                    
                     toCheck = ToLook[0];
                 }
                 else
@@ -175,12 +174,12 @@ public class ResPawn : MesFonctions
             print("Je n'ai pas trouver de respawn");
         
         }
-        print("spawnpoint" + LesSpawnPoint.Count);
         if (LesSpawnPoint.Count>0)
         {
             
             toReturn = LesSpawnPoint[Random.Range(0, LesSpawnPoint.Count)].transform.position;
         }
+        
         
         return toReturn;
     }
