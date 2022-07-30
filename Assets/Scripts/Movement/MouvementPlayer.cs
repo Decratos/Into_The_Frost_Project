@@ -60,8 +60,8 @@ public class MouvementPlayer : MesFonctions
 
 
     #region Pour Deplacement
-    
-    
+
+    GestionDesScipt mesScripts;
     Vector3 DirectionCalculate;
     Vector3 directionSaut;
     Vector3 EnregistrementHigh;
@@ -72,7 +72,7 @@ public class MouvementPlayer : MesFonctions
 
     void Start() 
     {
-       
+        FindGestionDesScripts(this.gameObject, out mesScripts);
         MyCharacterController = GetComponent<CharacterController>(); // récupére le component character
         ChangementVitesseMax(VitesseDeplacement); // set la vitesse de déplacement
     }
@@ -247,6 +247,7 @@ public class MouvementPlayer : MesFonctions
 
         EnregistrementHigh = transform.position;
         directionSaut = DirectionCalculate; // lance la direction du saut
+        mesScripts.MouvementDeCamera.detachCam();
         
     }
     public void GoSprint() // change la vitesse en celle de sprint
@@ -261,8 +262,9 @@ public class MouvementPlayer : MesFonctions
         {
             EnregistrementHigh = transform.position;
         }
+        mesScripts.MouvementDeCamera.detachCam();
         //enregistre à quelle coordonné le joueur chute
-        
+
     }
     void saccroupie() 
     {

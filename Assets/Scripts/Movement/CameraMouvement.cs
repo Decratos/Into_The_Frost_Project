@@ -7,9 +7,9 @@ public class CameraMouvement : MesFonctions
 
     //Public
     public GameObject joueur;
-    public Vector2 Sensibilite = Vector2.zero;
+    
     public Vector2 MaxAngle = Vector2.zero;
-    public Vector2 SensibiliteManette;
+    
     public bool canLook;
     //public Vector2 MaxAngleInJump = Vector2.zero;
 
@@ -22,18 +22,18 @@ public class CameraMouvement : MesFonctions
     float RotationSurX = 0;
     float RotationSurY = 0;
 
-
-
-
+    bool horsSol=false;
+    Vector3 PositionLorsSaut;
+    Vector2 Sensibilite = Vector2.zero;
 
 
     void Start()
     {
         FindGestionDesScripts(joueur, out ScriptGestion);
-
+        PositionLorsSaut = transform.localPosition;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-
+        Sensibilite = ScriptGestion.InputGestion.SensibiliteSouris;
     }
 
     void Update()
@@ -42,6 +42,10 @@ public class CameraMouvement : MesFonctions
         if (ManetteActivated)
         {
             ReceptionDonnerInput(ManetteDirection);
+        }
+        if (horsSol)
+        {
+            transform.position = joueur.transform.position + PositionLorsSaut;
         }
 
     }
@@ -52,10 +56,12 @@ public class CameraMouvement : MesFonctions
         ManetteActivated = true;
         if (Data != Vector2.zero)
         {
-            ManetteDirection = Data.normalized*SensibiliteManette;
+            Sensibilite = ScriptGestion.InputGestion.SensibiliteManette;
+            ManetteDirection = Data.normalized;
         }
         else
         {
+            Sensibilite = ScriptGestion.InputGestion.SensibiliteSouris;
             ManetteActivated = false;
             ManetteDirection = Vector2.zero;
         }
@@ -76,12 +82,13 @@ public class CameraMouvement : MesFonctions
                 RotationSurX = Mathf.Clamp(RotationSurX, -MaxAngle.x, MaxAngle.x);
                 if (ScriptGestion.LesMouvements.StateDeDeplacement != MouvementPlayer.StateDeplacement.Saute && ScriptGestion.LesMouvements.StateDeDeplacement != MouvementPlayer.StateDeplacement.Fall)
                 {
-                    transform.parent.rotation = Quaternion.AngleAxis(RotationSurY, transform.parent.up);
                     transform.localRotation = Quaternion.Euler(new Vector3(RotationSurX, 0, 0));
+                    transform.parent.rotation = Quaternion.AngleAxis(RotationSurY, transform.parent.up);
+                    
                 }
                 else //lors du saut
                 {
-                    transform.localRotation = Quaternion.Euler(new Vector3(RotationSurX, transform.localEulerAngles.y, 0));
+                    transform.rotation = Quaternion.Euler(new Vector3(RotationSurX, RotationSurY, 0));
                 }
             }
         }
@@ -90,12 +97,23 @@ public class CameraMouvement : MesFonctions
 
     }
 
-    public void resetAtLanding ()
+    public void resetAtLanding()
     {
-        Quaternion cameraRotat = transform.rotation;
+        horsSol = false;
+        joueur.transform.rotation = Quaternion.Euler(joueur.transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, joueur.transform.rotation.eulerAngles.z);
+        transform.parent = joueur.transform;
+        
+    }
+
+    public void detachCam() 
+    {
+        transform.parent = null;
+        horsSol = true;
+    
+    }
+}
+/*  Quaternion cameraRotat = transform.rotation;
 
         transform.parent.rotation = Quaternion.Euler(0,transform.rotation.eulerAngles.y,0);
         transform.localRotation = Quaternion.Euler(cameraRotat.eulerAngles.x, 0, 0);
-
-    }
-}
+*/

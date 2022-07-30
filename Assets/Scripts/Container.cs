@@ -17,11 +17,11 @@ public class Container : MonoBehaviour
 
     void Start()
     {
-        inventory.CheckCapability(startInventory);
+        inventory.CheckCapability(startInventory); //ajoute à l'inventaire
     }
 
     [Button("ResetInventory")]
-    public void ResetInventory()
+    public void ResetInventory() // reset l'inventaire
     {
         print("Reset l'inventaire du contenaire");
         inventory = new Inventory();
@@ -29,26 +29,28 @@ public class Container : MonoBehaviour
 
     private void Update()
     {
-        inventoryList = inventory.GetItemList();
+        inventoryList = inventory.GetItemList();// set l'inventaire dans ce script
     }
 
-    public void OpenContainer()
+    public void OpenContainer()// ouvre la fenêtre du container
     {
+        //recup les varibles pour les avoir ceq 'uil faut
         var playerWindowUi = PlayerSingleton.playerInstance.GetComponent<InventoryManager>().PlayerInventoryContainerWindow.GetComponent<UIInventory>();
         var ContainerWindowUi = PlayerSingleton.playerInstance.GetComponent<InventoryManager>().ContainerWindow.GetComponent<UIInventory>();
         //PlayerSingleton.playerInstance.GetComponentInChildren<CameraMouvement>().canLook = !isOpen;
         print("jouvre la fenetre");
+        //set les transforms
         ContainerWindowUi.BasicUI.GetComponent<BasicUIGestion>().contextWindow = ContainerWindowUi.transform;
         ContainerWindowUi.BasicUI.GetComponent<BasicUIGestion>().LastWindowOpened = ContainerWindowUi.transform;
         ContainerWindowUi.BasicUI.GetComponent<BasicUIGestion>().contextObject = this.transform;
-        ContainerWindowUi.SetInventory(inventory);
-        ContainerWindowUi.gameObject.SetActive(true);
+        ContainerWindowUi.SetInventory(inventory); // set l'inventaire
+        ContainerWindowUi.gameObject.SetActive(true); // active l'objet
         ContainerWindowUi.OpenHideInventory("Open", false);
         playerWindowUi.OpenHideInventory("Open", false);
         
     }
 
-    public void CloseContainer()
+    public void CloseContainer() // ferme le container
     {
         var playerWindowUi = PlayerSingleton.playerInstance.GetComponent<InventoryManager>().PlayerInventoryContainerWindow.GetComponent<UIInventory>();
         var ContainerWindowUi = PlayerSingleton.playerInstance.GetComponent<InventoryManager>().ContainerWindow.GetComponent<UIInventory>();

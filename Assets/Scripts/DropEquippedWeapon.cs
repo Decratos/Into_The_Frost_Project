@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DropEquippedWeapon : MonoBehaviour, IPointerDownHandler
+public class DropEquippedWeapon : MonoBehaviour, IPointerDownHandler //permet de determiner si je clique sur l'objet
 {
-    public PointerEventData data;
+    public PointerEventData data;// les data lors du clique je prèsume
 
     private ItemSlot parentItemSlot;
 
@@ -14,7 +14,7 @@ public class DropEquippedWeapon : MonoBehaviour, IPointerDownHandler
     }
     public void OnPointerDown(PointerEventData eventData)// lorsque je clique
     {
-        if(parentItemSlot.equippedItemStat.globalInfo.Name != "")
+        if(parentItemSlot.equippedItemStat.globalInfo.Name != "")// si l'objet équipé existe
         {
             if(parentItemSlot.equippedItemStat.globalInfo.TypeGeneral == InfoGlobalExel.Type.ArmeAfeu || parentItemSlot.equippedItemStat.globalInfo.TypeGeneral == InfoGlobalExel.Type.ArmeMelee)
             {

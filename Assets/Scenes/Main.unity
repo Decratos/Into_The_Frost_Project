@@ -32943,6 +32943,16 @@ PrefabInstance:
       propertyPath: m_Text
       value: 
       objectReference: {fileID: 382972107}
+    - target: {fileID: 1123951329656893954, guid: ff7936aa491aab7419651660cb5641eb,
+        type: 3}
+      propertyPath: SensibiliteSouris.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1123951329656893954, guid: ff7936aa491aab7419651660cb5641eb,
+        type: 3}
+      propertyPath: SensibiliteSouris.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1123951329656893955, guid: ff7936aa491aab7419651660cb5641eb,
         type: 3}
       propertyPath: m_ActionEvents.Array.data[10].m_PersistentCalls.m_Calls.Array.size
@@ -33145,12 +33155,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff7936aa491aab7419651660cb5641eb, type: 3}
---- !u!4 &931764454 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 97964416, guid: ff7936aa491aab7419651660cb5641eb,
-    type: 3}
-  m_PrefabInstance: {fileID: 931764453}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &931764455 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1123951329656893961, guid: ff7936aa491aab7419651660cb5641eb,

@@ -6,6 +6,9 @@ using UnityEngine.InputSystem;
 public class GestionInput : MesFonctions
 {
 
+    public Vector2 SensibiliteManette;
+    public Vector2 SensibiliteSouris;
+
     PlayerInput PI; 
     [SerializeField] float Distance;
 
