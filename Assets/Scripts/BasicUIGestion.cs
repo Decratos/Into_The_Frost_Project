@@ -9,31 +9,31 @@ public class BasicUIGestion : MonoBehaviour
     public Transform contextObject;
     public void CloseLastWindow(bool playerInput)
     {
-        if(LastWindowOpened)
+        if(LastWindowOpened)//si la dernière fenêtre est ouverte
         {
             print("Je ferme la dernière fenêtre");
             if (LastWindowOpened.GetComponent<UIInventory>() && LastWindowOpened.transform.name != "ContainerInventory")
             {
-                LastWindowOpened.GetComponent<UIInventory>().OpenHideInventory("Close");
+                LastWindowOpened.GetComponent<UIInventory>().OpenHideInventory("Close");// ferme l'inventaire
             }
             else if(LastWindowOpened.GetComponent<CraftUI>())
             {
-                LastWindowOpened.GetComponent<CraftUI>().OpenHideCraftUI(false, 0);
+                LastWindowOpened.GetComponent<CraftUI>().OpenHideCraftUI(false, 0);// ferme la fenêtre de craft
             }
             else if(LastWindowOpened.transform.name == "CookingWindow")
             {
-                OpenCloseContextWindow("Close");
+                OpenCloseContextWindow("Close");//ferme la fenêtre contextuelle
             }
             else if (LastWindowOpened.transform.name == "ContainerInventory")
             {
                 print("Je ferme le container");
-                OpenCloseContextWindow("Close");
+                OpenCloseContextWindow("Close");//ferme la fenêtre contextuelle
             }
             else
             {
                 print("Je n'ai pas trouvé la fenêtre correspondante : " + LastWindowOpened.transform.name);
             }
-            if(playerInput)
+            if(playerInput) // reset les valeurs
             {
                 LastWindowOpened = null;
                 contextWindow = null;
@@ -44,7 +44,7 @@ public class BasicUIGestion : MonoBehaviour
             
     }
 
-    public void SetLastWindow(Transform window)
+    public void SetLastWindow(Transform window)// set la last window avec un transform
     {
         LastWindowOpened = window;
     }
@@ -53,7 +53,7 @@ public class BasicUIGestion : MonoBehaviour
         if(isContextWindow)
             LastWindowOpened = contextWindow;
     }
-    public void OpenCloseContextWindow(string open)
+    public void OpenCloseContextWindow(string open) // ouvre ou ferme la fenetre contextuel
     {
         if(contextWindow)
         {
@@ -69,7 +69,7 @@ public class BasicUIGestion : MonoBehaviour
         
     }
 
-    public void CloseBasicUI()
+    public void CloseBasicUI() // ferme se gameobject
     {
         gameObject.SetActive(false);
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DetectionPlace : MonoBehaviour
 {
-    public ResPawn.WhereAmIDead OuJeSuis;
+    public ResPawn.WhereAmIDead OuJeSuis;// permet de savoir ou je suis mort?
     [SerializeField] string tagPlayer;
    
 
